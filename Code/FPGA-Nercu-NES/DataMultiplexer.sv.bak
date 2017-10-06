@@ -1,0 +1,19 @@
+module DataMultiplexor(
+			input cpuRW, 
+			input ppuEnable, 
+			input controller1Enable, 
+			input controller2Enable, 
+			input sramEnable, 
+			input cartridgeEnable, 
+			input[7:0] cpuData, 
+			input[7:0] ppuData, 
+			input[7:0] controller1Data, 
+			input[7:0] controller2Data, 
+			input[7:0] sramData, 
+			input[7:0] cartridgeData, 
+			output[7:0] dataOutput
+			);
+			
+	always_comb
+	begin
+		
