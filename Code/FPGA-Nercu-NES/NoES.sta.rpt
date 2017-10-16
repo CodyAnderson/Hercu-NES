@@ -1,0 +1,1288 @@
+TimeQuest Timing Analyzer report for NoES
+Sat Oct 14 19:56:47 2017
+Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. TimeQuest Timing Analyzer Summary
+  3. Parallel Compilation
+  4. Clocks
+  5. Slow Model Fmax Summary
+  6. Slow Model Setup Summary
+  7. Slow Model Hold Summary
+  8. Slow Model Recovery Summary
+  9. Slow Model Removal Summary
+ 10. Slow Model Minimum Pulse Width Summary
+ 11. Slow Model Setup: 'CLOCK_50'
+ 12. Slow Model Hold: 'CLOCK_50'
+ 13. Slow Model Minimum Pulse Width: 'CLOCK_50'
+ 14. Setup Times
+ 15. Hold Times
+ 16. Clock to Output Times
+ 17. Minimum Clock to Output Times
+ 18. Propagation Delay
+ 19. Minimum Propagation Delay
+ 20. Fast Model Setup Summary
+ 21. Fast Model Hold Summary
+ 22. Fast Model Recovery Summary
+ 23. Fast Model Removal Summary
+ 24. Fast Model Minimum Pulse Width Summary
+ 25. Fast Model Setup: 'CLOCK_50'
+ 26. Fast Model Hold: 'CLOCK_50'
+ 27. Fast Model Minimum Pulse Width: 'CLOCK_50'
+ 28. Setup Times
+ 29. Hold Times
+ 30. Clock to Output Times
+ 31. Minimum Clock to Output Times
+ 32. Propagation Delay
+ 33. Minimum Propagation Delay
+ 34. Multicorner Timing Analysis Summary
+ 35. Setup Times
+ 36. Hold Times
+ 37. Clock to Output Times
+ 38. Minimum Clock to Output Times
+ 39. Progagation Delay
+ 40. Minimum Progagation Delay
+ 41. Setup Transfers
+ 42. Hold Transfers
+ 43. Report TCCS
+ 44. Report RSKM
+ 45. Unconstrained Paths
+ 46. TimeQuest Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------+
+; TimeQuest Timing Analyzer Summary                                       ;
++--------------------+----------------------------------------------------+
+; Quartus II Version ; Version 13.0.0 Build 156 04/24/2013 SJ Web Edition ;
+; Revision Name      ; NoES                                               ;
+; Device Family      ; Cyclone II                                         ;
+; Device Name        ; EP2C20F484C7                                       ;
+; Timing Models      ; Final                                              ;
+; Delay Model        ; Combined                                           ;
+; Rise/Fall Delays   ; Unavailable                                        ;
++--------------------+----------------------------------------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 8      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                               ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+--------------+
+; Clock Name ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets      ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+--------------+
+; CLOCK_50   ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { CLOCK_50 } ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+--------------+
+
+
++--------------------------------------------------+
+; Slow Model Fmax Summary                          ;
++------------+-----------------+------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
++------------+-----------------+------------+------+
+; 204.71 MHz ; 204.71 MHz      ; CLOCK_50   ;      ;
++------------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++-----------------------------------+
+; Slow Model Setup Summary          ;
++----------+--------+---------------+
+; Clock    ; Slack  ; End Point TNS ;
++----------+--------+---------------+
+; CLOCK_50 ; -3.885 ; -210.721      ;
++----------+--------+---------------+
+
+
++----------------------------------+
+; Slow Model Hold Summary          ;
++----------+-------+---------------+
+; Clock    ; Slack ; End Point TNS ;
++----------+-------+---------------+
+; CLOCK_50 ; 0.445 ; 0.000         ;
++----------+-------+---------------+
+
+
+-------------------------------
+; Slow Model Recovery Summary ;
+-------------------------------
+No paths to report.
+
+
+------------------------------
+; Slow Model Removal Summary ;
+------------------------------
+No paths to report.
+
+
++----------------------------------------+
+; Slow Model Minimum Pulse Width Summary ;
++----------+--------+--------------------+
+; Clock    ; Slack  ; End Point TNS      ;
++----------+--------+--------------------+
+; CLOCK_50 ; -1.631 ; -78.617            ;
++----------+--------+--------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Setup: 'CLOCK_50'                                                                                                                   ;
++--------+------------------------------+----------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                    ; To Node                          ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+------------------------------+----------------------------------+--------------+-------------+--------------+------------+------------+
+; -3.885 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|transmitReg[8] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.923      ;
+; -3.885 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|transmitReg[7] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.923      ;
+; -3.885 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|transmitReg[6] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.923      ;
+; -3.885 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|transmitReg[5] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.923      ;
+; -3.885 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|transmitReg[4] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.923      ;
+; -3.885 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|transmitReg[3] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.923      ;
+; -3.885 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|transmitReg[2] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.923      ;
+; -3.885 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|transmitReg[1] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.923      ;
+; -3.876 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|divider[13]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.916      ;
+; -3.876 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|divider[14]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.916      ;
+; -3.876 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|divider[15]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.916      ;
+; -3.876 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|divider[16]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.916      ;
+; -3.876 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|divider[17]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.916      ;
+; -3.876 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|divider[18]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.916      ;
+; -3.876 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|divider[19]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.916      ;
+; -3.876 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|divider[20]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.916      ;
+; -3.876 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|divider[21]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.916      ;
+; -3.876 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|divider[22]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.916      ;
+; -3.876 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|divider[23]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.916      ;
+; -3.876 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|divider[24]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.916      ;
+; -3.876 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|divider[25]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.916      ;
+; -3.876 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|divider[26]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.916      ;
+; -3.859 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|transmitReg[8] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.897      ;
+; -3.859 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|transmitReg[7] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.897      ;
+; -3.859 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|transmitReg[6] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.897      ;
+; -3.859 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|transmitReg[5] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.897      ;
+; -3.859 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|transmitReg[4] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.897      ;
+; -3.859 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|transmitReg[3] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.897      ;
+; -3.859 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|transmitReg[2] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.897      ;
+; -3.859 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|transmitReg[1] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.897      ;
+; -3.850 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|divider[13]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.890      ;
+; -3.850 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|divider[14]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.890      ;
+; -3.850 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|divider[15]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.890      ;
+; -3.850 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|divider[16]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.890      ;
+; -3.850 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|divider[17]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.890      ;
+; -3.850 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|divider[18]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.890      ;
+; -3.850 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|divider[19]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.890      ;
+; -3.850 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|divider[20]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.890      ;
+; -3.850 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|divider[21]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.890      ;
+; -3.850 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|divider[22]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.890      ;
+; -3.850 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|divider[23]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.890      ;
+; -3.850 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|divider[24]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.890      ;
+; -3.850 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|divider[25]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.890      ;
+; -3.850 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|divider[26]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.890      ;
+; -3.838 ; UartTransmit:uart|divider[1] ; UartTransmit:uart|transmitReg[8] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.876      ;
+; -3.838 ; UartTransmit:uart|divider[1] ; UartTransmit:uart|transmitReg[7] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.876      ;
+; -3.838 ; UartTransmit:uart|divider[1] ; UartTransmit:uart|transmitReg[6] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.876      ;
+; -3.838 ; UartTransmit:uart|divider[1] ; UartTransmit:uart|transmitReg[5] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.876      ;
+; -3.838 ; UartTransmit:uart|divider[1] ; UartTransmit:uart|transmitReg[4] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.876      ;
+; -3.838 ; UartTransmit:uart|divider[1] ; UartTransmit:uart|transmitReg[3] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.876      ;
+; -3.838 ; UartTransmit:uart|divider[1] ; UartTransmit:uart|transmitReg[2] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.876      ;
+; -3.838 ; UartTransmit:uart|divider[1] ; UartTransmit:uart|transmitReg[1] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.876      ;
+; -3.829 ; UartTransmit:uart|divider[1] ; UartTransmit:uart|divider[13]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.869      ;
+; -3.829 ; UartTransmit:uart|divider[1] ; UartTransmit:uart|divider[14]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.869      ;
+; -3.829 ; UartTransmit:uart|divider[1] ; UartTransmit:uart|divider[15]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.869      ;
+; -3.829 ; UartTransmit:uart|divider[1] ; UartTransmit:uart|divider[16]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.869      ;
+; -3.829 ; UartTransmit:uart|divider[1] ; UartTransmit:uart|divider[17]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.869      ;
+; -3.829 ; UartTransmit:uart|divider[1] ; UartTransmit:uart|divider[18]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.869      ;
+; -3.829 ; UartTransmit:uart|divider[1] ; UartTransmit:uart|divider[19]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.869      ;
+; -3.829 ; UartTransmit:uart|divider[1] ; UartTransmit:uart|divider[20]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.869      ;
+; -3.829 ; UartTransmit:uart|divider[1] ; UartTransmit:uart|divider[21]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.869      ;
+; -3.829 ; UartTransmit:uart|divider[1] ; UartTransmit:uart|divider[22]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.869      ;
+; -3.829 ; UartTransmit:uart|divider[1] ; UartTransmit:uart|divider[23]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.869      ;
+; -3.829 ; UartTransmit:uart|divider[1] ; UartTransmit:uart|divider[24]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.869      ;
+; -3.829 ; UartTransmit:uart|divider[1] ; UartTransmit:uart|divider[25]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.869      ;
+; -3.829 ; UartTransmit:uart|divider[1] ; UartTransmit:uart|divider[26]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 4.869      ;
+; -3.542 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|divider[0]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.580      ;
+; -3.542 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|divider[1]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.580      ;
+; -3.542 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|divider[2]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.580      ;
+; -3.542 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|divider[3]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.580      ;
+; -3.542 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|divider[4]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.580      ;
+; -3.542 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|divider[5]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.580      ;
+; -3.542 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|divider[6]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.580      ;
+; -3.542 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|divider[7]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.580      ;
+; -3.542 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|divider[8]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.580      ;
+; -3.542 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|divider[9]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.580      ;
+; -3.542 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|divider[10]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.580      ;
+; -3.542 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|divider[12]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.580      ;
+; -3.542 ; UartTransmit:uart|divider[2] ; UartTransmit:uart|divider[11]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.580      ;
+; -3.516 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|divider[0]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.554      ;
+; -3.516 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|divider[1]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.554      ;
+; -3.516 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|divider[2]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.554      ;
+; -3.516 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|divider[3]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.554      ;
+; -3.516 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|divider[4]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.554      ;
+; -3.516 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|divider[5]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.554      ;
+; -3.516 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|divider[6]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.554      ;
+; -3.516 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|divider[7]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.554      ;
+; -3.516 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|divider[8]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.554      ;
+; -3.516 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|divider[9]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.554      ;
+; -3.516 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|divider[10]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.554      ;
+; -3.516 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|divider[12]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.554      ;
+; -3.516 ; UartTransmit:uart|divider[0] ; UartTransmit:uart|divider[11]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.554      ;
+; -3.495 ; UartTransmit:uart|divider[3] ; UartTransmit:uart|transmitReg[8] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.533      ;
+; -3.495 ; UartTransmit:uart|divider[3] ; UartTransmit:uart|transmitReg[7] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.533      ;
+; -3.495 ; UartTransmit:uart|divider[3] ; UartTransmit:uart|transmitReg[6] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.533      ;
+; -3.495 ; UartTransmit:uart|divider[3] ; UartTransmit:uart|transmitReg[5] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.533      ;
+; -3.495 ; UartTransmit:uart|divider[3] ; UartTransmit:uart|transmitReg[4] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.533      ;
+; -3.495 ; UartTransmit:uart|divider[3] ; UartTransmit:uart|transmitReg[3] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.533      ;
+; -3.495 ; UartTransmit:uart|divider[3] ; UartTransmit:uart|transmitReg[2] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.533      ;
+; -3.495 ; UartTransmit:uart|divider[3] ; UartTransmit:uart|transmitReg[1] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 4.533      ;
++--------+------------------------------+----------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Hold: 'CLOCK_50'                                                                                                                       ;
++-------+----------------------------------+----------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                        ; To Node                          ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+----------------------------------+----------------------------------+--------------+-------------+--------------+------------+------------+
+; 0.445 ; newData                          ; newData                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.731      ;
+; 0.445 ; UartTransmit:uart|transmitReg[0] ; UartTransmit:uart|transmitReg[0] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.731      ;
+; 0.445 ; UartTransmit:uart|tx             ; UartTransmit:uart|tx             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.731      ;
+; 0.620 ; UartTransmit:uart|divider[26]    ; UartTransmit:uart|divider[26]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.906      ;
+; 0.620 ; UartTransmit:uart|transmitReg[2] ; UartTransmit:uart|transmitReg[1] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.906      ;
+; 0.629 ; address[15]                      ; address[15]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.915      ;
+; 0.635 ; UartTransmit:uart|transmitReg[7] ; UartTransmit:uart|transmitReg[6] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.921      ;
+; 0.641 ; UartTransmit:uart|transmitReg[8] ; UartTransmit:uart|transmitReg[7] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.927      ;
+; 0.790 ; UartTransmit:uart|transmitReg[3] ; UartTransmit:uart|transmitReg[3] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.076      ;
+; 0.807 ; UartTransmit:uart|transmitReg[5] ; UartTransmit:uart|transmitReg[5] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.093      ;
+; 0.859 ; data[4]                          ; UartTransmit:uart|transmitReg[5] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; -0.001     ; 1.144      ;
+; 0.859 ; data[1]                          ; UartTransmit:uart|transmitReg[2] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; -0.001     ; 1.144      ;
+; 0.963 ; address[0]                       ; address[0]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.249      ;
+; 0.967 ; address[1]                       ; address[1]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.253      ;
+; 0.968 ; UartTransmit:uart|divider[13]    ; UartTransmit:uart|divider[13]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.254      ;
+; 0.968 ; address[2]                       ; address[2]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.254      ;
+; 0.968 ; address[9]                       ; address[9]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.254      ;
+; 0.968 ; UartTransmit:uart|transmitReg[0] ; UartTransmit:uart|tx             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.254      ;
+; 0.969 ; address[4]                       ; address[4]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.255      ;
+; 0.969 ; address[7]                       ; address[7]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.255      ;
+; 0.969 ; address[11]                      ; address[11]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.255      ;
+; 0.969 ; address[13]                      ; address[13]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.255      ;
+; 0.969 ; address[14]                      ; address[14]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.255      ;
+; 0.976 ; UartTransmit:uart|divider[1]     ; UartTransmit:uart|divider[1]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.262      ;
+; 0.976 ; UartTransmit:uart|divider[4]     ; UartTransmit:uart|divider[4]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.262      ;
+; 0.976 ; UartTransmit:uart|divider[15]    ; UartTransmit:uart|divider[15]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.262      ;
+; 0.976 ; UartTransmit:uart|divider[24]    ; UartTransmit:uart|divider[24]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.262      ;
+; 0.977 ; UartTransmit:uart|divider[10]    ; UartTransmit:uart|divider[10]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.263      ;
+; 0.977 ; UartTransmit:uart|divider[12]    ; UartTransmit:uart|divider[12]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.263      ;
+; 0.977 ; UartTransmit:uart|divider[11]    ; UartTransmit:uart|divider[11]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.263      ;
+; 0.979 ; UartTransmit:uart|divider[6]     ; UartTransmit:uart|divider[6]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.265      ;
+; 0.980 ; UartTransmit:uart|divider[8]     ; UartTransmit:uart|divider[8]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.266      ;
+; 0.980 ; UartTransmit:uart|divider[14]    ; UartTransmit:uart|divider[14]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.266      ;
+; 0.989 ; UartTransmit:uart|transmitReg[6] ; UartTransmit:uart|transmitReg[5] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.275      ;
+; 0.989 ; UartTransmit:uart|transmitReg[3] ; UartTransmit:uart|transmitReg[2] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.275      ;
+; 0.993 ; UartTransmit:uart|transmitReg[7] ; UartTransmit:uart|transmitReg[7] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.279      ;
+; 1.007 ; address[8]                       ; address[8]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.293      ;
+; 1.008 ; address[3]                       ; address[3]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.294      ;
+; 1.008 ; address[5]                       ; address[5]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.294      ;
+; 1.008 ; address[6]                       ; address[6]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.294      ;
+; 1.008 ; address[10]                      ; address[10]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.294      ;
+; 1.008 ; address[12]                      ; address[12]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.294      ;
+; 1.010 ; UartTransmit:uart|transmitReg[6] ; UartTransmit:uart|transmitReg[6] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.296      ;
+; 1.013 ; UartTransmit:uart|transmitReg[4] ; UartTransmit:uart|transmitReg[4] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.299      ;
+; 1.015 ; UartTransmit:uart|divider[19]    ; UartTransmit:uart|divider[19]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.301      ;
+; 1.016 ; UartTransmit:uart|divider[25]    ; UartTransmit:uart|divider[25]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.302      ;
+; 1.019 ; UartTransmit:uart|divider[2]     ; UartTransmit:uart|divider[2]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.305      ;
+; 1.019 ; UartTransmit:uart|divider[3]     ; UartTransmit:uart|divider[3]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.305      ;
+; 1.019 ; UartTransmit:uart|divider[16]    ; UartTransmit:uart|divider[16]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.305      ;
+; 1.021 ; UartTransmit:uart|divider[5]     ; UartTransmit:uart|divider[5]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.307      ;
+; 1.022 ; UartTransmit:uart|divider[7]     ; UartTransmit:uart|divider[7]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.308      ;
+; 1.023 ; UartTransmit:uart|divider[9]     ; UartTransmit:uart|divider[9]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.309      ;
+; 1.027 ; UartTransmit:uart|divider[0]     ; UartTransmit:uart|divider[0]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.313      ;
+; 1.143 ; data[7]                          ; UartTransmit:uart|transmitReg[8] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; -0.001     ; 1.428      ;
+; 1.154 ; data[5]                          ; UartTransmit:uart|transmitReg[6] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; -0.001     ; 1.439      ;
+; 1.183 ; UartTransmit:uart|divider[20]    ; UartTransmit:uart|divider[20]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.469      ;
+; 1.192 ; UartTransmit:uart|divider[18]    ; UartTransmit:uart|divider[18]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.478      ;
+; 1.195 ; UartTransmit:uart|divider[21]    ; UartTransmit:uart|divider[21]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.481      ;
+; 1.195 ; UartTransmit:uart|divider[23]    ; UartTransmit:uart|divider[23]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.481      ;
+; 1.199 ; data[3]                          ; UartTransmit:uart|transmitReg[4] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; -0.001     ; 1.484      ;
+; 1.199 ; UartTransmit:uart|transmitReg[9] ; UartTransmit:uart|transmitReg[8] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; -0.001     ; 1.484      ;
+; 1.201 ; data[6]                          ; UartTransmit:uart|transmitReg[7] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; -0.001     ; 1.486      ;
+; 1.203 ; data[0]                          ; UartTransmit:uart|transmitReg[1] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; -0.001     ; 1.488      ;
+; 1.210 ; UartTransmit:uart|transmitReg[4] ; UartTransmit:uart|transmitReg[3] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.496      ;
+; 1.232 ; UartTransmit:uart|divider[22]    ; UartTransmit:uart|divider[22]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.518      ;
+; 1.233 ; UartTransmit:uart|transmitReg[1] ; UartTransmit:uart|transmitReg[0] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.001      ; 1.520      ;
+; 1.234 ; UartTransmit:uart|divider[17]    ; UartTransmit:uart|divider[17]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.520      ;
+; 1.279 ; UartTransmit:uart|transmitReg[1] ; UartTransmit:uart|transmitReg[1] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.565      ;
+; 1.280 ; UartTransmit:uart|transmitReg[2] ; UartTransmit:uart|transmitReg[2] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.566      ;
+; 1.295 ; UartTransmit:uart|transmitReg[8] ; UartTransmit:uart|transmitReg[8] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.581      ;
+; 1.394 ; address[15]                      ; newData                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; -0.001     ; 1.679      ;
+; 1.395 ; address[0]                       ; address[1]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.681      ;
+; 1.399 ; address[1]                       ; address[2]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.685      ;
+; 1.400 ; UartTransmit:uart|divider[13]    ; UartTransmit:uart|divider[14]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.686      ;
+; 1.400 ; address[2]                       ; address[3]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.686      ;
+; 1.400 ; address[9]                       ; address[10]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.686      ;
+; 1.401 ; address[14]                      ; address[15]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.687      ;
+; 1.401 ; address[13]                      ; address[14]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.687      ;
+; 1.401 ; address[4]                       ; address[5]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.687      ;
+; 1.401 ; address[11]                      ; address[12]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.687      ;
+; 1.408 ; UartTransmit:uart|divider[24]    ; UartTransmit:uart|divider[25]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.694      ;
+; 1.408 ; UartTransmit:uart|divider[1]     ; UartTransmit:uart|divider[2]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.694      ;
+; 1.408 ; UartTransmit:uart|divider[15]    ; UartTransmit:uart|divider[16]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.694      ;
+; 1.409 ; UartTransmit:uart|divider[11]    ; UartTransmit:uart|divider[12]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.695      ;
+; 1.409 ; UartTransmit:uart|divider[10]    ; UartTransmit:uart|divider[11]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.695      ;
+; 1.411 ; UartTransmit:uart|divider[6]     ; UartTransmit:uart|divider[7]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.697      ;
+; 1.411 ; UartTransmit:uart|transmitReg[5] ; UartTransmit:uart|transmitReg[4] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.697      ;
+; 1.412 ; UartTransmit:uart|divider[14]    ; UartTransmit:uart|divider[15]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.698      ;
+; 1.412 ; UartTransmit:uart|divider[8]     ; UartTransmit:uart|divider[9]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.698      ;
+; 1.440 ; address[8]                       ; address[9]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.726      ;
+; 1.441 ; address[3]                       ; address[4]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.727      ;
+; 1.441 ; address[6]                       ; address[7]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.727      ;
+; 1.441 ; address[10]                      ; address[11]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.727      ;
+; 1.441 ; address[12]                      ; address[13]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.727      ;
+; 1.441 ; address[5]                       ; address[6]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.727      ;
+; 1.448 ; UartTransmit:uart|divider[19]    ; UartTransmit:uart|divider[20]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.734      ;
+; 1.449 ; UartTransmit:uart|divider[25]    ; UartTransmit:uart|divider[26]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.735      ;
+; 1.452 ; UartTransmit:uart|divider[3]     ; UartTransmit:uart|divider[4]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.738      ;
+; 1.452 ; UartTransmit:uart|divider[2]     ; UartTransmit:uart|divider[3]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.738      ;
+; 1.452 ; UartTransmit:uart|divider[16]    ; UartTransmit:uart|divider[17]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 1.738      ;
++-------+----------------------------------+----------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Slow Model Minimum Pulse Width: 'CLOCK_50'                                                                           ;
++--------+--------------+----------------+------------------+----------+------------+----------------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock    ; Clock Edge ; Target                           ;
++--------+--------------+----------------+------------------+----------+------------+----------------------------------+
+; -1.631 ; 1.000        ; 2.631          ; Port Rate        ; CLOCK_50 ; Rise       ; CLOCK_50                         ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[0]     ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[0]     ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[10]    ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[10]    ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[11]    ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[11]    ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[12]    ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[12]    ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[13]    ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[13]    ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[14]    ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[14]    ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[15]    ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[15]    ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[16]    ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[16]    ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[17]    ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[17]    ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[18]    ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[18]    ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[19]    ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[19]    ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[1]     ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[1]     ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[20]    ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[20]    ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[21]    ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[21]    ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[22]    ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[22]    ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[23]    ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[23]    ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[24]    ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[24]    ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[25]    ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[25]    ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[26]    ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[26]    ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[2]     ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[2]     ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[3]     ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[3]     ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[4]     ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[4]     ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[5]     ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[5]     ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[6]     ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[6]     ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[7]     ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[7]     ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[8]     ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[8]     ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[9]     ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[9]     ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[0] ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[0] ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[1] ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[1] ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[2] ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[2] ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[3] ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[3] ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[4] ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[4] ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[5] ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[5] ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[6] ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[6] ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[7] ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[7] ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[8] ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[8] ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[9] ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[9] ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|tx             ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|tx             ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; address[0]                       ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; address[0]                       ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; address[10]                      ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; address[10]                      ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; address[11]                      ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; address[11]                      ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; address[12]                      ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; address[12]                      ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; address[13]                      ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; address[13]                      ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; address[14]                      ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; address[14]                      ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; address[15]                      ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; address[15]                      ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; address[1]                       ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; address[1]                       ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; address[2]                       ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; address[2]                       ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; address[3]                       ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; address[3]                       ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; address[4]                       ;
+; -0.611 ; 0.500        ; 1.111          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; address[4]                       ;
+; -0.611 ; 0.500        ; 1.111          ; High Pulse Width ; CLOCK_50 ; Rise       ; address[5]                       ;
++--------+--------------+----------------+------------------+----------+------------+----------------------------------+
+
+
++-----------------------------------------------------------------------+
+; Setup Times                                                           ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; CPU_D[*]  ; CLOCK_50   ; 4.135 ; 4.135 ; Rise       ; CLOCK_50        ;
+;  CPU_D[0] ; CLOCK_50   ; 3.816 ; 3.816 ; Rise       ; CLOCK_50        ;
+;  CPU_D[1] ; CLOCK_50   ; 3.616 ; 3.616 ; Rise       ; CLOCK_50        ;
+;  CPU_D[2] ; CLOCK_50   ; 4.135 ; 4.135 ; Rise       ; CLOCK_50        ;
+;  CPU_D[3] ; CLOCK_50   ; 3.630 ; 3.630 ; Rise       ; CLOCK_50        ;
+;  CPU_D[4] ; CLOCK_50   ; 3.851 ; 3.851 ; Rise       ; CLOCK_50        ;
+;  CPU_D[5] ; CLOCK_50   ; 4.056 ; 4.056 ; Rise       ; CLOCK_50        ;
+;  CPU_D[6] ; CLOCK_50   ; 4.080 ; 4.080 ; Rise       ; CLOCK_50        ;
+;  CPU_D[7] ; CLOCK_50   ; 4.061 ; 4.061 ; Rise       ; CLOCK_50        ;
+; SW[*]     ; CLOCK_50   ; 1.229 ; 1.229 ; Rise       ; CLOCK_50        ;
+;  SW[0]    ; CLOCK_50   ; 1.229 ; 1.229 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Hold Times                                                              ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; CPU_D[*]  ; CLOCK_50   ; -3.368 ; -3.368 ; Rise       ; CLOCK_50        ;
+;  CPU_D[0] ; CLOCK_50   ; -3.568 ; -3.568 ; Rise       ; CLOCK_50        ;
+;  CPU_D[1] ; CLOCK_50   ; -3.368 ; -3.368 ; Rise       ; CLOCK_50        ;
+;  CPU_D[2] ; CLOCK_50   ; -3.887 ; -3.887 ; Rise       ; CLOCK_50        ;
+;  CPU_D[3] ; CLOCK_50   ; -3.382 ; -3.382 ; Rise       ; CLOCK_50        ;
+;  CPU_D[4] ; CLOCK_50   ; -3.603 ; -3.603 ; Rise       ; CLOCK_50        ;
+;  CPU_D[5] ; CLOCK_50   ; -3.808 ; -3.808 ; Rise       ; CLOCK_50        ;
+;  CPU_D[6] ; CLOCK_50   ; -3.832 ; -3.832 ; Rise       ; CLOCK_50        ;
+;  CPU_D[7] ; CLOCK_50   ; -3.813 ; -3.813 ; Rise       ; CLOCK_50        ;
+; SW[*]     ; CLOCK_50   ; 0.520  ; 0.520  ; Rise       ; CLOCK_50        ;
+;  SW[0]    ; CLOCK_50   ; 0.520  ; 0.520  ; Rise       ; CLOCK_50        ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Clock to Output Times                                                 ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; CON1_D1   ; CLOCK_50   ; 8.002 ; 8.002 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Minimum Clock to Output Times                                         ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; CON1_D1   ; CLOCK_50   ; 8.002 ; 8.002 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++------------------------------------------------------+
+; Propagation Delay                                    ;
++------------+-------------+--------+----+----+--------+
+; Input Port ; Output Port ; RR     ; RF ; FR ; FF     ;
++------------+-------------+--------+----+----+--------+
+; CPU_D[0]   ; LEDG[0]     ; 9.634  ;    ;    ; 9.634  ;
+; CPU_D[1]   ; LEDG[1]     ; 9.578  ;    ;    ; 9.578  ;
+; CPU_D[2]   ; LEDG[2]     ; 9.251  ;    ;    ; 9.251  ;
+; CPU_D[3]   ; LEDG[3]     ; 9.608  ;    ;    ; 9.608  ;
+; CPU_D[4]   ; LEDG[4]     ; 9.996  ;    ;    ; 9.996  ;
+; CPU_D[5]   ; LEDG[5]     ; 9.994  ;    ;    ; 9.994  ;
+; CPU_D[6]   ; LEDG[6]     ; 10.008 ;    ;    ; 10.008 ;
+; CPU_D[7]   ; LEDG[7]     ; 9.972  ;    ;    ; 9.972  ;
+; SW[0]      ; CPU_A[0]    ; 4.645  ;    ;    ; 4.645  ;
+; SW[1]      ; CPU_A[1]    ; 4.640  ;    ;    ; 4.640  ;
+; SW[2]      ; CPU_A[2]    ; 4.622  ;    ;    ; 4.622  ;
+; SW[3]      ; CPU_A[3]    ; 6.217  ;    ;    ; 6.217  ;
+; SW[4]      ; CPU_A[4]    ; 6.143  ;    ;    ; 6.143  ;
+; SW[5]      ; CPU_A[5]    ; 6.164  ;    ;    ; 6.164  ;
+; SW[6]      ; CPU_A[6]    ; 6.083  ;    ;    ; 6.083  ;
+; SW[7]      ; CPU_A[7]    ; 6.560  ;    ;    ; 6.560  ;
+; SW[8]      ; CPU_A[8]    ; 6.498  ;    ;    ; 6.498  ;
+; SW[9]      ; CPU_A[9]    ; 6.308  ;    ;    ; 6.308  ;
++------------+-------------+--------+----+----+--------+
+
+
++------------------------------------------------------+
+; Minimum Propagation Delay                            ;
++------------+-------------+--------+----+----+--------+
+; Input Port ; Output Port ; RR     ; RF ; FR ; FF     ;
++------------+-------------+--------+----+----+--------+
+; CPU_D[0]   ; LEDG[0]     ; 9.634  ;    ;    ; 9.634  ;
+; CPU_D[1]   ; LEDG[1]     ; 9.578  ;    ;    ; 9.578  ;
+; CPU_D[2]   ; LEDG[2]     ; 9.251  ;    ;    ; 9.251  ;
+; CPU_D[3]   ; LEDG[3]     ; 9.608  ;    ;    ; 9.608  ;
+; CPU_D[4]   ; LEDG[4]     ; 9.996  ;    ;    ; 9.996  ;
+; CPU_D[5]   ; LEDG[5]     ; 9.994  ;    ;    ; 9.994  ;
+; CPU_D[6]   ; LEDG[6]     ; 10.008 ;    ;    ; 10.008 ;
+; CPU_D[7]   ; LEDG[7]     ; 9.972  ;    ;    ; 9.972  ;
+; SW[0]      ; CPU_A[0]    ; 4.645  ;    ;    ; 4.645  ;
+; SW[1]      ; CPU_A[1]    ; 4.640  ;    ;    ; 4.640  ;
+; SW[2]      ; CPU_A[2]    ; 4.622  ;    ;    ; 4.622  ;
+; SW[3]      ; CPU_A[3]    ; 6.217  ;    ;    ; 6.217  ;
+; SW[4]      ; CPU_A[4]    ; 6.143  ;    ;    ; 6.143  ;
+; SW[5]      ; CPU_A[5]    ; 6.164  ;    ;    ; 6.164  ;
+; SW[6]      ; CPU_A[6]    ; 6.083  ;    ;    ; 6.083  ;
+; SW[7]      ; CPU_A[7]    ; 6.560  ;    ;    ; 6.560  ;
+; SW[8]      ; CPU_A[8]    ; 6.498  ;    ;    ; 6.498  ;
+; SW[9]      ; CPU_A[9]    ; 6.308  ;    ;    ; 6.308  ;
++------------+-------------+--------+----+----+--------+
+
+
++-----------------------------------+
+; Fast Model Setup Summary          ;
++----------+--------+---------------+
+; Clock    ; Slack  ; End Point TNS ;
++----------+--------+---------------+
+; CLOCK_50 ; -0.879 ; -43.415       ;
++----------+--------+---------------+
+
+
++----------------------------------+
+; Fast Model Hold Summary          ;
++----------+-------+---------------+
+; Clock    ; Slack ; End Point TNS ;
++----------+-------+---------------+
+; CLOCK_50 ; 0.215 ; 0.000         ;
++----------+-------+---------------+
+
+
+-------------------------------
+; Fast Model Recovery Summary ;
+-------------------------------
+No paths to report.
+
+
+------------------------------
+; Fast Model Removal Summary ;
+------------------------------
+No paths to report.
+
+
++----------------------------------------+
+; Fast Model Minimum Pulse Width Summary ;
++----------+--------+--------------------+
+; Clock    ; Slack  ; End Point TNS      ;
++----------+--------+--------------------+
+; CLOCK_50 ; -1.380 ; -64.380            ;
++----------+--------+--------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Setup: 'CLOCK_50'                                                                                                                    ;
++--------+-------------------------------+----------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                     ; To Node                          ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-------------------------------+----------------------------------+--------------+-------------+--------------+------------+------------+
+; -0.879 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|divider[13]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.913      ;
+; -0.879 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|divider[14]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.913      ;
+; -0.879 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|divider[15]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.913      ;
+; -0.879 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|divider[16]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.913      ;
+; -0.879 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|divider[17]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.913      ;
+; -0.879 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|divider[18]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.913      ;
+; -0.879 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|divider[19]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.913      ;
+; -0.879 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|divider[20]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.913      ;
+; -0.879 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|divider[21]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.913      ;
+; -0.879 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|divider[22]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.913      ;
+; -0.879 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|divider[23]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.913      ;
+; -0.879 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|divider[24]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.913      ;
+; -0.879 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|divider[25]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.913      ;
+; -0.879 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|divider[26]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.913      ;
+; -0.867 ; UartTransmit:uart|divider[0]  ; UartTransmit:uart|divider[13]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.901      ;
+; -0.867 ; UartTransmit:uart|divider[0]  ; UartTransmit:uart|divider[14]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.901      ;
+; -0.867 ; UartTransmit:uart|divider[0]  ; UartTransmit:uart|divider[15]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.901      ;
+; -0.867 ; UartTransmit:uart|divider[0]  ; UartTransmit:uart|divider[16]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.901      ;
+; -0.867 ; UartTransmit:uart|divider[0]  ; UartTransmit:uart|divider[17]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.901      ;
+; -0.867 ; UartTransmit:uart|divider[0]  ; UartTransmit:uart|divider[18]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.901      ;
+; -0.867 ; UartTransmit:uart|divider[0]  ; UartTransmit:uart|divider[19]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.901      ;
+; -0.867 ; UartTransmit:uart|divider[0]  ; UartTransmit:uart|divider[20]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.901      ;
+; -0.867 ; UartTransmit:uart|divider[0]  ; UartTransmit:uart|divider[21]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.901      ;
+; -0.867 ; UartTransmit:uart|divider[0]  ; UartTransmit:uart|divider[22]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.901      ;
+; -0.867 ; UartTransmit:uart|divider[0]  ; UartTransmit:uart|divider[23]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.901      ;
+; -0.867 ; UartTransmit:uart|divider[0]  ; UartTransmit:uart|divider[24]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.901      ;
+; -0.867 ; UartTransmit:uart|divider[0]  ; UartTransmit:uart|divider[25]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.901      ;
+; -0.867 ; UartTransmit:uart|divider[0]  ; UartTransmit:uart|divider[26]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.901      ;
+; -0.864 ; UartTransmit:uart|divider[1]  ; UartTransmit:uart|divider[13]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.898      ;
+; -0.864 ; UartTransmit:uart|divider[1]  ; UartTransmit:uart|divider[14]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.898      ;
+; -0.864 ; UartTransmit:uart|divider[1]  ; UartTransmit:uart|divider[15]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.898      ;
+; -0.864 ; UartTransmit:uart|divider[1]  ; UartTransmit:uart|divider[16]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.898      ;
+; -0.864 ; UartTransmit:uart|divider[1]  ; UartTransmit:uart|divider[17]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.898      ;
+; -0.864 ; UartTransmit:uart|divider[1]  ; UartTransmit:uart|divider[18]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.898      ;
+; -0.864 ; UartTransmit:uart|divider[1]  ; UartTransmit:uart|divider[19]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.898      ;
+; -0.864 ; UartTransmit:uart|divider[1]  ; UartTransmit:uart|divider[20]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.898      ;
+; -0.864 ; UartTransmit:uart|divider[1]  ; UartTransmit:uart|divider[21]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.898      ;
+; -0.864 ; UartTransmit:uart|divider[1]  ; UartTransmit:uart|divider[22]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.898      ;
+; -0.864 ; UartTransmit:uart|divider[1]  ; UartTransmit:uart|divider[23]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.898      ;
+; -0.864 ; UartTransmit:uart|divider[1]  ; UartTransmit:uart|divider[24]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.898      ;
+; -0.864 ; UartTransmit:uart|divider[1]  ; UartTransmit:uart|divider[25]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.898      ;
+; -0.864 ; UartTransmit:uart|divider[1]  ; UartTransmit:uart|divider[26]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.002      ; 1.898      ;
+; -0.859 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|transmitReg[8] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.892      ;
+; -0.859 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|transmitReg[7] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.892      ;
+; -0.859 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|transmitReg[6] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.892      ;
+; -0.859 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|transmitReg[5] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.892      ;
+; -0.859 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|transmitReg[4] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.892      ;
+; -0.859 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|transmitReg[3] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.892      ;
+; -0.859 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|transmitReg[2] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.892      ;
+; -0.859 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|transmitReg[1] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.892      ;
+; -0.847 ; UartTransmit:uart|divider[0]  ; UartTransmit:uart|transmitReg[8] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.880      ;
+; -0.847 ; UartTransmit:uart|divider[0]  ; UartTransmit:uart|transmitReg[7] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.880      ;
+; -0.847 ; UartTransmit:uart|divider[0]  ; UartTransmit:uart|transmitReg[6] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.880      ;
+; -0.847 ; UartTransmit:uart|divider[0]  ; UartTransmit:uart|transmitReg[5] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.880      ;
+; -0.847 ; UartTransmit:uart|divider[0]  ; UartTransmit:uart|transmitReg[4] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.880      ;
+; -0.847 ; UartTransmit:uart|divider[0]  ; UartTransmit:uart|transmitReg[3] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.880      ;
+; -0.847 ; UartTransmit:uart|divider[0]  ; UartTransmit:uart|transmitReg[2] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.880      ;
+; -0.847 ; UartTransmit:uart|divider[0]  ; UartTransmit:uart|transmitReg[1] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.880      ;
+; -0.844 ; UartTransmit:uart|divider[1]  ; UartTransmit:uart|transmitReg[8] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.877      ;
+; -0.844 ; UartTransmit:uart|divider[1]  ; UartTransmit:uart|transmitReg[7] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.877      ;
+; -0.844 ; UartTransmit:uart|divider[1]  ; UartTransmit:uart|transmitReg[6] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.877      ;
+; -0.844 ; UartTransmit:uart|divider[1]  ; UartTransmit:uart|transmitReg[5] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.877      ;
+; -0.844 ; UartTransmit:uart|divider[1]  ; UartTransmit:uart|transmitReg[4] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.877      ;
+; -0.844 ; UartTransmit:uart|divider[1]  ; UartTransmit:uart|transmitReg[3] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.877      ;
+; -0.844 ; UartTransmit:uart|divider[1]  ; UartTransmit:uart|transmitReg[2] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.877      ;
+; -0.844 ; UartTransmit:uart|divider[1]  ; UartTransmit:uart|transmitReg[1] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.001      ; 1.877      ;
+; -0.808 ; UartTransmit:uart|divider[19] ; UartTransmit:uart|transmitReg[8] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.001     ; 1.839      ;
+; -0.808 ; UartTransmit:uart|divider[19] ; UartTransmit:uart|transmitReg[7] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.001     ; 1.839      ;
+; -0.808 ; UartTransmit:uart|divider[19] ; UartTransmit:uart|transmitReg[6] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.001     ; 1.839      ;
+; -0.808 ; UartTransmit:uart|divider[19] ; UartTransmit:uart|transmitReg[5] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.001     ; 1.839      ;
+; -0.808 ; UartTransmit:uart|divider[19] ; UartTransmit:uart|transmitReg[4] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.001     ; 1.839      ;
+; -0.808 ; UartTransmit:uart|divider[19] ; UartTransmit:uart|transmitReg[3] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.001     ; 1.839      ;
+; -0.808 ; UartTransmit:uart|divider[19] ; UartTransmit:uart|transmitReg[2] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.001     ; 1.839      ;
+; -0.808 ; UartTransmit:uart|divider[19] ; UartTransmit:uart|transmitReg[1] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.001     ; 1.839      ;
+; -0.794 ; UartTransmit:uart|divider[17] ; UartTransmit:uart|transmitReg[8] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.001     ; 1.825      ;
+; -0.794 ; UartTransmit:uart|divider[17] ; UartTransmit:uart|transmitReg[7] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.001     ; 1.825      ;
+; -0.794 ; UartTransmit:uart|divider[17] ; UartTransmit:uart|transmitReg[6] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.001     ; 1.825      ;
+; -0.794 ; UartTransmit:uart|divider[17] ; UartTransmit:uart|transmitReg[5] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.001     ; 1.825      ;
+; -0.794 ; UartTransmit:uart|divider[17] ; UartTransmit:uart|transmitReg[4] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.001     ; 1.825      ;
+; -0.794 ; UartTransmit:uart|divider[17] ; UartTransmit:uart|transmitReg[3] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.001     ; 1.825      ;
+; -0.794 ; UartTransmit:uart|divider[17] ; UartTransmit:uart|transmitReg[2] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.001     ; 1.825      ;
+; -0.794 ; UartTransmit:uart|divider[17] ; UartTransmit:uart|transmitReg[1] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.001     ; 1.825      ;
+; -0.758 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|divider[0]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.790      ;
+; -0.758 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|divider[1]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.790      ;
+; -0.758 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|divider[2]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.790      ;
+; -0.758 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|divider[3]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.790      ;
+; -0.758 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|divider[4]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.790      ;
+; -0.758 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|divider[5]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.790      ;
+; -0.758 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|divider[6]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.790      ;
+; -0.758 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|divider[7]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.790      ;
+; -0.758 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|divider[8]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.790      ;
+; -0.758 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|divider[9]     ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.790      ;
+; -0.758 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|divider[10]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.790      ;
+; -0.758 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|divider[12]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.790      ;
+; -0.758 ; UartTransmit:uart|divider[2]  ; UartTransmit:uart|divider[11]    ; CLOCK_50     ; CLOCK_50    ; 1.000        ; 0.000      ; 1.790      ;
+; -0.752 ; UartTransmit:uart|divider[21] ; UartTransmit:uart|transmitReg[8] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.001     ; 1.783      ;
+; -0.752 ; UartTransmit:uart|divider[21] ; UartTransmit:uart|transmitReg[7] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.001     ; 1.783      ;
+; -0.752 ; UartTransmit:uart|divider[21] ; UartTransmit:uart|transmitReg[6] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.001     ; 1.783      ;
+; -0.752 ; UartTransmit:uart|divider[21] ; UartTransmit:uart|transmitReg[5] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.001     ; 1.783      ;
+; -0.752 ; UartTransmit:uart|divider[21] ; UartTransmit:uart|transmitReg[4] ; CLOCK_50     ; CLOCK_50    ; 1.000        ; -0.001     ; 1.783      ;
++--------+-------------------------------+----------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Hold: 'CLOCK_50'                                                                                                                       ;
++-------+----------------------------------+----------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                        ; To Node                          ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+----------------------------------+----------------------------------+--------------+-------------+--------------+------------+------------+
+; 0.215 ; newData                          ; newData                          ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; UartTransmit:uart|transmitReg[0] ; UartTransmit:uart|transmitReg[0] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; UartTransmit:uart|tx             ; UartTransmit:uart|tx             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.367      ;
+; 0.238 ; UartTransmit:uart|divider[26]    ; UartTransmit:uart|divider[26]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.390      ;
+; 0.239 ; UartTransmit:uart|transmitReg[2] ; UartTransmit:uart|transmitReg[1] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.391      ;
+; 0.243 ; address[15]                      ; address[15]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.395      ;
+; 0.245 ; UartTransmit:uart|transmitReg[7] ; UartTransmit:uart|transmitReg[6] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.397      ;
+; 0.249 ; UartTransmit:uart|transmitReg[8] ; UartTransmit:uart|transmitReg[7] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.401      ;
+; 0.328 ; data[4]                          ; UartTransmit:uart|transmitReg[5] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; -0.001     ; 0.479      ;
+; 0.328 ; data[1]                          ; UartTransmit:uart|transmitReg[2] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; -0.001     ; 0.479      ;
+; 0.340 ; UartTransmit:uart|transmitReg[3] ; UartTransmit:uart|transmitReg[3] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.492      ;
+; 0.346 ; UartTransmit:uart|transmitReg[5] ; UartTransmit:uart|transmitReg[5] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.498      ;
+; 0.355 ; UartTransmit:uart|divider[13]    ; UartTransmit:uart|divider[13]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.507      ;
+; 0.355 ; address[0]                       ; address[0]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.507      ;
+; 0.357 ; address[1]                       ; address[1]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.509      ;
+; 0.358 ; address[2]                       ; address[2]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.510      ;
+; 0.358 ; address[9]                       ; address[9]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.510      ;
+; 0.358 ; address[11]                      ; address[11]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.510      ;
+; 0.358 ; UartTransmit:uart|transmitReg[0] ; UartTransmit:uart|tx             ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.510      ;
+; 0.359 ; address[4]                       ; address[4]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.511      ;
+; 0.359 ; address[7]                       ; address[7]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.511      ;
+; 0.359 ; address[13]                      ; address[13]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.511      ;
+; 0.359 ; address[14]                      ; address[14]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.511      ;
+; 0.360 ; UartTransmit:uart|divider[15]    ; UartTransmit:uart|divider[15]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.512      ;
+; 0.361 ; UartTransmit:uart|divider[10]    ; UartTransmit:uart|divider[10]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.513      ;
+; 0.361 ; UartTransmit:uart|divider[12]    ; UartTransmit:uart|divider[12]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.513      ;
+; 0.361 ; UartTransmit:uart|divider[14]    ; UartTransmit:uart|divider[14]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.513      ;
+; 0.361 ; UartTransmit:uart|divider[11]    ; UartTransmit:uart|divider[11]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.513      ;
+; 0.362 ; UartTransmit:uart|divider[24]    ; UartTransmit:uart|divider[24]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.514      ;
+; 0.363 ; UartTransmit:uart|divider[1]     ; UartTransmit:uart|divider[1]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.515      ;
+; 0.363 ; UartTransmit:uart|divider[6]     ; UartTransmit:uart|divider[6]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.515      ;
+; 0.364 ; UartTransmit:uart|divider[4]     ; UartTransmit:uart|divider[4]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.516      ;
+; 0.364 ; UartTransmit:uart|divider[8]     ; UartTransmit:uart|divider[8]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.516      ;
+; 0.369 ; address[3]                       ; address[3]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.521      ;
+; 0.369 ; address[8]                       ; address[8]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.521      ;
+; 0.369 ; address[10]                      ; address[10]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.521      ;
+; 0.370 ; address[5]                       ; address[5]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.522      ;
+; 0.370 ; address[6]                       ; address[6]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.522      ;
+; 0.370 ; address[12]                      ; address[12]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.522      ;
+; 0.371 ; UartTransmit:uart|divider[25]    ; UartTransmit:uart|divider[25]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.523      ;
+; 0.373 ; UartTransmit:uart|divider[16]    ; UartTransmit:uart|divider[16]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.525      ;
+; 0.374 ; UartTransmit:uart|divider[19]    ; UartTransmit:uart|divider[19]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.526      ;
+; 0.375 ; UartTransmit:uart|transmitReg[6] ; UartTransmit:uart|transmitReg[5] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.527      ;
+; 0.376 ; UartTransmit:uart|divider[0]     ; UartTransmit:uart|divider[0]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.528      ;
+; 0.376 ; UartTransmit:uart|divider[2]     ; UartTransmit:uart|divider[2]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.528      ;
+; 0.376 ; UartTransmit:uart|divider[3]     ; UartTransmit:uart|divider[3]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.528      ;
+; 0.376 ; UartTransmit:uart|divider[5]     ; UartTransmit:uart|divider[5]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.528      ;
+; 0.377 ; UartTransmit:uart|divider[7]     ; UartTransmit:uart|divider[7]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.529      ;
+; 0.378 ; UartTransmit:uart|divider[9]     ; UartTransmit:uart|divider[9]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.530      ;
+; 0.378 ; UartTransmit:uart|transmitReg[3] ; UartTransmit:uart|transmitReg[2] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.530      ;
+; 0.404 ; UartTransmit:uart|transmitReg[7] ; UartTransmit:uart|transmitReg[7] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.556      ;
+; 0.414 ; UartTransmit:uart|transmitReg[6] ; UartTransmit:uart|transmitReg[6] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.566      ;
+; 0.416 ; UartTransmit:uart|transmitReg[4] ; UartTransmit:uart|transmitReg[4] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.568      ;
+; 0.431 ; data[7]                          ; UartTransmit:uart|transmitReg[8] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; -0.001     ; 0.582      ;
+; 0.436 ; UartTransmit:uart|divider[21]    ; UartTransmit:uart|divider[21]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.588      ;
+; 0.437 ; UartTransmit:uart|divider[18]    ; UartTransmit:uart|divider[18]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.589      ;
+; 0.437 ; UartTransmit:uart|divider[23]    ; UartTransmit:uart|divider[23]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.589      ;
+; 0.438 ; data[5]                          ; UartTransmit:uart|transmitReg[6] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; -0.001     ; 0.589      ;
+; 0.440 ; UartTransmit:uart|divider[20]    ; UartTransmit:uart|divider[20]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.592      ;
+; 0.442 ; data[6]                          ; UartTransmit:uart|transmitReg[7] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; -0.001     ; 0.593      ;
+; 0.443 ; data[3]                          ; UartTransmit:uart|transmitReg[4] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; -0.001     ; 0.594      ;
+; 0.445 ; data[0]                          ; UartTransmit:uart|transmitReg[1] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; -0.001     ; 0.596      ;
+; 0.446 ; UartTransmit:uart|transmitReg[9] ; UartTransmit:uart|transmitReg[8] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; -0.001     ; 0.597      ;
+; 0.448 ; UartTransmit:uart|divider[17]    ; UartTransmit:uart|divider[17]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.600      ;
+; 0.448 ; UartTransmit:uart|divider[22]    ; UartTransmit:uart|divider[22]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.600      ;
+; 0.453 ; UartTransmit:uart|transmitReg[4] ; UartTransmit:uart|transmitReg[3] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.605      ;
+; 0.459 ; UartTransmit:uart|transmitReg[1] ; UartTransmit:uart|transmitReg[0] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.001      ; 0.612      ;
+; 0.493 ; address[0]                       ; address[1]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.645      ;
+; 0.493 ; UartTransmit:uart|divider[13]    ; UartTransmit:uart|divider[14]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.645      ;
+; 0.495 ; address[1]                       ; address[2]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.647      ;
+; 0.496 ; address[2]                       ; address[3]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.648      ;
+; 0.496 ; address[9]                       ; address[10]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.648      ;
+; 0.496 ; address[11]                      ; address[12]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.648      ;
+; 0.497 ; address[14]                      ; address[15]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.649      ;
+; 0.497 ; address[13]                      ; address[14]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.649      ;
+; 0.497 ; address[4]                       ; address[5]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.649      ;
+; 0.498 ; UartTransmit:uart|divider[15]    ; UartTransmit:uart|divider[16]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.650      ;
+; 0.499 ; UartTransmit:uart|divider[14]    ; UartTransmit:uart|divider[15]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.651      ;
+; 0.499 ; UartTransmit:uart|divider[11]    ; UartTransmit:uart|divider[12]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.651      ;
+; 0.499 ; UartTransmit:uart|divider[10]    ; UartTransmit:uart|divider[11]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.651      ;
+; 0.500 ; UartTransmit:uart|divider[24]    ; UartTransmit:uart|divider[25]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.652      ;
+; 0.501 ; UartTransmit:uart|divider[1]     ; UartTransmit:uart|divider[2]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.653      ;
+; 0.501 ; UartTransmit:uart|divider[6]     ; UartTransmit:uart|divider[7]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.653      ;
+; 0.502 ; UartTransmit:uart|divider[8]     ; UartTransmit:uart|divider[9]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.654      ;
+; 0.509 ; address[8]                       ; address[9]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.661      ;
+; 0.509 ; address[10]                      ; address[11]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.661      ;
+; 0.509 ; address[3]                       ; address[4]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.661      ;
+; 0.510 ; address[6]                       ; address[7]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.662      ;
+; 0.510 ; address[12]                      ; address[13]                      ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.662      ;
+; 0.510 ; address[5]                       ; address[6]                       ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.662      ;
+; 0.511 ; UartTransmit:uart|transmitReg[1] ; UartTransmit:uart|transmitReg[1] ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.663      ;
+; 0.511 ; UartTransmit:uart|divider[25]    ; UartTransmit:uart|divider[26]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.663      ;
+; 0.513 ; UartTransmit:uart|divider[16]    ; UartTransmit:uart|divider[17]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.665      ;
+; 0.514 ; UartTransmit:uart|divider[19]    ; UartTransmit:uart|divider[20]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.666      ;
+; 0.516 ; UartTransmit:uart|divider[0]     ; UartTransmit:uart|divider[1]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.668      ;
+; 0.516 ; UartTransmit:uart|divider[5]     ; UartTransmit:uart|divider[6]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.668      ;
+; 0.516 ; UartTransmit:uart|divider[3]     ; UartTransmit:uart|divider[4]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.668      ;
+; 0.516 ; UartTransmit:uart|divider[2]     ; UartTransmit:uart|divider[3]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.668      ;
+; 0.517 ; UartTransmit:uart|divider[7]     ; UartTransmit:uart|divider[8]     ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.669      ;
+; 0.518 ; UartTransmit:uart|divider[9]     ; UartTransmit:uart|divider[10]    ; CLOCK_50     ; CLOCK_50    ; 0.000        ; 0.000      ; 0.670      ;
++-------+----------------------------------+----------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Fast Model Minimum Pulse Width: 'CLOCK_50'                                                                           ;
++--------+--------------+----------------+------------------+----------+------------+----------------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock    ; Clock Edge ; Target                           ;
++--------+--------------+----------------+------------------+----------+------------+----------------------------------+
+; -1.380 ; 1.000        ; 2.380          ; Port Rate        ; CLOCK_50 ; Rise       ; CLOCK_50                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[0]     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[0]     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[10]    ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[10]    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[11]    ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[11]    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[12]    ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[12]    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[13]    ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[13]    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[14]    ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[14]    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[15]    ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[15]    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[16]    ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[16]    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[17]    ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[17]    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[18]    ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[18]    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[19]    ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[19]    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[1]     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[1]     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[20]    ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[20]    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[21]    ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[21]    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[22]    ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[22]    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[23]    ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[23]    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[24]    ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[24]    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[25]    ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[25]    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[26]    ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[26]    ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[2]     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[2]     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[3]     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[3]     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[4]     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[4]     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[5]     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[5]     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[6]     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[6]     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[7]     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[7]     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[8]     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[8]     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[9]     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|divider[9]     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[0] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[0] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[1] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[1] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[2] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[2] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[3] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[3] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[4] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[4] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[5] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[5] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[6] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[6] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[7] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[7] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[8] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[8] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[9] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|transmitReg[9] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; UartTransmit:uart|tx             ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; UartTransmit:uart|tx             ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; address[0]                       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; address[0]                       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; address[10]                      ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; address[10]                      ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; address[11]                      ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; address[11]                      ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; address[12]                      ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; address[12]                      ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; address[13]                      ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; address[13]                      ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; address[14]                      ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; address[14]                      ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; address[15]                      ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; address[15]                      ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; address[1]                       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; address[1]                       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; address[2]                       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; address[2]                       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; address[3]                       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; address[3]                       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; address[4]                       ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; CLOCK_50 ; Rise       ; address[4]                       ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; CLOCK_50 ; Rise       ; address[5]                       ;
++--------+--------------+----------------+------------------+----------+------------+----------------------------------+
+
+
++-------------------------------------------------------------------------+
+; Setup Times                                                             ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; CPU_D[*]  ; CLOCK_50   ; 1.883  ; 1.883  ; Rise       ; CLOCK_50        ;
+;  CPU_D[0] ; CLOCK_50   ; 1.736  ; 1.736  ; Rise       ; CLOCK_50        ;
+;  CPU_D[1] ; CLOCK_50   ; 1.632  ; 1.632  ; Rise       ; CLOCK_50        ;
+;  CPU_D[2] ; CLOCK_50   ; 1.883  ; 1.883  ; Rise       ; CLOCK_50        ;
+;  CPU_D[3] ; CLOCK_50   ; 1.645  ; 1.645  ; Rise       ; CLOCK_50        ;
+;  CPU_D[4] ; CLOCK_50   ; 1.771  ; 1.771  ; Rise       ; CLOCK_50        ;
+;  CPU_D[5] ; CLOCK_50   ; 1.824  ; 1.824  ; Rise       ; CLOCK_50        ;
+;  CPU_D[6] ; CLOCK_50   ; 1.843  ; 1.843  ; Rise       ; CLOCK_50        ;
+;  CPU_D[7] ; CLOCK_50   ; 1.818  ; 1.818  ; Rise       ; CLOCK_50        ;
+; SW[*]     ; CLOCK_50   ; -0.034 ; -0.034 ; Rise       ; CLOCK_50        ;
+;  SW[0]    ; CLOCK_50   ; -0.034 ; -0.034 ; Rise       ; CLOCK_50        ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Hold Times                                                              ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; CPU_D[*]  ; CLOCK_50   ; -1.512 ; -1.512 ; Rise       ; CLOCK_50        ;
+;  CPU_D[0] ; CLOCK_50   ; -1.616 ; -1.616 ; Rise       ; CLOCK_50        ;
+;  CPU_D[1] ; CLOCK_50   ; -1.512 ; -1.512 ; Rise       ; CLOCK_50        ;
+;  CPU_D[2] ; CLOCK_50   ; -1.763 ; -1.763 ; Rise       ; CLOCK_50        ;
+;  CPU_D[3] ; CLOCK_50   ; -1.525 ; -1.525 ; Rise       ; CLOCK_50        ;
+;  CPU_D[4] ; CLOCK_50   ; -1.651 ; -1.651 ; Rise       ; CLOCK_50        ;
+;  CPU_D[5] ; CLOCK_50   ; -1.704 ; -1.704 ; Rise       ; CLOCK_50        ;
+;  CPU_D[6] ; CLOCK_50   ; -1.723 ; -1.723 ; Rise       ; CLOCK_50        ;
+;  CPU_D[7] ; CLOCK_50   ; -1.698 ; -1.698 ; Rise       ; CLOCK_50        ;
+; SW[*]     ; CLOCK_50   ; 0.710  ; 0.710  ; Rise       ; CLOCK_50        ;
+;  SW[0]    ; CLOCK_50   ; 0.710  ; 0.710  ; Rise       ; CLOCK_50        ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Clock to Output Times                                                 ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; CON1_D1   ; CLOCK_50   ; 4.242 ; 4.242 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Minimum Clock to Output Times                                         ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; CON1_D1   ; CLOCK_50   ; 4.242 ; 4.242 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++----------------------------------------------------+
+; Propagation Delay                                  ;
++------------+-------------+-------+----+----+-------+
+; Input Port ; Output Port ; RR    ; RF ; FR ; FF    ;
++------------+-------------+-------+----+----+-------+
+; CPU_D[0]   ; LEDG[0]     ; 5.058 ;    ;    ; 5.058 ;
+; CPU_D[1]   ; LEDG[1]     ; 5.020 ;    ;    ; 5.020 ;
+; CPU_D[2]   ; LEDG[2]     ; 4.902 ;    ;    ; 4.902 ;
+; CPU_D[3]   ; LEDG[3]     ; 5.048 ;    ;    ; 5.048 ;
+; CPU_D[4]   ; LEDG[4]     ; 5.215 ;    ;    ; 5.215 ;
+; CPU_D[5]   ; LEDG[5]     ; 5.226 ;    ;    ; 5.226 ;
+; CPU_D[6]   ; LEDG[6]     ; 5.237 ;    ;    ; 5.237 ;
+; CPU_D[7]   ; LEDG[7]     ; 5.203 ;    ;    ; 5.203 ;
+; SW[0]      ; CPU_A[0]    ; 2.286 ;    ;    ; 2.286 ;
+; SW[1]      ; CPU_A[1]    ; 2.284 ;    ;    ; 2.284 ;
+; SW[2]      ; CPU_A[2]    ; 2.282 ;    ;    ; 2.282 ;
+; SW[3]      ; CPU_A[3]    ; 3.058 ;    ;    ; 3.058 ;
+; SW[4]      ; CPU_A[4]    ; 3.006 ;    ;    ; 3.006 ;
+; SW[5]      ; CPU_A[5]    ; 2.996 ;    ;    ; 2.996 ;
+; SW[6]      ; CPU_A[6]    ; 2.961 ;    ;    ; 2.961 ;
+; SW[7]      ; CPU_A[7]    ; 3.161 ;    ;    ; 3.161 ;
+; SW[8]      ; CPU_A[8]    ; 3.191 ;    ;    ; 3.191 ;
+; SW[9]      ; CPU_A[9]    ; 3.119 ;    ;    ; 3.119 ;
++------------+-------------+-------+----+----+-------+
+
+
++----------------------------------------------------+
+; Minimum Propagation Delay                          ;
++------------+-------------+-------+----+----+-------+
+; Input Port ; Output Port ; RR    ; RF ; FR ; FF    ;
++------------+-------------+-------+----+----+-------+
+; CPU_D[0]   ; LEDG[0]     ; 5.058 ;    ;    ; 5.058 ;
+; CPU_D[1]   ; LEDG[1]     ; 5.020 ;    ;    ; 5.020 ;
+; CPU_D[2]   ; LEDG[2]     ; 4.902 ;    ;    ; 4.902 ;
+; CPU_D[3]   ; LEDG[3]     ; 5.048 ;    ;    ; 5.048 ;
+; CPU_D[4]   ; LEDG[4]     ; 5.215 ;    ;    ; 5.215 ;
+; CPU_D[5]   ; LEDG[5]     ; 5.226 ;    ;    ; 5.226 ;
+; CPU_D[6]   ; LEDG[6]     ; 5.237 ;    ;    ; 5.237 ;
+; CPU_D[7]   ; LEDG[7]     ; 5.203 ;    ;    ; 5.203 ;
+; SW[0]      ; CPU_A[0]    ; 2.286 ;    ;    ; 2.286 ;
+; SW[1]      ; CPU_A[1]    ; 2.284 ;    ;    ; 2.284 ;
+; SW[2]      ; CPU_A[2]    ; 2.282 ;    ;    ; 2.282 ;
+; SW[3]      ; CPU_A[3]    ; 3.058 ;    ;    ; 3.058 ;
+; SW[4]      ; CPU_A[4]    ; 3.006 ;    ;    ; 3.006 ;
+; SW[5]      ; CPU_A[5]    ; 2.996 ;    ;    ; 2.996 ;
+; SW[6]      ; CPU_A[6]    ; 2.961 ;    ;    ; 2.961 ;
+; SW[7]      ; CPU_A[7]    ; 3.161 ;    ;    ; 3.161 ;
+; SW[8]      ; CPU_A[8]    ; 3.191 ;    ;    ; 3.191 ;
+; SW[9]      ; CPU_A[9]    ; 3.119 ;    ;    ; 3.119 ;
++------------+-------------+-------+----+----+-------+
+
+
++--------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                            ;
++------------------+----------+-------+----------+---------+---------------------+
+; Clock            ; Setup    ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
++------------------+----------+-------+----------+---------+---------------------+
+; Worst-case Slack ; -3.885   ; 0.215 ; N/A      ; N/A     ; -1.631              ;
+;  CLOCK_50        ; -3.885   ; 0.215 ; N/A      ; N/A     ; -1.631              ;
+; Design-wide TNS  ; -210.721 ; 0.0   ; 0.0      ; 0.0     ; -78.617             ;
+;  CLOCK_50        ; -210.721 ; 0.000 ; N/A      ; N/A     ; -78.617             ;
++------------------+----------+-------+----------+---------+---------------------+
+
+
++-----------------------------------------------------------------------+
+; Setup Times                                                           ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; CPU_D[*]  ; CLOCK_50   ; 4.135 ; 4.135 ; Rise       ; CLOCK_50        ;
+;  CPU_D[0] ; CLOCK_50   ; 3.816 ; 3.816 ; Rise       ; CLOCK_50        ;
+;  CPU_D[1] ; CLOCK_50   ; 3.616 ; 3.616 ; Rise       ; CLOCK_50        ;
+;  CPU_D[2] ; CLOCK_50   ; 4.135 ; 4.135 ; Rise       ; CLOCK_50        ;
+;  CPU_D[3] ; CLOCK_50   ; 3.630 ; 3.630 ; Rise       ; CLOCK_50        ;
+;  CPU_D[4] ; CLOCK_50   ; 3.851 ; 3.851 ; Rise       ; CLOCK_50        ;
+;  CPU_D[5] ; CLOCK_50   ; 4.056 ; 4.056 ; Rise       ; CLOCK_50        ;
+;  CPU_D[6] ; CLOCK_50   ; 4.080 ; 4.080 ; Rise       ; CLOCK_50        ;
+;  CPU_D[7] ; CLOCK_50   ; 4.061 ; 4.061 ; Rise       ; CLOCK_50        ;
+; SW[*]     ; CLOCK_50   ; 1.229 ; 1.229 ; Rise       ; CLOCK_50        ;
+;  SW[0]    ; CLOCK_50   ; 1.229 ; 1.229 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Hold Times                                                              ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; CPU_D[*]  ; CLOCK_50   ; -1.512 ; -1.512 ; Rise       ; CLOCK_50        ;
+;  CPU_D[0] ; CLOCK_50   ; -1.616 ; -1.616 ; Rise       ; CLOCK_50        ;
+;  CPU_D[1] ; CLOCK_50   ; -1.512 ; -1.512 ; Rise       ; CLOCK_50        ;
+;  CPU_D[2] ; CLOCK_50   ; -1.763 ; -1.763 ; Rise       ; CLOCK_50        ;
+;  CPU_D[3] ; CLOCK_50   ; -1.525 ; -1.525 ; Rise       ; CLOCK_50        ;
+;  CPU_D[4] ; CLOCK_50   ; -1.651 ; -1.651 ; Rise       ; CLOCK_50        ;
+;  CPU_D[5] ; CLOCK_50   ; -1.704 ; -1.704 ; Rise       ; CLOCK_50        ;
+;  CPU_D[6] ; CLOCK_50   ; -1.723 ; -1.723 ; Rise       ; CLOCK_50        ;
+;  CPU_D[7] ; CLOCK_50   ; -1.698 ; -1.698 ; Rise       ; CLOCK_50        ;
+; SW[*]     ; CLOCK_50   ; 0.710  ; 0.710  ; Rise       ; CLOCK_50        ;
+;  SW[0]    ; CLOCK_50   ; 0.710  ; 0.710  ; Rise       ; CLOCK_50        ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Clock to Output Times                                                 ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; CON1_D1   ; CLOCK_50   ; 8.002 ; 8.002 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Minimum Clock to Output Times                                         ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; CON1_D1   ; CLOCK_50   ; 4.242 ; 4.242 ; Rise       ; CLOCK_50        ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++------------------------------------------------------+
+; Progagation Delay                                    ;
++------------+-------------+--------+----+----+--------+
+; Input Port ; Output Port ; RR     ; RF ; FR ; FF     ;
++------------+-------------+--------+----+----+--------+
+; CPU_D[0]   ; LEDG[0]     ; 9.634  ;    ;    ; 9.634  ;
+; CPU_D[1]   ; LEDG[1]     ; 9.578  ;    ;    ; 9.578  ;
+; CPU_D[2]   ; LEDG[2]     ; 9.251  ;    ;    ; 9.251  ;
+; CPU_D[3]   ; LEDG[3]     ; 9.608  ;    ;    ; 9.608  ;
+; CPU_D[4]   ; LEDG[4]     ; 9.996  ;    ;    ; 9.996  ;
+; CPU_D[5]   ; LEDG[5]     ; 9.994  ;    ;    ; 9.994  ;
+; CPU_D[6]   ; LEDG[6]     ; 10.008 ;    ;    ; 10.008 ;
+; CPU_D[7]   ; LEDG[7]     ; 9.972  ;    ;    ; 9.972  ;
+; SW[0]      ; CPU_A[0]    ; 4.645  ;    ;    ; 4.645  ;
+; SW[1]      ; CPU_A[1]    ; 4.640  ;    ;    ; 4.640  ;
+; SW[2]      ; CPU_A[2]    ; 4.622  ;    ;    ; 4.622  ;
+; SW[3]      ; CPU_A[3]    ; 6.217  ;    ;    ; 6.217  ;
+; SW[4]      ; CPU_A[4]    ; 6.143  ;    ;    ; 6.143  ;
+; SW[5]      ; CPU_A[5]    ; 6.164  ;    ;    ; 6.164  ;
+; SW[6]      ; CPU_A[6]    ; 6.083  ;    ;    ; 6.083  ;
+; SW[7]      ; CPU_A[7]    ; 6.560  ;    ;    ; 6.560  ;
+; SW[8]      ; CPU_A[8]    ; 6.498  ;    ;    ; 6.498  ;
+; SW[9]      ; CPU_A[9]    ; 6.308  ;    ;    ; 6.308  ;
++------------+-------------+--------+----+----+--------+
+
+
++----------------------------------------------------+
+; Minimum Progagation Delay                          ;
++------------+-------------+-------+----+----+-------+
+; Input Port ; Output Port ; RR    ; RF ; FR ; FF    ;
++------------+-------------+-------+----+----+-------+
+; CPU_D[0]   ; LEDG[0]     ; 5.058 ;    ;    ; 5.058 ;
+; CPU_D[1]   ; LEDG[1]     ; 5.020 ;    ;    ; 5.020 ;
+; CPU_D[2]   ; LEDG[2]     ; 4.902 ;    ;    ; 4.902 ;
+; CPU_D[3]   ; LEDG[3]     ; 5.048 ;    ;    ; 5.048 ;
+; CPU_D[4]   ; LEDG[4]     ; 5.215 ;    ;    ; 5.215 ;
+; CPU_D[5]   ; LEDG[5]     ; 5.226 ;    ;    ; 5.226 ;
+; CPU_D[6]   ; LEDG[6]     ; 5.237 ;    ;    ; 5.237 ;
+; CPU_D[7]   ; LEDG[7]     ; 5.203 ;    ;    ; 5.203 ;
+; SW[0]      ; CPU_A[0]    ; 2.286 ;    ;    ; 2.286 ;
+; SW[1]      ; CPU_A[1]    ; 2.284 ;    ;    ; 2.284 ;
+; SW[2]      ; CPU_A[2]    ; 2.282 ;    ;    ; 2.282 ;
+; SW[3]      ; CPU_A[3]    ; 3.058 ;    ;    ; 3.058 ;
+; SW[4]      ; CPU_A[4]    ; 3.006 ;    ;    ; 3.006 ;
+; SW[5]      ; CPU_A[5]    ; 2.996 ;    ;    ; 2.996 ;
+; SW[6]      ; CPU_A[6]    ; 2.961 ;    ;    ; 2.961 ;
+; SW[7]      ; CPU_A[7]    ; 3.161 ;    ;    ; 3.161 ;
+; SW[8]      ; CPU_A[8]    ; 3.191 ;    ;    ; 3.191 ;
+; SW[9]      ; CPU_A[9]    ; 3.119 ;    ;    ; 3.119 ;
++------------+-------------+-------+----+----+-------+
+
+
++-------------------------------------------------------------------+
+; Setup Transfers                                                   ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; CLOCK_50   ; CLOCK_50 ; 2644     ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------+
+; Hold Transfers                                                    ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; CLOCK_50   ; CLOCK_50 ; 2644     ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths                            ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 18    ; 18   ;
+; Unconstrained Input Port Paths  ; 51    ; 51   ;
+; Unconstrained Output Ports      ; 19    ; 19   ;
+; Unconstrained Output Port Paths ; 19    ; 19   ;
++---------------------------------+-------+------+
+
+
++------------------------------------+
+; TimeQuest Timing Analyzer Messages ;
++------------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
+    Info: Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
+    Info: Processing started: Sat Oct 14 19:56:46 2017
+Info: Command: quartus_sta NoES -c NoES
+Info: qsta_default_script.tcl version: #1
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 85 degrees C
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'NoES.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
+Info (332105): Deriving Clocks
+    Info (332105): create_clock -period 1.000 -name CLOCK_50 CLOCK_50
+Info (332122): write_sdc -pt
+Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info: Analyzing Slow Model
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -3.885
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -3.885      -210.721 CLOCK_50 
+Info (332146): Worst-case hold slack is 0.445
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):     0.445         0.000 CLOCK_50 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -1.631
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -1.631       -78.617 CLOCK_50 
+Info (332001): The selected device family is not supported by the report_metastability command.
+Info: Analyzing Fast Model
+Critical Warning (332148): Timing requirements not met
+Info (332146): Worst-case setup slack is -0.879
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -0.879       -43.415 CLOCK_50 
+Info (332146): Worst-case hold slack is 0.215
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):     0.215         0.000 CLOCK_50 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is -1.380
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):    -1.380       -64.380 CLOCK_50 
+Info (332001): The selected device family is not supported by the report_metastability command.
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 4 warnings
+    Info: Peak virtual memory: 388 megabytes
+    Info: Processing ended: Sat Oct 14 19:56:47 2017
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
+
+
