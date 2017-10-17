@@ -4,9 +4,10 @@
 #  VENDOR: Altera
 # PROGRAM: Quartus II
 # VERSION: Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
-#    DATE: Sat Oct 14 19:56:47 2017
+#    DATE: Mon Oct 16 19:25:04 2017
 #
 ########################################################################
 
 
-set col(_col0) { port { 73 } }
+set col(_col4) { pin { {355 REGOUT -1} } }
+set col(_col3) { port { 84 } }

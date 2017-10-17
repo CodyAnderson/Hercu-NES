@@ -1,5 +1,5 @@
 Flow report for NoES
-Sat Oct 14 19:56:48 2017
+Mon Oct 16 19:25:07 2017
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
 
 
@@ -40,18 +40,18 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Flow Summary                                                                    ;
 +------------------------------------+--------------------------------------------+
-; Flow Status                        ; Successful - Sat Oct 14 19:56:48 2017      ;
+; Flow Status                        ; Successful - Mon Oct 16 19:25:07 2017      ;
 ; Quartus II 64-Bit Version          ; 13.0.0 Build 156 04/24/2013 SJ Web Edition ;
 ; Revision Name                      ; NoES                                       ;
 ; Top-level Entity Name              ; NoES                                       ;
 ; Family                             ; Cyclone II                                 ;
 ; Device                             ; EP2C20F484C7                               ;
 ; Timing Models                      ; Final                                      ;
-; Total logic elements               ; 80 / 18,752 ( < 1 % )                      ;
-;     Total combinational functions  ; 72 / 18,752 ( < 1 % )                      ;
-;     Dedicated logic registers      ; 63 / 18,752 ( < 1 % )                      ;
-; Total registers                    ; 63                                         ;
-; Total pins                         ; 75 / 315 ( 24 % )                          ;
+; Total logic elements               ; 45 / 18,752 ( < 1 % )                      ;
+;     Total combinational functions  ; 43 / 18,752 ( < 1 % )                      ;
+;     Dedicated logic registers      ; 42 / 18,752 ( < 1 % )                      ;
+; Total registers                    ; 42                                         ;
+; Total pins                         ; 85 / 315 ( 27 % )                          ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 0 / 239,616 ( 0 % )                        ;
 ; Embedded Multiplier 9-bit elements ; 0 / 52 ( 0 % )                             ;
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 10/14/2017 19:56:35 ;
+; Start date & time ; 10/16/2017 19:24:50 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; NoES                ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +-------------------------------------+---------------------------------------+---------------+-------------+----------------------+
 ; Assignment Name                     ; Value                                 ; Default Value ; Entity Name ; Section Id           ;
 +-------------------------------------+---------------------------------------+---------------+-------------+----------------------+
-; COMPILER_SIGNATURE_ID               ; 216075651539923.150803619500952       ; --            ; --          ; --                   ;
+; COMPILER_SIGNATURE_ID               ; 147639260321.150820709004596          ; --            ; --          ; --                   ;
 ; EDA_DESIGN_ENTRY_SYNTHESIS_TOOL     ; Design Compiler                       ; <None>        ; --          ; --                   ;
 ; EDA_INPUT_DATA_FORMAT               ; Verilog Hdl                           ; --            ; --          ; eda_design_synthesis ;
 ; EDA_INPUT_VCC_NAME                  ; Vdd                                   ; --            ; --          ; eda_design_synthesis ;
@@ -107,12 +107,12 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:01     ; 1.0                     ; 446 MB              ; 00:00:01                           ;
-; Fitter                    ; 00:00:06     ; 1.0                     ; 624 MB              ; 00:00:06                           ;
-; Assembler                 ; 00:00:01     ; 1.0                     ; 422 MB              ; 00:00:02                           ;
-; TimeQuest Timing Analyzer ; 00:00:01     ; 1.0                     ; 388 MB              ; 00:00:01                           ;
-; EDA Netlist Writer        ; 00:00:00     ; 1.0                     ; 372 MB              ; 00:00:01                           ;
-; Total                     ; 00:00:09     ; --                      ; --                  ; 00:00:11                           ;
+; Analysis & Synthesis      ; 00:00:02     ; 1.0                     ; 453 MB              ; 00:00:01                           ;
+; Fitter                    ; 00:00:07     ; 1.0                     ; 631 MB              ; 00:00:07                           ;
+; Assembler                 ; 00:00:02     ; 1.0                     ; 413 MB              ; 00:00:02                           ;
+; TimeQuest Timing Analyzer ; 00:00:02     ; 1.0                     ; 395 MB              ; 00:00:01                           ;
+; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 379 MB              ; 00:00:01                           ;
+; Total                     ; 00:00:14     ; --                      ; --                  ; 00:00:12                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -121,11 +121,11 @@ applicable agreement for further details.
 +---------------------------+------------------+-----------+------------+----------------+
 ; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
 +---------------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis      ; Killer           ; Windows 7 ; 6.1        ; x86_64         ;
-; Fitter                    ; Killer           ; Windows 7 ; 6.1        ; x86_64         ;
-; Assembler                 ; Killer           ; Windows 7 ; 6.1        ; x86_64         ;
-; TimeQuest Timing Analyzer ; Killer           ; Windows 7 ; 6.1        ; x86_64         ;
-; EDA Netlist Writer        ; Killer           ; Windows 7 ; 6.1        ; x86_64         ;
+; Analysis & Synthesis      ; BigBadToshiba    ; Windows 7 ; 6.2        ; x86_64         ;
+; Fitter                    ; BigBadToshiba    ; Windows 7 ; 6.2        ; x86_64         ;
+; Assembler                 ; BigBadToshiba    ; Windows 7 ; 6.2        ; x86_64         ;
+; TimeQuest Timing Analyzer ; BigBadToshiba    ; Windows 7 ; 6.2        ; x86_64         ;
+; EDA Netlist Writer        ; BigBadToshiba    ; Windows 7 ; 6.2        ; x86_64         ;
 +---------------------------+------------------+-----------+------------+----------------+
 
 

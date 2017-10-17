@@ -1,0 +1,6 @@
+
+State Machine - |NoES|NesCpu:comb_21|stage
+Name stage.00 stage.10 stage.01 
+stage.00 0 0 0 
+stage.01 1 0 1 
+stage.10 1 1 0 
