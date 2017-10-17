@@ -19,17 +19,17 @@ module DataMultiplexer(
 		if(cpuRW == 0)
 			dataOutput = cpuData;
 		else if(ppuEnable == 0)
-      dataOutput = ppuData;
-    else if(controller1Enable == 0)
-      dataOutput = controller1Data;
-    else if(controller2Enable == 0)
-      dataOutput = controller2Data;
-    else if(sramEnable == 0)
-      dataOutput = sramData;
-    else if(cartridgeEnable == 0)
-      dataOutput = cartridgeData;
-    else
-      dataOutput = 'hZZ;
+			dataOutput = ppuData;
+		else if(controller1Enable == 0)
+			dataOutput = controller1Data;
+		else if(controller2Enable == 0)
+			dataOutput = controller2Data;
+		else if(sramEnable == 0)
+			dataOutput = sramData;
+		else if(cartridgeEnable == 0)
+			dataOutput = cartridgeData;
+		else
+			dataOutput = 'hZZ;
   end
 
 endmodule // DataMultiplexer
