@@ -16,7 +16,7 @@
 // PROGRAM "Quartus II 64-Bit"
 // VERSION "Version 13.0.0 Build 156 04/24/2013 SJ Web Edition"
 
-// DATE "10/16/2017 19:25:07"
+// DATE "10/16/2017 19:46:12"
 
 // 
 // Device: Altera EP2C20F484C7 Package FBGA484
@@ -249,11 +249,11 @@ wire \comb_21|stage.00~regout ;
 wire \comb_21|PC~14_combout ;
 wire \data~0_combout ;
 wire \comb_21|PC[0]~4_combout ;
-wire [15:0] \comb_21|PC ;
 wire [7:0] data;
-wire [7:0] \comb_21|instruction ;
-wire [7:0] \comb_21|instructionData ;
 wire [26:0] clockDivider;
+wire [7:0] \comb_21|instructionData ;
+wire [15:0] \comb_21|PC ;
+wire [7:0] \comb_21|instruction ;
 
 
 // Location: LCFF_X49_Y14_N21

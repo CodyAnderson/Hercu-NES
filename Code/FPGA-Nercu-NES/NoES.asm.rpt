@@ -1,5 +1,5 @@
 Assembler report for NoES
-Mon Oct 16 19:25:03 2017
+Mon Oct 16 19:46:08 2017
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
 
 
@@ -10,8 +10,8 @@ Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
   2. Assembler Summary
   3. Assembler Settings
   4. Assembler Generated Files
-  5. Assembler Device Options: C:/Users/ADMIN/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.sof
-  6. Assembler Device Options: C:/Users/ADMIN/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.pof
+  5. Assembler Device Options: C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.sof
+  6. Assembler Device Options: C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.pof
   7. Assembler Messages
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Mon Oct 16 19:25:03 2017 ;
+; Assembler Status      ; Successful - Mon Oct 16 19:46:08 2017 ;
 ; Revision Name         ; NoES                                  ;
 ; Top-level Entity Name ; NoES                                  ;
 ; Family                ; Cyclone II                            ;
@@ -83,13 +83,13 @@ applicable agreement for further details.
 +------------------------------------------------------------------------+
 ; File Name                                                              ;
 +------------------------------------------------------------------------+
-; C:/Users/ADMIN/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.sof ;
-; C:/Users/ADMIN/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.pof ;
+; C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.sof ;
+; C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.pof ;
 +------------------------------------------------------------------------+
 
 
 +--------------------------------------------------------------------------------------------------+
-; Assembler Device Options: C:/Users/ADMIN/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.sof ;
+; Assembler Device Options: C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.sof ;
 +----------------+---------------------------------------------------------------------------------+
 ; Option         ; Setting                                                                         ;
 +----------------+---------------------------------------------------------------------------------+
@@ -100,7 +100,7 @@ applicable agreement for further details.
 
 
 +--------------------------------------------------------------------------------------------------+
-; Assembler Device Options: C:/Users/ADMIN/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.pof ;
+; Assembler Device Options: C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.pof ;
 +--------------------+-----------------------------------------------------------------------------+
 ; Option             ; Setting                                                                     ;
 +--------------------+-----------------------------------------------------------------------------+
@@ -117,13 +117,13 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
-    Info: Processing started: Mon Oct 16 19:25:01 2017
+    Info: Processing started: Mon Oct 16 19:46:06 2017
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off NoES -c NoES
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 413 megabytes
-    Info: Processing ended: Mon Oct 16 19:25:03 2017
+    Info: Peak virtual memory: 435 megabytes
+    Info: Processing ended: Mon Oct 16 19:46:08 2017
     Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:02
 

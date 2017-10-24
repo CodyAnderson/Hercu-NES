@@ -1,5 +1,5 @@
 Flow report for NoES
-Mon Oct 16 19:25:07 2017
+Mon Oct 16 19:46:12 2017
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
 
 
@@ -40,7 +40,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Flow Summary                                                                    ;
 +------------------------------------+--------------------------------------------+
-; Flow Status                        ; Successful - Mon Oct 16 19:25:07 2017      ;
+; Flow Status                        ; Successful - Mon Oct 16 19:46:12 2017      ;
 ; Quartus II 64-Bit Version          ; 13.0.0 Build 156 04/24/2013 SJ Web Edition ;
 ; Revision Name                      ; NoES                                       ;
 ; Top-level Entity Name              ; NoES                                       ;
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 10/16/2017 19:24:50 ;
+; Start date & time ; 10/16/2017 19:45:57 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; NoES                ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +-------------------------------------+---------------------------------------+---------------+-------------+----------------------+
 ; Assignment Name                     ; Value                                 ; Default Value ; Entity Name ; Section Id           ;
 +-------------------------------------+---------------------------------------+---------------+-------------+----------------------+
-; COMPILER_SIGNATURE_ID               ; 147639260321.150820709004596          ; --            ; --          ; --                   ;
+; COMPILER_SIGNATURE_ID               ; 57623796607400.150820835708556        ; --            ; --          ; --                   ;
 ; EDA_DESIGN_ENTRY_SYNTHESIS_TOOL     ; Design Compiler                       ; <None>        ; --          ; --                   ;
 ; EDA_INPUT_DATA_FORMAT               ; Verilog Hdl                           ; --            ; --          ; eda_design_synthesis ;
 ; EDA_INPUT_VCC_NAME                  ; Vdd                                   ; --            ; --          ; eda_design_synthesis ;
@@ -107,12 +107,12 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:02     ; 1.0                     ; 453 MB              ; 00:00:01                           ;
-; Fitter                    ; 00:00:07     ; 1.0                     ; 631 MB              ; 00:00:07                           ;
-; Assembler                 ; 00:00:02     ; 1.0                     ; 413 MB              ; 00:00:02                           ;
-; TimeQuest Timing Analyzer ; 00:00:02     ; 1.0                     ; 395 MB              ; 00:00:01                           ;
-; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 379 MB              ; 00:00:01                           ;
-; Total                     ; 00:00:14     ; --                      ; --                  ; 00:00:12                           ;
+; Analysis & Synthesis      ; 00:00:01     ; 1.0                     ; 482 MB              ; 00:00:01                           ;
+; Fitter                    ; 00:00:06     ; 1.0                     ; 732 MB              ; 00:00:06                           ;
+; Assembler                 ; 00:00:02     ; 1.0                     ; 435 MB              ; 00:00:02                           ;
+; TimeQuest Timing Analyzer ; 00:00:01     ; 1.0                     ; 428 MB              ; 00:00:01                           ;
+; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 401 MB              ; 00:00:01                           ;
+; Total                     ; 00:00:11     ; --                      ; --                  ; 00:00:11                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -121,11 +121,11 @@ applicable agreement for further details.
 +---------------------------+------------------+-----------+------------+----------------+
 ; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
 +---------------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis      ; BigBadToshiba    ; Windows 7 ; 6.2        ; x86_64         ;
-; Fitter                    ; BigBadToshiba    ; Windows 7 ; 6.2        ; x86_64         ;
-; Assembler                 ; BigBadToshiba    ; Windows 7 ; 6.2        ; x86_64         ;
-; TimeQuest Timing Analyzer ; BigBadToshiba    ; Windows 7 ; 6.2        ; x86_64         ;
-; EDA Netlist Writer        ; BigBadToshiba    ; Windows 7 ; 6.2        ; x86_64         ;
+; Analysis & Synthesis      ; DESKTOP-NMKCI0F  ; Windows 7 ; 6.2        ; x86_64         ;
+; Fitter                    ; DESKTOP-NMKCI0F  ; Windows 7 ; 6.2        ; x86_64         ;
+; Assembler                 ; DESKTOP-NMKCI0F  ; Windows 7 ; 6.2        ; x86_64         ;
+; TimeQuest Timing Analyzer ; DESKTOP-NMKCI0F  ; Windows 7 ; 6.2        ; x86_64         ;
+; EDA Netlist Writer        ; DESKTOP-NMKCI0F  ; Windows 7 ; 6.2        ; x86_64         ;
 +---------------------------+------------------+-----------+------------+----------------+
 
 
