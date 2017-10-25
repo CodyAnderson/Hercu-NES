@@ -41,23 +41,37 @@ module NesCpu(clock, reset, irq, nmi, dataIn, addressOut, dataOut, rw, oe, out, 
 	logic breakB;
 	logic decimalD;
 	logic interruptI;
-	logic zeroZ;
+	logic zeroZ = 1;
 	logic carryC;
 	
 	always_ff @(posedge clock) 
 		begin
 			//Update the dataLoad flag
-			dataLoad = dataLoad + 1;
-	
+			dataLoad <= dataLoad + 1;
+			// ?
+			addressOut <= programCounterPC;
 			//If we're in the data load part
 			if(dataLoad) 
 				begin
+					//Update the Program Counter
+					programCounterPC <= programCounterPC + 1;
 					//Let's read in the data we got
 					data <= dataIn;
 					if(stage == 0)
 						begin
 							//And maybe it's the instruction
 							instruction <= dataIn;
+							
+							//Accumulator flag updates
+							negativeN <= accumulatorAC[7];
+							if(accumulatorAC == 0)
+								begin
+									zeroZ <= 1;
+								end
+							else
+								begin
+									zeroZ <= 0;
+								end
 						end
 				end	
 			//If we're in the do stuff part, let's get on it
@@ -70,10 +84,52 @@ module NesCpu(clock, reset, irq, nmi, dataIn, addressOut, dataOut, rw, oe, out, 
 								
 							end
 							
+						//AND
+						8'h29 :
+							begin
+								if(stage == 0)
+									begin
+										stage <= 1;
+									end
+								else if(stage == 1)
+									begin
+										accumulatorAC <= accumulatorAC & data;
+										stage <= 0;
+									end
+							end
+						//LDA
+						8'hA9 :
+							begin
+								if(stage == 0)
+									begin
+										stage <= 1;
+									end
+								else if(stage == 1)
+									begin
+										accumulatorAC <= data;
+									end
+							end
 						//NOP
 						8'hEA	:
 							begin
 								
+							end
+						//BEQ
+						8'hF0 :
+							begin
+								if(stage == 0)
+									begin
+										//Kick it
+										stage <= 1;
+									end
+								else if(stage == 1)
+									begin
+										//if(zeroZ == 1)
+											//begin
+												programCounterPC[7:0] <= programCounterPC[7:0] + data;
+											//end
+										stage <= 0;
+									end
 							end
 							
 						//DEFAULT	
@@ -81,7 +137,7 @@ module NesCpu(clock, reset, irq, nmi, dataIn, addressOut, dataOut, rw, oe, out, 
 							begin
 								
 							end
-				end
-		
+				endcase
+			end
 		end
 endmodule
