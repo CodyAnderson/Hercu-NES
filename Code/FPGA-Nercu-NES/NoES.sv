@@ -27,11 +27,11 @@ module NoES(
 	
 	assign PPU_RD = 0;
 	assign ROMSEL = 0;
-	assign LEDG = CPU_D;
+	assign LEDG = PPU_D;
+	assign PPU_WR = 1;
 	
-	
-	logic [15:0]address = 0;
-	assign CPU_A = {5'b0,SW};//address;
+	logic [14:0]address = 0;
+	assign PPU_A = address;//address;
 	logic newData = 0;
 	logic [7:0]data = 0;
 	logic done;
@@ -39,10 +39,10 @@ module NoES(
 	UartTransmit uart(CLOCK_50, newData, data, CON1_D1, done);
 	always_ff@(posedge CLOCK_50)
 	begin
-		if(done && SW[0] && !address[15] && !newData)
+		if(done && SW[0] && !address[14] && !newData)
 		begin
 			newData <= 1;
-			data <= CPU_D;
+			data <= PPU_D;
 			address <= address + 1;
 		end
 		else
