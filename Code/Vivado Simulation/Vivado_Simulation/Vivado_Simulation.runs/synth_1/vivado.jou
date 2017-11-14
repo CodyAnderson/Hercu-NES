@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2017.3 (64-bit)
+# SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+# IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+# Start of session at: Mon Nov 13 17:31:42 2017
+# Process ID: 13244
+# Current directory: C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/Vivado Simulation/Vivado_Simulation/Vivado_Simulation.runs/synth_1
+# Command line: vivado.exe -log testbench.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source testbench.tcl
+# Log file: C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/Vivado Simulation/Vivado_Simulation/Vivado_Simulation.runs/synth_1/testbench.vds
+# Journal file: C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/Vivado Simulation/Vivado_Simulation/Vivado_Simulation.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source testbench.tcl -notrace

@@ -1,3 +1,55 @@
+module MemDogMillionaire(clock, reset, addressIn, dataOut);
+
+  input logic clock;              //21.47727MHz clock input, this needs to be divided by 12
+  input logic reset;              //(ACTIVE LOW) resets the cpu, reset vector address is 0xFFFC
+  input logic [15:0] addressIn;   //Used for addressing ROM, RAM, PPU, and ALU(audio)
+  output logic [15:0] dataOut;    //Used for addressing ROM, RAM, PPU, and ALU(audio)
+  
+  always_ff @(posedge clock)
+    begin
+      if(reset)
+        begin
+          dataOut <= 8'hA9;
+        end
+      else
+        begin
+          if(addressIn[2:0] == 0)
+            begin
+              dataOut <= 8'hA9;
+            end
+          else if (addressIn[2:0] == 1)
+            begin
+              dataOut <= 8'h00;
+            end
+          else if (addressIn[2:0] == 2)
+            begin
+              dataOut <= 8'hF0;
+            end
+          else if (addressIn[2:0] == 3)
+            begin
+              dataOut <= 8'h00;
+            end
+          else if(addressIn[2:0] == 4)
+            begin
+              dataOut <= 8'hF0;
+            end
+          else if (addressIn[2:0] == 5)
+            begin
+              dataOut <= 8'hFA;
+            end
+          else if (addressIn[2:0] == 6)
+            begin
+              dataOut <= 8'hFF;
+            end
+          else if (addressIn[2:0] == 7)
+            begin
+              dataOut <= 8'hFF;
+            end
+      end
+    end
+endmodule
+
+  
 module NesCpu(clock, reset, irq, nmi, dataIn, addressOut, dataOut, rw, oe, out, aux1, aux2);
   
   /////////////
