@@ -500,4 +500,3 @@ set_global_assignment -name SYSTEMVERILOG_FILE "CPU_Module-Template.sv"
 set_global_assignment -name SYSTEMVERILOG_FILE NoES.sv
 set_global_assignment -name SYSTEMVERILOG_FILE SN74LS373N.sv
 set_global_assignment -name QIP_FILE SRAM.qip
-set_global_assignment -name SYSTEMVERILOG_FILE DataMultiplexer.sv

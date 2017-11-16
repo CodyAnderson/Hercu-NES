@@ -51,16 +51,91 @@ module NesPpu (clock, vgaClock, red, green, blue, hsync, vsync, reset, rw, dataB
 endmodule // NesPpu
 
 
+module TileFetcher(
+	input logic clock,
+	input logic [5:0] tileX,
+	input logic [5:0] tileY,
+	input logic [2:0] tileRow,
+	input logic [7:0] memData,
+	output logic [15:0] memAddress,
+	output logic memLatch,
+	output logic memRead,
+	output logic [7:0] tileLowByte,
+	output logic [7:0] tileHighByte,
+	output logic [1:0] tileAttribs);
+	
+	logic [3:0]counter = 0;
+	logic [7:0]nameTableByte = 0;
+	logic [15:0]fetchAddress;
+	logic [7:0]fetchData;
+	
+	MemFetcher Fetch(clock,counter[1:0],fetchAddress,1, memData,memLatch, memRead, memAddress, fetchData);
+	
+	always_comb
+	begin
+		case(counter[3:2])
+				0:fetchAddress = {4'b0010,tileY[5], tileX[5], tileY[4:0], tileX[4:0]}; //memory address of nametable
+				1:fetchAddress = {4'h2, tileY[5], tileX[5], 4'b11, tileY[4:2] + tileX[4:2]}; //Attribute address					
+				2:fetchAddress = {1'b0,1'b1,nameTableByte, 1'b0, tileRow}; 
+				3:fetchAddress = {1'b0,1'b1,nameTableByte, 1'b1, tileRow}; 
+		endcase
+	end
+	
+	always_ff@(posedge clk)
+	begin
+		if(counter[1:0] == 0)
+		begin
+			case(counter[3:2])
+				0:nameTableByte <= fetchData;
+				1:tileAttribs <= fetchData[{tileY[1],tileX[1]}+1:{tileY[1],tileX[1]}];
+				2:tileLowByte <= fetchData;
+				3:tileHighByte <= fetchData;
+			endcase
+		end
+			
+		
 
 
-module TileFetcher();
 
+module MemFetcher(
+	input logic clock,
+	input logic [1:0] counter,
+	input logic [15:0]addressIn,
+	input logic enable, 
+	input logic [7:0]dataIn, 
+	output logic addressLatch, 
+	output logic read, 
+	output logic [15:0]addressOut,
+	output logic [7:0] dataOut);
+	
+	always_ff@(posedge clock)
+	begin
+		case(counter)
+		0: begin
+		addressLatch <= 1;
+		addressOut[7:0] <= addressIn[7:0];
+		read <= 0;
+		end
+		1: begin
+		addressLatch <= 0;
+		read <= 0;
+		end
+		2: begin
+		addressLatch <= 0;
+		addressOut[7:0] <= 8'bZ;
+		read <= 1;
+		3: begin ///Read in data here!!!!!!
+		dataOut <= dataIn;
+		addressLatch <= 0;
+		read <= 1;
+		endcase
+	end
 endmodule
 
 module SpriteSelector();
 
 endmodule
 
-module Loopy_Scrolling();
+module LoopyScrolling();
 
 endmodule
