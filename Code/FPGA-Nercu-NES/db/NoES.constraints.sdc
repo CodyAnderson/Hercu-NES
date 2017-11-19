@@ -4,7 +4,15 @@
 #  VENDOR: Altera
 # PROGRAM: Quartus II
 # VERSION: Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
-#    DATE: Sat Oct 14 19:56:47 2017
+<<<<<<< HEAD
+<<<<<<< HEAD
+#    DATE: Sun Oct 15 13:08:44 2017
+=======
+#    DATE: Mon Oct 16 19:46:10 2017
+>>>>>>> refs/remotes/origin/Cody
+=======
+#    DATE: Wed Oct 25 18:03:06 2017
+>>>>>>> refs/remotes/origin/Ryan
 #
 ########################################################################
 
@@ -13,7 +21,8 @@
 # Create Clock
 #**************************************************************
 
-create_clock -name CLOCK_50 -period 1.000 -waveform { 0.000 0.500 } $_col0
+create_clock -name clock -period 1.000 -waveform { 0.000 0.500 } $_col4
+create_clock -name CLOCK_50 -period 1.000 -waveform { 0.000 0.500 } $_col3
 
 
 #**************************************************************
