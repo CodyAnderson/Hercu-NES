@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 -- begin_signature
 -- vga
 -- end_signature
@@ -649,3 +650,20 @@ CONTENT BEGIN
 	1 :	111100000000;
 	0 :	000000000000;
 END;
+=======
+-- begin_signature
+-- vga
+-- end_signature
+WIDTH=12;
+DEPTH=4;
+
+ADDRESS_RADIX=UNS;
+DATA_RADIX=BIN;
+
+CONTENT BEGIN
+	3 :	000000000000;
+	2 :	001001110000;
+	1 :	011111000000;
+	0 :	011110001111;
+END;
+>>>>>>> Ben

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" ?>
 <LOG_ROOT>
 	<PROJECT NAME="red">
@@ -5,3 +6,10 @@
 		<CBX_INST_ENTRY INSTANCE_NAME="|red|vga:hello|altsyncram:buffer2_rtl_0" CBX_FILE_NAME="altsyncram_fgk1.tdf"/>
 	</PROJECT>
 </LOG_ROOT>
+=======
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="red">
+	</PROJECT>
+</LOG_ROOT>
+>>>>>>> Ben
