@@ -1,9 +1,13 @@
 Analysis & Synthesis report for NoES
 <<<<<<< HEAD
+<<<<<<< HEAD
 Sun Oct 15 13:08:33 2017
 =======
 Mon Oct 16 19:45:58 2017
 >>>>>>> refs/remotes/origin/Cody
+=======
+Wed Oct 25 18:02:53 2017
+>>>>>>> refs/remotes/origin/Ryan
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
 
 
@@ -19,13 +23,14 @@ Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
   7. Analysis & Synthesis Resource Utilization by Entity
   8. State Machine - |NoES|NesCpu:comb_21|stage
   9. Registers Removed During Synthesis
- 10. General Register Statistics
- 11. Inverted Register Statistics
- 12. Multiplexer Restructuring Statistics (Restructuring Performed)
- 13. Port Connectivity Checks: "NesCpu:comb_21"
- 14. Elapsed Time Per Partition
- 15. Analysis & Synthesis Messages
- 16. Analysis & Synthesis Suppressed Messages
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Inverted Register Statistics
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Port Connectivity Checks: "NesCpu:comb_21"
+ 15. Elapsed Time Per Partition
+ 16. Analysis & Synthesis Messages
+ 17. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -52,14 +57,19 @@ applicable agreement for further details.
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
 <<<<<<< HEAD
+<<<<<<< HEAD
 ; Analysis & Synthesis Status        ; Successful - Sun Oct 15 13:08:33 2017      ;
 =======
 ; Analysis & Synthesis Status        ; Successful - Mon Oct 16 19:45:58 2017      ;
 >>>>>>> refs/remotes/origin/Cody
+=======
+; Analysis & Synthesis Status        ; Successful - Wed Oct 25 18:02:53 2017      ;
+>>>>>>> refs/remotes/origin/Ryan
 ; Quartus II 64-Bit Version          ; 13.0.0 Build 156 04/24/2013 SJ Web Edition ;
 ; Revision Name                      ; NoES                                       ;
 ; Top-level Entity Name              ; NoES                                       ;
 ; Family                             ; Cyclone II                                 ;
+<<<<<<< HEAD
 <<<<<<< HEAD
 ; Total logic elements               ; 78                                         ;
 ;     Total combinational functions  ; 70                                         ;
@@ -71,6 +81,12 @@ applicable agreement for further details.
 ;     Total combinational functions  ; 43                                         ;
 ;     Dedicated logic registers      ; 42                                         ;
 ; Total registers                    ; 42                                         ;
+=======
+; Total logic elements               ; 73                                         ;
+;     Total combinational functions  ; 55                                         ;
+;     Dedicated logic registers      ; 61                                         ;
+; Total registers                    ; 61                                         ;
+>>>>>>> refs/remotes/origin/Ryan
 ; Total pins                         ; 85                                         ;
 >>>>>>> refs/remotes/origin/Cody
 ; Total virtual pins                 ; 0                                          ;
@@ -176,11 +192,12 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 ; Processors                 ; Number ;
 +----------------------------+--------+
-; Number detected on machine ; 4      ;
+; Number detected on machine ; 8      ;
 ; Maximum allowed            ; 1      ;
 +----------------------------+--------+
 
 
+<<<<<<< HEAD
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Source Files Read                                                                                                                                             ;
 +----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------+---------+
@@ -252,6 +269,46 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; Total fan-out                               ; 205      ;
 ; Average fan-out                             ; 1.21     ;
 +---------------------------------------------+----------+
+=======
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                    ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                ; Library ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------+---------+
+; NoES.sv                          ; yes             ; User SystemVerilog HDL File  ; C:/Users/ADMIN/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.sv       ;         ;
+; CPU_Module.sv                    ; yes             ; User SystemVerilog HDL File  ; C:/Users/ADMIN/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/CPU_Module.sv ;         ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimated Total logic elements              ; 73    ;
+;                                             ;       ;
+; Total combinational functions               ; 55    ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 6     ;
+;     -- 3 input functions                    ; 14    ;
+;     -- <=2 input functions                  ; 35    ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 26    ;
+;     -- arithmetic mode                      ; 29    ;
+;                                             ;       ;
+; Total registers                             ; 61    ;
+;     -- Dedicated logic registers            ; 61    ;
+;     -- I/O registers                        ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 85    ;
+; Embedded Multiplier 9-bit elements          ; 0     ;
+; Maximum fan-out node                        ; clock ;
+; Maximum fan-out                             ; 34    ;
+; Total fan-out                               ; 290   ;
+; Average fan-out                             ; 1.44  ;
++---------------------------------------------+-------+
+>>>>>>> refs/remotes/origin/Ryan
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -259,8 +316,8 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name  ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------+--------------+
-; |NoES                      ; 43 (31)           ; 42 (31)      ; 0           ; 0            ; 0       ; 0         ; 85   ; 0            ; |NoES                ;              ;
-;    |NesCpu:comb_21|        ; 12 (12)           ; 11 (11)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |NoES|NesCpu:comb_21 ;              ;
+; |NoES                      ; 55 (34)           ; 61 (34)      ; 0           ; 0            ; 0       ; 0         ; 85   ; 0            ; |NoES                ;              ;
+;    |NesCpu:comb_21|        ; 21 (21)           ; 27 (27)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |NoES|NesCpu:comb_21 ;              ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------+--------------+
 >>>>>>> refs/remotes/origin/Cody
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -269,33 +326,51 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Encoding Type:  One-Hot
 +--------------------------------------------+
 ; State Machine - |NoES|NesCpu:comb_21|stage ;
-+----------+----------+----------+-----------+
-; Name     ; stage.00 ; stage.10 ; stage.01  ;
-+----------+----------+----------+-----------+
-; stage.00 ; 0        ; 0        ; 0         ;
-; stage.01 ; 1        ; 0        ; 1         ;
-; stage.10 ; 1        ; 1        ; 0         ;
-+----------+----------+----------+-----------+
++----------------+---------------------------+
+; Name           ; stage.00000001            ;
++----------------+---------------------------+
+; stage.00000000 ; 0                         ;
+; stage.00000001 ; 1                         ;
++----------------+---------------------------+
 
 
-+----------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                     ;
-+----------------------------------------+-----------------------------------------------+
-; Register name                          ; Reason for Removal                            ;
-+----------------------------------------+-----------------------------------------------+
-; data[1]                                ; Merged with data[0]                           ;
-; data[3]                                ; Merged with data[2]                           ;
-; data[5..7]                             ; Merged with data[4]                           ;
-; NesCpu:comb_21|instruction[1]          ; Merged with NesCpu:comb_21|instruction[0]     ;
-; NesCpu:comb_21|instruction[3]          ; Merged with NesCpu:comb_21|instruction[2]     ;
-; NesCpu:comb_21|instruction[5..7]       ; Merged with NesCpu:comb_21|instruction[4]     ;
-; NesCpu:comb_21|instructionData[1]      ; Merged with NesCpu:comb_21|instructionData[0] ;
-; NesCpu:comb_21|instructionData[3]      ; Merged with NesCpu:comb_21|instructionData[2] ;
-; NesCpu:comb_21|instructionData[5..7]   ; Merged with NesCpu:comb_21|instructionData[4] ;
-; NesCpu:comb_21|instructionData[4]      ; Lost fanout                                   ;
-; NesCpu:comb_21|PC[3..15]               ; Lost fanout                                   ;
-; Total Number of Removed Registers = 29 ;                                               ;
-+----------------------------------------+-----------------------------------------------+
++--------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                   ;
++----------------------------------------+---------------------------------------------+
+; Register name                          ; Reason for Removal                          ;
++----------------------------------------+---------------------------------------------+
+; data[6]                                ; Merged with data[4]                         ;
+; data[7]                                ; Merged with data[5]                         ;
+; NesCpu:comb_21|data[6]                 ; Merged with NesCpu:comb_21|data[4]          ;
+; NesCpu:comb_21|data[7]                 ; Merged with NesCpu:comb_21|data[5]          ;
+; NesCpu:comb_21|accumulatorAC[6]        ; Merged with NesCpu:comb_21|accumulatorAC[4] ;
+; NesCpu:comb_21|accumulatorAC[7]        ; Merged with NesCpu:comb_21|accumulatorAC[5] ;
+; NesCpu:comb_21|instruction[6]          ; Merged with NesCpu:comb_21|instruction[4]   ;
+; NesCpu:comb_21|instruction[7]          ; Merged with NesCpu:comb_21|instruction[5]   ;
+; NesCpu:comb_21|stage~3                 ; Lost fanout                                 ;
+; NesCpu:comb_21|stage~4                 ; Lost fanout                                 ;
+; NesCpu:comb_21|stage~5                 ; Lost fanout                                 ;
+; NesCpu:comb_21|stage~6                 ; Lost fanout                                 ;
+; NesCpu:comb_21|stage~7                 ; Lost fanout                                 ;
+; NesCpu:comb_21|stage~8                 ; Lost fanout                                 ;
+; NesCpu:comb_21|stage~9                 ; Lost fanout                                 ;
+; NesCpu:comb_21|programCounterPC[3..15] ; Lost fanout                                 ;
+; Total Number of Removed Registers = 28 ;                                             ;
++----------------------------------------+---------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                          ;
++-------------------------------------+--------------------+---------------------------------------------------------------------------+
+; Register name                       ; Reason for Removal ; Registers Removed due to This Register                                    ;
++-------------------------------------+--------------------+---------------------------------------------------------------------------+
+; NesCpu:comb_21|programCounterPC[15] ; Lost Fanouts       ; NesCpu:comb_21|programCounterPC[14], NesCpu:comb_21|programCounterPC[13], ;
+;                                     ;                    ; NesCpu:comb_21|programCounterPC[12], NesCpu:comb_21|programCounterPC[11], ;
+;                                     ;                    ; NesCpu:comb_21|programCounterPC[10], NesCpu:comb_21|programCounterPC[9],  ;
+;                                     ;                    ; NesCpu:comb_21|programCounterPC[8], NesCpu:comb_21|programCounterPC[7],   ;
+;                                     ;                    ; NesCpu:comb_21|programCounterPC[6], NesCpu:comb_21|programCounterPC[5],   ;
+;                                     ;                    ; NesCpu:comb_21|programCounterPC[4], NesCpu:comb_21|programCounterPC[3]    ;
++-------------------------------------+--------------------+---------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -303,6 +378,7 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
+<<<<<<< HEAD
 <<<<<<< HEAD
 ; Total registers                              ; 62    ;
 ; Number of registers using Synchronous Clear  ; 42    ;
@@ -312,12 +388,19 @@ Encoding Type:  One-Hot
 ; Number of registers using Clock Enable       ; 23    ;
 =======
 ; Total registers                              ; 42    ;
+=======
+; Total registers                              ; 61    ;
+>>>>>>> refs/remotes/origin/Ryan
 ; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 3     ;
+; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
+<<<<<<< HEAD
 ; Number of registers using Clock Enable       ; 5     ;
 >>>>>>> refs/remotes/origin/Cody
+=======
+; Number of registers using Clock Enable       ; 25    ;
+>>>>>>> refs/remotes/origin/Ryan
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -348,19 +431,23 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------------------------------+---------+
 ; Inverted Register                      ; Fan out ;
 +----------------------------------------+---------+
-; clock                                  ; 15      ;
-; Total number of inverted registers = 1 ;         ;
+; clock                                  ; 34      ;
+; NesCpu:comb_21|zeroZ                   ; 1       ;
+; Total number of inverted registers = 2 ;         ;
 +----------------------------------------+---------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 6:1                ; 16 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |NoES|NesCpu:comb_21|PC[0] ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |NoES|NesCpu:comb_21|stage ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------+
+; 4:1                ; 6 bits    ; 12 LEs        ; 0 LEs                ; 12 LEs                 ; Yes        ; |NoES|NesCpu:comb_21|accumulatorAC[0]     ;
+; 35:1               ; 3 bits    ; 69 LEs        ; 0 LEs                ; 69 LEs                 ; Yes        ; |NoES|NesCpu:comb_21|addressOut[0]        ;
+; 67:1               ; 8 bits    ; 352 LEs       ; 0 LEs                ; 352 LEs                ; Yes        ; |NoES|NesCpu:comb_21|programCounterPC[15] ;
+; 67:1               ; 5 bits    ; 220 LEs       ; 5 LEs                ; 215 LEs                ; Yes        ; |NoES|NesCpu:comb_21|programCounterPC[7]  ;
+; 36:1               ; 3 bits    ; 72 LEs        ; 3 LEs                ; 69 LEs                 ; Yes        ; |NoES|NesCpu:comb_21|programCounterPC[0]  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -397,18 +484,21 @@ Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
 <<<<<<< HEAD
+<<<<<<< HEAD
     Info: Processing started: Sun Oct 15 13:08:32 2017
 =======
     Info: Processing started: Mon Oct 16 19:45:57 2017
 >>>>>>> refs/remotes/origin/Cody
+=======
+    Info: Processing started: Wed Oct 25 18:02:50 2017
+>>>>>>> refs/remotes/origin/Ryan
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off NoES -c NoES
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 3 design units, including 3 entities, in source file uart.sv
     Info (12023): Found entity 1: UartTransmit
     Info (12023): Found entity 2: UartReceive
     Info (12023): Found entity 3: Char2Hex
-Info (12021): Found 1 design units, including 1 entities, in source file cpu_module-template.sv
-    Info (12023): Found entity 1: NesCpu
+Info (12021): Found 0 design units, including 0 entities, in source file cpu_module-template.sv
 Warning (10275): Verilog HDL Module Instantiation warning at NoES.sv(50): ignored dangling comma in List of Port Connections
 Info (12021): Found 1 design units, including 1 entities, in source file noes.sv
     Info (12023): Found entity 1: NoES
@@ -420,6 +510,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file sram.v
     Info (12023): Found entity 1: SRAM
 Info (12021): Found 1 design units, including 1 entities, in source file datamultiplexer.sv
     Info (12023): Found entity 1: DataMultiplexer
+Info (12021): Found 1 design units, including 1 entities, in source file cpu_module.sv
+    Info (12023): Found entity 1: NesCpu
 Critical Warning (10846): Verilog HDL Instantiation warning at NoES.sv(50): instance has no name
 Info (12127): Elaborating entity "NoES" for the top level hierarchy
 <<<<<<< HEAD
@@ -443,15 +535,28 @@ Warning (10034): Output port "PPU_WR" at NoES.sv(17) has no driver
 Warning (10034): Output port "PPU_A13" at NoES.sv(18) has no driver
 Warning (10034): Output port "CON1_D1" at NoES.sv(27) has no driver
 Info (12128): Elaborating entity "NesCpu" for hierarchy "NesCpu:comb_21"
-Warning (10230): Verilog HDL assignment warning at CPU_Module-Template.sv(71): truncated value with size 32 to match size of target (16)
-Warning (10230): Verilog HDL assignment warning at CPU_Module-Template.sv(76): truncated value with size 32 to match size of target (16)
-Warning (10230): Verilog HDL assignment warning at CPU_Module-Template.sv(93): truncated value with size 32 to match size of target (16)
-Warning (10034): Output port "dataOut" at CPU_Module-Template.sv(16) has no driver
-Warning (10034): Output port "oe" at CPU_Module-Template.sv(18) has no driver
-Warning (10034): Output port "out" at CPU_Module-Template.sv(19) has no driver
-Warning (10034): Output port "aux1" at CPU_Module-Template.sv(20) has no driver
-Warning (10034): Output port "aux2" at CPU_Module-Template.sv(21) has no driver
-Warning (10034): Output port "rw" at CPU_Module-Template.sv(17) has no driver
+Warning (10036): Verilog HDL or VHDL warning at CPU_Module.sv(38): object "negativeN" assigned a value but never read
+Warning (10230): Verilog HDL assignment warning at CPU_Module.sv(50): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at CPU_Module.sv(83): truncated value with size 32 to match size of target (16)
+Warning (10230): Verilog HDL assignment warning at CPU_Module.sv(84): truncated value with size 32 to match size of target (16)
+Warning (10230): Verilog HDL assignment warning at CPU_Module.sv(92): truncated value with size 32 to match size of target (16)
+Warning (10230): Verilog HDL assignment warning at CPU_Module.sv(93): truncated value with size 32 to match size of target (16)
+Warning (10230): Verilog HDL assignment warning at CPU_Module.sv(109): truncated value with size 32 to match size of target (16)
+Warning (10230): Verilog HDL assignment warning at CPU_Module.sv(110): truncated value with size 32 to match size of target (16)
+Warning (10230): Verilog HDL assignment warning at CPU_Module.sv(125): truncated value with size 32 to match size of target (16)
+Warning (10230): Verilog HDL assignment warning at CPU_Module.sv(126): truncated value with size 32 to match size of target (16)
+Warning (10230): Verilog HDL assignment warning at CPU_Module.sv(136): truncated value with size 32 to match size of target (16)
+Warning (10230): Verilog HDL assignment warning at CPU_Module.sv(137): truncated value with size 32 to match size of target (16)
+Warning (10230): Verilog HDL assignment warning at CPU_Module.sv(147): truncated value with size 32 to match size of target (16)
+Warning (10230): Verilog HDL assignment warning at CPU_Module.sv(148): truncated value with size 32 to match size of target (8)
+Warning (10230): Verilog HDL assignment warning at CPU_Module.sv(154): truncated value with size 32 to match size of target (16)
+Warning (10230): Verilog HDL assignment warning at CPU_Module.sv(155): truncated value with size 32 to match size of target (16)
+Warning (10034): Output port "dataOut" at CPU_Module.sv(16) has no driver
+Warning (10034): Output port "oe" at CPU_Module.sv(18) has no driver
+Warning (10034): Output port "out" at CPU_Module.sv(19) has no driver
+Warning (10034): Output port "aux1" at CPU_Module.sv(20) has no driver
+Warning (10034): Output port "aux2" at CPU_Module.sv(21) has no driver
+Warning (10034): Output port "rw" at CPU_Module.sv(17) has no driver
 Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13039): The following bidir pins have no drivers
     Warning (13040): Bidir "PPU_D[0]" has no driver
@@ -531,8 +636,8 @@ Warning (21074): Design contains 12 input pin(s) that do not drive logic
     Warning (13410): Pin "LEDR[7]" is stuck at GND
     Warning (13410): Pin "LEDR[8]" is stuck at GND
     Warning (13410): Pin "CON1_D1" is stuck at GND
-Info (17049): 14 registers lost all their fanouts during netlist optimizations.
-Info (144001): Generated suppressed messages file C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.map.smsg
+Info (17049): 20 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file C:/Users/ADMIN/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 13 input pin(s) that do not drive logic
@@ -550,6 +655,7 @@ Warning (21074): Design contains 13 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[7]"
     Warning (15610): No output dependent on input pin "SW[8]"
     Warning (15610): No output dependent on input pin "SW[9]"
+<<<<<<< HEAD
 <<<<<<< HEAD
 Info (21057): Implemented 154 device resources after synthesis - the final resource count might be different
 =======
@@ -572,11 +678,23 @@ Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 99 warnin
     Info: Elapsed time: 00:00:02
 >>>>>>> refs/remotes/origin/Cody
     Info: Total CPU time (on all processors): 00:00:01
+=======
+Info (21057): Implemented 161 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 14 input pins
+    Info (21059): Implemented 55 output pins
+    Info (21060): Implemented 16 bidirectional pins
+    Info (21061): Implemented 76 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 112 warnings
+    Info: Peak virtual memory: 460 megabytes
+    Info: Processing ended: Wed Oct 25 18:02:53 2017
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:02
+>>>>>>> refs/remotes/origin/Ryan
 
 
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.map.smsg.
+The suppressed messages can be found in C:/Users/ADMIN/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.map.smsg.
 
 

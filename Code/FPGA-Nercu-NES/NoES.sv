@@ -79,28 +79,32 @@ module NoES(
 	begin
 		if(addressOut[2:0] == 0)
 		begin
-			data <= 8'hF0;
+			data <= 8'hA9;
 		end
 		else if (addressOut[2:0] == 1)
 		begin
-			data <= 8'h03;
+			data <= 8'h00;
 		end
 		else if (addressOut[2:0] == 2)
 		begin
-			data <= 8'h00;
+			data <= 8'hF0;
 		end
 		else if (addressOut[2:0] == 3)
 		begin
-			data <= 8'hF0;
+			data <= 8'h00;
 		end
 		else if(addressOut[2:0] == 4)
 		begin
-			data <= 8'h00;
+			data <= 8'hF0;
 		end
 		else if (addressOut[2:0] == 5)
 		begin
+<<<<<<< HEAD
 			data <= 8'h00;
 >>>>>>> refs/remotes/origin/Cody
+=======
+			data <= 8'hFA;
+>>>>>>> refs/remotes/origin/Ryan
 		end
 		else if (addressOut[2:0] == 6)
 		begin

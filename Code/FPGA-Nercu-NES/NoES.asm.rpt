@@ -1,9 +1,13 @@
 Assembler report for NoES
 <<<<<<< HEAD
+<<<<<<< HEAD
 Sun Oct 15 13:08:43 2017
 =======
 Mon Oct 16 19:46:08 2017
 >>>>>>> refs/remotes/origin/Cody
+=======
+Wed Oct 25 18:03:04 2017
+>>>>>>> refs/remotes/origin/Ryan
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
 
 
@@ -14,8 +18,8 @@ Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
   2. Assembler Summary
   3. Assembler Settings
   4. Assembler Generated Files
-  5. Assembler Device Options: C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.sof
-  6. Assembler Device Options: C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.pof
+  5. Assembler Device Options: C:/Users/ADMIN/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.sof
+  6. Assembler Device Options: C:/Users/ADMIN/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.pof
   7. Assembler Messages
 
 
@@ -43,10 +47,14 @@ applicable agreement for further details.
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
 <<<<<<< HEAD
+<<<<<<< HEAD
 ; Assembler Status      ; Successful - Sun Oct 15 13:08:43 2017 ;
 =======
 ; Assembler Status      ; Successful - Mon Oct 16 19:46:08 2017 ;
 >>>>>>> refs/remotes/origin/Cody
+=======
+; Assembler Status      ; Successful - Wed Oct 25 18:03:04 2017 ;
+>>>>>>> refs/remotes/origin/Ryan
 ; Revision Name         ; NoES                                  ;
 ; Top-level Entity Name ; NoES                                  ;
 ; Family                ; Cyclone II                            ;
@@ -91,8 +99,8 @@ applicable agreement for further details.
 +------------------------------------------------------------------------+
 ; File Name                                                              ;
 +------------------------------------------------------------------------+
-; C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.sof ;
-; C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.pof ;
+; C:/Users/ADMIN/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.sof ;
+; C:/Users/ADMIN/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.pof ;
 +------------------------------------------------------------------------+
 
 
@@ -120,24 +128,24 @@ applicable agreement for further details.
 +--------------------+------------------------------------------------+
 =======
 +--------------------------------------------------------------------------------------------------+
-; Assembler Device Options: C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.sof ;
+; Assembler Device Options: C:/Users/ADMIN/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.sof ;
 +----------------+---------------------------------------------------------------------------------+
 ; Option         ; Setting                                                                         ;
 +----------------+---------------------------------------------------------------------------------+
 ; Device         ; EP2C20F484C7                                                                    ;
-; JTAG usercode  ; 0x001B7950                                                                      ;
-; Checksum       ; 0x001B7950                                                                      ;
+; JTAG usercode  ; 0x001BABD3                                                                      ;
+; Checksum       ; 0x001BABD3                                                                      ;
 +----------------+---------------------------------------------------------------------------------+
 
 
 +--------------------------------------------------------------------------------------------------+
-; Assembler Device Options: C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.pof ;
+; Assembler Device Options: C:/Users/ADMIN/Documents/GitHub/Hercu-NES/Code/FPGA-Nercu-NES/NoES.pof ;
 +--------------------+-----------------------------------------------------------------------------+
 ; Option             ; Setting                                                                     ;
 +--------------------+-----------------------------------------------------------------------------+
 ; Device             ; EPCS16                                                                      ;
 ; JTAG usercode      ; 0x00000000                                                                  ;
-; Checksum           ; 0x1DD8EF49                                                                  ;
+; Checksum           ; 0x1DD8B01F                                                                  ;
 ; Compression Ratio  ; 3                                                                           ;
 +--------------------+-----------------------------------------------------------------------------+
 >>>>>>> refs/remotes/origin/Cody
@@ -150,14 +158,19 @@ Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
 <<<<<<< HEAD
+<<<<<<< HEAD
     Info: Processing started: Sun Oct 15 13:08:41 2017
 =======
     Info: Processing started: Mon Oct 16 19:46:06 2017
 >>>>>>> refs/remotes/origin/Cody
+=======
+    Info: Processing started: Wed Oct 25 18:03:02 2017
+>>>>>>> refs/remotes/origin/Ryan
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off NoES -c NoES
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
+<<<<<<< HEAD
 <<<<<<< HEAD
     Info: Peak virtual memory: 406 megabytes
     Info: Processing ended: Sun Oct 15 13:08:43 2017
@@ -165,6 +178,10 @@ Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 435 megabytes
     Info: Processing ended: Mon Oct 16 19:46:08 2017
 >>>>>>> refs/remotes/origin/Cody
+=======
+    Info: Peak virtual memory: 410 megabytes
+    Info: Processing ended: Wed Oct 25 18:03:04 2017
+>>>>>>> refs/remotes/origin/Ryan
     Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:02
 

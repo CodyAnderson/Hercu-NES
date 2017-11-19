@@ -1,10 +1,14 @@
 <sld_project_info>
   <project>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <hash md5_digest_80b="f59d56a4201566e36eea"/>
 =======
     <hash md5_digest_80b="e5f619f35fba3d65c1af"/>
 >>>>>>> refs/remotes/origin/Cody
+=======
+    <hash md5_digest_80b="beab2164ba1e4dfb14ec"/>
+>>>>>>> refs/remotes/origin/Ryan
   </project>
   <file_info>
     <file device="EP2C20F484C7" path="NoES.sof" usercode="0xFFFFFFFF"/>
