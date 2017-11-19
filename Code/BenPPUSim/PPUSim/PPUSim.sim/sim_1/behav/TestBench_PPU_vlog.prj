@@ -1,0 +1,10 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  "../../../../../FPGA-Nercu-NES/PPU_Module.sv"
+sv xil_defaultlib  "../../../PPUSim.srcs/sources_1/new/TestBench_PPU.sv"
+sv xil_defaultlib  "../../../../../FPGA-Nercu-NES/SN74LS373N.sv"
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
