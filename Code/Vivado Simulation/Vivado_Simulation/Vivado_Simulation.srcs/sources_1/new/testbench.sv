@@ -44,7 +44,7 @@ module testbench;
       logic [7:0] cpuAux1;        //audio output channel 1 (size may not be ideal)
       logic [7:0] cpuAux2;        //audio output channel 2 (size may not be ideal)
       
-      NesCpu bob(cpuClock, reset ,cpuIrq, cpuNmi, cpuDataIn, cpuAddressOut, cpuDataOut, cpuRW, cpuOE, cpuOut, cpuAux1, cpuAux2);
+      NesCpu bob(cpuClock, cpuReset ,cpuIrq, cpuNmi, cpuDataIn, cpuAddressOut, cpuDataOut, cpuRW, cpuOE, cpuOut, cpuAux1, cpuAux2);
       MemDogMillionaire bobIEEE(cpuClock, reset, cpuAddressOut, cpuDataIn);
       
     initial begin 
@@ -66,7 +66,7 @@ module testbench;
     always @(posedge clk) begin
         cpuClock <= ~cpuClock;
         count <= count + 1;
-        if(count == 1)
+        if(count == 2)
           begin
             reset <= 0;
           end

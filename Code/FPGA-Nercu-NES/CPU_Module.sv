@@ -5,7 +5,7 @@ module MemDogMillionaire(clock, reset, addressIn, dataOut);
   input logic [15:0] addressIn;   //Used for addressing ROM, RAM, PPU, and ALU(audio)
   output logic [15:0] dataOut;    //Used for addressing ROM, RAM, PPU, and ALU(audio)
   
-  always_ff @(posedge clock)
+  always_ff @(negedge clock)
     begin
       if(reset)
         begin
@@ -44,6 +44,10 @@ module MemDogMillionaire(clock, reset, addressIn, dataOut);
           else if (addressIn[2:0] == 7)
             begin
               dataOut <= 8'hFF;
+            end
+          else
+            begin
+            dataOut <= 8'hDB;
             end
       end
     end
@@ -98,124 +102,131 @@ module NesCpu(clock, reset, irq, nmi, dataIn, addressOut, dataOut, rw, oe, out, 
   
   always_ff @(posedge clock) 
     begin
-      //Update the dataLoad flag
-      dataLoad <= dataLoad + 1;
-      //If we're in the data load part
-      if(dataLoad) 
+      if(reset)
         begin
-          //Let's read in the data we got
-          data <= dataIn;
-          if(stage == 0)
+          addressOut <= 0;
+        end
+      else
+        begin
+          //Update the dataLoad flag
+          dataLoad <= dataLoad + 1;
+          //If we're in the data load part
+          if(dataLoad) 
             begin
-              //And maybe it's the instruction
-              instruction <= dataIn;
-              
-              //Accumulator flag updates
-              negativeN <= accumulatorAC[7];
-              if(accumulatorAC == 0)
+              //Let's read in the data we got
+              data <= dataIn;
+              if(stage == 0)
                 begin
-                  zeroZ <= 1;
+                  //And maybe it's the instruction
+                  instruction <= dataIn;
+                  
+                  //Accumulator flag updates
+                  negativeN <= accumulatorAC[7];
+                  if(accumulatorAC == 0)
+                    begin
+                      zeroZ <= 1;
+                    end
+                  else
+                    begin
+                      zeroZ <= 0;
+                    end
                 end
-              else
-                begin
-                  zeroZ <= 0;
-                end
-            end
-        end  
-      //If we're in the do stuff part, let's get on it
-      else 
-		
-        begin
-          case(instruction)
-            //BRK
-            8'h00  :
-              begin
-                
-						//Update the Program Counter
-						programCounterPC <= programCounterPC + 1;
-						addressOut <= programCounterPC + 1;
-              end
-              
-            //AND
-            8'h29 :
-              begin
-                
-						//Update the Program Counter
-						programCounterPC <= programCounterPC + 1;
-						addressOut <= programCounterPC + 1;
-                if(stage == 0)
+            end  
+          //If we're in the do stuff part, let's get on it
+          else 
+        
+            begin
+              case(instruction)
+                //BRK
+                8'h00  :
                   begin
-                    stage <= 1;
+                    
+                //Update the Program Counter
+                programCounterPC <= programCounterPC + 1;
+                addressOut <= programCounterPC + 1;
                   end
-                else if(stage == 1)
+                  
+                //AND
+                8'h29 :
                   begin
-                    accumulatorAC <= accumulatorAC & data;
-                    stage <= 0;
-                  end
-              end
-            //LDA
-            8'hA9 :
-              begin
-                
-						//Update the Program Counter
-						programCounterPC <= programCounterPC + 1;
-						addressOut <= programCounterPC + 1;
-                if(stage == 0)
-                  begin
-                    stage <= 1;
-                  end
-                else if(stage == 1)
-                  begin
-                    accumulatorAC <= data;
-                  end
-              end
-            //NOP
-            8'hEA  :
-              begin
-                
-						//Update the Program Counter
-						programCounterPC <= programCounterPC + 1;
-						addressOut <= programCounterPC + 1;
-                
-              end
-            //BEQ
-            8'hF0 :
-              begin
-                if(stage == 0)
-                  begin
-                
-						//Update the Program Counter
-						programCounterPC <= programCounterPC + 1;
-						addressOut <= programCounterPC + 1;
-                    //Kick it
-                    stage <= 1;
-                  end
-                else if(stage == 1)
-                  begin
-                    if(zeroZ == 1)
+                    
+                //Update the Program Counter
+                programCounterPC <= programCounterPC + 1;
+                addressOut <= programCounterPC + 1;
+                    if(stage == 0)
                       begin
-                
-								//Update the Program Counter
-								addressOut <= programCounterPC + 1;
-                        programCounterPC[7:0] <= programCounterPC[7:0] + data[7:0] + 1;
+                        stage <= 1;
                       end
-							else
-								begin
-                
-						//Update the Program Counter
-						programCounterPC <= programCounterPC + 1;
-						addressOut <= programCounterPC + 1;
-								end
-                    stage <= 0;
+                    else if(stage == 1)
+                      begin
+                        accumulatorAC <= accumulatorAC & data;
+                        stage <= 0;
+                      end
                   end
-              end
-              
-            //DEFAULT  
-            default :
-              begin
-                
-              end
-          endcase
+                //LDA
+                8'hA9 :
+                  begin
+                    
+                //Update the Program Counter
+                programCounterPC <= programCounterPC + 1;
+                addressOut <= programCounterPC + 1;
+                    if(stage == 0)
+                      begin
+                        stage <= 1;
+                      end
+                    else if(stage == 1)
+                      begin
+                        accumulatorAC <= data;
+                      end
+                  end
+                //NOP
+                8'hEA  :
+                  begin
+                    
+                //Update the Program Counter
+                programCounterPC <= programCounterPC + 1;
+                addressOut <= programCounterPC + 1;
+                    
+                  end
+                //BEQ
+                8'hF0 :
+                  begin
+                    if(stage == 0)
+                      begin
+                    
+                //Update the Program Counter
+                programCounterPC <= programCounterPC + 1;
+                addressOut <= programCounterPC + 1;
+                        //Kick it
+                        stage <= 1;
+                      end
+                    else if(stage == 1)
+                      begin
+                        if(zeroZ == 1)
+                          begin
+                    
+                    //Update the Program Counter
+                    addressOut <= programCounterPC + 1;
+                            programCounterPC[7:0] <= programCounterPC[7:0] + data[7:0] + 1;
+                          end
+                  else
+                    begin
+                    
+                //Update the Program Counter
+                programCounterPC <= programCounterPC + 1;
+                addressOut <= programCounterPC + 1;
+                    end
+                        stage <= 0;
+                      end
+                  end
+                  
+                //DEFAULT  
+                default :
+                  begin
+                    
+                  end
+              endcase
+            end
         end
     end
 endmodule
