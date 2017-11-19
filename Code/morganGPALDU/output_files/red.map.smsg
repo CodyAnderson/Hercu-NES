@@ -1,1 +1,2 @@
-Warning (10268): Verilog HDL information at red.sv(86): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at red.sv(72): always construct contains both blocking and non-blocking assignments
+Warning (10268): Verilog HDL information at red.sv(189): always construct contains both blocking and non-blocking assignments

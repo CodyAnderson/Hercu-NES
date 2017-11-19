@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP2C20F484) Path("C:/altera/13.0/101217/output_files/") File("red.sof") MfrSpec(OpMask(1));
+		Device PartName(EP2C20F484) Path("C:/Users/Megzuki/Documents/GitHub/Hercu-NES/Code/morganGPALDU/output_files/") File("red.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 
