@@ -267,6 +267,22 @@ module NesCpu(clk12x, reset, irq, nmi, dataIn, addressOut, dataOut, RW, OE, Out,
                     stage <= 0;
                   end
               end
+            //SEI
+            8'h78 :
+              begin
+                //Update the Program Counter
+                programCounterPC <= programCounterPC + 1;
+                addressOut <= programCounterPC + 1;
+                if(stage == 0)
+                  begin
+                    stage <= 1;
+                    interruptI <= 1;
+                  end
+                else if(stage == 1)
+                  begin
+                    stage <= 0;
+                  end
+              end
             //JMP
             8'h4C :
               begin
@@ -294,6 +310,22 @@ module NesCpu(clk12x, reset, irq, nmi, dataIn, addressOut, dataOut, RW, OE, Out,
                     stage <= 0;
                   end
               end
+            //LDX
+            8'hA2 :
+              begin
+                //Update the Program Counter
+                programCounterPC <= programCounterPC + 1;
+                addressOut <= programCounterPC + 1;
+                if(stage == 0)
+                  begin
+                    stage <= 1;
+                  end
+                else if(stage == 1)
+                  begin
+                    Xregister <= data;
+                    stage <= 0;
+                  end
+              end
             //LDA
             8'hA9 :
               begin
@@ -307,6 +339,22 @@ module NesCpu(clk12x, reset, irq, nmi, dataIn, addressOut, dataOut, RW, OE, Out,
                 else if(stage == 1)
                   begin
                     accumulatorAC <= data;
+                    stage <= 0;
+                  end
+              end
+            //CLD
+            8'h78 :
+              begin
+                //Update the Program Counter
+                programCounterPC <= programCounterPC + 1;
+                addressOut <= programCounterPC + 1;
+                if(stage == 0)
+                  begin
+                    stage <= 1;
+                    decimalD <= 0;
+                  end
+                else if(stage == 1)
+                  begin
                     stage <= 0;
                   end
               end
