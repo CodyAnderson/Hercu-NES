@@ -2,8 +2,8 @@
 # Webtalk v2016.4 (64-bit)
 # SW Build 1756540 on Mon Jan 23 19:11:23 MST 2017
 # IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
-# Start of session at: Mon Nov 13 19:22:00 2017
-# Process ID: 4620
+# Start of session at: Sun Nov 19 18:24:12 2017
+# Process ID: 17056
 # Current directory: C:/Users/Dingler/Documents/GitHub/Hercu-NES/Code/Vivado Simulation/Vivado_Simulation_old_verr/Vivado_Simulation_old_verr.sim/sim_1/behav
 # Command line: wbtcv.exe -mode batch -source C:/Users/Dingler/Documents/GitHub/Hercu-NES/Code/Vivado Simulation/Vivado_Simulation_old_verr/Vivado_Simulation_old_verr.sim/sim_1/behav/xsim.dir/testbench_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: C:/Users/Dingler/Documents/GitHub/Hercu-NES/Code/Vivado Simulation/Vivado_Simulation_old_verr/Vivado_Simulation_old_verr.sim/sim_1/behav/webtalk.log

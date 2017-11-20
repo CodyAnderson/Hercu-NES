@@ -77,18 +77,18 @@ module NesCpu(clock, reset, irq, nmi, dataIn, addressOut, dataOut, rw, oe, out, 
   output logic [7:0] aux2;        //audio output channel 2 (size may not be ideal)
   
   //Just some house-keeping stuff for us
-  logic dataLoad;
-  logic [7:0] data;
-  logic [7:0] stage;
-  logic [7:0] instruction;
+  logic        dataLoad;
+  logic [7:0]  data;
+  logic [7:0]  stage;
+  logic [7:0]  instruction;
   
   //Internal registers of import
   logic [15:0] programCounterPC;
-  logic [7:0] accumulatorAC;
-  logic [7:0] Xregister;
-  logic [7:0] Yregister;
-  logic [7:0] statusRegisterSR;
-  logic [7:0] stackPointerSP;
+  logic [7:0]  accumulatorAC;
+  logic [7:0]  Xregister;
+  logic [7:0]  Yregister;
+  logic [7:0]  statusRegisterSR;
+  logic [7:0]  stackPointerSP;
   
   //Status register flags
   logic negativeN;
