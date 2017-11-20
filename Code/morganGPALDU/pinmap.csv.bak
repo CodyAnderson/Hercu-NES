@@ -1,0 +1,66 @@
+//# Copyright (C) 1991-2006 Altera Corporation
+//# Your use of Altera Corporation's design tools, logic functions 
+//# and other software and tools, and its AMPP partner logic 
+# functions, and any output files any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+
+# Quartus II Version 6.0 Build 202 06/20/2006 Service Pack 1 SJ Full Version
+# File: C:\DE1\DE1_TOP\DE1_TOP.csv
+# Generated on: Wed Sep 27 14:39:29 2006
+
+# Note: The column header names should not be changed if you wish to import this .csv file into the Quartus II software.
+
+From,To,Assignment Name,Value,Enabled
+
+,KEY[0],Location,PIN_R22,Yes
+,KEY[1],Location,PIN_R21,Yes
+,KEY[2],Location,PIN_T22,Yes
+,KEY[3],Location,PIN_T21,Yes
+,LEDR[0],Location,PIN_R20,Yes
+,LEDR[1],Location,PIN_R19,Yes
+,LEDR[2],Location,PIN_U19,Yes
+,LEDR[3],Location,PIN_Y19,Yes
+,LEDR[4],Location,PIN_T18,Yes
+,LEDR[5],Location,PIN_V19,Yes
+,LEDR[6],Location,PIN_Y18,Yes
+,LEDR[7],Location,PIN_U18,Yes
+,LEDR[8],Location,PIN_R18,Yes
+,LEDR[9],Location,PIN_R17,Yes
+,LEDG[0],Location,PIN_U22,Yes
+,LEDG[1],Location,PIN_U21,Yes
+,LEDG[2],Location,PIN_V22,Yes
+,LEDG[3],Location,PIN_V21,Yes
+,LEDG[4],Location,PIN_W22,Yes
+,LEDG[5],Location,PIN_W21,Yes
+,LEDG[6],Location,PIN_Y22,Yes
+,LEDG[7],Location,PIN_Y21,Yes/*
+,KEY[0],I/O Standard,LVTTL,Yes
+,KEY[1],I/O Standard,LVTTL,Yes
+,KEY[2],I/O Standard,LVTTL,Yes
+,KEY[3],I/O Standard,LVTTL,Yes
+,LEDR[0],I/O Standard,LVTTL,Yes
+,LEDR[1],I/O Standard,LVTTL,Yes
+,LEDR[2],I/O Standard,LVTTL,Yes
+,LEDR[3],I/O Standard,LVTTL,Yes
+,LEDR[4],I/O Standard,LVTTL,Yes
+,LEDR[5],I/O Standard,LVTTL,Yes
+,LEDR[6],I/O Standard,LVTTL,Yes
+,LEDR[7],I/O Standard,LVTTL,Yes
+,LEDR[8],I/O Standard,LVTTL,Yes
+,LEDR[9],I/O Standard,LVTTL,Yes
+,LEDG[0],I/O Standard,LVTTL,Yes
+,LEDG[1],I/O Standard,LVTTL,Yes
+,LEDG[2],I/O Standard,LVTTL,Yes
+,LEDG[3],I/O Standard,LVTTL,Yes
+,LEDG[4],I/O Standard,LVTTL,Yes
+,LEDG[5],I/O Standard,LVTTL,Yes
+,LEDG[6],I/O Standard,LVTTL,Yes
+,LEDG[7],I/O Standard,LVTTL,Yes*/
