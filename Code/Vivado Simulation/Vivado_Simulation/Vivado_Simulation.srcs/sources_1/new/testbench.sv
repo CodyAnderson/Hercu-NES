@@ -472,3 +472,7 @@ module NesProgRom(clk12x, reset, addressIn, dataOut);
       end
     end
 endmodule
+
+module ANDY(clkPE,);
+
+endmodule
