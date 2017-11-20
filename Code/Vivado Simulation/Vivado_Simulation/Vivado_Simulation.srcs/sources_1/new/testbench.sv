@@ -94,7 +94,7 @@ endmodule
  
 module NesCpu(clk12x, reset, irq, nmi, dataIn, addressOut, dataOut, RW, OE, Out, Aux1, Aux2);
 
-  parameter CPU_RESET_ADDRESS = 16'h0000;
+  parameter CPU_RESET_ADDRESS = 16'h03FE;
   parameter SMALL_COUNT = 12;
   parameter SMALLER_COUNT = 6;
   
@@ -125,6 +125,8 @@ module NesCpu(clk12x, reset, irq, nmi, dataIn, addressOut, dataOut, RW, OE, Out,
   
   //Okay, now for some other bizzness
   logic [7:0]  data;
+  logic [7:0]  oldData;
+  logic [7:0]  olderData;
   logic [7:0]  stage;
   logic [7:0]  instruction;
   
@@ -163,14 +165,14 @@ module NesCpu(clk12x, reset, irq, nmi, dataIn, addressOut, dataOut, RW, OE, Out,
             begin
               clkPE <= !clkPE;
               clkNE <= !clkNE;
-              if(count >= SMALL_COUNT)
-                begin
-                  count <= count-5;
-                end
-              else
-                begin
+              //if(count >= SMALL_COUNT)
+              //  begin
+              //    count <= count-5;
+              //  end
+              //else
+              //  begin
                   count <= count + 1;
-                end
+              //  end
             end
           else
             begin
@@ -185,11 +187,15 @@ module NesCpu(clk12x, reset, irq, nmi, dataIn, addressOut, dataOut, RW, OE, Out,
     begin
       //Load the data from the address we put out on posedge
       data <= dataIn;
+      oldData <= data;
+      olderData <= oldData;
       if(stage == 0)
         begin
           instruction <= dataIn;
         end
       //Accumulator flag updates
+//>>//THESE NEED TO ONLY BE DONE WITHIN INSTRUCTIONS WHICH ALTER THE ACCUMULATOR
+//>>//CHANGE LATER WHEN LESS LAZY
       negativeN <= accumulatorAC[7];
       if(accumulatorAC == 0)
         begin
@@ -206,10 +212,11 @@ module NesCpu(clk12x, reset, irq, nmi, dataIn, addressOut, dataOut, RW, OE, Out,
     begin
       //Operate on the data that we just got and put the address out for the new data
       //Initial behavior to prime the pumps
-      if(count < SMALLER_COUNT)
+      if(count < 2)//< SMALLER_COUNT)
         begin
+          instruction <= 8'h4C;
           addressOut <= CPU_RESET_ADDRESS;
-          stage <= 0;
+          stage <= 2;
           programCounterPC <= CPU_RESET_ADDRESS;
           accumulatorAC <= 8'hff;
           Xregister <= 0;
@@ -257,6 +264,33 @@ module NesCpu(clk12x, reset, irq, nmi, dataIn, addressOut, dataOut, RW, OE, Out,
                 else if(stage == 1)
                   begin
                     accumulatorAC <= accumulatorAC & data;
+                    stage <= 0;
+                  end
+              end
+            //JMP
+            8'h4C :
+              begin
+                if(stage == 0)
+                  begin
+                    //Update the Program Counter
+                    programCounterPC <= programCounterPC + 1;
+                    addressOut <= programCounterPC + 1;
+                    stage <= 2;
+                  end
+                else if(stage == 2)
+                  begin
+                    //Update the Program Counter
+                    programCounterPC <= programCounterPC + 1;
+                    addressOut <= programCounterPC + 1;
+                    //Load low byte
+                    stage <= 1;
+                  end
+                else if(stage == 1)
+                  begin
+                    //Update the Program Counter
+                    programCounterPC <= {data,oldData};
+                    addressOut <= {data,oldData};
+                    //Load high byte
                     stage <= 0;
                   end
               end
@@ -339,6 +373,9 @@ module NesProgRom(clk12x, reset, addressIn, dataOut);
   input logic [15:0] addressIn;   //Used for addressing ROM, RAM, PPU, and ALU(audio)
   output logic [7:0] dataOut;    //Used for addressing ROM, RAM, PPU, and ALU(audio)
   
+  logic [7:0]ROM[1024];
+  initial $readmemh("../../../../FAKEROM.hex", ROM);
+  
   always_ff @(posedge clk12x)
     begin
       if(reset)
@@ -347,9 +384,10 @@ module NesProgRom(clk12x, reset, addressIn, dataOut);
         end
       else
         begin
-          if(addressIn[2:0] == 0)
+          dataOut <= ROM[addressIn[9:0]];
+          /*if(addressIn[2:0] == 0)
             begin
-              dataOut <= 8'hA9;
+              dataOut <= 8'h02;
             end
           else if (addressIn[2:0] == 1)
             begin
@@ -357,7 +395,7 @@ module NesProgRom(clk12x, reset, addressIn, dataOut);
             end
           else if (addressIn[2:0] == 2)
             begin
-              dataOut <= 8'hF0;
+              dataOut <= 8'hA9;
             end
           else if (addressIn[2:0] == 3)
             begin
@@ -369,20 +407,20 @@ module NesProgRom(clk12x, reset, addressIn, dataOut);
             end
           else if (addressIn[2:0] == 5)
             begin
-              dataOut <= 8'hFA;
+              dataOut <= 8'h00;
             end
           else if (addressIn[2:0] == 6)
             begin
-              dataOut <= 8'hFF;
+              dataOut <= 8'hF0;
             end
           else if (addressIn[2:0] == 7)
             begin
-              dataOut <= 8'hFF;
+              dataOut <= 8'hFA;
             end
           else
             begin
               dataOut <= 8'hDB;
-            end
+            end*/
       end
     end
 endmodule
