@@ -1,4 +1,4 @@
-module NesPpu (clock, vgaClock, red, green, blue, hsync, vsync, reset, rw, dataBusEnable, registerSelect, cpuDataIn, cpuDataOut, vRamDataIn, vRamDataOut, vRamAddressOut, addressLatchEnable, interrupt, vRamRead, vRamWrite);
+module NesPpu (clock, vgaClock, red, green, blue, hsync, vsync, reset, rw, dataBusEnable, registerSelect, cpuDataIn, cpuDataOut, vRamDataIn, vRamDataOut, vRamAddressOut, addressLatchEnable, interrupt, vRamRead, vRamWrite, pixelIndexData, vgaSync, lineIndex);
     /////////////
    // PPU Inputs
   /////////////
@@ -20,6 +20,9 @@ module NesPpu (clock, vgaClock, red, green, blue, hsync, vsync, reset, rw, dataB
   output logic interrupt;             //(ACTIVE LOW) Interrupts the CPU using the NMI input.
   output logic vRamRead;              //(ACTIVE LOW) Enables the video RAM to output data on the vRAM data bus.
   output logic vRamWrite;             //(ACTIVE LOW) Tells the video RAM to store the data on the vRAM data bus.
+  output logic [5:0]pixelIndexData; 
+  output logic vgaSync;
+  output logic lineIndex;
 
     //////////////////////////////////////////////////////////////
    // VGA Output addition (merely a guess at what will be needed)
@@ -35,15 +38,15 @@ module NesPpu (clock, vgaClock, red, green, blue, hsync, vsync, reset, rw, dataB
     ////////////
 	 // Variables
   ////////////
-	
-  logic [5:0]pixelIndexData; 
+	logic memLatch;
+  
 
   MemoryStuffs mems(vRamRead, vRamAddressOut, vRamDataIn);
 
   logic [7:0] addrLatchIn;
   SN74LS373N addrLatch(memLatch, 0, addrLatchIn, vRamAddressOut[7:0]);
 
-  NES2C02 The_PPU(clock, reset, rw, dataBusEnable, registerSelect, cpuDataIn, vRamDataIn, cpuDataOut, vRamDataOut, {vRamAddressOut[13:8], addrLatchIn}, memLatch, interrupt, vRamRead, vRamWrite, pixelIndexData);
+  NES2C02 The_PPU(clock, reset, rw, dataBusEnable, registerSelect, cpuDataIn, vRamDataIn, cpuDataOut, vRamDataOut, {vRamAddressOut[13:8], addrLatchIn}, memLatch, interrupt, vRamRead, vRamWrite, pixelIndexData, vgaSync, lineIndex);
 
 
   
@@ -56,8 +59,10 @@ module MemoryStuffs(input logic rd, input logic[13:0] address, output logic[7:0]
 
   initial
   begin
-    $readmemh("../../../BackgroundMemDump.hex", ram);
-    $readmemh("../../../CharacterRom.hex", rom);
+    $readmemh("NameTable.txt", ram);
+    $readmemh("chrHexed.txt", rom);
+    //$readmemh("../../../../BackgroundMemDump.hex", ram);
+    //$readmemh("../../../../CharacterRom.hex", rom);
   end
 
   always_comb
@@ -97,7 +102,9 @@ module NES2C02(
   output logic vRamRead,              //(ACTIVE LOW) Enables the video RAM to output data on the vRAM data bus.
   output logic vRamWrite,             //(ACTIVE LOW) Tells the video RAM to store the data on the vRAM data bus.
 
-  output logic [5:0]pixelOut
+  output logic [5:0]pixelOut,
+  output logic vgaSync,
+  output logic lineIndex
   );
 
 
@@ -119,8 +126,16 @@ module NES2C02(
   logic [15:0]shiftyLow;
   logic [7:0]shiftyAttrHigh;
   logic [7:0]shiftyAttrLow;
-
+  assign lineIndex = pixelY[0];
   logic pixelEnable;
+  
+  always_comb
+  begin
+    if(pixelX == 0 && pixelY == 1)
+	   vgaSync = 1;
+    else
+	   vgaSync = 0;
+  end
 
   always_comb
   begin
@@ -131,7 +146,7 @@ module NES2C02(
         pixelEnable = 1;
   end
 
-  assign pixelOut = {pixelEnable, 1'b0, shiftyAttrHigh[0], shiftyAttrLow[0], shiftyHigh[0], shiftyLow[0]};
+  assign pixelOut = {pixelEnable, 1'b0, shiftyAttrHigh[0], shiftyAttrLow[0], shiftyHigh[15], shiftyLow[15]};
 
   //assign tileX = pixelX[7:3];
   assign tileY = pixelY[7:3];
@@ -160,10 +175,10 @@ begin
   end
   else
   begin
-    if(fetchEnable)
+    if(fetchEnable && pixelX < 337)
     begin
-      shiftyHigh <= shiftyHigh >> 1;
-      shiftyLow <= shiftyLow >> 1;
+      shiftyHigh <= shiftyHigh << 1;
+      shiftyLow <= shiftyLow << 1;
       shiftyAttrHigh <= {tileAttribs[1],shiftyAttrHigh[7:1]};
       shiftyAttrLow <= {tileAttribs[0],shiftyAttrLow[7:1]};
     end
@@ -172,8 +187,8 @@ begin
   if(incrementTileX)
   begin
     tileX <= tileX + 1;
-    shiftyHigh[15:8] <= tileHighByte;
-    shiftyLow[15:8] <= tileLowByte;
+    shiftyHigh[7:0] <= tileHighByte;
+    shiftyLow[7:0] <= tileLowByte;
   end
 
   if(pixelX == 256)

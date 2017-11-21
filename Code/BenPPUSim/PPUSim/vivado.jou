@@ -1,0 +1,35 @@
+#-----------------------------------------------------------
+# Vivado v2017.3 (64-bit)
+# SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+# IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+# Start of session at: Sun Nov 19 16:15:54 2017
+# Process ID: 3844
+# Current directory: C:/Users/Megzuki/Documents/GitHub/Hercu-NES/Code/BenPPUSim/PPUSim
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent15248 C:\Users\Megzuki\Documents\GitHub\Hercu-NES\Code\BenPPUSim\PPUSim\PPUSim.xpr
+# Log file: C:/Users/Megzuki/Documents/GitHub/Hercu-NES/Code/BenPPUSim/PPUSim/vivado.log
+# Journal file: C:/Users/Megzuki/Documents/GitHub/Hercu-NES/Code/BenPPUSim/PPUSim\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/Megzuki/Documents/GitHub/Hercu-NES/Code/BenPPUSim/PPUSim/PPUSim.xpr
+launch_simulation
+open_wave_config C:/Users/Megzuki/Documents/GitHub/Hercu-NES/Code/BenPPUSim/PPUSim/PPU.wcfg
+source TestBench_PPU.tcl
+close_sim
+launch_simulation
+open_wave_config C:/Users/Megzuki/Documents/GitHub/Hercu-NES/Code/BenPPUSim/PPUSim/PPU.wcfg
+source TestBench_PPU.tcl
+close_sim
+launch_simulation
+open_wave_config C:/Users/Megzuki/Documents/GitHub/Hercu-NES/Code/BenPPUSim/PPUSim/PPU.wcfg
+source TestBench_PPU.tcl
+close_sim
+launch_simulation
+open_wave_config C:/Users/Megzuki/Documents/GitHub/Hercu-NES/Code/BenPPUSim/PPUSim/PPU.wcfg
+source TestBench_PPU.tcl
+close_sim
+launch_simulation
+open_wave_config C:/Users/Megzuki/Documents/GitHub/Hercu-NES/Code/BenPPUSim/PPUSim/PPU.wcfg
+source TestBench_PPU.tcl
+run 1 ms
+run 1 ms
+close_sim

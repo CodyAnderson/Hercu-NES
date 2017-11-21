@@ -1,85 +1,77 @@
-<<<<<<< HEAD
-------------------------------------------------------------
-TimeQuest Timing Analyzer Summary
-------------------------------------------------------------
-
-Type  : Slow Model Setup 'clk'
-Slack : -15.286
-TNS   : -458.683
-
-Type  : Slow Model Setup 'CLOCK_24[0]'
-Slack : -4.253
-TNS   : -452.881
-
-Type  : Slow Model Hold 'CLOCK_24[0]'
-Slack : 0.194
-TNS   : 0.000
-
-Type  : Slow Model Hold 'clk'
-Slack : 0.625
-TNS   : 0.000
-
-Type  : Slow Model Minimum Pulse Width 'CLOCK_24[0]'
-Slack : -2.064
-TNS   : -790.779
-
-Type  : Slow Model Minimum Pulse Width 'clk'
-Slack : -0.611
-TNS   : -64.766
-
-Type  : Fast Model Setup 'clk'
-Slack : -5.080
-TNS   : -145.584
-
-Type  : Fast Model Setup 'CLOCK_24[0]'
-Slack : -1.611
-TNS   : -101.792
-
-Type  : Fast Model Hold 'CLOCK_24[0]'
-Slack : -0.052
-TNS   : -0.289
-
-Type  : Fast Model Hold 'clk'
-Slack : 0.241
-TNS   : 0.000
-
-Type  : Fast Model Minimum Pulse Width 'CLOCK_24[0]'
-Slack : -1.627
-TNS   : -625.576
-
-Type  : Fast Model Minimum Pulse Width 'clk'
-Slack : -0.500
-TNS   : -53.000
-
-------------------------------------------------------------
-=======
 ------------------------------------------------------------
 TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow Model Setup 'CLOCK_24[0]'
-Slack : -12.027
-TNS   : -447.969
+Slack : -9.771
+TNS   : -40122.297
+
+Type  : Slow Model Setup 'clock'
+Slack : -9.176
+TNS   : -767.907
+
+Type  : Slow Model Setup 'NesPpu:name|NES2C02:The_PPU|TileFetcher:fetchfecth|MemFetcher:Fetch|addressLatch'
+Slack : -1.429
+TNS   : -9.538
 
 Type  : Slow Model Hold 'CLOCK_24[0]'
-Slack : 0.625
+Slack : -2.688
+TNS   : -2.688
+
+Type  : Slow Model Hold 'clock'
+Slack : 0.445
+TNS   : 0.000
+
+Type  : Slow Model Hold 'NesPpu:name|NES2C02:The_PPU|TileFetcher:fetchfecth|MemFetcher:Fetch|addressLatch'
+Slack : 0.992
 TNS   : 0.000
 
 Type  : Slow Model Minimum Pulse Width 'CLOCK_24[0]'
 Slack : -1.631
-TNS   : -77.395
+TNS   : -7567.033
+
+Type  : Slow Model Minimum Pulse Width 'clock'
+Slack : -0.611
+TNS   : -146.640
+
+Type  : Slow Model Minimum Pulse Width 'NesPpu:name|NES2C02:The_PPU|TileFetcher:fetchfecth|MemFetcher:Fetch|addressLatch'
+Slack : 0.500
+TNS   : 0.000
 
 Type  : Fast Model Setup 'CLOCK_24[0]'
-Slack : -4.016
-TNS   : -137.806
+Slack : -3.233
+TNS   : -11660.865
+
+Type  : Fast Model Setup 'clock'
+Slack : -2.987
+TNS   : -228.866
+
+Type  : Fast Model Setup 'NesPpu:name|NES2C02:The_PPU|TileFetcher:fetchfecth|MemFetcher:Fetch|addressLatch'
+Slack : -0.342
+TNS   : -2.144
 
 Type  : Fast Model Hold 'CLOCK_24[0]'
-Slack : 0.241
+Slack : -1.716
+TNS   : -1.775
+
+Type  : Fast Model Hold 'clock'
+Slack : 0.215
+TNS   : 0.000
+
+Type  : Fast Model Hold 'NesPpu:name|NES2C02:The_PPU|TileFetcher:fetchfecth|MemFetcher:Fetch|addressLatch'
+Slack : 0.846
 TNS   : 0.000
 
 Type  : Fast Model Minimum Pulse Width 'CLOCK_24[0]'
 Slack : -1.380
-TNS   : -63.380
+TNS   : -6192.380
+
+Type  : Fast Model Minimum Pulse Width 'clock'
+Slack : -0.500
+TNS   : -120.000
+
+Type  : Fast Model Minimum Pulse Width 'NesPpu:name|NES2C02:The_PPU|TileFetcher:fetchfecth|MemFetcher:Fetch|addressLatch'
+Slack : 0.500
+TNS   : 0.000
 
 ------------------------------------------------------------
->>>>>>> Ben
