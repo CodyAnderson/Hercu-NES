@@ -149,7 +149,31 @@ module NesCpu(clk12x, reset, irq, nmi, dataIn, addressOut, dataOut, RW, OE, Out,
   logic carryC;
   
   assign statusRegisterSR[7:0] = {negativeN,overflowV,ignored,breakB,decimalD,interruptI,zeroZ,carryC};
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
   
+  logic negativeN_ANDY;
+  logic zeroZ_ANDY;
+  logic [7:0]  stage_ANDY;
+  logic [15:0] programCounterPC_ANDY;
+  logic [15:0] addressOut_ANDY;
+  logic [7:0] accumulatorAC_ANDY;
+  
+  ANDY HeWasNumberOne(stage,accumulatorAC,programCounterPC,addressOut, dataIn,
+  negativeN_ANDY,zeroZ_ANDY,stage_ANDY, programCounterPC_ANDY, addressOut_ANDY, accumulatorAC_ANDY);
+  //
+  //
+  //
+  //
+  //
+  //
+  //
   always_ff @(posedge clk12x)
     begin
       if(reset) //If the reset pin is low, default values
@@ -254,6 +278,7 @@ module NesCpu(clk12x, reset, irq, nmi, dataIn, addressOut, dataOut, RW, OE, Out,
             //AND
             8'h29 :
               begin
+                /*
                 //Update the Program Counter
                 programCounterPC <= programCounterPC + 1;
                 addressOut <= programCounterPC + 1;
@@ -266,6 +291,25 @@ module NesCpu(clk12x, reset, irq, nmi, dataIn, addressOut, dataOut, RW, OE, Out,
                     accumulatorAC <= accumulatorAC & data;
                     stage <= 0;
                   end
+                  */
+                
+                
+                       //negativeN <= negativeN_ANDY;
+                           //zeroZ <= zeroZ_ANDY;
+                           stage <= stage_ANDY;
+                programCounterPC <= programCounterPC_ANDY;
+                      addressOut <= addressOut_ANDY;
+                   accumulatorAC <= accumulatorAC_ANDY;
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
               end
             //SEI
             8'h78 :
@@ -473,6 +517,36 @@ module NesProgRom(clk12x, reset, addressIn, dataOut);
     end
 endmodule
 
-module ANDY(clkPE,);
+module ANDY(stage_In,accumulatorAC_In,programCounterPC_In,address_In, data_In,
+            negativeN_Out,zeroZ_Out,stage_Out, programCounterPC_Out, address_Out, accumulatorAC_Out);
+            
+  input logic [7:0] stage_In;
+  input logic [7:0] accumulatorAC_In;
+  input logic [15:0] programCounterPC_In;
+  input logic [15:0] address_In;
+  input logic [7:0] data_In;
+  output logic negativeN_Out;
+  output logic zeroZ_Out;
+  output logic [15:0] programCounterPC_Out;
+  output logic [15:0] address_Out;
+  output logic [7:0] stage_Out;
+  output logic [7:0] accumulatorAC_Out;
+  
+  always_comb
+    begin
+      //Update the Program Counter
+      programCounterPC_Out = programCounterPC_In + 1;
+      address_Out = programCounterPC_In + 1;
+      
+      if(stage_In == 0)
+        begin
+          stage_Out = 1;
+        end
+      else if(stage_In == 1)
+        begin
+          accumulatorAC_Out = accumulatorAC_In & data_In;
+          stage_Out = 0;
+        end
+    end
 
 endmodule

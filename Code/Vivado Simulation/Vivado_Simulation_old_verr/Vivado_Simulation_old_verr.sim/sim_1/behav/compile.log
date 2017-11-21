@@ -2,5 +2,6 @@ INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/Dingler/Documents/Gi
 INFO: [VRFC 10-311] analyzing module testbench
 INFO: [VRFC 10-311] analyzing module NesCpu
 INFO: [VRFC 10-311] analyzing module NesProgRom
+INFO: [VRFC 10-311] analyzing module ANDY
 INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Dingler/Documents/GitHub/Hercu-NES/Code/Vivado Simulation/Vivado_Simulation_old_verr/Vivado_Simulation_old_verr.sim/sim_1/behav/glbl.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module glbl
