@@ -1,9 +1,6 @@
 # compile verilog/system verilog design source files
 sv xil_defaultlib  --include "C:/Xilinx/Vivado/2017.3/data/xilinx_vip/include" \
-"../../../../../../FPGA-Nercu-NES/CPU_Module.sv" \
-"../../../../../../FPGA-Nercu-NES/NoES.sv" \
 "../../../../Vivado_Simulation.srcs/sources_1/new/testbench.sv" \
-"../../../../../../FPGA-Nercu-NES/CPU_Module-Template.sv" \
 
 # compile glbl module
 verilog xil_defaultlib "glbl.v"

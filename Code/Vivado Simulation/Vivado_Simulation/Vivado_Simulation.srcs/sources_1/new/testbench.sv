@@ -292,24 +292,13 @@ module NesCpu(clk12x, reset, irq, nmi, dataIn, addressOut, dataOut, RW, OE, Out,
                     stage <= 0;
                   end
                   */
-                
-                
-                       //negativeN <= negativeN_ANDY;
-                           //zeroZ <= zeroZ_ANDY;
-                           stage <= stage_ANDY;
+  
+                   //negativeN <= negativeN_ANDY;
+                       //zeroZ <= zeroZ_ANDY;
+                stage <= stage_ANDY;
                 programCounterPC <= programCounterPC_ANDY;
-                      addressOut <= addressOut_ANDY;
-                   accumulatorAC <= accumulatorAC_ANDY;
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+                addressOut <= addressOut_ANDY;
+                accumulatorAC <= accumulatorAC_ANDY;
               end
             //SEI
             8'h78 :
@@ -550,3 +539,66 @@ module ANDY(stage_In,accumulatorAC_In,programCounterPC_In,address_In, data_In,
     end
 
 endmodule
+
+module ORY(stage_In,accumulatorAC_In,programCounterPC_In,address_In, data_In,
+            negativeN_Out,zeroZ_Out,stage_Out, programCounterPC_Out, address_Out, accumulatorAC_Out);
+            
+  input logic [7:0] stage_In;
+  input logic [7:0] accumulatorAC_In;
+  input logic [15:0] programCounterPC_In;
+  input logic [15:0] address_In;
+  input logic [7:0] data_In;
+  output logic negativeN_Out;
+  output logic zeroZ_Out;
+  output logic [15:0] programCounterPC_Out;
+  output logic [15:0] address_Out;
+  output logic [7:0] stage_Out;
+  output logic [7:0] accumulatorAC_Out;
+  
+  always_comb
+    begin
+      //Update the Program Counter
+      programCounterPC_Out = programCounterPC_In + 1;
+      address_Out = programCounterPC_In + 1;
+      
+      if(stage_In == 0)
+        begin
+          stage_Out = 1;
+        end
+      else if(stage_In == 1)
+        begin
+          accumulatorAC_Out = accumulatorAC_In & data_In;
+          stage_Out = 0;
+        end
+    end
+
+endmodule
+
+task ADD;
+   input logic [7:0] stage_In;
+   input logic [7:0] accumulatorAC_In;
+   input logic [15:0] programCounterPC_In;
+   input logic [15:0] address_In;
+   input logic [7:0] data_In;
+   output logic negativeN_Out;
+   output logic zeroZ_Out;
+   output logic [15:0] programCounterPC_Out;
+   output logic [15:0] address_Out;
+   output logic [7:0] stage_Out;
+   output logic [7:0] accumulatorAC_Out;
+   
+   //Update the Program Counter
+   programCounterPC_Out <= programCounterPC_In + 1;
+   address_Out <= programCounterPC_In + 1;
+   
+   if(stage_In == 0)
+     begin
+       stage_Out <= 1;
+     end
+   else if(stage_In == 1)
+     begin
+       accumulatorAC_Out <= accumulatorAC_In & data_In;
+       stage_Out <= 0;
+     end
+
+ endtask
