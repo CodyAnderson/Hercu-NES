@@ -1,0 +1,49 @@
+#-----------------------------------------------------------
+# Vivado v2016.4 (64-bit)
+# SW Build 1756540 on Mon Jan 23 19:11:23 MST 2017
+# IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
+# Start of session at: Mon Nov 20 14:38:44 2017
+# Process ID: 23532
+# Current directory: C:/Users/Dingler/Documents/GitHub/Hercu-NES/Code/Vivado Simulation/Vivado_Simulation_old_verr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent5880 C:\Users\Dingler\Documents\GitHub\Hercu-NES\Code\Vivado Simulation\Vivado_Simulation_old_verr\Vivado_Simulation_old_verr.xpr
+# Log file: C:/Users/Dingler/Documents/GitHub/Hercu-NES/Code/Vivado Simulation/Vivado_Simulation_old_verr/vivado.log
+# Journal file: C:/Users/Dingler/Documents/GitHub/Hercu-NES/Code/Vivado Simulation/Vivado_Simulation_old_verr\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project {C:/Users/Dingler/Documents/GitHub/Hercu-NES/Code/Vivado Simulation/Vivado_Simulation_old_verr/Vivado_Simulation_old_verr.xpr}
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+source testbench.tcl
+restart
+run 1 us
+run 1 us
+close_sim
+launch_simulation
+source testbench.tcl
+restart
+run 1 us
+run 1 us
+run 1 us
+close_sim
+launch_simulation
+source testbench.tcl
+restart
+run 1 us
+close_sim
+launch_simulation
+source testbench.tcl
+restart
+run 1 us
+run 1 us
+close_sim
+launch_simulation
+source testbench.tcl
+restart
+run 1 us
+run 1 us
+run 1 us
+run 1 us
+close_sim

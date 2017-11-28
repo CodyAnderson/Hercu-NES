@@ -2,10 +2,10 @@
 # Vivado v2017.3 (64-bit)
 # SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
 # IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
-# Start of session at: Mon Nov 27 13:34:22 2017
-# Process ID: 3524
+# Start of session at: Mon Nov 27 15:38:26 2017
+# Process ID: 1316
 # Current directory: C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/Vivado Simulation/Vivado_Simulation
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent13144 C:\Users\RyanP\Documents\GitHub\Hercu-NES\Code\Vivado Simulation\Vivado_Simulation\Vivado_Simulation.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent5508 C:\Users\RyanP\Documents\GitHub\Hercu-NES\Code\Vivado Simulation\Vivado_Simulation\Vivado_Simulation.xpr
 # Log file: C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/Vivado Simulation/Vivado_Simulation/vivado.log
 # Journal file: C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/Vivado Simulation/Vivado_Simulation\vivado.jou
 #-----------------------------------------------------------
@@ -18,22 +18,7 @@ Finished scanning sources
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2017.3/data/ip'.
-open_project: Time (s): cpu = 00:00:15 ; elapsed = 00:00:08 . Memory (MB): peak = 840.816 ; gain = 104.984
-reset_run synth_1
-launch_runs synth_1 -jobs 2
-[Mon Nov 27 13:52:14 2017] Launched synth_1...
-Run output will be captured here: C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/Vivado Simulation/Vivado_Simulation/Vivado_Simulation.runs/synth_1/runme.log
-open_run synth_1 -name synth_1
-Design is defaulting to impl run constrset: constrs_1
-Design is defaulting to synth run part: xc7a100tcsg324-1
-INFO: [Project 1-479] Netlist was created with Vivado 2017.3
-INFO: [Device 21-403] Loading part xc7a100tcsg324-1
-INFO: [Project 1-570] Preparing netlist for logic optimization
-INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-INFO: [Project 1-111] Unisim Transformation Summary:
-No Unisim elements were transformed.
-
-open_run: Time (s): cpu = 00:00:18 ; elapsed = 00:00:10 . Memory (MB): peak = 1188.305 ; gain = 331.516
+open_project: Time (s): cpu = 00:00:14 ; elapsed = 00:00:06 . Memory (MB): peak = 854.262 ; gain = 95.512
 launch_simulation
 INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/Vivado Simulation/Vivado_Simulation/Vivado_Simulation.sim/sim_1/behav/xsim'
 INFO: [SIM-utils-51] Simulation object is 'sim_1'
@@ -70,23 +55,15 @@ Compiling module xil_defaultlib.NesProgRom
 Compiling module xil_defaultlib.testbench
 Compiling module xil_defaultlib.glbl
 Built simulation snapshot testbench_behav
-
-****** Webtalk v2017.3 (64-bit)
-  **** SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
-  **** IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
-    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
-
-source C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/Vivado -notrace
-couldn't read file "C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/Vivado": permission denied
-INFO: [Common 17-206] Exiting Webtalk at Mon Nov 27 14:18:50 2017...
-INFO: [USF-XSim-69] 'elaborate' step finished in '4' seconds
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
 INFO: [USF-XSim-4] XSim::Simulate design
 INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/Vivado Simulation/Vivado_Simulation/Vivado_Simulation.sim/sim_1/behav/xsim'
 INFO: [USF-XSim-98] *** Running xsim
-   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -log {simulate.log}"
+   with args "testbench_behav -key {Behavioral:sim_1:Functional:testbench} -tclbatch {testbench.tcl} -view {{C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/Vivado Simulation/Vivado_Simulation/testbench_behav.wcfg}} -log {simulate.log}"
 INFO: [USF-XSim-8] Loading simulator feature
 Vivado Simulator 2017.3
 Time resolution is 1 ps
+open_wave_config {C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/Vivado Simulation/Vivado_Simulation/testbench_behav.wcfg}
 source testbench.tcl
 # set curr_wave [current_wave_config]
 # if { [string length $curr_wave] == 0 } {
@@ -101,20 +78,13 @@ source testbench.tcl
 WARNING: File ../../../../FAKEROM.hex referenced on C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/Vivado Simulation/Vivado_Simulation/Vivado_Simulation.srcs/sources_1/new/testbench.sv at line 458 cannot be opened for reading. Please ensure that this file is available in the current working directory.
 INFO: [USF-XSim-96] XSim completed. Design snapshot 'testbench_behav' loaded.
 INFO: [USF-XSim-97] XSim simulation ran for 1000ns
-launch_simulation: Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1748.047 ; gain = 5.168
+launch_simulation: Time (s): cpu = 00:00:10 ; elapsed = 00:00:08 . Memory (MB): peak = 864.973 ; gain = 10.711
+run 1 us
 restart
 INFO: [Simtcl 6-17] Simulation restarted
-run all
+run 1 us
 WARNING: File ../../../../FAKEROM.hex referenced on C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/Vivado Simulation/Vivado_Simulation/Vivado_Simulation.srcs/sources_1/new/testbench.sv at line 458 cannot be opened for reading. Please ensure that this file is available in the current working directory.
-run: Time (s): cpu = 00:00:12 ; elapsed = 00:00:07 . Memory (MB): peak = 1775.223 ; gain = 0.000
-restart
-INFO: [Simtcl 6-17] Simulation restarted
-run 10 us
-WARNING: File ../../../../FAKEROM.hex referenced on C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/Vivado Simulation/Vivado_Simulation/Vivado_Simulation.srcs/sources_1/new/testbench.sv at line 458 cannot be opened for reading. Please ensure that this file is available in the current working directory.
-save_wave_config {C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/Vivado Simulation/Vivado_Simulation/testbench_behav.wcfg}
-add_files -fileset sim_1 -norecurse {{C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/Vivado Simulation/Vivado_Simulation/testbench_behav.wcfg}}
-set_property xsim.view {{C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/Vivado Simulation/Vivado_Simulation/testbench_behav.wcfg}} [get_filesets sim_1]
 close_sim
 INFO: [Simtcl 6-16] Simulation closed
 exit
-INFO: [Common 17-206] Exiting Vivado at Mon Nov 27 14:35:23 2017...
+INFO: [Common 17-206] Exiting Vivado at Mon Nov 27 15:40:00 2017...

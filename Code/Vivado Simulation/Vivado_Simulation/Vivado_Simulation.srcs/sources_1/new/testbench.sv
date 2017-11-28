@@ -220,14 +220,14 @@ module NesCpu(clk12x, reset, irq, nmi, dataIn, addressOut, dataOut, RW, OE, Out,
       //Accumulator flag updates
 //>>//THESE NEED TO ONLY BE DONE WITHIN INSTRUCTIONS WHICH ALTER THE ACCUMULATOR
 //>>//CHANGE LATER WHEN LESS LAZY
-      negativeN <= accumulatorAC[7];
+      //negativeN <= accumulatorAC[7];
       if(accumulatorAC == 0)
         begin
-          zeroZ <= 1;
+          //zeroZ <= 1;
         end
       else
         begin
-          zeroZ <= 0;
+          //zeroZ <= 0;
         end
     end
   
@@ -295,10 +295,15 @@ module NesCpu(clk12x, reset, irq, nmi, dataIn, addressOut, dataOut, RW, OE, Out,
   
                    //negativeN <= negativeN_ANDY;
                        //zeroZ <= zeroZ_ANDY;
-                stage <= stage_ANDY;
-                programCounterPC <= programCounterPC_ANDY;
-                addressOut <= addressOut_ANDY;
-                accumulatorAC <= accumulatorAC_ANDY;
+//                stage <= stage_ANDY;
+//                programCounterPC <= programCounterPC_ANDY;
+//                addressOut <= addressOut_ANDY;
+//                accumulatorAC <= accumulatorAC_ANDY;
+                /*ANDYT( .stage_in(stage), .accumulatorAC_in(accumulatorAC), .programCounterPC_In(programCounterPC), .address_In(addressOut) .data_In(dataIn),
+                   .negativeN_Out(negativeN), .zeroZ_Out(zeroZ), .programCounterPC_Out(programCounterPC), .address_Out(address_Out), .stage_Out(stage), 
+                   .accumulatorAC_Out(accumulatorAC));*/
+              ANDYT( stage,accumulatorAC, programCounterPC, addressOut,dataIn,
+                    negativeN, zeroZ);
               end
             //SEI
             8'h78 :
@@ -455,7 +460,7 @@ module NesProgRom(clk12x, reset, addressIn, dataOut);
   output logic [7:0] dataOut;    //Used for addressing ROM, RAM, PPU, and ALU(audio)
   
   logic [7:0]ROM[1024];
-  initial $readmemh("../../../../FAKEROM.hex", ROM);
+  initial $readmemh("../../../../../FAKEROM.hex", ROM);
   
   always_ff @(posedge clk12x)
     begin
@@ -537,68 +542,29 @@ module ANDY(stage_In,accumulatorAC_In,programCounterPC_In,address_In, data_In,
           stage_Out = 0;
         end
     end
-
 endmodule
 
-module ORY(stage_In,accumulatorAC_In,programCounterPC_In,address_In, data_In,
-            negativeN_Out,zeroZ_Out,stage_Out, programCounterPC_Out, address_Out, accumulatorAC_Out);
-            
-  input logic [7:0] stage_In;
-  input logic [7:0] accumulatorAC_In;
-  input logic [15:0] programCounterPC_In;
-  input logic [15:0] address_In;
-  input logic [7:0] data_In;
-  output logic negativeN_Out;
-  output logic zeroZ_Out;
-  output logic [15:0] programCounterPC_Out;
-  output logic [15:0] address_Out;
-  output logic [7:0] stage_Out;
-  output logic [7:0] accumulatorAC_Out;
-  
-  always_comb
-    begin
-      //Update the Program Counter
-      programCounterPC_Out = programCounterPC_In + 1;
-      address_Out = programCounterPC_In + 1;
-      
-      if(stage_In == 0)
-        begin
-          stage_Out = 1;
-        end
-      else if(stage_In == 1)
-        begin
-          accumulatorAC_Out = accumulatorAC_In & data_In;
-          stage_Out = 0;
-        end
-    end
-
-endmodule
-
-task ADD;
-   input logic [7:0] stage_In;
-   input logic [7:0] accumulatorAC_In;
-   input logic [15:0] programCounterPC_In;
-   input logic [15:0] address_In;
+task ANDYT;
+   inout logic [7:0] stage_Inout;
+   inout logic [7:0] accumulatorAC_Inout;
+   inout logic [15:0] programCounterPC_Inout;
+   inout logic [15:0] address_Inout;
    input logic [7:0] data_In;
    output logic negativeN_Out;
    output logic zeroZ_Out;
-   output logic [15:0] programCounterPC_Out;
-   output logic [15:0] address_Out;
-   output logic [7:0] stage_Out;
-   output logic [7:0] accumulatorAC_Out;
    
    //Update the Program Counter
-   programCounterPC_Out <= programCounterPC_In + 1;
-   address_Out <= programCounterPC_In + 1;
+   programCounterPC_Inout <= programCounterPC_Inout + 1;
+   address_Inout <= programCounterPC_Inout + 1;
    
-   if(stage_In == 0)
+   if(stage_Inout == 0)
      begin
-       stage_Out <= 1;
+       stage_Inout <= 1;
      end
-   else if(stage_In == 1)
+   else if(stage_Inout == 1)
      begin
-       accumulatorAC_Out <= accumulatorAC_In & data_In;
-       stage_Out <= 0;
+       accumulatorAC_Inout <= accumulatorAC_Inout & data_In;
+       stage_Inout <= 0;
      end
 
  endtask
