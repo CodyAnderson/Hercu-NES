@@ -1,0 +1,8 @@
+0.6
+2016.4
+Jan 23 2017
+19:37:30
+C:/Hercu-NES/Code/BenLogicAnalyzer/LogicAnalyzer/LogicAnalyzer.sim/sim_1/behav/glbl.v,1485222234,verilog,,,,glbl,,,,,,,,
+C:/Hercu-NES/Code/BenLogicAnalyzer/LogicAnalyzer/LogicAnalyzer.srcs/sim_1/new/logicsim.sv,1511847328,systemVerilog,,,,logicsim,,,,,,,,
+C:/Hercu-NES/Code/BenLogicAnalyzer/LogicAnalyzer/LogicAnalyzer.srcs/sources_1/imports/new/UART.sv,1511847976,systemVerilog,,,,Char2Hex;MatrixReceiver;MatrixReceiverBuffered;UartReceive;UartTransmit,,,,,,,,
+C:/Hercu-NES/Code/BenLogicAnalyzer/LogicAnalyzer/LogicAnalyzer.srcs/sources_1/new/LogicAnalyzer.sv,1511923805,systemVerilog,,,,$unit_1;LogicAnalyzer,,,,,,,,

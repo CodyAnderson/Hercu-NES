@@ -1,0 +1,10 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  "../../../LogicAnalyzer.srcs/sources_1/imports/new/UART.sv"
+sv xil_defaultlib  "../../../LogicAnalyzer.srcs/sources_1/new/LogicAnalyzer.sv"
+sv xil_defaultlib  "../../../LogicAnalyzer.srcs/sim_1/new/logicsim.sv"
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
