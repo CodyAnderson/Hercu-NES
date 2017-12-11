@@ -1,7 +1,7 @@
 Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2016.4 (win64) Build 1756540 Mon Jan 23 19:11:23 MST 2017
-| Date         : Tue Nov 28 21:50:13 2017
+| Date         : Fri Dec 08 20:35:18 2017
 | Host         : Killer running 64-bit Service Pack 1  (build 7601)
 | Command      : report_control_sets -verbose -file LogicAnalyzer_control_sets_placed.rpt
 | Design       : LogicAnalyzer
@@ -50,11 +50,11 @@ Table of Contents
 +----------------+---------------------------+-----------------------+------------------+----------------+
 |  clk_IBUF_BUFG | ramReady_i_2_n_0          | ramReady_i_1_n_0      |                1 |              1 |
 |  clk_IBUF_BUFG | tx/tx_i_1_n_0             |                       |                1 |              2 |
-|  clk_IBUF_BUFG | tx/E[0]                   |                       |                4 |              7 |
-|  clk_IBUF_BUFG | tx/transmitReg[9]_i_1_n_0 |                       |                5 |             10 |
+|  clk_IBUF_BUFG | tx/E[0]                   |                       |                3 |              7 |
+|  clk_IBUF_BUFG | tx/transmitReg[9]_i_1_n_0 |                       |                2 |             10 |
 |  clk_IBUF_BUFG |                           |                       |                6 |             13 |
-|  clk_IBUF_BUFG | highBuffer                |                       |                6 |             16 |
-|  clk_IBUF_BUFG | memOut                    |                       |                3 |             16 |
+|  clk_IBUF_BUFG | highBuffer                |                       |                9 |             16 |
+|  clk_IBUF_BUFG | memOut[15]_i_1_n_0        |                       |                4 |             16 |
 |  clk_IBUF_BUFG | tx/MemAdr_reg[0]_0        | tx/MemAdr_reg[0]      |                7 |             23 |
 |  clk_IBUF_BUFG |                           | tx/divider[0]_i_1_n_0 |                7 |             27 |
 +----------------+---------------------------+-----------------------+------------------+----------------+

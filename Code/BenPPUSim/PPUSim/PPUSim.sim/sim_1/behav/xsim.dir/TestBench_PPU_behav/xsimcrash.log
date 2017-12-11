@@ -1,20 +1,11 @@
-Unable to capture context for thread 5108 in process 3972, can not generate back trace
-Unable to capture context for thread 8476 in process 3972, can not generate back trace
-Unable to capture context for thread 13536 in process 3972, can not generate back trace
 Exception at PC 0x000007FEFD8E965D
 Exception at PC 0x000007FEFD8E965D
-Exception at PC 0x000007FEFD8E965D
-Exception at PC 0x000007FEFD8E965D
-Unable to capture context for thread 9568 in process 3972, can not generate back trace
-Unable to capture context for thread 10568 in process 3972, can not generate back trace
-Unable to capture context for thread 12784 in process 3972, can not generate back trace
-Exception at PC 0x000007FEFD8E965D
-Unable to capture context for thread 9568 in process 3972, can not generate back trace
-Unable to capture context for thread 10568 in process 3972, can not generate back trace
-Unable to capture context for thread 12784 in process 3972, can not generate back trace
-Exception at PC 0x000007FEB192BB93
+Unable to capture context for thread 2496 in process 15320, can not generate back trace
+Exception at PC 0x000007FEB1CDBB93
 Printing stacktrace...
 
+Unable to capture context for thread 12352 in process 15320, can not generate back trace
+Unable to capture context for thread 11520 in process 15320, can not generate back trace
 Exception at PC 0x000007FEFD8E965D
 Exception at PC 0x000007FEFD8E965D
 Exception at PC 0x000007FEFD8E965D
@@ -27,18 +18,21 @@ Exception at PC 0x000007FEFD8E965D
 Exception at PC 0x000007FEFD8E965D
 Exception at PC 0x000007FEFD8E965D
 Exception at PC 0x000007FEFD8E965D
-[0]  [0x000007FEB192BB93]
-[1]  [0x000007FEB192BB93]
-[2]  [0x000007FEB192B4A1]
-[3]  [0x000007FEB192B3EF]
-[4]  [0x000007FEB19119FE]
-[5]  [0x000007FEB1910ED1]
-[6]  [0x000007FEB1910D76]
-[7]  [0x000007FEB18B79F6]
-[8]  [0x000007FEB18A7AFB]
-[9]  [0x000007FEB19CE90A]
-[10]  [0x000007FEB19E9F87]
-[11]  [0x000007FEB19EA05F]
+Exception at PC 0x000007FEFD8E965D
+Exception at PC 0x000007FEFD8E965D
+Exception at PC 0x000007FEFD8E965D
+[0]  [0x000007FEB1CDBB93]
+[1]  [0x000007FEB1CDBB93]
+[2]  [0x000007FEB1CDB4A1]
+[3]  [0x000007FEB1CDB3EF]
+[4]  [0x000007FEB1CC19FE]
+[5]  [0x000007FEB1CC0ED1]
+[6]  [0x000007FEB1CC0D76]
+[7]  [0x000007FEB1C679F6]
+[8]  [0x000007FEB1C57AFB]
+[9]  [0x000007FEB1D7E90A]
+[10]  [0x000007FEB1D99F87]
+[11]  [0x000007FEB1D9A05F]
 [12] (BaseThreadInitThunk+0xd) [0x00000000777B59ED]
 [13] (RtlUserThreadStart+0x21) [0x00000000779EB371]
 Done

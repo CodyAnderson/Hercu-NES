@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2016.4 (64-bit)
+# SW Build 1756540 on Mon Jan 23 19:11:23 MST 2017
+# IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
+# Start of session at: Wed Dec 06 16:30:04 2017
+# Process ID: 5072
+# Current directory: C:/Hercu-NES/Code/BenLogicAnalyzer/LogicAnalyzer/LogicAnalyzer.runs/impl_1
+# Command line: vivado.exe -log LogicAnalyzer.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source LogicAnalyzer.tcl -notrace
+# Log file: C:/Hercu-NES/Code/BenLogicAnalyzer/LogicAnalyzer/LogicAnalyzer.runs/impl_1/LogicAnalyzer.vdi
+# Journal file: C:/Hercu-NES/Code/BenLogicAnalyzer/LogicAnalyzer/LogicAnalyzer.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source LogicAnalyzer.tcl -notrace

@@ -24,7 +24,7 @@ module UartTransmit(input clk, newData, [7:0]dataIn,
             output logic tx = 1, done
             );
 
-parameter BAUD_RATE = 1_000_000; //Transmitting serial speed (commonly 9600).
+parameter BAUD_RATE = 12_000_000; //Transmitting serial speed (commonly 9600).
 parameter CLOCK_SPEED = 100_000_000;  //Internal clock speed (usually 100Mhz).
 
 

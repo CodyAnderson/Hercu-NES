@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1511934534">
+<GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1512794036">
   <File Type="RDS-PROPCONSTRS" Name="LogicAnalyzer_drc_synth.rpt"/>
   <File Type="PA-TCL" Name="LogicAnalyzer.tcl"/>
   <File Type="RDS-RDS" Name="LogicAnalyzer.vds"/>

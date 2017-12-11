@@ -41,6 +41,7 @@ module LogicAnalyzer(
   input logic [15:0]sw,
   output logic [15:0]led,
   output logic RsTx,
+  input logic RsRts,
 
        
   output logic RamCLK,
@@ -64,9 +65,13 @@ logic cpuWrite = 0;
 logic prevcpuclock = 0;
 logic cpuClock = 0;
 logic readNow;
-assign readNow = cpuClock & (!prevcpuclock);
-logic [15:0] cpuAddress;
-assign cpuAddress = {JB,JA};
+assign readNow = cpuClock &(!prevcpuclock);
+logic [2:0] cpuAddress;
+assign cpuAddress = {JD[0], JD[1], JD[2]};
+logic [7:0] cpuData;
+assign cpuData = JC;
+logic chipSelect;
+assign chipSelect = JD[3];
 
 logic [15:0] memOut;
 assign MemDB = cpuRead ? memOut : 16'bZ;
@@ -89,7 +94,7 @@ logic [15:0]highBuffer;
 
 logic[7:0] uartData;
 logic uartDataSend;
-assign uartDataSend = cpuWrite;
+assign uartDataSend = cpuWrite & (!RsRts);
 logic uartDataSent;
 UartTransmit tx(clk, uartDataSend, uartData, RsTx, uartDataSent);
 assign led[0] = RsTx;
@@ -112,7 +117,7 @@ begin
     cpuWrite <= 0;
     readStage <= 0;
   end
-  else if(ramReady == 1 && cpuRead == 0 && cpuAddress == 16'hFFFC)
+  else if(ramReady == 1 && cpuRead == 0 && cpuAddress == 0 && cpuData == 8'h10 && chipSelect == 0)
   begin
     cpuRead <= 1;
     ramReady <= 0;
@@ -121,44 +126,32 @@ begin
   begin
     if(readNow)
     begin
-      if(readStage < 5)
+      if(readStage < 3)
         readStage <= readStage + 1;
       else
         readStage <= 0;
       case(readStage)
-        //1read into input buffer
-        //1turn write on
-        //1set valid data
         0:begin
+          if(MemAdr != 0)
+          begin
+            if(MemAdr == 23'h7FFFFF)
+              cpuRead <= 0;
+            MemAdr <= MemAdr + 1;
+          end
           highBuffer <= {JD,JC};
           memOut <= {JB,JA};
-          ramWrite <= 1;
-        end
-        //2turn write off
-        1:begin
           ramWrite <= 0;
         end
-        //3next address
+        1:begin
+          ramWrite <= 1;
+        end
         2:begin
           MemAdr <= MemAdr + 1;
-        end
-        //4set next data
-        //4turn write on
-        3:begin
           memOut <= highBuffer;
-          ramWrite <= 1;
-        end
-        //5turn write off
-        4:begin
           ramWrite <= 0;
         end
-        //6next address
-        5:begin
-          if(MemAdr == 23'h7FFFFF)
-            cpuRead <= 0;
-
-          MemAdr <= MemAdr + 1;
-
+        3:begin
+          ramWrite <= 1;
         end
       endcase
     end
@@ -176,7 +169,7 @@ begin
 
   if(cpuWrite)
   begin
-    if(uartDataSent)
+    if(uartDataSent & (!RsRts))
     begin
       
       if(writeStage == 4)
@@ -214,7 +207,7 @@ begin
 
   end
 
-  cpuClock <= JD[0];
+  cpuClock <= JD[7];
   prevcpuclock <= cpuClock;
 end
 

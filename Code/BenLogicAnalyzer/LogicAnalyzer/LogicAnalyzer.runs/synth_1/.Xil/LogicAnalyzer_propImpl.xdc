@@ -135,6 +135,8 @@ set_property src_info {type:XDC file:1 line:321 export:INPUT save:INPUT read:REA
 set_property PACKAGE_PIN F3 [get_ports {JD[7]}]
 set_property src_info {type:XDC file:1 line:493 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN D4 [get_ports RsTx]
+set_property src_info {type:XDC file:1 line:499 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN E5 [get_ports RsRts]
 set_property src_info {type:XDC file:1 line:580 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN T15 [get_ports RamCLK]
 set_property src_info {type:XDC file:1 line:583 export:INPUT save:INPUT read:READ} [current_design]

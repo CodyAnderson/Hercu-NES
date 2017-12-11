@@ -1,0 +1,17 @@
+#-----------------------------------------------------------
+# Vivado v2016.4 (64-bit)
+# SW Build 1756540 on Mon Jan 23 19:11:23 MST 2017
+# IP Build 1755317 on Mon Jan 23 20:30:07 MST 2017
+# Start of session at: Fri Dec 08 21:20:04 2017
+# Process ID: 11184
+# Current directory: C:/Hercu-NES/Code/BenCPUPPUCaptureView
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent10948 C:\Hercu-NES\Code\BenCPUPPUCaptureView\CaptureView.xpr
+# Log file: C:/Hercu-NES/Code/BenCPUPPUCaptureView/vivado.log
+# Journal file: C:/Hercu-NES/Code/BenCPUPPUCaptureView\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Hercu-NES/Code/BenCPUPPUCaptureView/CaptureView.xpr
+launch_simulation
+source top.tcl
+run 30 ms
+close_sim

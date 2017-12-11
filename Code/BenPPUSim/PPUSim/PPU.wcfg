@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="399000001fs"></ZoomEndTime>
-      <Cursor1Time time="93740000000fs"></Cursor1Time>
+      <ZoomStartTime time="109594750000fs"></ZoomStartTime>
+      <ZoomEndTime time="109969750001fs"></ZoomEndTime>
+      <Cursor1Time time="109600000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="167"></NameColumnWidth>
       <ValueColumnWidth column_width="50"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="19" />
+   <WVObjectSize size="13" />
    <wvobject fp_name="/TestBench_PPU/clock" type="logic">
       <obj_property name="ElementShortName">clock</obj_property>
       <obj_property name="ObjectShortName">clock</obj_property>
@@ -34,12 +34,10 @@
       <obj_property name="ObjectShortName">latchEnable</obj_property>
    </wvobject>
    <wvobject fp_name="/TestBench_PPU/PPU/The_PPU/vRamRead" type="logic">
+      <obj_property name="DisplayName">label</obj_property>
       <obj_property name="ElementShortName">vRamRead</obj_property>
       <obj_property name="ObjectShortName">vRamRead</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TestBench_PPU/PPU/mems/rd" type="logic">
-      <obj_property name="ElementShortName">rd</obj_property>
-      <obj_property name="ObjectShortName">rd</obj_property>
+      <obj_property name="label">DataRead</obj_property>
    </wvobject>
    <wvobject fp_name="/TestBench_PPU/PPU/mems/address" type="array">
       <obj_property name="ElementShortName">address[13:0]</obj_property>
@@ -69,29 +67,10 @@
       <obj_property name="ElementShortName">tileX[5:0]</obj_property>
       <obj_property name="ObjectShortName">tileX[5:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/TestBench_PPU/PPU/The_PPU/pixelY" type="array">
-      <obj_property name="ElementShortName">pixelY[8:0]</obj_property>
-      <obj_property name="ObjectShortName">pixelY[8:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TestBench_PPU/PPU/The_PPU/tileY" type="array">
-      <obj_property name="ElementShortName">tileY[5:0]</obj_property>
-      <obj_property name="ObjectShortName">tileY[5:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TestBench_PPU/PPU/The_PPU/shiftyHigh" type="array">
-      <obj_property name="ElementShortName">shiftyHigh[15:0]</obj_property>
-      <obj_property name="ObjectShortName">shiftyHigh[15:0]</obj_property>
-   </wvobject>
    <wvobject fp_name="/TestBench_PPU/PPU/The_PPU/shiftyLow" type="array">
       <obj_property name="ElementShortName">shiftyLow[15:0]</obj_property>
       <obj_property name="ObjectShortName">shiftyLow[15:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TestBench_PPU/PPU/The_PPU/shiftyAttrHigh" type="array">
-      <obj_property name="ElementShortName">shiftyAttrHigh[7:0]</obj_property>
-      <obj_property name="ObjectShortName">shiftyAttrHigh[7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/TestBench_PPU/PPU/The_PPU/shiftyAttrLow" type="array">
-      <obj_property name="ElementShortName">shiftyAttrLow[7:0]</obj_property>
-      <obj_property name="ObjectShortName">shiftyAttrLow[7:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
    </wvobject>
    <wvobject fp_name="/TestBench_PPU/PPU/pixelIndexData" type="array">
       <obj_property name="ElementShortName">pixelIndexData[5:0]</obj_property>

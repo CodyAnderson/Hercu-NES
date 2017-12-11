@@ -492,12 +492,12 @@ set_property PACKAGE_PIN F3 [get_ports {JD[7]}]
 #Bank = 35, Pin name = IO_L11N_T1_SRCC_35,					Sch name = UART_RXD_OUT
 set_property PACKAGE_PIN D4 [get_ports RsTx]						
 	set_property IOSTANDARD LVCMOS33 [get_ports RsTx]
-##Bank = 35, Pin name = IO_L12N_T1_MRCC_35,					Sch name = UART_CTS
-#set_property PACKAGE_PIN D3 [get_ports RsCts]						
-	#set_property IOSTANDARD LVCMOS33 [get_ports RsCts]
-##Bank = 35, Pin name = IO_L5N_T0_AD13N_35,					Sch name = UART_RTS
-#set_property PACKAGE_PIN E5 [get_ports RsRts]						
-	#set_property IOSTANDARD LVCMOS33 [get_ports RsRts]
+# #Bank = 35, Pin name = IO_L12N_T1_MRCC_35,					Sch name = UART_CTS
+# set_property PACKAGE_PIN D3 [get_ports RsCts]						
+# 	set_property IOSTANDARD LVCMOS33 [get_ports RsCts]
+#Bank = 35, Pin name = IO_L5N_T0_AD13N_35,					Sch name = UART_RTS
+set_property PACKAGE_PIN E5 [get_ports RsRts]						
+	set_property IOSTANDARD LVCMOS33 [get_ports RsRts]
 
 
 

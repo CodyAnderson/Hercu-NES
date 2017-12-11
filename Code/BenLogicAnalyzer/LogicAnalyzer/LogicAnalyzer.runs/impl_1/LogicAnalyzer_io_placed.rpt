@@ -1,7 +1,7 @@
 Copyright 1986-2016 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2016.4 (win64) Build 1756540 Mon Jan 23 19:11:23 MST 2017
-| Date         : Tue Nov 28 21:50:13 2017
+| Date         : Fri Dec 08 20:35:18 2017
 | Host         : Killer running 64-bit Service Pack 1  (build 7601)
 | Command      : report_io -file LogicAnalyzer_io_placed.rpt
 | Design       : LogicAnalyzer
@@ -23,7 +23,7 @@ Table of Contents
 +---------------+
 | Total User IO |
 +---------------+
-|           116 |
+|           117 |
 +---------------+
 
 
@@ -109,7 +109,7 @@ Table of Contents
 | E2         |             | High Range | IO_L14P_T2_SRCC_35           | User IO     |             |      35 |            |      |                     |                      |         |            |           |          |      |                  |
 | E3         | clk         | High Range | IO_L12P_T1_MRCC_35           | INPUT       | LVCMOS33    |      35 |            |      |                     |                 NONE |         | FIXED      |           |          |      | NONE             |
 | E4         |             |            | GND                          | GND         |             |         |            |      |                     |                      |     0.0 |            |           |          |      |                  |
-| E5         |             | High Range | IO_L5N_T0_AD13N_35           | User IO     |             |      35 |            |      |                     |                      |         |            |           |          |      |                  |
+| E5         | RsRts       | High Range | IO_L5N_T0_AD13N_35           | INPUT       | LVCMOS33    |      35 |            |      |                     |                 NONE |         | FIXED      |           |          |      | NONE             |
 | E6         | JC[5]       | High Range | IO_L5P_T0_AD13P_35           | INPUT       | LVCMOS33    |      35 |            |      |                     |                 NONE |         | FIXED      |           |          |      | NONE             |
 | E7         | JC[1]       | High Range | IO_L6P_T0_35                 | INPUT       | LVCMOS33    |      35 |            |      |                     |                 NONE |         | FIXED      |           |          |      | NONE             |
 | E8         |             | Dedicated  | VCCBATT_0                    | Config      |             |       0 |            |      |                     |                      |         |            |           |          |      |                  |
