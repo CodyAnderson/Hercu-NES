@@ -1,5 +1,5 @@
 Assembler report for red
-Mon Nov 20 15:52:04 2017
+Sun Dec 10 22:19:21 2017
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
 
 
@@ -10,8 +10,8 @@ Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
   2. Assembler Summary
   3. Assembler Settings
   4. Assembler Generated Files
-  5. Assembler Device Options: C:/Users/Megzuki/Documents/GitHub/Hercu-NES/Code/morganGPALDU/output_files/red.sof
-  6. Assembler Device Options: C:/Users/Megzuki/Documents/GitHub/Hercu-NES/Code/morganGPALDU/output_files/red.pof
+  5. Assembler Device Options: C:/Hercu-NES/Code/morganGPALDU/output_files/red.sof
+  6. Assembler Device Options: C:/Hercu-NES/Code/morganGPALDU/output_files/red.pof
   7. Assembler Messages
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Mon Nov 20 15:52:04 2017 ;
+; Assembler Status      ; Successful - Sun Dec 10 22:19:21 2017 ;
 ; Revision Name         ; red                                   ;
 ; Top-level Entity Name ; red                                   ;
 ; Family                ; Cyclone II                            ;
@@ -78,37 +78,37 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------+----------+---------------+
 
 
-+------------------------------------------------------------------------------------+
-; Assembler Generated Files                                                          ;
-+------------------------------------------------------------------------------------+
-; File Name                                                                          ;
-+------------------------------------------------------------------------------------+
-; C:/Users/Megzuki/Documents/GitHub/Hercu-NES/Code/morganGPALDU/output_files/red.sof ;
-; C:/Users/Megzuki/Documents/GitHub/Hercu-NES/Code/morganGPALDU/output_files/red.pof ;
-+------------------------------------------------------------------------------------+
++-----------------------------------------------------+
+; Assembler Generated Files                           ;
++-----------------------------------------------------+
+; File Name                                           ;
++-----------------------------------------------------+
+; C:/Hercu-NES/Code/morganGPALDU/output_files/red.sof ;
+; C:/Hercu-NES/Code/morganGPALDU/output_files/red.pof ;
++-----------------------------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------+
-; Assembler Device Options: C:/Users/Megzuki/Documents/GitHub/Hercu-NES/Code/morganGPALDU/output_files/red.sof ;
-+----------------+---------------------------------------------------------------------------------------------+
-; Option         ; Setting                                                                                     ;
-+----------------+---------------------------------------------------------------------------------------------+
-; Device         ; EP2C20F484C7                                                                                ;
-; JTAG usercode  ; 0x00B311AB                                                                                  ;
-; Checksum       ; 0x00B311AB                                                                                  ;
-+----------------+---------------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------+
+; Assembler Device Options: C:/Hercu-NES/Code/morganGPALDU/output_files/red.sof ;
++----------------+--------------------------------------------------------------+
+; Option         ; Setting                                                      ;
++----------------+--------------------------------------------------------------+
+; Device         ; EP2C20F484C7                                                 ;
+; JTAG usercode  ; 0x00B641DE                                                   ;
+; Checksum       ; 0x00B641DE                                                   ;
++----------------+--------------------------------------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------+
-; Assembler Device Options: C:/Users/Megzuki/Documents/GitHub/Hercu-NES/Code/morganGPALDU/output_files/red.pof ;
-+--------------------+-----------------------------------------------------------------------------------------+
-; Option             ; Setting                                                                                 ;
-+--------------------+-----------------------------------------------------------------------------------------+
-; Device             ; EPCS16                                                                                  ;
-; JTAG usercode      ; 0x00000000                                                                              ;
-; Checksum           ; 0x1D1AEB52                                                                              ;
-; Compression Ratio  ; 1                                                                                       ;
-+--------------------+-----------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------+
+; Assembler Device Options: C:/Hercu-NES/Code/morganGPALDU/output_files/red.pof ;
++--------------------+----------------------------------------------------------+
+; Option             ; Setting                                                  ;
++--------------------+----------------------------------------------------------+
+; Device             ; EPCS16                                                   ;
+; JTAG usercode      ; 0x00000000                                               ;
+; Checksum           ; 0x1D174FE7                                               ;
+; Compression Ratio  ; 1                                                        ;
++--------------------+----------------------------------------------------------+
 
 
 +--------------------+
@@ -117,14 +117,14 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
-    Info: Processing started: Mon Nov 20 15:52:02 2017
+    Info: Processing started: Sun Dec 10 22:19:18 2017
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off red -c red
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 485 megabytes
-    Info: Processing ended: Mon Nov 20 15:52:04 2017
-    Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:02
+    Info: Peak virtual memory: 453 megabytes
+    Info: Processing ended: Sun Dec 10 22:19:21 2017
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:03
 
 

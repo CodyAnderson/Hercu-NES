@@ -1,4 +1,4 @@
-module NesPpu (clock, vgaClock, red, green, blue, hsync, vsync, reset, rw, dataBusEnable, registerSelect, cpuDataIn, cpuDataOut, vRamDataIn, vRamDataOut, vRamAddressOut, addressLatchEnable, interrupt, vRamRead, vRamWrite, pixelIndexData, vgaSync, lineIndex);
+module NesPpu (clock, vgaClock, red, green, blue, hsync, vsync, reset, rw, dataBusEnable, registerSelect, cpuDataIn, cpuDataOut, vRamDataIn, vRamDataOut, vRamAddressOut, addressLatchEnable, interrupt, vRamRead, vRamWrite, pixelIndexData, vgaSync, lineIndex, xPosition);
     /////////////
    // PPU Inputs
   /////////////
@@ -23,6 +23,7 @@ module NesPpu (clock, vgaClock, red, green, blue, hsync, vsync, reset, rw, dataB
   output logic [5:0]pixelIndexData; 
   output logic vgaSync;
   output logic lineIndex;
+  input logic [7:0]xPosition;
 
     //////////////////////////////////////////////////////////////
    // VGA Output addition (merely a guess at what will be needed)
@@ -46,7 +47,7 @@ module NesPpu (clock, vgaClock, red, green, blue, hsync, vsync, reset, rw, dataB
   logic [7:0] addrLatchIn;
   SN74LS373N addrLatch(memLatch, 0, addrLatchIn, vRamAddressOut[7:0]);
 
-  NES2C02 The_PPU(clock, reset, rw, dataBusEnable, registerSelect, cpuDataIn, vRamDataIn, cpuDataOut, vRamDataOut, {vRamAddressOut[13:8], addrLatchIn}, memLatch, interrupt, vRamRead, vRamWrite, pixelIndexData, vgaSync, lineIndex);
+  NES2C02 The_PPU(clock, reset, rw, dataBusEnable, registerSelect, cpuDataIn, vRamDataIn, cpuDataOut, vRamDataOut, {vRamAddressOut[13:8], addrLatchIn}, memLatch, interrupt, vRamRead, vRamWrite, pixelIndexData, vgaSync, lineIndex, xPosition);
 
 
   
@@ -54,12 +55,12 @@ module NesPpu (clock, vgaClock, red, green, blue, hsync, vsync, reset, rw, dataB
 endmodule // NesPpu
 
 module MemoryStuffs(input logic rd, input logic[13:0] address, output logic[7:0] data);
-  logic [7:0] ram [4096];
+  logic [7:0] ram [2048];
   logic [7:0] rom [8192];
 
   initial
   begin
-    $readmemh("NameTable.txt", ram);
+    $readmemh("NameTable2.txt", ram);
     $readmemh("chrHexed.txt", rom);
     //$readmemh("../../../../BackgroundMemDump.hex", ram);
     //$readmemh("../../../../CharacterRom.hex", rom);
@@ -104,7 +105,8 @@ module NES2C02(
 
   output logic [5:0]pixelOut,
   output logic vgaSync,
-  output logic lineIndex
+  output logic lineIndex,
+  input logic [7:0]xPosition
   );
 
 
@@ -124,8 +126,8 @@ module NES2C02(
 
   logic [15:0]shiftyHigh;
   logic [15:0]shiftyLow;
-  logic [7:0]shiftyAttrHigh;
-  logic [7:0]shiftyAttrLow;
+  logic [9:0]shiftyAttrHigh;
+  logic [9:0]shiftyAttrLow;
   assign lineIndex = pixelY[0];
   logic pixelEnable;
   
@@ -146,7 +148,7 @@ module NES2C02(
         pixelEnable = 1;
   end
 
-  assign pixelOut = {pixelEnable, 1'b0, shiftyAttrHigh[0], shiftyAttrLow[0], shiftyHigh[15], shiftyLow[15]};
+  assign pixelOut = {pixelEnable, 1'b0, shiftyAttrHigh[xPosition[2:0]], shiftyAttrLow[xPosition[2:0]], shiftyHigh[15-xPosition[2:0]], shiftyLow[15-xPosition[2:0]]};
 
   //assign tileX = pixelX[7:3];
   assign tileY = pixelY[7:3];
@@ -179,8 +181,8 @@ begin
     begin
       shiftyHigh <= shiftyHigh << 1;
       shiftyLow <= shiftyLow << 1;
-      shiftyAttrHigh <= {tileAttribs[1],shiftyAttrHigh[7:1]};
-      shiftyAttrLow <= {tileAttribs[0],shiftyAttrLow[7:1]};
+      shiftyAttrHigh <= {tileAttribs[1],shiftyAttrHigh[9:1]};
+      shiftyAttrLow <= {tileAttribs[0],shiftyAttrLow[9:1]};
     end
   end
 
@@ -200,7 +202,7 @@ begin
         pixelY <= 0;
     end
     else
-      tileX <= 0;
+      tileX <= xPosition[7:3];
   end
   if(pixelX == 340 && halfClock)
     pixelX <= 0;

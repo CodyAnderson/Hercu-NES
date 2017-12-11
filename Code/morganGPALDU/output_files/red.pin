@@ -440,8 +440,8 @@ LEDR[9]                      : R17       : output : 3.3-V LVTTL       :         
 LEDR[8]                      : R18       : output : 3.3-V LVTTL       :         : 6         : Y              
 LEDR[1]                      : R19       : output : 3.3-V LVTTL       :         : 6         : Y              
 LEDR[0]                      : R20       : output : 3.3-V LVTTL       :         : 6         : Y              
-GND*                         : R21       :        :                   :         : 6         :                
-GND*                         : R22       :        :                   :         : 6         :                
+KEY[1]                       : R21       : input  : 3.3-V LVTTL       :         : 6         : Y              
+KEY[0]                       : R22       : input  : 3.3-V LVTTL       :         : 6         : Y              
 GND*                         : T1        :        :                   :         : 1         :                
 GND*                         : T2        :        :                   :         : 1         :                
 GND*                         : T3        :        :                   :         : 1         :                
@@ -462,8 +462,8 @@ GND_PLL4                     : T17       : gnd    :                   :         
 LEDR[4]                      : T18       : output : 3.3-V LVTTL       :         : 6         : Y              
 VCCIO6                       : T19       : power  :                   : 3.3V    : 6         :                
 GND                          : T20       : gnd    :                   :         :           :                
-GND*                         : T21       :        :                   :         : 6         :                
-GND*                         : T22       :        :                   :         : 6         :                
+KEY[3]                       : T21       : input  : 3.3-V LVTTL       :         : 6         : Y              
+KEY[2]                       : T22       : input  : 3.3-V LVTTL       :         : 6         : Y              
 GND*                         : U1        :        :                   :         : 1         :                
 GND*                         : U2        :        :                   :         : 1         :                
 GND*                         : U3        :        :                   :         : 1         :                

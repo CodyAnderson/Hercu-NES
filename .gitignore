@@ -1,2 +1,8 @@
-
+**/db/**
+*.tdf
 *.cdb
+*.hdb
+*.rdb
+*.jou
+*.log
+*.str

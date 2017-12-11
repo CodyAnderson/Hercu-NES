@@ -1,21 +1,33 @@
-module red(input logic [9:0]SW, input logic [1:0]CLOCK_24, output logic[9:0]LEDR, output logic [7:0]LEDG, output logic [3:0]VGA_B, output logic [3:0]VGA_G, output logic[3:0]VGA_R, output logic VGA_HS, output logic VGA_VS);
+module red(input logic [9:0]SW, input logic [3:0]KEY, input logic [1:0]CLOCK_24, output logic[9:0]LEDR, output logic [7:0]LEDG, output logic [3:0]VGA_B, output logic [3:0]VGA_G, output logic[3:0]VGA_R, output logic VGA_HS, output logic VGA_VS);
 
 	assign LEDR = SW;
 	logic clock = 0;
 	logic [11:0]Pixel;
 	logic[5:0]pixelIndexData;
 	logic vgaSync;
+	logic prevVgaSync = 0;
 	logic lineIndex;
 	
 	pixelGenerator gen(clock, Pixel, pixelIndexData);
-	NesPpu name(clock,,,,,,,,,,,,,,,,,,,, pixelIndexData, vgaSync, lineIndex);
+	NesPpu name(clock,,,,,,,,,,,,,,,,,,,, pixelIndexData, vgaSync, lineIndex, xPosition);
 	
 	assign LEDG = {1'b1,pixelIndexData, vgaSync};
+	
+	logic [7:0]xPosition = 0;
 	
 	vga hello(Pixel[11:0],SW, CLOCK_24[0], VGA_B[3:0], VGA_R[3:0], VGA_G[3:0], VGA_HS, VGA_VS,pixelIndexData[5], vgaSync, lineIndex);
 	
 	always_ff @(posedge CLOCK_24[0]) begin
 			clock <= !clock;
+			if((!prevVgaSync) & vgaSync)
+			begin
+				if(!KEY[0] && xPosition < 255)
+					xPosition <= xPosition + 1;
+				else if(!KEY[1] && xPosition > 0)
+					xPosition <= xPosition - 1;
+					
+			end
+			prevVgaSync <= vgaSync;
 	end
 
 endmodule
