@@ -55,11 +55,13 @@ module TestBench_PPU();
   logic [7:0] blue;  // Blue channel output
   logic hsync;       // Horizontal Sync
   logic vsync;       // Vertical Sync
+  logic [5:0] pixelIndexData;
+  logic vgaSync;
 
   always #5 clock = !clock;
 
-
-  NesPpu PPU(clock, vgaClock, red, green, blue, hsync, vsync, reset, rw, dataBusEnable, registerSelect, cpuDataIn, cpuDataOut, vRamDataIn, vRamDataOut, vRamAddressOut, addressLatchEnable, interrupt, vRamRead, vRamWrite);
+  NesPpu name(clock,,,,,,,,,,,,,,,,,,,, pixelIndexData, vgaSync);
+  //NesPpu PPU(clock, vgaClock, red, green, blue, hsync, vsync, reset, rw, dataBusEnable, registerSelect, cpuDataIn, cpuDataOut, vRamDataIn, vRamDataOut, vRamAddressOut, addressLatchEnable, interrupt, vRamRead, vRamWrite);
 
 
 

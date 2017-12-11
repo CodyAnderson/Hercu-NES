@@ -1,172 +1,200 @@
-module red(input logic [9:0]SW, input logic [1:0]CLOCK_24, input logic [3:0]KEY, output logic[9:0]LEDR, output logic [7:0]LEDG, output logic [3:0]VGA_B, output logic [3:0]VGA_G, output logic[3:0]VGA_R, output logic VGA_HS, output logic VGA_VS);
+module red(input logic [9:0]SW, input logic [1:0]CLOCK_24, output logic[9:0]LEDR, output logic [7:0]LEDG, output logic [3:0]VGA_B, output logic [3:0]VGA_G, output logic[3:0]VGA_R, output logic VGA_HS, output logic VGA_VS);
 
-	logic [20:0]div = 0;
-	logic clk = 0;
 	assign LEDR = SW;
+	logic clock = 0;
+	logic [11:0]Pixel;
+	logic[5:0]pixelIndexData;
+	logic vgaSync;
+	logic lineIndex;
 	
-	//counter poop(clk, KEY[0], LEDG[7:0]);
-	vga hello(SW[9:0], KEY[0], CLOCK_24[0], LEDG[7:0], VGA_B[3:0], VGA_R[3:0], VGA_G[3:0], VGA_HS, VGA_VS);
+	pixelGenerator gen(clock, Pixel, pixelIndexData);
+	NesPpu name(clock,,,,,,,,,,,,,,,,,,,, pixelIndexData, vgaSync, lineIndex);
+	
+	assign LEDG = {1'b1,pixelIndexData, vgaSync};
+	
+	vga hello(Pixel[11:0],SW, CLOCK_24[0], VGA_B[3:0], VGA_R[3:0], VGA_G[3:0], VGA_HS, VGA_VS,pixelIndexData[5], vgaSync, lineIndex);
 	
 	always_ff @(posedge CLOCK_24[0]) begin
-		if(div == 0)
-			clk <= 1;
-		else
-			clk <= 0;
-			
-		div <= div + 1;
-	end
-	
-endmodule
-
-
-module counter(input logic clk, input logic KEY, output logic [7:0]thatLOUD);
-
-	logic [7:0]counter = 0;
-	assign thatLOUD = counter;
-	
-	always_ff @(posedge clk) begin
-		if(KEY == 0)
-			counter <= 0;
-		else
-			counter <= counter + 1;
+			clock <= !clock;
 	end
 
 endmodule
 
-
-module vga(input logic [9:0]SW, input logic KEY, input logic CLOCK_24, output logic [7:0]LEDG, output logic [3:0]VGA_B, output logic [3:0]VGA_R, output logic [3:0]VGA_G, output logic VGA_HS, output logic VGA_VS);
+/***
+*  vga
+*
+*  Handles vga output from DE1 given 12 bit wide Pixel data from a pixel generator
+*
+***/
+module vga(input logic [11:0]Pixel, input logic [9:0]SW, input logic CLOCK_24, output logic [3:0]VGA_B, output logic [3:0]VGA_R, output logic [3:0]VGA_G, output logic VGA_HS, output logic VGA_VS, input logic pixelValid, input logic vgaSync, input logic lineIndex);
    logic [11:0]lines = 0;
    logic [11:0]pixels = 0;
 	logic [11:0]RGB = 0;
    logic VSNC = 0;
    logic HSNC = 0;
-	logic even = 1;
-	logic [15:0]tileLine = 0;
-	logic [7:0]tileLineTemp = 0;
-	const logic[11:0]pallete[0:63] = '{12'h555, 12'h027, 12'h019, 12'h308, 12'h406, 12'h603, 12'h500, 12'h410, 12'h220, 12'h020, 12'h130, 12'h040, 12'h034, 12'h000, 12'h000, 12'h000,
-													12'h999, 12'h15C, 12'h33F, 12'h62E, 12'h91B, 12'hA16, 12'h922, 12'h740, 12'h550, 12'h270, 12'h180, 12'h072, 12'h067, 12'h000, 12'h000, 12'h000,
-														12'hCCC, 12'h5AF, 12'h78F, 12'hB6F, 12'hE5F, 12'hF5B, 12'hF66, 12'hD82, 12'hAA0, 12'h7C0, 12'h4D2, 12'h3D6, 12'h3BD, 12'h333, 12'h000, 12'h000,
-															12'hFFF, 12'hADF, 12'hCCF, 12'hDBF, 12'hFBF, 12'hFBD, 12'hFBB, 12'hEC9, 12'hDD7, 12'hBE8, 12'hBE9, 12'hAEB, 12'hADE, 12'hAAA, 12'h000, 12'h000};
-   
+	logic [11:0]buffer1[256];
+	logic [11:0]buffer2[256];
+	logic [1:0]getPixel;
+	logic [10:0]i = 0;
+	logic [11:0]pixIn;
+	logic [8:0]scan = 0;
+	logic scanTwo = 0;
+	logic [1:0]counter;
+	
 	assign VGA_R = RGB[11:8];
    assign VGA_G = RGB[7:4];
 	assign VGA_B = RGB[3:0];
    assign VGA_VS = VSNC;
    assign VGA_HS = HSNC;
+	assign getPixel = pixels[2:1];
+	assign pixIn = Pixel;
 	
 	parameter totalPixels = 640;
    parameter totalLines = 480;
-   parameter hsw = 96;
-   parameter hfp = 16;
-   parameter hbp = 48;
-   parameter vsw = 2;
-   parameter vfp = 10;
-   parameter vbp = 33;
+   parameter hsw = 8;             // 8
+   parameter hfp = 13;            //16;            //13
+	logic [7:0]hbp;
+	logic [7:0]vbp;
+   assign hbp = 21 - 8 + SW[9:6]; //67
+   parameter vsw = 20;             //3;
+   parameter vfp = 13;             //2; 
+   assign vbp = 13 - 3 + SW[5:0];  //4
 	
+	logic [11:0]colorful = 0;
 	logic [1:0]row = 0;
-	logic [11:0]p[4] = '{ 12'h78F, 12'h7C0, 12'h270, 12'h000};  //12'h78F
-
-	
-	
-	logic [7:0]ROM[8192]; 
 	
 	initial begin
-		$readmemh("chrHexed.txt", ROM);
-	end
 	
-	//assign LEDG = ROM[SW];
-	logic[7:0] rombyte;
-	logic pluseight;
-	assign pluseight = pixels%8 == 1;
-	assign rombyte = ROM[(pixels/8)*16+8*pluseight + lines];  //ROM[(pixels/8)*16+8*pluseight + lines];
-	assign LEDG = tileLine;
-	
-	
-    
-   always_ff @(posedge CLOCK_24) 
-	begin 
-		
-		// Drawing color inside of 512 horizontal only
-		if(KEY && pixels >= 0 && pixels < 640 && lines <= 480) 
-		begin
-			// Drawing the white box outline
-			if((pixels >= 0 && pixels <= 64) || (pixels >= 576 && pixels < 640) || (lines < 5) || (lines > 475))
+		for(i = 0; i < 256; ++i) begin
+			if(i[0])
 			begin
-				RGB = 16'hFFF;
+				buffer1[i] = 12'hf00 + i;
+				buffer2[i] = 12'h0f0;
 			end
 			else
-			
-			// Drawing inside the box
 			begin
-				logic [7:0]tileLineTemp2;
-				if(pixels%8 == 0)
-					tileLineTemp <= rombyte;
-				if(pixels%8 == 1)
-				begin
-					tileLineTemp2 = rombyte;
-					
-					for(integer i = 0;i < 16; i=i+1)
-					begin
-					if(i%2)
-						tileLine[i] <= tileLineTemp[i/2];
-					else
-						tileLine[i] <= tileLineTemp2[i/2];
-					end
-				end
-					
-					RGB <= p[tileLine >> (((pixels-2)%8)*2)];
-				
-				
-			
-			/*
-				if(lines <= 120)
-					RGB <= pallete[(pixels - 60) / 33 ];
-				else 
-				if(lines <= 240)
-					RGB <= pallete[(pixels - 60) / 33 + 16];
-				else
-				if(lines <= 360)
-					RGB <= pallete[(pixels - 60) / 33 + 32];
-				else
-					RGB <= pallete[(pixels - 60) / 33 + 48];
-					
-			*/
+				buffer1[i] = 12'hfff;
+				buffer2[i] = 12'h000;
 			end
-
+			
 		end
-		
-		// Outside of 512 black is drawn
+	
+	end
+
+   always_ff @(posedge CLOCK_24) 
+	begin 
+		if(pixelValid)
+		begin
+			if(pixels % 4 == 0 ) begin
+				scan <= scan + 1;
+				if(lineIndex) begin
+					buffer2[scan] <= pixIn;
+				end
+				else begin
+					buffer1[scan] <= pixIn;
+				end
+			end
+		end
 		else
 		begin
-			RGB = 0;
+			scan <= 0;
+			if(scan != 0) begin
+				scanTwo <= !scanTwo;
+			end
 		end
+		
+		// Drawing color inside of 640only
+		if(pixels >= 64 && pixels < 512+64 && lines >= 0 && lines < 480) 
+		begin
+
+		if(lines[1] == 0) begin
+			RGB <= buffer1[(pixels-64)/2]; 
+		end
+		else begin
+			RGB <= buffer2[(pixels-64)/2];
+		end
+
+		end
+		else if(pixels >= 0 && pixels < 640 && lines >= 0 && lines < 480)
+			RGB <= 12'hAAA;
+		else begin
+			RGB <= 0;
+		end
+
 
 		// Set HSNC (after fp and before bp)
 		if((pixels >= totalPixels + hfp) && (pixels < (totalPixels + hfp + hsw)) ) 
-			HSNC = 1;
+			HSNC <= 1;
 		else 
 			HSNC <= 0;
 			
 		// Set VSNC (after fp and before bp)
 		if( (lines >= (totalLines + vfp)) && (lines < (totalLines + vfp + vsw))) 
-			VSNC <= 1;
-		else 
+		begin
+			scanTwo <= 0;
 			VSNC <= 0;
+		end
+		else 
+			VSNC <= 1;
 			
 		// Reached the end display capacity, restart
-		if(lines == totalLines + vfp + vsw + vbp) 
-			lines <= 0; 
+
 		
 		// One more pixel drawn
 		pixels <= pixels + 1;
+		if(vgaSync && !pixelValid && lines > 8) 
+		begin
+			pixels <= 0;
+			lines <= 0;
+			scan <= 0;
+		end
+
 		
 		// Next horizontal scan line
-		if(pixels == totalPixels + hfp + hsw + hbp) 
+		if(pixels == totalPixels + hfp + hsw + hbp-1) 
 		begin 
 			pixels <= 0; 
 			lines <= lines + 1; 
+			
+			if(lines == totalLines + vfp + vsw + vbp-1) 
+				lines <= 0; 
+			
 		end
 			  
 	end
     
+endmodule
+
+
+/***
+*  pixelGenerator
+*
+*  Outputs 12 bit wide pixel data based on the pixelIndex generated by the PPU module.
+*
+***/
+module pixelGenerator(input logic CLOCK_24, output logic [11:0]Pixel, input logic [5:0]pixelIndex);
+
+	/* The original NES pallete is hardcoded into the PPU and this is our rendition of that pallete */
+	const logic[11:0]pallete[0:63] = '{12'h555, 12'h027, 12'h019, 12'h308, 12'h406, 12'h603, 12'h500, 12'h410, 12'h220, 12'h020, 12'h130, 12'h040, 12'h034, 12'h000, 12'h000, 12'h000,
+													12'h999, 12'h15C, 12'h33F, 12'h62E, 12'h91B, 12'hA16, 12'h822, 12'h740, 12'h550, 12'h270, 12'h180, 12'h072, 12'h067, 12'h000, 12'h000, 12'h000,
+														12'hCCC, 12'h5AF, 12'h78F, 12'hB6F, 12'hE5F, 12'hF5B, 12'hF66, 12'hD82, 12'hAA0, 12'h7C0, 12'h4D2, 12'h3D6, 12'h3BD, 12'h333, 12'h000, 12'h000,
+															12'hFFF, 12'hADF, 12'hCCF, 12'hDBF, 12'hFBF, 12'hFBD, 12'hFBB, 12'hEC9, 12'hDD7, 12'hBE8, 12'hBE9, 12'hAEB, 12'hADE, 12'hAAA, 12'h000, 12'h000};
+	
+	/* Super Mario Bros sprite and background pallete */
+	logic [5:0]SBpalletes[32] = '{6'h22, 6'h29, 6'h1a, 6'h0f, 6'h00, 6'h36, 6'h17, 6'h0f,
+											6'h00, 6'h30, 6'h21, 6'h0f, 6'h00, 6'h27, 6'h17, 6'h0f,
+											6'h00, 6'h16, 6'h27, 6'h18, 6'h00, 6'h1a, 6'h30, 6'h27,
+											6'h00, 6'h16, 6'h30, 6'h27, 6'h00, 6'h0f, 6'h36, 6'h17};
+	logic [4:0]palleteIndex;
+	
+	always_comb
+	begin
+		if(pixelIndex[1:0] == 0)
+			palleteIndex = 0;
+		else
+			palleteIndex = pixelIndex[4:0];
+			
+	end
+	assign Pixel = pallete[SBpalletes[palleteIndex]];
+	
 endmodule

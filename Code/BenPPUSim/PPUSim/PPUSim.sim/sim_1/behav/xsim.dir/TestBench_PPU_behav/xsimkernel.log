@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Running: xsim.dir/TestBench_PPU_behav/xsimk.exe -simmode gui -wdb TestBench_PPU_behav.wdb -simrunnum 0 -socket 55499
 Design successfully loaded
 Design Loading Memory Usage: 7440 KB (Peak: 7440 KB)
@@ -5,3 +6,12 @@ Design Loading CPU Usage: 0 ms
 Simulation completed
 Simulation Memory Usage: 16412 KB (Peak: 16412 KB)
 Simulation CPU Usage: 592 ms
+=======
+Running: xsim.dir/TestBench_PPU_behav/xsimk.exe -simmode gui -wdb TestBench_PPU_behav.wdb -simrunnum 0 -socket 62925
+Design successfully loaded
+Design Loading Memory Usage: 7404 KB (Peak: 7404 KB)
+Design Loading CPU Usage: 0 ms
+Simulation completed
+Simulation Memory Usage: 16404 KB (Peak: 16404 KB)
+Simulation CPU Usage: 623 ms
+>>>>>>> origin/morgan

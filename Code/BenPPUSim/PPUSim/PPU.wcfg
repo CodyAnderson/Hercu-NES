@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <wave_config>
    <wave_state>
@@ -77,3 +78,74 @@
       <obj_property name="ObjectShortName">pixelIndexData[5:0]</obj_property>
    </wvobject>
 </wave_config>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="TestBench_PPU_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="TestBench_PPU" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="1629701500000fs"></ZoomStartTime>
+      <ZoomEndTime time="1630088000001fs"></ZoomEndTime>
+      <Cursor1Time time="1629880000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="144"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="11" />
+   <wvobject fp_name="/TestBench_PPU/clock" type="logic">
+      <obj_property name="ElementShortName">clock</obj_property>
+      <obj_property name="ObjectShortName">clock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench_PPU/name/The_PPU/tileX" type="array">
+      <obj_property name="ElementShortName">tileX[5:0]</obj_property>
+      <obj_property name="ObjectShortName">tileX[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench_PPU/name/The_PPU/tileY" type="array">
+      <obj_property name="ElementShortName">tileY[5:0]</obj_property>
+      <obj_property name="ObjectShortName">tileY[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench_PPU/name/The_PPU/pixelX" type="array">
+      <obj_property name="ElementShortName">pixelX[8:0]</obj_property>
+      <obj_property name="ObjectShortName">pixelX[8:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench_PPU/name/The_PPU/pixelY" type="array">
+      <obj_property name="ElementShortName">pixelY[8:0]</obj_property>
+      <obj_property name="ObjectShortName">pixelY[8:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench_PPU/pixelIndexData" type="array">
+      <obj_property name="ElementShortName">pixelIndexData[5:0]</obj_property>
+      <obj_property name="ObjectShortName">pixelIndexData[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench_PPU/vgaSync" type="logic">
+      <obj_property name="ElementShortName">vgaSync</obj_property>
+      <obj_property name="ObjectShortName">vgaSync</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench_PPU/name/The_PPU/vRamDataIn" type="array">
+      <obj_property name="ElementShortName">vRamDataIn[7:0]</obj_property>
+      <obj_property name="ObjectShortName">vRamDataIn[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench_PPU/name/The_PPU/vRamAddressOut" type="array">
+      <obj_property name="ElementShortName">vRamAddressOut[13:0]</obj_property>
+      <obj_property name="ObjectShortName">vRamAddressOut[13:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench_PPU/name/The_PPU/pixelOut" type="array">
+      <obj_property name="ElementShortName">pixelOut[5:0]</obj_property>
+      <obj_property name="ObjectShortName">pixelOut[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TestBench_PPU/name/The_PPU/pixelEnable" type="logic">
+      <obj_property name="ElementShortName">pixelEnable</obj_property>
+      <obj_property name="ObjectShortName">pixelEnable</obj_property>
+   </wvobject>
+</wave_config>
+>>>>>>> origin/morgan
