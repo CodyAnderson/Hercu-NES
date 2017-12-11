@@ -1,6 +1,5 @@
-
+**/db/**
 *.tdf
 *.cdb
 *.hdb
 *.rdb
-**/db/**
