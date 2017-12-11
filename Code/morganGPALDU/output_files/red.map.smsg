@@ -1,3 +1,0 @@
-Warning (10273): Verilog HDL warning at SN74LS373N.sv(20): extended using "x" or "z"
-Warning (10273): Verilog HDL warning at PPU_Module.sv(306): extended using "x" or "z"
-Warning (10273): Verilog HDL warning at PPU_Module.sv(318): extended using "x" or "z"

@@ -1,4 +1,15 @@
+**/incremental_db/** 
+#Quartus temp files
+
+**/output_files/**
+#Quartus temp files
+
+**/simulation/**
+#Quartus temp files
+
 **/db/**
+#Quartus temp files
+
 *.tdf
 *.cdb
 *.hdb
