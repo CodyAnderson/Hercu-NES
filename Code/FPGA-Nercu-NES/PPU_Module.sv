@@ -321,11 +321,3 @@ module MemFetcher(
     end
 	end
 endmodule
-
-module SpriteSelector();
-
-endmodule
-
-module LoopyScrolling();
-
-endmodule
