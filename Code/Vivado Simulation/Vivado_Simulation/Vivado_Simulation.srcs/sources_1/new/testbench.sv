@@ -292,18 +292,17 @@ module NesCpu(clk12x, reset, irq, nmi, dataIn, addressOut, dataOut, RW, OE, Out,
                     stage <= 0;
                   end
                   */
-  
-                   //negativeN <= negativeN_ANDY;
-                       //zeroZ <= zeroZ_ANDY;
-//                stage <= stage_ANDY;
-//                programCounterPC <= programCounterPC_ANDY;
-//                addressOut <= addressOut_ANDY;
-//                accumulatorAC <= accumulatorAC_ANDY;
+                    negativeN <= negativeN_ANDY;
+                    zeroZ <= zeroZ_ANDY;
+                    stage <= stage_ANDY;
+                    programCounterPC <= programCounterPC_ANDY;
+                    addressOut <= addressOut_ANDY;
+                    accumulatorAC <= accumulatorAC_ANDY;
                 /*ANDYT( .stage_in(stage), .accumulatorAC_in(accumulatorAC), .programCounterPC_In(programCounterPC), .address_In(addressOut) .data_In(dataIn),
                    .negativeN_Out(negativeN), .zeroZ_Out(zeroZ), .programCounterPC_Out(programCounterPC), .address_Out(address_Out), .stage_Out(stage), 
                    .accumulatorAC_Out(accumulatorAC));*/
-              ANDYT( stage,accumulatorAC, programCounterPC, addressOut,dataIn,
-                    negativeN, zeroZ);
+              /*ANDYT( stage,accumulatorAC, programCounterPC, addressOut,dataIn,
+                    negativeN, zeroZ);*/
               end
             //SEI
             8'h78 :
@@ -324,29 +323,7 @@ module NesCpu(clk12x, reset, irq, nmi, dataIn, addressOut, dataOut, RW, OE, Out,
             //JMP
             8'h4C :
               begin
-                if(stage == 0)
-                  begin
-                    //Update the Program Counter
-                    programCounterPC <= programCounterPC + 1;
-                    addressOut <= programCounterPC + 1;
-                    stage <= 2;
-                  end
-                else if(stage == 2)
-                  begin
-                    //Update the Program Counter
-                    programCounterPC <= programCounterPC + 1;
-                    addressOut <= programCounterPC + 1;
-                    //Load low byte
-                    stage <= 1;
-                  end
-                else if(stage == 1)
-                  begin
-                    //Update the Program Counter
-                    programCounterPC <= {data,oldData};
-                    addressOut <= {data,oldData};
-                    //Load high byte
-                    stage <= 0;
-                  end
+                
               end
             //LDX
             8'hA2 :
@@ -544,7 +521,287 @@ module ANDY(stage_In,accumulatorAC_In,programCounterPC_In,address_In, data_In,
     end
 endmodule
 
-task ANDYT;
+module JMPY(stage_In,accumulatorAC_In,programCounterPC_In,address_In, data_In, oldData_In,
+            negativeN_Out,zeroZ_Out,stage_Out, programCounterPC_Out, address_Out, accumulatorAC_Out);
+  input logic [7:0] stage_In;
+  input logic [7:0] accumulatorAC_In;
+  input logic [15:0] programCounterPC_In;
+  input logic [15:0] address_In;
+  input logic [7:0] data_In;
+  output logic negativeN_Out;
+  output logic zeroZ_Out;
+  output logic [15:0] programCounterPC_Out;
+  output logic [15:0] address_Out;
+  output logic [7:0] stage_Out;
+  output logic [7:0] accumulatorAC_Out;
+  output logic [7:0] oldData_In;
+  
+  always_comb
+    begin
+      //Update the Program Counter
+      programCounterPC_Out = programCounterPC_In + 1;
+      address_Out = programCounterPC_In + 1;
+      
+      if(stage_In == 0)
+        begin
+          //Update the Program Counter
+          programCounterPC_Out <= programCounterPC_In + 1;
+          address_Out <= programCounterPC_In + 1;
+          stage_Out <= 2;
+        end
+      else if(stage_In == 2)
+        begin
+          //Update the Program Counter
+          programCounterPC_Out <= programCounterPC_In + 1;
+          address_Out <= programCounterPC_In + 1;
+          //Load low byte
+          stage_Out <= 1;
+        end
+      else if(stage_In == 1)
+        begin
+          //Update the Program Counter
+          programCounterPC_Out <= {data_In,oldData_In};
+          address_Out <= {data_In,oldData_In};
+          //Load high byte
+          stage_Out <= 0;
+        end
+    end
+endmodule
+
+module LDAY(stage_In,accumulatorAC_In,programCounterPC_In,address_In, data_In, oldData_In,           
+            negativeN_Out,zeroZ_Out,stage_Out, programCounterPC_Out, address_Out, accumulatorAC_Out);//Update the Program Counter
+  
+    input logic [7:0] stage_In;
+    input logic [7:0] accumulatorAC_In;
+    input logic [15:0] programCounterPC_In;
+    input logic [15:0] address_In;
+    input logic [7:0] data_In;
+    output logic negativeN_Out;
+    output logic zeroZ_Out;
+    output logic [15:0] programCounterPC_Out;
+    output logic [15:0] address_Out;
+    output logic [7:0] stage_Out;
+    output logic [7:0] accumulatorAC_Out;
+    output logic [7:0] oldData_In;
+    
+    always_comb
+       begin
+        programCounterPC_Out <= programCounterPC_In + 1;
+        address_Out <= programCounterPC_In + 1;
+        if(stage_In == 0)
+          begin
+            stage_Out <= 1;
+          end
+        else if(stage_In == 1)
+          begin
+            accumulatorAC_Out <= data_In;
+            stage_Out <= 0;
+          end
+      end
+endmodule
+
+module NOPY(stage_In,accumulatorAC_In,programCounterPC_In,address_In, data_In, oldData_In,           
+            negativeN_Out,zeroZ_Out,stage_Out, programCounterPC_Out, address_Out, accumulatorAC_Out);
+    input logic [7:0] stage_In;
+    input logic [7:0] accumulatorAC_In;
+    input logic [15:0] programCounterPC_In;
+    input logic [15:0] address_In;
+    input logic [7:0] data_In;
+    output logic negativeN_Out;
+    output logic zeroZ_Out;
+    output logic [15:0] programCounterPC_Out;
+    output logic [15:0] address_Out;
+    output logic [7:0] stage_Out;
+    output logic [7:0] accumulatorAC_Out;
+    output logic [7:0] oldData_In;
+    
+    always_comb
+    begin
+        //Update the Program Counter
+        programCounterPC_Out <= programCounterPC_In + 1;
+        address_Out <= programCounterPC_In + 1;
+    end
+endmodule
+
+module BEQY(stage_In,accumulatorAC_In,programCounterPC_In,address_In, data_In, oldData_In,           
+            negativeN_Out,zeroZ_Out,stage_Out, programCounterPC_Out, address_Out, accumulatorAC_Out);
+    input logic [7:0] stage_In;
+    input logic [7:0] accumulatorAC_In;
+    input logic [15:0] programCounterPC_In;
+    input logic [15:0] address_In;
+    input logic [7:0] data_In;
+    output logic negativeN_Out;
+    output logic zeroZ_Out;
+    output logic [15:0] programCounterPC_Out;
+    output logic [15:0] address_Out;
+    output logic [7:0] stage_Out;
+    output logic [7:0] accumulatorAC_Out;
+    output logic [7:0] oldData_In;
+    
+    always_comb
+    begin
+        if(stage_In == 0)
+          begin
+            //Update the Program Counter
+            programCounterPC_Out <= programCounterPC_In + 1;
+            address_Out <= programCounterPC_In + 1;
+            //Kick it
+            stage_Out <= 1;
+          end
+        else if(stage_In == 1)
+          begin
+            if(zeroZ_Out == 1)
+              begin
+                //Update the Program Counter
+                if(data_In[7:7] == 1)
+                  begin
+                    programCounterPC_Out <= programCounterPC_In + {8'hFF,data_In} + 1;
+                    address_Out <= address_Out + {8'hFF,data_In} + 1;
+                  end
+                else
+                  begin
+                    programCounterPC_Out <= programCounterPC_In + data_In + 1;
+                    address_Out <= programCounterPC_In + data_In + 1;
+                  end
+              end
+            else
+              begin
+                //Update the Program Counter
+                programCounterPC_Out <= programCounterPC_In + 1;
+                address_Out <= programCounterPC_In + 1;
+              end
+            stage_Out <= 0;
+          end
+    end
+endmodule
+
+module CLDY(stage_In,accumulatorAC_In,programCounterPC_In,address_In, data_In, oldData_In, decimalD_In,           
+            negativeN_Out,zeroZ_Out,stage_Out, programCounterPC_Out, address_Out, accumulatorAC_Out, decimalD_Out);
+            
+    input logic [7:0] stage_In;
+    input logic [7:0] accumulatorAC_In;
+    input logic [15:0] programCounterPC_In;
+    input logic [15:0] address_In;
+    input logic [7:0] data_In;
+    output logic negativeN_Out;
+    output logic zeroZ_Out;
+    output logic [15:0] programCounterPC_Out;
+    output logic [15:0] address_Out;
+    output logic [7:0] stage_Out;
+    output logic [7:0] accumulatorAC_Out;
+    output logic [7:0] oldData_In;
+    input logic decimalD_In;
+    output logic decimalD_Out;
+    
+    always_comb
+    begin
+        //Update the Program Counter
+        programCounterPC_Out <= programCounterPC_In + 1;
+        address_Out <= programCounterPC_In + 1;
+        if(stage_In == 0)
+          begin
+            stage_Out <= 1;
+            decimalD_Out <= 0;
+          end
+        else if(stage_In == 1)
+          begin
+            stage_Out <= 0;
+          end
+    end
+endmodule
+
+module LDXY(stage_In,accumulatorAC_In,programCounterPC_In,address_In, data_In, oldData_In, decimalD_In,           
+            negativeN_Out,zeroZ_Out,stage_Out, programCounterPC_Out, address_Out, accumulatorAC_Out, decimalD_Out, Xregister_Out);
+            
+    input logic [7:0] stage_In;
+    input logic [7:0] accumulatorAC_In;
+    input logic [15:0] programCounterPC_In;
+    input logic [15:0] address_In;
+    input logic [7:0] data_In;
+    output logic negativeN_Out;
+    output logic zeroZ_Out;
+    output logic [15:0] programCounterPC_Out;
+    output logic [15:0] address_Out;
+    output logic [7:0] stage_Out;
+    output logic [7:0] accumulatorAC_Out;
+    output logic [7:0] oldData_In;
+    input logic decimalD_In;
+    output logic decimalD_Out;
+    output logic [7:0]Xregister_Out;
+    
+    always_comb
+    begin
+        //Update the Program Counter
+        programCounterPC_Out <= programCounterPC_In + 1;
+        address_Out <= programCounterPC_In + 1;
+        if(stage_In == 0)
+          begin
+            stage_Out <= 1;
+          end
+        else if(stage_In == 1)
+          begin
+            Xregister_Out <= data_In;
+            stage_Out <= 0;
+          end
+    end
+endmodule
+
+module BRKY(stage_In,accumulatorAC_In,programCounterPC_In,address_In, data_In, oldData_In,           
+            negativeN_Out,zeroZ_Out,stage_Out, programCounterPC_Out, address_Out, accumulatorAC_Out);
+    input logic [7:0] stage_In;
+    input logic [7:0] accumulatorAC_In;
+    input logic [15:0] programCounterPC_In;
+    input logic [15:0] address_In;
+    input logic [7:0] data_In;
+    output logic negativeN_Out;
+    output logic zeroZ_Out;
+    output logic [15:0] programCounterPC_Out;
+    output logic [15:0] address_Out;
+    output logic [7:0] stage_Out;
+    output logic [7:0] accumulatorAC_Out;
+    output logic [7:0] oldData_In;
+    
+    always_comb
+    begin
+        //Update the Program Counter
+        programCounterPC_Out <= programCounterPC_In + 1;
+        address_Out <= programCounterPC_In + 1;
+    end
+endmodule
+
+module SEIY(stage_In,accumulatorAC_In,programCounterPC_In,address_In, data_In, oldData_In,           
+            negativeN_Out,zeroZ_Out,stage_Out, programCounterPC_Out, address_Out, accumulatorAC_Out, interruptI_Out);
+    input logic [7:0] stage_In;
+    input logic [7:0] accumulatorAC_In;
+    input logic [15:0] programCounterPC_In;
+    input logic [15:0] address_In;
+    input logic [7:0] data_In;
+    output logic negativeN_Out;
+    output logic zeroZ_Out;
+    output logic [15:0] programCounterPC_Out;
+    output logic [15:0] address_Out;
+    output logic [7:0] stage_Out;
+    output logic [7:0] accumulatorAC_Out;
+    output logic [7:0] oldData_In;
+    output logic interruptI_Out;
+    
+    always_comb
+    begin
+        //Update the Program Counter
+        programCounterPC_Out <= programCounterPC_In + 1;
+        address_Out <= programCounterPC_In + 1;
+        if(stage_In == 0)
+          begin
+            stage_Out <= 1;
+            interruptI_Out <= 1;
+          end
+        else if(stage_In == 1)
+          begin
+            stage_Out <= 0;
+          end
+    end
+endmodule
+/*task ANDYT;
    inout logic [7:0] stage_Inout;
    inout logic [7:0] accumulatorAC_Inout;
    inout logic [15:0] programCounterPC_Inout;
@@ -567,4 +824,4 @@ task ANDYT;
        stage_Inout <= 0;
      end
 
- endtask
+ endtask*/
