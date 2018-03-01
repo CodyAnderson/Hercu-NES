@@ -53,14 +53,6 @@ set_location_assignment PIN_A13 -to GPIO_0[0]
 set_location_assignment PIN_A14 -to GPIO_0[2]
 set_location_assignment PIN_A15 -to GPIO_0[4]
 set_location_assignment PIN_A16 -to GPIO_0[6]
-set_location_assignment PIN_A18 -to GPIO_0[10]
-set_location_assignment PIN_A19 -to GPIO_0[12]
-set_location_assignment PIN_A20 -to GPIO_0[14]
-set_location_assignment PIN_C21 -to GPIO_0[16]
-set_location_assignment PIN_D21 -to GPIO_0[18]
-set_location_assignment PIN_E21 -to GPIO_0[20]
-set_location_assignment PIN_F21 -to GPIO_0[22]
-set_location_assignment PIN_J21 -to GPIO_0[26]
 set_location_assignment PIN_K21 -to GPIO_0[28]
 set_location_assignment PIN_J19 -to GPIO_0[30]
 set_location_assignment PIN_J18 -to GPIO_0[32]
@@ -86,14 +78,6 @@ set_instance_assignment -name IO_STANDARD LVTTL -to GPIO_0[0]
 set_instance_assignment -name IO_STANDARD LVTTL -to GPIO_0[2]
 set_instance_assignment -name IO_STANDARD LVTTL -to GPIO_0[4]
 set_instance_assignment -name IO_STANDARD LVTTL -to GPIO_0[6]
-set_instance_assignment -name IO_STANDARD LVTTL -to GPIO_0[10]
-set_instance_assignment -name IO_STANDARD LVTTL -to GPIO_0[12]
-set_instance_assignment -name IO_STANDARD LVTTL -to GPIO_0[14]
-set_instance_assignment -name IO_STANDARD LVTTL -to GPIO_0[16]
-set_instance_assignment -name IO_STANDARD LVTTL -to GPIO_0[18]
-set_instance_assignment -name IO_STANDARD LVTTL -to GPIO_0[20]
-set_instance_assignment -name IO_STANDARD LVTTL -to GPIO_0[22]
-set_instance_assignment -name IO_STANDARD LVTTL -to GPIO_0[26]
 set_instance_assignment -name IO_STANDARD LVTTL -to GPIO_0[28]
 set_instance_assignment -name IO_STANDARD LVTTL -to GPIO_0[30]
 set_instance_assignment -name IO_STANDARD LVTTL -to GPIO_0[32]
@@ -435,7 +419,6 @@ set_location_assignment PIN_J22 -to PPU_AD[13]
 set_location_assignment PIN_K22 -to RD
 set_location_assignment PIN_J20 -to WR
 set_location_assignment PIN_K20 -to RST
-set_location_assignment PIN_L18 -to VOUT
 set_location_assignment PIN_H12 -to RW
 set_location_assignment PIN_H14 -to CPU_D[0]
 set_location_assignment PIN_E14 -to CPU_D[1]
@@ -474,7 +457,6 @@ set_instance_assignment -name IO_STANDARD LVTTL -to PPU_AD[13]
 set_instance_assignment -name IO_STANDARD LVTTL -to RD
 set_instance_assignment -name IO_STANDARD LVTTL -to WR
 set_instance_assignment -name IO_STANDARD LVTTL -to RST
-set_instance_assignment -name IO_STANDARD LVTTL -to VOUT
 set_instance_assignment -name IO_STANDARD LVTTL -to RW
 set_instance_assignment -name IO_STANDARD LVTTL -to CPU_D[0]
 set_instance_assignment -name IO_STANDARD LVTTL -to CPU_D[1]
@@ -494,6 +476,30 @@ set_instance_assignment -name IO_STANDARD LVTTL -to EXT[2]
 set_instance_assignment -name IO_STANDARD LVTTL -to EXT[3]
 set_instance_assignment -name IO_STANDARD LVTTL -to CLK
 set_instance_assignment -name IO_STANDARD LVTTL -to INT
-set_global_assignment -name SYSTEMVERILOG_FILE ../PPU.sv
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_location_assignment PIN_A18 -to VOUT[7]
+set_location_assignment PIN_A19 -to VOUT[6]
+set_location_assignment PIN_A20 -to VOUT[5]
+set_location_assignment PIN_C21 -to VOUT[4]
+set_location_assignment PIN_D21 -to VOUT[3]
+set_location_assignment PIN_E21 -to VOUT[2]
+set_location_assignment PIN_F21 -to VOUT[1]
+set_location_assignment PIN_J21 -to VOUT[0]
+set_instance_assignment -name IO_STANDARD LVTTL -to VOUT[7]
+set_instance_assignment -name IO_STANDARD LVTTL -to VOUT[6]
+set_instance_assignment -name IO_STANDARD LVTTL -to VOUT[5]
+set_instance_assignment -name IO_STANDARD LVTTL -to VOUT[4]
+set_instance_assignment -name IO_STANDARD LVTTL -to VOUT[3]
+set_instance_assignment -name IO_STANDARD LVTTL -to VOUT[2]
+set_instance_assignment -name IO_STANDARD LVTTL -to VOUT[1]
+set_instance_assignment -name IO_STANDARD LVTTL -to VOUT[0]
+set_location_assignment PIN_L18 -to GPIO_0[35]
+set_instance_assignment -name IO_STANDARD LVTTL -to GPIO_0[35]
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name VERILOG_FILE pll.v
+set_global_assignment -name SYSTEMVERILOG_FILE ../PPU.sv
+set_global_assignment -name QIP_FILE pll.qip
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
