@@ -25,6 +25,7 @@ module RP2C02G (
     output logic [9:0]LEDR,
     output logic [29:29]GPIO_1
 );
+
 logic newclock;
 logic doubleClock;
 assign GPIO_1[29] = CLK;
@@ -48,10 +49,7 @@ begin
 
     crappyColorBurst[1] <= crappyColorBurst[3];
     crappyColorBurst[3] <= crappyColorBurst[5];
-    if(xpos == 0)
-        crappyColorBurst[5] <= 1;
-    else
-        crappyColorBurst[5] <= !crappyColorBurst[1];
+    crappyColorBurst[5] <= !crappyColorBurst[1];
 end
 
 always_ff@(negedge newclock)
@@ -72,7 +70,7 @@ end
 
 reg [9:0] xpos;
 reg [8:0] ypos;
-logic [5:0] frames;
+logic [6:0] frames;
 always @(posedge newclock) begin
     if(count == 0)
     begin
@@ -114,7 +112,7 @@ logic colorBurst;
 assign colorBurst = !vsync & (xpos >= 309 && xpos < 309+14);
 
 logic [6:0] brightness;
-assign brightness = (ypos[1] ^ xpos[1])*127;//SW[2:0];
+assign brightness = (ypos+xpos+frames)%127;//SW[2:0];
 logic [5:0] saturation;
 assign saturation = (ypos/2)%64; //(ypos/16)%8;
 logic [3:0] hue;

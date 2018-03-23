@@ -2,8 +2,7 @@
 module CpuCommunicator(
   input logic[2:0] addr,
 
-  input logic[7:0] ppuDataIn, //Data external input
-  output logic[7:0] ppuDataOut, //Data external output
+  inout logic[7:0] ppuData_IN_OUT, //Data external inoutput
 
   input logic rw,
   input logic cs,
@@ -11,9 +10,6 @@ module CpuCommunicator(
   input logic[7:0] dataIn, //Data internal input
   output logic[7:0] dataOut, //Data internal output
   
-
-  
-  output logic ppuRW,
   output logic control_EN, //0
   output logic mask_EN,    //1
   output logic status_EN,  //2
@@ -26,6 +22,12 @@ module CpuCommunicator(
 );
 
 logic [7:0]cableSelectBundle;
+
+logic[7:0] ppuDataIn; //Data external input
+logic[7:0] ppuDataOut; //Data external output
+
+assign ppuDataIn = ppuData_IN_OUT;
+assign ppuData_IN_OUT = (rw & !cs) ? ppuDataOut : 8'HZZ;
 
 always_comb
 begin
