@@ -5,7 +5,7 @@
 // 
 // Create Date: 02/23/2018 03:06:36 PM
 // Design Name: 
-// Module Name: DecodeRom_TestBench
+// Module Name: DecodeRom
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -22,8 +22,8 @@
 module DecodeRom(
     //For some reason the inputs here are:
         //1: the full OP code
-        //2: a not'd version of the OP code (but only 7 bits of it (I'm not sure which 7 bits))
-            //So I'm going to see if I can intake this but ignore it and only use the normal opcode
+        //2: a not'd version of the OP code (but only 7 bits of it (I'm not sure WHICH 7 bits, though))
+            //So I'm going to see if I can intake this, but ignore it, and only use the normal opcode
                 //but modify it how I need
         //3: 6 bits of timing info
     input logic [7:0] opCode , input logic [6:0] notOpCode , input logic [5:0] timingIn ,
