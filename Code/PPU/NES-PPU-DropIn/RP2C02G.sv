@@ -122,7 +122,7 @@ CpuCommunicator ExternalCommute(
 );
 
   logic spriteOverflow;
-  logic spriteCollision;
+  logic setSpriteCollision;
   logic setVerticalBlank;
   logic clearVerticalBlank;
   logic verticalBlank;
@@ -133,8 +133,8 @@ CpuCommunicator ExternalCommute(
   logic vramIncrement;
   logic resetX;
   logic resetY;
+  logic oamNextAttr;
   logic oamNextEntry;
-  logic oamNextObject;
   logic [4:0]palleteSelect;
   logic [5:0]selectedColour;
   logic [2:0]fineXScroll;
@@ -155,6 +155,7 @@ CpuCommunicator ExternalCommute(
   logic background_EN;
   logic sprite_EN;
   logic [2:0]colorEmphasis;
+  logic spriteFetch_EN;
 
 assign interrupt = !(interrupt_EN & verticalBlank);
 assign dataFromComponents = ramData_EN & videoRamAddress < 'h3f00 ? dataFromMemory : dataFromRegisters;
@@ -174,7 +175,7 @@ RegisterHandler HandlesRegs(
     dataToComponents,
     dataFromRegisters,
     spriteOverflow,
-    spriteCollision,
+    setSpriteCollision,
     setVerticalBlank,
     clearVerticalBlank,
     verticalBlank,
@@ -185,8 +186,9 @@ RegisterHandler HandlesRegs(
     vramIncrement,
     resetX,
     resetY,
+    oamNextAttr,
     oamNextEntry,
-    oamNextObject,
+    spriteFetch_EN,
     palleteSelect,
     selectedColour,
     fineXScroll,
@@ -210,7 +212,9 @@ RegisterHandler HandlesRegs(
     );
 
     logic backgroundFetch_EN;
-    logic spriteFetch_EN;
+    
+    logic spriteEval_EN;
+    logic spriteEvalReset;
     logic dummyFetch_EN;
     logic pixelShifty_EN;
     logic luminance_EN;
@@ -227,6 +231,8 @@ RenderController ControlDaRender(
     sprite_EN,
     greyscale_EN,
     backgroundFetch_EN,
+    spriteEval_EN,
+    spriteEvalReset,
     spriteFetch_EN,
     dummyFetch_EN,
     pixelShifty_EN,
@@ -244,9 +250,11 @@ RenderController ControlDaRender(
     lineCount
      );
 
+    logic [11:0]spriteAddress;
     logic [1:0] tileAttribute_REG;
     logic [7:0] tileLowByte;
     logic [7:0] tileHighByte;
+    logic[7:0] dataRender_OUT;
 
 VramController DaVideoMemories(
     bufferedClock, //nes/4
@@ -261,9 +269,11 @@ VramController DaVideoMemories(
     spriteFetch_EN,
     dummyFetch_EN,
     idle,
+    spriteAddress,
     tileAttribute_REG,
     tileLowByte,
     tileHighByte,
+    dataRender_OUT,
 
     //To the memory bus
     PPU_AD,
@@ -272,6 +282,31 @@ VramController DaVideoMemories(
     memWrite
     );
 
+logic [5:0]spritePixel;
+SpriteHandler ElSprites(
+    bufferedClock,
+    clockCount == 3,
+    spriteFetch_EN,
+    spriteEval_EN,
+    oamData_EN,
+    RW,
+    dataToComponents,
+    dataFromComponents,
+    spriteEvalReset,
+    clearVerticalBlank,
+    spriteSize,
+    pixelShifty_EN,
+    spritePatternTableAddress,
+    oamAddress,
+    lineCount,
+    dataRender_OUT,
+    oamNextAttr,
+    oamNextEntry,
+    spriteOverflow,
+    spriteAddress,
+    spritePixel
+    );
+logic [4:0]backgroundPixel;
 BackgroundPixelGen BackGen(
     bufferedClock, //nes/4
     clockCount == 3,
@@ -281,11 +316,20 @@ BackgroundPixelGen BackGen(
     tileHighByte,
     tileLowByte,
     fineXScroll,
+    backgroundPixel
+    );
+
+PixelPrioritizer DaSelectionOfDaPixelyBits(
+    bufferedClock,
+    clockCount == 3,
+    backgroundPixel,
+    spritePixel,
+    setSpriteCollision,
     palleteSelect
     );
 
 NtscVideoGenerator VideoGen(
-    bufferedClock, // the full 21MHz clock
+    doubleClock, //bufferedClock, // the full 21MHz clock
     luminance_EN,
     chrominance_EN,
     sync_EN,

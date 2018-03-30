@@ -42,21 +42,32 @@ logic [5:0]crappyColorBurstReg = 0;
 logic [11:0]crappyColorBurst;
 assign crappyColorBurst[5:0] = crappyColorBurstReg;
 assign crappyColorBurst[11:6] = ~crappyColorBurstReg;
-
+logic everyOther = 0;
 always_ff@(posedge clock)
 begin
-    crappyColorBurstReg[1] <= crappyColorBurstReg[3];
-    crappyColorBurstReg[3] <= crappyColorBurstReg[5];
-    crappyColorBurstReg[5] <= !crappyColorBurstReg[1];
+    everyOther <= !everyOther;
+    if(everyOther)
+    begin
+        crappyColorBurstReg[1] <= crappyColorBurstReg[3];
+        crappyColorBurstReg[3] <= crappyColorBurstReg[5];
+        crappyColorBurstReg[5] <= !crappyColorBurstReg[1];
+    end
+    else
+    begin
+        for(integer i = 0; i < 3; ++i)
+        begin
+                crappyColorBurstReg[2*i] <= crappyColorBurstReg[2*i+1];
+        end
+    end
 end
 
-always_ff@(negedge clock)
+/*always_ff@(negedge clock)
 begin
     for(integer i = 0; i < 3; ++i)
     begin
             crappyColorBurstReg[2*i] <= crappyColorBurstReg[2*i+1];
     end
-end
+end*/
 
 wire attenuationEnable;
 

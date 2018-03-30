@@ -21,11 +21,11 @@ module VRAMSetterGetter(
 
 //logic [1:0]memStager = 0;
 logic addressPosSelector = 0;
-logic [7:0]memDataBuffer;
+logic [7:0]memDataBuffer = 0;
 logic almostReadTime = 0;
 logic memGetEnable = 0;
 logic queueMemGet = 0;
-logic memRW;
+logic memRW = 1;
 logic activationTrigger_PREV = 0;
 
 logic operationAcivate;
@@ -38,7 +38,7 @@ assign read_EN = !(memStager >= 2) | !memRW | !operationAcivate; //Active LOW
 assign (strong0, weak1) addressData_IN_OUT[13:8] = address_IN[13:8];
 assign (strong0, weak1) addressData_IN_OUT[7:0] = (memStager >= 2 & operationAcivate) ? (memRW ? 'bZ : memDataBuffer) : address_IN[7:0];
 assign operationDone = memStager > 1 & memGetEnable;
-assign dataRender_OUT = operationDone ? addressData_IN_OUT[7:0] : 8'bX;
+assign dataRender_OUT = (memStager == 3) ? addressData_IN_OUT[7:0] : 8'bX;
 
 always_ff@(posedge clock_IN)
 begin

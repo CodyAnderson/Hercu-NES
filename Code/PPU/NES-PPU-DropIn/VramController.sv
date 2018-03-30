@@ -15,6 +15,7 @@ module VramController(
     output logic[1:0] tileAttribute_REG,
     output logic [7:0] tileLowByte,
     output logic [7:0] tileHighByte,
+    output logic[7:0] dataRender_OUT,
 
     //To the memory bus
     inout wire [13:0]addressData_IN_OUT,
@@ -29,7 +30,7 @@ assign memRW = cpuDataRW_SEL | backgroundFetch_EN | dummyFetch_EN; //Locks to re
 logic renderMode;
 assign renderMode = backgroundFetch_EN | spriteFetch_EN | dummyFetch_EN;
 
-logic[7:0] dataRender_OUT;
+
 logic[7:0] tileAddress_REG;
 
 

@@ -51,27 +51,7 @@ module TestBench();
         for(integer i = 0; i < 1024; i = i+1)
             fakeCPU[i] = 1;
         CODE(WRITE, CTRL, 8'h80);
-        CODE(WRITE, MASK, 8'b00000110);
-        CODE(WRITE, ADDR, 8'h24);
-        CODE(WRITE, ADDR, 8'h00);
-        CODE(WRITE, DATA, 8'h24);
-        CODE(WRITE, DATA, 8'h02);
-        CODE(WRITE, DATA, 8'h03);
-        CODE(WRITE, DATA, 8'h04);
-        CODE(WRITE, DATA, 8'h05);
-        CODE(WRITE, DATA, 8'h06);
-        CODE(WRITE, DATA, 8'h07);
-        CODE(WRITE, DATA, 8'h08);
-        CODE(WRITE, DATA, 8'h09);
-        CODE(WRITE, DATA, 8'h0a);
-        CODE(WRITE, DATA, 8'h0b);
-        CODE(WRITE, DATA, 8'h0c);
-        CODE(WRITE, DATA, 8'h16);
-        CODE(WRITE, DATA, 8'h0e);
-        CODE(WRITE, DATA, 8'h0f);
-        CODE(WRITE, DATA, 8'h10);
-        CODE(READ, STATUS, 0);
-        CODE(WRITE, MASK, 8'b00001110);
+        CODE(WRITE, MASK, 8'b00011110);
         //CODE(WRITE, MASK, 8'b00011110);
     end
 
@@ -121,12 +101,12 @@ module TestBench();
     wire [13:0]PPU_AD;
     assign ppuDataInput = PPU_AD;
     assign PPU_AD[13:8] = 'bzzzzzz;
-    assign (strong0, weak1) PPU_AD[7:0] = RD ? 8'hZZ : ppuDataInjection;
+    
     logic RD;
     logic WR;
     logic RST = 1;
     logic [7:0]VOUT;
-
+    assign (strong0, weak1) PPU_AD[7:0] = RD ? 8'hZZ : ppuDataInjection;
     assign {RW, CPU_A, cpuDataInjection, CS} = fakeCPU[commandCounter];
       //////////////
      // Debug Stuff

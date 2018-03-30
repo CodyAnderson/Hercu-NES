@@ -3,8 +3,11 @@ module SpriteHandler(
     input logic clock_EN,
     input logic spriteFetch_EN,
     input logic spriteEval_EN,
+    input logic cpuComm_EN,
+    input logic cpuRW,
+    input logic[7:0] cpuData_IN,
+    output logic[7:0] cpuData_OUT,
     input logic spriteEvalReset,
-    input logic drawTime,
     input logic resetFlags,
     input logic tallSprites,
     input logic pixelShifty_EN,
@@ -15,22 +18,22 @@ module SpriteHandler(
     output logic oamNextAttr,
     output logic oamNextEntry,
     output logic spriteOverflow = 0,
-    output logic spriteCollision = 0,
-    output logic [11:0]spriteAddress_OUT
+    output logic [11:0]spriteAddress_OUT,
+    output logic [5:0]spritePixel_OUT
     );
 
 logic [7:0] spriteYPos;
 logic [7:0] spriteTileIndex;
 logic [7:0] spriteAttribute;
-always_comb
+always_comb //handles mapping the sprite information and current line to a sprite address
 begin
     logic[3:0] fineYspritePos;
     if(spriteAttribute[7]) //If the tile is flipped vertically
     begin
-        fineYspritePos = 15 - (yPosition - spritePos);
+        fineYspritePos = 15 - (yPosition - spriteYPos);
     end
     else
-        fineYspritePos = yPosition - spritePos;
+        fineYspritePos = yPosition - spriteYPos;
 
     if(tallSprites)
         spriteAddress_OUT = {spriteTileIndex[0], spriteTileIndex[7:1], fineYspritePos};
@@ -40,13 +43,56 @@ end
 
 
 
-logic [4:0] secondaryAddress = 0;
+
+logic primaryWrite;
 logic [7:0] dataToPrimary;
 logic [7:0] dataFromPrimary;
+ObjectAttributeMemory OAM(
+    clock,
+    clock_EN,
+    primaryWrite,
+    primaryAddress,
+    dataToPrimary,
+    dataFromPrimary
+);
+//assign (weak1, strong0) cpuData_OUT = cpuComm_EN ? dataFromPrimary : 8'hZZ;
+assign cpuData_OUT = 8'hzz;
+always_comb // handles the cpu reading and writing OAM data
+begin
+    if(cpuComm_EN)
+    begin
+        dataToPrimary = cpuData_IN;
+    end
+    else
+    begin
+        dataToPrimary = 'bx;
+    end
+    if(cpuComm_EN && cpuRW == 0)
+        primaryWrite = 1;
+    else
+        primaryWrite = 0;
+end
+
+logic [4:0] secondaryAddress;
+logic [4:0] stageOneSecondaryAddress = 0;
+logic [4:0] stageTwoSecondaryAddress = 0;
+assign secondaryAddress = spriteFetch_EN ? stageTwoSecondaryAddress : stageOneSecondaryAddress;
 logic writeSecondary = 0;
 logic [7:0] dataToSecondary;
 logic [7:0] dataFromSecondary;
+ObjectAttributeMemorySecondary OAM_Secondary(
+    clock,
+    clock_EN,
+    writeSecondary,
+    secondaryAddress,
+    dataToSecondary,
+    dataFromSecondary
+);
+
+
+
 logic [7:0] dataReg;
+assign dataToSecondary = stage == 0 ? 'hFF : dataReg;
 logic [12:0] stage = 0;
 logic evenCycle = 0;
 logic secondaryOamFull = 0;
@@ -114,7 +160,8 @@ begin
         if(spriteEvalReset)
         begin
             possiblySpriteCollisionThisLine <= possiblySpriteCollisionNextLine;
-            secondaryAddress <= 0;
+            stageOneSecondaryAddress <= 0;
+            stageTwoSecondaryAddress <= 0;
             evalDone <= 0;
             stage <= 0;
             secondaryOamFull <= 0;
@@ -128,9 +175,13 @@ begin
             case(stage)
                 0: begin //Initialize Secondary OAM
                     possiblySpriteCollisionNextLine <= 0;
-                    secondaryAddress <= secondaryAddress + 1;
-                    if(secondaryAddress == 'b11111)
+                    stageOneSecondaryAddress <= stageOneSecondaryAddress + 1;
+                    writeSecondary <= 1;
+                    if(stageOneSecondaryAddress == 'b11111)
+                    begin
                         stage <= stage + 1;
+                        writeSecondary <= 0;
+                    end
                 end
                 1: begin //Search for sprites to be drawn on the next line
                     evenCycle <= !evenCycle;
@@ -150,15 +201,15 @@ begin
                         else
                             writeSecondary <= 0;
 
-                        if(secondaryAddress[1:0] || drawSprite) //If this sprite exists on this line, increment address
+                        if(stageOneSecondaryAddress[1:0] || drawSprite) //If this sprite exists on this line, increment address
                         begin
                             if(evalDone == 0)
-                                secondaryAddress <= secondaryAddress + 1;
+                                stageOneSecondaryAddress <= stageOneSecondaryAddress + 1;
 
                             if(firstSprite)
                                 possiblySpriteCollisionNextLine <= 1; //Evaluation takes place one line before it gets rendered
 
-                            if(secondaryAddress == 'b11111) //If sprite memory is full, set the flag
+                            if(stageOneSecondaryAddress == 'b11111) //If sprite memory is full, set the flag
                             begin
                                 secondaryOamFull <= 1;
                                 evalDone <= 1;
@@ -167,62 +218,93 @@ begin
                     end
                 end // 1:
             endcase // stage
-            
-            if(spriteFetch_EN)
-            begin
-                case(fetchingCounter)
-                    0:begin
-                        spriteYPos <= dataFromSecondary;
-                        secondaryAddress <= secondaryAddress + 1;
+        end
+        if(spriteFetch_EN)
+        begin
+            case(fetchingCounter)
+                0:begin //ypos
+                    spriteYPos <= dataFromSecondary;
+                    stageTwoSecondaryAddress <= stageTwoSecondaryAddress + 1;
+                end
+                1:begin //tile index
+                    spriteTileIndex <= dataFromSecondary;
+                    stageTwoSecondaryAddress <= stageTwoSecondaryAddress + 1;
+                end
+                2:begin //tile attributes
+                    spriteAttribute <= dataFromSecondary;
+                    spriteDrawingFlippyFloppies[{spriteDrawCounter,2'b00}] <= dataFromSecondary;
+                    //spriteDrawCounter <= spriteDrawCounter + 1;
+                    stageTwoSecondaryAddress <= stageTwoSecondaryAddress + 1;
+                end
+                3:begin //xpos
+                    spriteDrawingFlippyFloppies[{spriteDrawCounter,2'b01}] <= dataFromSecondary;
+                    //spriteDrawCounter <= spriteDrawCounter + 1;
+                    stageTwoSecondaryAddress <= stageTwoSecondaryAddress + 1;
+                end
+                //4 waiting for ram read
+                5:begin
+                    //spriteDrawCounter <= spriteDrawCounter + 1;
+                    if(spriteAttribute[6] == 0) //need to flip data bits
+                    begin
+                        for(integer i = 0; i < 8; i = i + 1)
+                            spriteDrawingFlippyFloppies[{spriteDrawCounter,2'b10}][i] <= vRamData[7-i];
                     end
-                    1:begin
-                        spriteTileIndex <= dataFromSecondary;
-                        secondaryAddress <= secondaryAddress + 1;
-                    end
-                    2:begin
-                        spriteAttribute <= dataFromSecondary;
-                        spriteDrawingFlippyFloppies[{spriteDrawCounter,2'b00}] <= dataFromSecondary;
-                        spriteDrawCounter <= spriteDrawCounter + 1;
-                        secondaryAddress <= secondaryAddress + 1;
-                    end
-                    3:begin
-                        spriteDrawingFlippyFloppies[{spriteDrawCounter,2'b01}] <= dataFromSecondary;
-                        spriteDrawCounter <= spriteDrawCounter + 1;
-                        secondaryAddress <= secondaryAddress + 1;
-                    end
-                    //4 waiting for ram read
-                    5:begin
-                        spriteDrawCounter <= spriteDrawCounter + 1;
-                        if(spriteAttribute[6]) //need to flip data bits
-                        begin
-                            for(integer i = 0; i < 8; i = i + 1)
-                                spriteDrawingFlippyFloppies[{spriteDrawCounter,2'b10}][i] <= vRamData[7-i];
-                        end
-                        else
-                            spriteDrawingFlippyFloppies[{spriteDrawCounter,2'b10}] <= vRamData;
+                    else
+                        spriteDrawingFlippyFloppies[{spriteDrawCounter,2'b10}] <= vRamData;
 
+                end
+                //6 waiting for ram read
+                7:begin
+                    spriteDrawCounter <= spriteDrawCounter + 1;
+                    if(spriteAttribute[6] == 0) //need to flip data bits
+                    begin
+                        for(integer i = 0; i < 8; i = i + 1)
+                            spriteDrawingFlippyFloppies[{spriteDrawCounter,2'b11}][i] <= vRamData[7-i];
                     end
-                    //6 waiting for ram read
-                    7:begin
-                        spriteDrawCounter <= spriteDrawCounter + 1;
-                        if(spriteAttribute[6]) //need to flip data bits
-                        begin
-                            for(integer i = 0; i < 8; i = i + 1)
-                                spriteDrawingFlippyFloppies[{spriteDrawCounter,2'b11}][i] <= vRamData[7-i];
-                        end
-                        else
-                            spriteDrawingFlippyFloppies[{spriteDrawCounter,2'b11}] <= vRamData;
-                    end
+                    else
+                        spriteDrawingFlippyFloppies[{spriteDrawCounter,2'b11}] <= vRamData;
+                end
 
-
-            end
+            endcase
         end
 
         if(pixelShifty_EN)
-            for(integer i = 0; i < 8; i=i+1)
-            begin
-                
+        begin
+            automatic logic [1:0]spriteDats[8];
+            automatic logic priorityBit = 0;
+            automatic logic spriteCollison = 0;
+            automatic logic [5:0]spritePixel = 0;
 
+            for(logic[3:0] i = 0; i < 8; i=i+1)
+            begin
+                if(spriteDrawingFlippyFloppies[{i[2:0], 2'b01}] > 0) //Count down the position of each sprite until zero (time to draw it)
+                begin
+                    spriteDrawingFlippyFloppies[{i[2:0], 2'b01}] <= spriteDrawingFlippyFloppies[{i[2:0], 2'b01}] - 1;
+                    spriteDats[i[2:0]] = 0;
+                end
+                else //Drawing sprites works by bit shifting the high and low bits out
+                begin
+                    spriteDats[i] = {spriteDrawingFlippyFloppies[{i[2:0], 2'b10}][0], spriteDrawingFlippyFloppies[{i[2:0], 2'b11}][0]};
+                    spriteDrawingFlippyFloppies[{i[2:0], 2'b11}] <= spriteDrawingFlippyFloppies[{i[2:0], 2'b11}] >> 1;
+                    spriteDrawingFlippyFloppies[{i[2:0], 2'b10}] <= spriteDrawingFlippyFloppies[{i[2:0], 2'b10}] >> 1;
+                end
+            end
+            
+            for(logic[3:0] i = 0; i < 8; i=i+1)
+            begin
+                if(spriteDats[i] && priorityBit == 0) //got the highest priority sprite
+                begin
+                    if(i == 0 && possiblySpriteCollisionThisLine)
+                        spriteCollison = 1;
+                    priorityBit = 1;
+                    spritePixel[1:0] = spriteDats[i[2:0]];
+                    spritePixel[3:2] = spriteDrawingFlippyFloppies[{i[2:0], 2'b11}][1:0];
+                    spritePixel[4] = spriteDrawingFlippyFloppies[{i[2:0], 2'b11}][5];
+                    spritePixel[5] = spriteCollison;
+                end
+            end
+            spritePixel_OUT <= spritePixel;
+        end
     end
 end
 
@@ -230,4 +312,4 @@ end
 
 
 
-
+endmodule // SpriteHandler

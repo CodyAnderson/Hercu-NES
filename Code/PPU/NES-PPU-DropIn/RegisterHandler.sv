@@ -22,7 +22,7 @@
   
 `define CONTROL_REGISTER {interrupt_EN, ppuMasterSlave, spriteSize, backgroundPatternTableAddress, spritePatternTableAddress, incrementMode, tempVideoRamAddress[11:10]}
 `define MASK_REGISTER {colorEmphasis, sprite_EN, background_EN, spriteLeftColumn_EN, backgroundLeftColumn_EN, greyscale_EN}
-`define STATUS_REGISTER {verticalBlank,1'b1/*spriteCollision*/, spriteOverflow, 5'b10000}
+`define STATUS_REGISTER {verticalBlank,spriteCollision, spriteOverflow, 5'b10000}
 `define SCROLL_W0 {tempVideoRamAddress[4:0], fineXScroll}
 `define SCROLL_W1 {tempVideoRamAddress[9:5], tempVideoRamAddress[14:12]}
 `define VRAM_ADDR_W0 {tempVideoRamAddress[14:8]}
@@ -48,7 +48,7 @@ module RegisterHandler(
     input logic [7:0]cpuData_IN,
     output logic [7:0]cpuData_OUT,
     input logic spriteOverflow,
-    input logic spriteCollision,
+    input logic setSpriteCollision,
     input logic setVerticalBlank,
     input logic clearVerticalBlank,
     output logic verticalBlank = 0,
@@ -61,6 +61,7 @@ module RegisterHandler(
     input logic resetY,
     input logic oamNextEntry,
     input logic oamNextObject,
+    input logic oamReset,
     input logic [4:0]palleteSelect,
     output logic [5:0]selectedColour,
     output logic [2:0]fineXScroll = 0,
@@ -85,7 +86,7 @@ module RegisterHandler(
     logic [14:0]tempVideoRamAddress = 0;
     
 
-
+    logic spriteCollision = 0;
     logic writeToggle = 0;
     logic shouldToggleWrite;
     logic prevShouldToggleWrite = 0;
@@ -115,15 +116,57 @@ module RegisterHandler(
             cpuData_OUT = 'bZ;
     end
 
+    logic oamData_EN_PREV = 0;
+    logic shouldIncrementOamAddr = 0;
     logic shouldClearVblank = 0;
     assign shouldToggleWrite = scroll_EN | ramAddr_EN;
 
     always_ff@(posedge clk) 
     begin
+        oamData_EN_PREV <= oamData_EN;
+        if(oamData_EN == 0 && oamData_EN_PREV)
+            shouldIncrementOamAddr <= 1;
+
+        if(readWrite == 0) //Writing data
+        begin
+            if(oamAddr_EN)
+                oamAddress <= cpuData_IN;
+            if(control_EN)
+                `CONTROL_REGISTER <= cpuData_IN;
+            if(mask_EN)
+                `MASK_REGISTER <= cpuData_IN;
+            if(scroll_EN)
+            begin
+                if(writeToggle == 0)
+                    `SCROLL_W0 <= cpuData_IN;
+                else
+                    `SCROLL_W1 <= cpuData_IN;
+            end
+
+            if(ramAddr_EN)
+            begin
+                if(writeToggle == 0)
+                    `VRAM_ADDR_W0 <= {1'b0, cpuData_IN[5:0]};
+                else
+                begin
+                    `VRAM_ADDR_W1 <= cpuData_IN;
+                    videoRamAddress <= cpuData_IN;
+                    videoRamAddress[14:8] <= tempVideoRamAddress[14:8];
+                end
+            end
+            if(ramData_EN & videoRamAddress >= 'h3f00)
+            begin
+                if(videoRamAddress[1:0] == 0)
+                    colourPalletes[0] <= cpuData_IN[5:0];
+                else 
+                    colourPalletes[videoRamAddress[4:0]] <= cpuData_IN[5:0];
+            end
+        end
+
         if(clkEn)
         begin
             prevShouldToggleWrite <= shouldToggleWrite;
-            if(prevShouldToggleWrite & !shouldToggleWrite) //time to toggle
+            if(prevShouldToggleWrite & !shouldToggleWrite) //toggles the lsb msb selector
                 writeToggle <= !writeToggle;
             else if(status_EN && readWrite)
                 writeToggle <= 0;
@@ -131,39 +174,7 @@ module RegisterHandler(
                 //Maps the first colour of every pallete to the background colour.
             selectedColour <= palleteSelect[1:0] == 0 ? colourPalletes[0] : colourPalletes[palleteSelect];
 
-            if(readWrite == 0) //Writing data
-            begin
-                if(control_EN)
-                    `CONTROL_REGISTER <= cpuData_IN;
-                if(mask_EN)
-                    `MASK_REGISTER <= cpuData_IN;
-                if(scroll_EN)
-                begin
-                    if(writeToggle == 0)
-                        `SCROLL_W0 <= cpuData_IN;
-                    else
-                        `SCROLL_W1 <= cpuData_IN;
-                end
-
-                if(ramAddr_EN)
-                begin
-                    if(writeToggle == 0)
-                        `VRAM_ADDR_W0 <= {1'b0, cpuData_IN[5:0]};
-                    else
-                    begin
-                        `VRAM_ADDR_W1 <= cpuData_IN;
-                        videoRamAddress <= cpuData_IN;
-                        videoRamAddress[14:8] <= tempVideoRamAddress[14:8];
-                    end
-                end
-                if(ramData_EN & videoRamAddress >= 'h3f00)
-                begin
-                    if(videoRamAddress[1:0] == 0)
-                        colourPalletes[0] <= cpuData_IN[5:0];
-                    else 
-                        colourPalletes[videoRamAddress[4:0]] <= cpuData_IN[5:0];
-                end
-            end
+            
 
 
             if(readWrite == 1 && status_EN == 1)
@@ -176,6 +187,14 @@ module RegisterHandler(
                 shouldClearVblank <= 0;
                 verticalBlank <= 0;
             end
+
+            if(clearVerticalBlank)
+            begin
+                spriteCollision <= 0;
+            end
+
+            if(setSpriteCollision == 1)
+                spriteCollision <= 1;
 
             if(setVerticalBlank)
             begin
@@ -215,13 +234,15 @@ module RegisterHandler(
                 `FINE_Y <= tempVideoRamAddress[14:12];
                 `COARSE_Y <= tempVideoRamAddress[9:5];
             end
-
-            if(oamNextEntry)
+            if(oamReset)
+                oamAddress <= 0;
+            if(oamNextEntry || shouldIncrementOamAddr)
             begin
                 oamAddress[1:0] <= oamAddress[1:0] + 1;
+                shouldIncrementOamAddr <= 0;
             end
 
-            if(oamNextObject)
+            if(oamNextObject || ((oamNextEntry || shouldIncrementOamAddr) && oamAddress[1:0] == 2'b11))
             begin
                 oamAddress[7:2] <= oamAddress[7:2] + 1;
             end
