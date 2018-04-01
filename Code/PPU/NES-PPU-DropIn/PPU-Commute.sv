@@ -5,6 +5,7 @@ module CpuCommunicator(
   inout logic[7:0] ppuData_IN_OUT, //Data external inoutput
 
   input logic rw,
+  output logic rwBuffered,
   input logic cs,
 
   input logic[7:0] dataIn, //Data internal input
@@ -25,6 +26,8 @@ logic [7:0]cableSelectBundle;
 
 logic[7:0] ppuDataIn; //Data external input
 logic[7:0] ppuDataOut; //Data external output
+
+always_latch if(cs == 0) rwBuffered <= rw;
 
 assign ppuDataIn = ppuData_IN_OUT;
 assign ppuData_IN_OUT = (rw & !cs) ? ppuDataOut : 8'HZZ;

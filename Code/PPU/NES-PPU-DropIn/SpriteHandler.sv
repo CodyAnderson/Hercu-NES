@@ -11,6 +11,7 @@ module SpriteHandler(
     input logic resetFlags,
     input logic tallSprites,
     input logic pixelShifty_EN,
+    input logic spriteDraw_EN,
     input logic spritePatternTableAddress,
     input logic [7:0]primaryAddress,
     input logic [8:0]yPosition,
@@ -102,7 +103,7 @@ logic evalDone = 0;
 logic possiblySpriteCollisionNextLine = 0;
 logic possiblySpriteCollisionThisLine = 0;
 logic drawSprite;
-assign drawSprite = dataReg <= yPosition && (dataReg+(8 << tallSprites) >= yPosition);
+assign drawSprite = dataReg <= yPosition && (dataReg+(8 << tallSprites) > yPosition);
 
 
 logic [2:0] spriteDrawCounter = 0;
@@ -284,7 +285,7 @@ begin
                 end
                 else //Drawing sprites works by bit shifting the high and low bits out
                 begin
-                    spriteDats[i] = {spriteDrawingFlippyFloppies[{i[2:0], 2'b10}][0], spriteDrawingFlippyFloppies[{i[2:0], 2'b11}][0]};
+                    spriteDats[i] = {spriteDrawingFlippyFloppies[{i[2:0], 2'b11}][0], spriteDrawingFlippyFloppies[{i[2:0], 2'b10}][0]};
                     spriteDrawingFlippyFloppies[{i[2:0], 2'b11}] <= spriteDrawingFlippyFloppies[{i[2:0], 2'b11}] >> 1;
                     spriteDrawingFlippyFloppies[{i[2:0], 2'b10}] <= spriteDrawingFlippyFloppies[{i[2:0], 2'b10}] >> 1;
                 end
@@ -298,13 +299,15 @@ begin
                         spriteCollison = 1;
                     priorityBit = 1;
                     spritePixel[1:0] = spriteDats[i[2:0]];
-                    spritePixel[3:2] = spriteDrawingFlippyFloppies[{i[2:0], 2'b11}][1:0];
-                    spritePixel[4] = spriteDrawingFlippyFloppies[{i[2:0], 2'b11}][5];
+                    spritePixel[3:2] = spriteDrawingFlippyFloppies[{i[2:0], 2'b00}][1:0];
+                    spritePixel[4] = spriteDrawingFlippyFloppies[{i[2:0], 2'b00 }][5];
                     spritePixel[5] = spriteCollison;
                 end
             end
-            spritePixel_OUT <= spritePixel;
+            spritePixel_OUT <= spriteDraw_EN ? spritePixel : 0;
         end
+        else
+            spritePixel_OUT <= 0;
     end
 end
 

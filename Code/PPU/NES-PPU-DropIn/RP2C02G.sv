@@ -32,6 +32,11 @@ module RP2C02G (
     output [9:0]LEDR,
     output [7:0]LEDG
     `ifdef NOT_SIMULATING,
+    output [3:0]VGA_B,
+    output [3:0]VGA_G,
+    output [3:0]VGA_R,
+    output VGA_HS,
+    output VGA_VS,
     output [6:0]HEX0,
     output [6:0]HEX1,
     output [6:0]HEX2,
@@ -64,6 +69,7 @@ assign VOUT = noOutput ? 'bZ : videoOut;
 
 logic doubleClock;
 logic bufferedClock;
+logic vgaClock;
 `ifdef SIMULATING
 assign bufferedClock = CLK;
 `endif
@@ -72,7 +78,8 @@ assign GPIO_1[29] = CLK;
 pll makemorebuffer(
     EXT_CLOCK,
     bufferedClock,
-    doubleClock);
+    doubleClock,
+    vgaClock);
 `endif
 logic oneHalfClock = 0;
 logic oneQuarterClock = 0;
@@ -99,12 +106,15 @@ end
   logic ramAddr_EN; //6
   logic ramData_EN; //7
 
+  logic rwBuffered;
+
 CpuCommunicator ExternalCommute(
   CPU_A,
 
   CPU_D, //Data external inoutput
-
+  
   RW,
+  rwBuffered,
   CS,
 
   dataFromComponents, //Data internal input
@@ -162,7 +172,7 @@ assign dataFromComponents = ramData_EN & videoRamAddress < 'h3f00 ? dataFromMemo
 RegisterHandler HandlesRegs(
     bufferedClock, //nes/4
     clockCount == 3,
-    RW,
+    rwBuffered,
     control_EN, //0
     mask_EN,    //1
     status_EN,  //2
@@ -216,12 +226,17 @@ RegisterHandler HandlesRegs(
     logic spriteEval_EN;
     logic spriteEvalReset;
     logic dummyFetch_EN;
-    logic pixelShifty_EN;
+    logic backgroundPixelShifty_EN;
+    logic spritePixelShifty_EN;
+    logic vgaPixelOut_EN;
+    logic spriteDraw_EN;
+    logic backgroundDraw_EN;
     logic luminance_EN;
     logic chrominance_EN;
     logic sync_EN;
     logic colorBurst_EN;
     logic idle;
+    logic vSync;
     logic [8:0]lineCount;
 
 RenderController ControlDaRender(
@@ -229,13 +244,19 @@ RenderController ControlDaRender(
     clockCount == 3,
     background_EN,
     sprite_EN,
+    backgroundLeftColumn_EN,
+    spriteLeftColumn_EN,
     greyscale_EN,
     backgroundFetch_EN,
     spriteEval_EN,
     spriteEvalReset,
     spriteFetch_EN,
     dummyFetch_EN,
-    pixelShifty_EN,
+    backgroundPixelShifty_EN,
+    spritePixelShifty_EN,
+    vgaPixelOut_EN,
+    spriteDraw_EN,
+    backgroundDraw_EN,
     luminance_EN,
     chrominance_EN,
     sync_EN,
@@ -247,6 +268,7 @@ RenderController ControlDaRender(
     idle,
     setVerticalBlank,
     clearVerticalBlank,
+    vSync,
     lineCount
      );
 
@@ -259,7 +281,7 @@ RenderController ControlDaRender(
 VramController DaVideoMemories(
     bufferedClock, //nes/4
     clockCount[0],
-    RW,
+    rwBuffered,
     ramData_EN,  //7
     videoRamAddress,
     dataToComponents,
@@ -289,13 +311,14 @@ SpriteHandler ElSprites(
     spriteFetch_EN,
     spriteEval_EN,
     oamData_EN,
-    RW,
+    rwBuffered,
     dataToComponents,
     dataFromComponents,
     spriteEvalReset,
     clearVerticalBlank,
     spriteSize,
-    pixelShifty_EN,
+    spritePixelShifty_EN,
+    spriteDraw_EN,
     spritePatternTableAddress,
     oamAddress,
     lineCount,
@@ -310,7 +333,8 @@ logic [4:0]backgroundPixel;
 BackgroundPixelGen BackGen(
     bufferedClock, //nes/4
     clockCount == 3,
-    pixelShifty_EN,
+    backgroundPixelShifty_EN,
+    backgroundDraw_EN,
     incrementX,
     tileAttribute_REG,
     tileHighByte,
@@ -338,5 +362,20 @@ NtscVideoGenerator VideoGen(
     selectedColour,
     videoOut
     );
+
+VGA ViolentGatorArray(
+    vgaClock, 
+    SW, 
+    bufferedClock, //nes/4
+    clockCount == 3,
+    vgaPixelOut_EN,
+    vSync,
+    lineCount[4:0],
+    selectedColour,
+    VGA_R, 
+    VGA_G, 
+    VGA_B, 
+    VGA_HS, 
+    VGA_VS);
 
 endmodule

@@ -3,13 +3,19 @@ module RenderController(
     input logic clock_EN,
     input logic background_EN,
     input logic sprite_EN,
+    input logic backgroundLeftColumn_EN,
+    input logic spriteLeftColumn_EN,
     input logic greyscale_EN,
     output logic backgroundFetch_EN,
     output logic spriteEval_EN,
     output logic spriteEvalReset,
     output logic spriteFetch_EN,
     output logic dummyFetch_EN,
-    output logic pixelShifty_EN,
+    output logic backgroundPixelShifty_EN,
+    output logic spritePixelShifty_EN,
+    output logic vgaPixelOut_EN,
+    output logic spriteDraw_EN,
+    output logic backgroundDraw_EN,
     output logic luminance_EN,
     output logic chrominance_EN,
     output logic sync_EN,
@@ -21,6 +27,7 @@ module RenderController(
     output logic idle,
     output logic setVBlank,
     output logic clearVBlank,
+    output logic vSync,
     output logic [8:0]lineCount
      );
 
@@ -38,7 +45,7 @@ module RenderController(
 
                 if (yPos == 261)
                 begin
-                    if(oddFrame && renderingOn)
+                    if(oddFrame)
                         xPos <= 1;
                     yPos <= 0;
                     oddFrame <= !oddFrame;
@@ -52,8 +59,10 @@ module RenderController(
 
 logic hSync;
 assign hSync = xPos >= 280 && xPos < 305;
-logic vSync;
+//logic vSync;
 assign vSync = yPos >= 245 && yPos <= 247;
+logic yFetchActiveRegion;
+assign yFetchActiveRegion = (yPos < 240 || yPos == 261);
 
 always_ff@(posedge clock)
 begin
@@ -61,22 +70,25 @@ begin
     begin
         clearVBlank <= xPos == 1 && yPos == 261;
         setVBlank <= xPos == 1 && yPos == 241;
-        incrementX <= renderingOn & ((xPos % 8 == 0 && xPos != 0 && xPos < 257 && (yPos < 240 || yPos == 261)) | xPos == 328 | xPos == 336);
-        incrementY <= renderingOn & (xPos == 256 && (yPos < 240 || yPos == 261));
+        incrementX <= renderingOn & ((((xPos % 8 == 0 && xPos != 0 && xPos < 257) || (xPos == 328 | xPos == 336)) && yFetchActiveRegion));
+        incrementY <= renderingOn & (xPos == 256 && yFetchActiveRegion);
         
-        resetX <= renderingOn & (xPos == 257 && (yPos < 240 || yPos == 261));
+        resetX <= renderingOn & (xPos == 257 && yFetchActiveRegion);
         resetY <= renderingOn & (yPos == 261 && (xPos > 279 && xPos < 305));
 
-        backgroundFetch_EN <= renderingOn && (xPos < 257 || xPos > 320) && xPos != 0 && (yPos < 240 || yPos == 261);
-        spriteFetch_EN <= renderingOn && xPos > 256 && xPos < 321 && (yPos < 240 || yPos == 261);
-        spriteEvalReset <= renderingOn && xPos == 340 && (yPos < 240 || yPos == 261);
+        backgroundFetch_EN <= renderingOn && (xPos < 257 || xPos >= 320) && xPos != 0 && yFetchActiveRegion;
+        spriteFetch_EN <= renderingOn && xPos > 256 && xPos < 321 && yFetchActiveRegion;
+        spriteEvalReset <= renderingOn && xPos == 340 && yFetchActiveRegion;
         spriteEval_EN <= renderingOn && xPos != 0 && xPos <= 256 && yPos < 240;
+        spriteDraw_EN <=  (xPos > 8 || spriteLeftColumn_EN);
+        backgroundDraw_EN <=  (xPos > 8 || backgroundLeftColumn_EN);
 
 
-
-        dummyFetch_EN <= renderingOn && xPos > 336;
+        dummyFetch_EN <= renderingOn && xPos > 336 && yFetchActiveRegion;
         idle <= xPos == 0;
-        pixelShifty_EN <= renderingOn && xPos > 0 && xPos < 257;
+        backgroundPixelShifty_EN <= renderingOn && ((xPos > 1 && xPos < 257) || (xPos > 320 && xPos < 337));
+        spritePixelShifty_EN <= renderingOn && (xPos > 1 && xPos < 257);
+        vgaPixelOut_EN <= (xPos >= 4 && xPos < 260) && yPos < 240;
 
         
         sync_EN <= hSync || vSync;

@@ -6,7 +6,7 @@
 
 
 module NtscVideoGenerator(
-    input logic clock, // the full 21MHz clock
+    input logic clock, // doubled clock
     input logic luminance_EN,
     input logic chrominance_EN,
     input logic sync_EN,
@@ -15,7 +15,7 @@ module NtscVideoGenerator(
     input logic [5:0]pixelColour,
     output logic [7:0] videoOut
     );
-
+logic [7:0]videoOutBuf;
 // These values sourced from NES Dev Wiki, may need correction at some point
 logic [7:0] daHighLevels[8]; //00,10,20,30, Attenuated
 assign daHighLevels[0] = `MAX_WHITE * 616/1100; //00
@@ -51,6 +51,7 @@ begin
         crappyColorBurstReg[1] <= crappyColorBurstReg[3];
         crappyColorBurstReg[3] <= crappyColorBurstReg[5];
         crappyColorBurstReg[5] <= !crappyColorBurstReg[1];
+        videoOut <= videoOutBuf;
     end
     else
     begin
@@ -88,24 +89,24 @@ end
 always_comb
 begin
     if(sync_EN)
-        videoOut = `SYNC;
+        videoOutBuf = `SYNC;
 
     else if(colorBurst_EN)
     begin
         if(crappyColorBurst[7])
-            videoOut = `COLORBURST_HIGH;
+            videoOutBuf = `COLORBURST_HIGH;
         else
-            videoOut = `COLORBURST_LOW;
+            videoOutBuf = `COLORBURST_LOW;
     end
 
     else if(!luminance_EN)
-        videoOut = daLowLevels[1]; //Black
+        videoOutBuf = daLowLevels[1]; //Black
 
     else if(pixelColour[3:1] == 3'b111) //E or F
-        videoOut = daLowLevels[1]; //Black
+        videoOutBuf = daLowLevels[1]; //Black
 
     else
-        videoOut = selectedColour;
+        videoOutBuf = selectedColour;
 end
 
 endmodule // NtscVideoGenerator

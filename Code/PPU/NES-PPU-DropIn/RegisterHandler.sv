@@ -150,15 +150,15 @@ module RegisterHandler(
                 else
                 begin
                     `VRAM_ADDR_W1 <= cpuData_IN;
-                    videoRamAddress <= cpuData_IN;
+                    videoRamAddress[7:0] <= cpuData_IN;
                     videoRamAddress[14:8] <= tempVideoRamAddress[14:8];
                 end
             end
             if(ramData_EN & videoRamAddress >= 'h3f00)
             begin
-                if(videoRamAddress[1:0] == 0)
-                    colourPalletes[0] <= cpuData_IN[5:0];
-                else 
+                //if(videoRamAddress[1:0] == 0)
+                    //colourPalletes[0] <= cpuData_IN[5:0];
+                //else 
                     colourPalletes[videoRamAddress[4:0]] <= cpuData_IN[5:0];
             end
         end

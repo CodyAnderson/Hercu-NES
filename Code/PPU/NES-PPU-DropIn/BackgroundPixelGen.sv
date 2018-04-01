@@ -2,6 +2,7 @@ module BackgroundPixelGen(
     input logic clock,
     input logic clock_EN,
     input logic enable,
+    input logic backgroundDraw_EN,
     input logic loadIn,
     input logic [1:0]tileAttr,
     input logic [7:0]tileHighByte,
@@ -12,7 +13,7 @@ module BackgroundPixelGen(
 
 logic oldLoad = 0;
 logic [15:0] shiftyHigh, shiftyLow;
-logic [9:0] shiftyAttrHigh, shiftyAttrLow;
+logic [12:0] shiftyAttrHigh, shiftyAttrLow;
 
 always_ff@(posedge clock)
 begin
@@ -22,8 +23,8 @@ begin
       begin
           shiftyHigh <= shiftyHigh << 1;
           shiftyLow <= shiftyLow << 1;
-          shiftyAttrHigh <= {tileAttr[1],shiftyAttrHigh[9:1]};
-          shiftyAttrLow <= {tileAttr[0],shiftyAttrLow[9:1]};
+          shiftyAttrHigh <= {tileAttr[1],shiftyAttrHigh[12:1]};
+          shiftyAttrLow <= {tileAttr[0],shiftyAttrLow[12:1]};
       end
 
       if(oldLoad)
@@ -37,6 +38,6 @@ end
 
 logic [4:0]currentPixel;
 assign currentPixel = {1'b0, shiftyAttrHigh[fineScroll], shiftyAttrLow[fineScroll], shiftyHigh[15-fineScroll], shiftyLow[15-fineScroll]};
-assign pixelIndex = enable ? currentPixel : 0;
+assign pixelIndex = (enable && backgroundDraw_EN) ? currentPixel : 0;
 
 endmodule // BackgroundPixelGen
