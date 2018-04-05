@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module PC_LOW_SEL(
+module PC_LOW_INC(
     //Enables incrementing the byte from the select module
     input logic pcLowInc_EN,
     //Program counter low from the program counter select module

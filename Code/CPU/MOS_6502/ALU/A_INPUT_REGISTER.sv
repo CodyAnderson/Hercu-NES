@@ -21,7 +21,7 @@
 
 
 module A_INPUT_REGISTER(
-    input logic [7:0]systemBus,
+    input logic [7:0]systemBus_IN,
     
     input logic systemBus_EN, 
     input logic zero_EN, 
@@ -38,7 +38,7 @@ module A_INPUT_REGISTER(
         //Read from data bus
         if(systemBus_EN)
         begin
-            a_REG = systemBus;
+            a_REG = systemBus_IN;
         end
         //Read from address low bus
         else if(zero_EN)

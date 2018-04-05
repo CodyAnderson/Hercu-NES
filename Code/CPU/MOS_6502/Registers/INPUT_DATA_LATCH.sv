@@ -28,22 +28,31 @@ module INPUT_DATA_LATCH(
     output logic [7:0] addressHigh_OUT);
     
     logic [7:0] data;
+    
+    logic [7:0] intr_dataBus_OUT;
+    logic [7:0] intr_addressHigh_OUT;
+    logic [7:0] intr_addressLow_OUT;
+    
+    assign (strong0, weak1) addressHigh_OUT = intr_addressHigh_OUT;
+    assign (strong0, weak1) addressLow_OUT = intr_addressLow_OUT;
+    assign (strong0, weak1) dataBus_OUT = intr_dataBus_OUT;
+    
     always_comb
     begin
         if(addressHighWrite_EN)
-        begin
-            addressHigh_OUT = data;
-        end
+            intr_addressHigh_OUT = data;
+        else
+            intr_addressHigh_OUT = 'hff;
         
         if(addressLowWrite_EN)
-        begin
-            addressLow_OUT = data;
-        end
+            intr_addressLow_OUT = data;
+        else
+            intr_addressLow_OUT = 'hff;
         
         if(dataBusWrite_EN)
-        begin
-            dataBus_OUT = data;
-        end
+            intr_dataBus_OUT = data;
+        else
+            intr_dataBus_OUT = 'hff;
     end
     
     always_latch

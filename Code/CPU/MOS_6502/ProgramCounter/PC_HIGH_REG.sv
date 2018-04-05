@@ -35,25 +35,31 @@ module PC_HIGH_REG(
     //Output to data bus
     output logic [7:0] dataBus_OUT,
     //Output to address high bus
-    output logic [7:0] addressHighBus_OUT);
+    output logic [7:0] addressHigh_OUT);
     
     //Upper byte of program counter
     logic [7:0] data;
+    
+    logic [7:0] intr_dataBus_OUT;
+    logic [7:0] intr_addressHigh_OUT;
+    
+    assign (strong0, weak1) addressHigh_OUT = intr_addressHigh_OUT;
+    assign (strong0, weak1) dataBus_OUT = intr_dataBus_OUT;
     
     //On Phi2 clock
     always @(posedge phi2)
     begin
         //Send data out on address high bus if enabled
         if(addressHigh_EN)
-        begin
-            addressHighBus_OUT = data;
-        end
+            intr_addressHigh_OUT = data;
+        else
+            intr_addressHigh_OUT = 'hff;
         
         //Send data out on data bus if enabled
         if(dataBus_EN)
-        begin
-            dataBus_OUT = data;
-        end
+            intr_dataBus_OUT = data;
+        else
+            intr_dataBus_OUT = 'hff; 
         
         //Send data out to pc high select
         pcHighSel_OUT = data;

@@ -26,22 +26,28 @@ module S_REG(
     input logic hold_EN,
     input logic phi2, //I don't know if phi2 is needed or not
     output logic systemBus_OUT,
-    output logic addressLowBus_OUT);
+    output logic addressLow_OUT);
     
     logic [7:0] data_IN;
     logic [7:0] data_OUT;
     
+    logic [7:0] intr_systemBus_OUT;
+    logic [7:0] intr_addressLow_OUT;
+    
+    assign (strong0, weak1) systemBus_OUT = intr_systemBus_OUT;
+    assign (strong0, weak1) addressLow_OUT = intr_addressLow_OUT;
+    
     always_comb
     begin
         if(systemBusWrite_EN)
-            systemBus_OUT = data_OUT;
+            intr_systemBus_OUT = data_OUT;
         else
-            systemBus_OUT = 'bz;
+            systemBus_OUT = 'hff;
         
         if(addressLowWrite_EN)
-            addressLowBus_OUT = data_OUT;
+            intr_addressLow_OUT = data_OUT;
         else
-            addressLowBus_OUT = 'bz;
+            intr_addressLow_OUT = 'hff;
     end
     
     always_latch
@@ -53,6 +59,5 @@ module S_REG(
             data_OUT = data_IN;
     
     end
-    
     
 endmodule

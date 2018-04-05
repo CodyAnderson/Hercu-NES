@@ -21,8 +21,8 @@
 
 
 module ALU(
-    input logic [7:0] b_REG_IN,
     input logic [7:0] a_REG_IN,
+    input logic [7:0] b_REG_IN,
     
     input logic shiftRight_EN,
     input logic eor_EN,

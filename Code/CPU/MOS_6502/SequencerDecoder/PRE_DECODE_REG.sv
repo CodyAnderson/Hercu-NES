@@ -29,7 +29,7 @@ module PRE_DECODE_REG(
     
     always_comb
     begin
-            preDecode_OUT = data;
+        preDecode_OUT = data;
     end
     
     always_latch

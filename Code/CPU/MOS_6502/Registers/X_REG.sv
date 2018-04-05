@@ -26,12 +26,16 @@ module X_REG(
     
     logic [7:0] data;
     
+    logic [7:0] intr_systemBus_OUT;
+    
+    assign (strong0, weak1) systemBus_OUT = intr_systemBus_OUT;
+    
     always_comb
     begin
         if(systemBusWrite_EN)
-            systemBus_OUT = data;
+            intr_systemBus_OUT = data;
         else
-            systemBus_OUT = 'bz;
+            intr_systemBus_OUT = 'hff;
     end
     
     always_latch

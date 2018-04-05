@@ -28,16 +28,21 @@ module AC(
     output logic [7:0] dataBus_OUT);
     
     logic [7:0] data;
+    logic [7:0] intr_systemBus_OUT;
+    logic [7:0] intr_dataBus_OUT;
+    
+    assign (strong0, weak1) systemBus_OUT = intr_systemBus_OUT;
+    assign (strong0, weak1) dataBus_OUT = intr_dataBus_OUT;
     
     always_comb
     begin
         if(systemBusWrite_EN)
-            systemBus_OUT = data;
+            intr_systemBus_OUT = data;
         else
-            systemBus_OUT = 'bz;
+            intr_systemBus_OUT = 'hff;
             
         if(dataBusWrite_EN)
-            dataBus_OUT = data;
+            intr_dataBus_OUT = data;
     end
     
     always_latch

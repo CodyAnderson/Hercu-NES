@@ -35,25 +35,31 @@ module PC_LOW_REG(
     //Output to data bus
     output logic [7:0] dataBus_OUT,
     //Output to address high bus
-    output logic [7:0] addressLowBus_OUT);
+    output logic [7:0] addressLow_OUT);
     
     //Upper byte of program counter
     logic [7:0] data;
+    
+    logic [7:0] intr_dataBus_OUT;
+    logic [7:0] intr_addressLow_OUT;
+    
+    assign (strong0, weak1) addressLow_OUT = intr_addressLow_OUT;
+    assign (strong0, weak1) dataBus_OUT = intr_dataBus_OUT;
     
     //On Phi2 clock
     always @(posedge phi2)
     begin
         //Send data out on address low bus if enabled
         if(addressLow_EN)
-        begin
-            addressLowBus_OUT = data;
-        end
+            intr_addressLow_OUT = data;
+        else
+            intr_addressLow_OUT = 'hff;
         
         //Send data out on data bus if enabled
         if(dataBus_EN)
-        begin
-            dataBus_OUT = data;
-        end
+            intr_dataBus_OUT = data;
+        else
+            intr_dataBus_OUT = 'hff;
         
         //Send data out to pc low select
         pcLowSel_OUT = data;

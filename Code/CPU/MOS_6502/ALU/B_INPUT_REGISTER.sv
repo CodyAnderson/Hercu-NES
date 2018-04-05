@@ -19,8 +19,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module B_INPUT_REGISTER(
-    input logic [7:0] dataBus,
-    input logic [7:0] addressLow,
+    input logic [7:0] dataBus_IN,
+    input logic [7:0] addressLow_IN,
     
     input logic dataBus_EN,
     input logic dataBusInvert_EN,
@@ -29,7 +29,7 @@ module B_INPUT_REGISTER(
     output logic [7:0] b_REG_OUT);
 
     //Register value
-    logic [7:0] b_REG;
+    reg [7:0] b_REG;
     
     //Update register
     always_latch
@@ -37,17 +37,17 @@ module B_INPUT_REGISTER(
         //Read from data bus
         if(dataBus_EN)
         begin
-            b_REG = dataBus;
+            b_REG = dataBus_IN;
         end
         //Read from data bus, invert data
         else if(dataBusInvert_EN)
         begin
-            b_REG = ~dataBus;
+            b_REG = ~dataBus_IN;
         end
         //Read from address low bus
         else if(addressLow_EN)
         begin
-            b_REG = addressLow;   
+            b_REG = addressLow_IN;   
         end
             
         //Update register output
