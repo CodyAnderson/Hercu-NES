@@ -109,6 +109,7 @@ end
   logic rwBuffered;
 
 CpuCommunicator ExternalCommute(
+  bufferedClock,
   CPU_A,
 
   CPU_D, //Data external inoutput
@@ -291,6 +292,7 @@ VramController DaVideoMemories(
     spriteFetch_EN,
     dummyFetch_EN,
     idle,
+    backgroundPatternTableAddress,
     spriteAddress,
     tileAttribute_REG,
     tileLowByte,
@@ -318,7 +320,6 @@ SpriteHandler ElSprites(
     clearVerticalBlank,
     spriteSize,
     spritePixelShifty_EN,
-    spriteDraw_EN,
     spritePatternTableAddress,
     oamAddress,
     lineCount,
@@ -327,14 +328,14 @@ SpriteHandler ElSprites(
     oamNextEntry,
     spriteOverflow,
     spriteAddress,
-    spritePixel
+    spritePixel,
+    SW[7:0]
     );
 logic [4:0]backgroundPixel;
 BackgroundPixelGen BackGen(
     bufferedClock, //nes/4
     clockCount == 3,
     backgroundPixelShifty_EN,
-    backgroundDraw_EN,
     incrementX,
     tileAttribute_REG,
     tileHighByte,
@@ -346,10 +347,13 @@ BackgroundPixelGen BackGen(
 PixelPrioritizer DaSelectionOfDaPixelyBits(
     bufferedClock,
     clockCount == 3,
+    backgroundDraw_EN,
+    spriteDraw_EN,
     backgroundPixel,
     spritePixel,
     setSpriteCollision,
-    palleteSelect
+    palleteSelect,
+    SW[8]
     );
 
 NtscVideoGenerator VideoGen(
@@ -365,7 +369,7 @@ NtscVideoGenerator VideoGen(
 
 VGA ViolentGatorArray(
     vgaClock, 
-    SW, 
+    0,//SW, 
     bufferedClock, //nes/4
     clockCount == 3,
     vgaPixelOut_EN,

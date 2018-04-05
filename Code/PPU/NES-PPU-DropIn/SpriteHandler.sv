@@ -11,7 +11,6 @@ module SpriteHandler(
     input logic resetFlags,
     input logic tallSprites,
     input logic pixelShifty_EN,
-    input logic spriteDraw_EN,
     input logic spritePatternTableAddress,
     input logic [7:0]primaryAddress,
     input logic [8:0]yPosition,
@@ -20,7 +19,8 @@ module SpriteHandler(
     output logic oamNextEntry,
     output logic spriteOverflow = 0,
     output logic [11:0]spriteAddress_OUT,
-    output logic [5:0]spritePixel_OUT
+    output logic [5:0]spritePixel_OUT,
+    input logic [7:0]debugSwitches
     );
 
 logic [7:0] spriteYPos;
@@ -128,19 +128,18 @@ begin
     oamNextEntry = 0;
     if(spriteEval_EN && stage == 1 && evenCycle)
     begin
-        if(secondaryOamFull == 1) //Adding in bugs!!
+        /*if(secondaryOamFull == 1 && primaryAddress < 'hfc) //Adding in bugs!!
         begin
             oamNextAttr = 1;
-        end
-        if(secondaryAddress[1:0] || drawSprite)  //If this sprite exists on this line, increment respective counters.
+        end*/
+        if((secondaryAddress[1:0] || drawSprite) && (primaryAddress != 'h00 || stageOneSecondaryAddress == 0))  //If this sprite exists on this line, increment respective counters.
         begin
             oamNextAttr = 1;
-            if(secondaryAddress[1:0] == 'b11)
-                oamNextEntry = 1;
         end
         else // If the sprite doesn't exist, move on to the next sprite.
         begin
-            oamNextEntry = 1;
+            if((primaryAddress != 'h00 || stageOneSecondaryAddress == 0))
+                oamNextEntry = 1;
         end
     end
 end
@@ -273,7 +272,7 @@ begin
         begin
             automatic logic [1:0]spriteDats[8];
             automatic logic priorityBit = 0;
-            automatic logic spriteCollison = 0;
+            automatic logic spriteCollison;
             automatic logic [5:0]spritePixel = 0;
 
             for(logic[3:0] i = 0; i < 8; i=i+1)
@@ -285,7 +284,11 @@ begin
                 end
                 else //Drawing sprites works by bit shifting the high and low bits out
                 begin
-                    spriteDats[i] = {spriteDrawingFlippyFloppies[{i[2:0], 2'b11}][0], spriteDrawingFlippyFloppies[{i[2:0], 2'b10}][0]};
+                    if(debugSwitches[i])
+                        spriteDats[i] = {spriteDrawingFlippyFloppies[{i[2:0], 2'b11}][0], spriteDrawingFlippyFloppies[{i[2:0], 2'b10}][0]};
+                    else
+                        spriteDats[i] = 0;
+
                     spriteDrawingFlippyFloppies[{i[2:0], 2'b11}] <= spriteDrawingFlippyFloppies[{i[2:0], 2'b11}] >> 1;
                     spriteDrawingFlippyFloppies[{i[2:0], 2'b10}] <= spriteDrawingFlippyFloppies[{i[2:0], 2'b10}] >> 1;
                 end
@@ -297,6 +300,8 @@ begin
                 begin
                     if(i == 0 && possiblySpriteCollisionThisLine)
                         spriteCollison = 1;
+                    else
+                        spriteCollison = 0;
                     priorityBit = 1;
                     spritePixel[1:0] = spriteDats[i[2:0]];
                     spritePixel[3:2] = spriteDrawingFlippyFloppies[{i[2:0], 2'b00}][1:0];
@@ -304,7 +309,7 @@ begin
                     spritePixel[5] = spriteCollison;
                 end
             end
-            spritePixel_OUT <= spriteDraw_EN ? spritePixel : 0;
+            spritePixel_OUT <= spritePixel;
         end
         else
             spritePixel_OUT <= 0;

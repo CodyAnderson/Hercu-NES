@@ -15,7 +15,6 @@ module NtscVideoGenerator(
     input logic [5:0]pixelColour,
     output logic [7:0] videoOut
     );
-logic [7:0]videoOutBuf;
 // These values sourced from NES Dev Wiki, may need correction at some point
 logic [7:0] daHighLevels[8]; //00,10,20,30, Attenuated
 assign daHighLevels[0] = `MAX_WHITE * 616/1100; //00
@@ -51,7 +50,6 @@ begin
         crappyColorBurstReg[1] <= crappyColorBurstReg[3];
         crappyColorBurstReg[3] <= crappyColorBurstReg[5];
         crappyColorBurstReg[5] <= !crappyColorBurstReg[1];
-        videoOut <= videoOutBuf;
     end
     else
     begin
@@ -89,24 +87,24 @@ end
 always_comb
 begin
     if(sync_EN)
-        videoOutBuf = `SYNC;
+        videoOut = `SYNC;
 
     else if(colorBurst_EN)
     begin
         if(crappyColorBurst[7])
-            videoOutBuf = `COLORBURST_HIGH;
+            videoOut = `COLORBURST_HIGH;
         else
-            videoOutBuf = `COLORBURST_LOW;
+            videoOut = `COLORBURST_LOW;
     end
 
     else if(!luminance_EN)
-        videoOutBuf = daLowLevels[1]; //Black
+        videoOut = daLowLevels[1]; //Black
 
     else if(pixelColour[3:1] == 3'b111) //E or F
-        videoOutBuf = daLowLevels[1]; //Black
+        videoOut = daLowLevels[1]; //Black
 
     else
-        videoOutBuf = selectedColour;
+        videoOut = selectedColour;
 end
 
 endmodule // NtscVideoGenerator

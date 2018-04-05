@@ -80,14 +80,14 @@ begin
         spriteFetch_EN <= renderingOn && xPos > 256 && xPos < 321 && yFetchActiveRegion;
         spriteEvalReset <= renderingOn && xPos == 340 && yFetchActiveRegion;
         spriteEval_EN <= renderingOn && xPos != 0 && xPos <= 256 && yPos < 240;
-        spriteDraw_EN <=  (xPos > 8 || spriteLeftColumn_EN);
-        backgroundDraw_EN <=  (xPos > 8 || backgroundLeftColumn_EN);
+        spriteDraw_EN <= sprite_EN && (xPos > 8+1 || spriteLeftColumn_EN) && xPos < 256+1 && yPos < 256;
+        backgroundDraw_EN <= background_EN && (xPos > 8+1 || backgroundLeftColumn_EN) && xPos < 256+1 && yPos < 256;
 
 
         dummyFetch_EN <= renderingOn && xPos > 336 && yFetchActiveRegion;
         idle <= xPos == 0;
-        backgroundPixelShifty_EN <= renderingOn && ((xPos > 1 && xPos < 257) || (xPos > 320 && xPos < 337));
-        spritePixelShifty_EN <= renderingOn && (xPos > 1 && xPos < 257);
+        backgroundPixelShifty_EN <= renderingOn && ((xPos > 1 && xPos <= 337));
+        spritePixelShifty_EN <= renderingOn && (xPos >= 1 && xPos < 257);
         vgaPixelOut_EN <= (xPos >= 4 && xPos < 260) && yPos < 240;
 
         

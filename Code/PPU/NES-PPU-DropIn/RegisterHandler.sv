@@ -172,7 +172,7 @@ module RegisterHandler(
                 writeToggle <= 0;
 
                 //Maps the first colour of every pallete to the background colour.
-            selectedColour <= palleteSelect[1:0] == 0 ? colourPalletes[0] : colourPalletes[palleteSelect];
+            selectedColour <= (palleteSelect[1:0] == 0) ? colourPalletes[0] : colourPalletes[palleteSelect];
 
             
 
@@ -220,12 +220,15 @@ module RegisterHandler(
 
             if(incrementY)
             begin
-                {`COARSE_Y, `FINE_Y} <= {`COARSE_Y, `FINE_Y} + 1;
-                if(`COARSE_Y == 29)
+                
+                if({`COARSE_Y, `FINE_Y} + 1 == 240) //goes to next page when the end of the current page is hit.
                 begin
                     `COARSE_Y <= 0;
+                    `FINE_Y <= 0;
                     `PAGE_Y <= !`PAGE_Y;
                 end
+                else
+                    {`COARSE_Y, `FINE_Y} <= {`COARSE_Y, `FINE_Y} + 1;
             end
 
             if(resetY)

@@ -11,6 +11,7 @@ module VramController(
     input logic spriteFetch_EN,
     input logic dummyFetch_EN,
     input logic idle,
+    input logic backgroundPatternTableAddress,
     input logic [11:0]spriteAddress_IN,
     output logic[1:0] tileAttribute_REG,
     output logic [7:0] tileLowByte,
@@ -57,22 +58,32 @@ end
 logic [14:0]memoryAddress;
 always_comb
 begin
-    if(renderMode)
+    if(renderMode || idle)
     begin
         case(readingStage)
-            0: memoryAddress = {3'h2, vRamAddress_REG[11:0]};
-            1: memoryAddress = {3'h2, vRamAddress_REG[11:10], 4'hF, vRamAddress_REG[9:7], vRamAddress_REG[4:2]};
+            0: begin
+                if(spriteFetch_EN)
+                    memoryAddress = {2'h0, spriteAddress_IN[11:3], 1'b0, spriteAddress_IN[2:0]};
+                else
+                    memoryAddress = {3'h2, vRamAddress_REG[11:0]};
+            end
+            1: begin
+                if(spriteFetch_EN)
+                    memoryAddress = {2'h0, spriteAddress_IN[11:3], 1'b1, spriteAddress_IN[2:0]};
+                else
+                    memoryAddress = {3'h2, vRamAddress_REG[11:10], 4'hF, vRamAddress_REG[9:7], vRamAddress_REG[4:2]};
+                end
             2: begin
                 if(spriteFetch_EN)
                     memoryAddress = {2'h0, spriteAddress_IN[11:3], 1'b0, spriteAddress_IN[2:0]};
                 else
-                    memoryAddress = {3'h1, tileAddress_REG, 1'b0, vRamAddress_REG[14:12]};
+                    memoryAddress = {2'h0, backgroundPatternTableAddress, tileAddress_REG, 1'b0, vRamAddress_REG[14:12]};
             end
             3: begin
                 if(spriteFetch_EN)
                     memoryAddress = {2'h0, spriteAddress_IN[11:3], 1'b1, spriteAddress_IN[2:0]};
                 else
-                    memoryAddress = {3'h1, tileAddress_REG, 1'b1, vRamAddress_REG[14:12]};
+                    memoryAddress = {2'h0, backgroundPatternTableAddress, tileAddress_REG, 1'b1, vRamAddress_REG[14:12]};
             end
         endcase // readingStage
     end
