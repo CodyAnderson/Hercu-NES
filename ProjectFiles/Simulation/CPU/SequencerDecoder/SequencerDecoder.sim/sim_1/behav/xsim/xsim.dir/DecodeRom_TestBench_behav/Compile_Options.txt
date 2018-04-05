@@ -1,0 +1,1 @@
+-wto "c9f3dc359b6948e7a2bd338af8fbadf7" --incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "unisims_ver" -L "unimacro_ver" -L "secureip" --snapshot "DecodeRom_TestBench_behav" "xil_defaultlib.DecodeRom_TestBench" "xil_defaultlib.glbl" -log "elaborate.log" 

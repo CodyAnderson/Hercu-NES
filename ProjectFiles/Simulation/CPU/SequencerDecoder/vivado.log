@@ -1,0 +1,147 @@
+#-----------------------------------------------------------
+# Vivado v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:55:39 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Fri Mar  2 12:37:17 2018
+# Process ID: 14488
+# Current directory: C:/Users/Dingler/Documents/SourceTree/Hercu-NES/ProjectFiles/Simulation/CPU/SequencerDecoder
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent5760 C:\Users\Dingler\Documents\SourceTree\Hercu-NES\ProjectFiles\Simulation\CPU\SequencerDecoder\SequencerDecoder.xpr
+# Log file: C:/Users/Dingler/Documents/SourceTree/Hercu-NES/ProjectFiles/Simulation/CPU/SequencerDecoder/vivado.log
+# Journal file: C:/Users/Dingler/Documents/SourceTree/Hercu-NES/ProjectFiles/Simulation/CPU/SequencerDecoder\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/Dingler/Documents/SourceTree/Hercu-NES/ProjectFiles/Simulation/CPU/SequencerDecoder/SequencerDecoder.xpr
+INFO: [ProjectBase 1-489] The host OS only allows 260 characters in a normal path. The project is stored in a path with more than 80 characters. If you experience issues with IP, Block Designs, or files not being found, please consider moving the project to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter.
+Current project path is 'C:/Users/Dingler/Documents/SourceTree/Hercu-NES/ProjectFiles/Simulation/CPU/SequencerDecoder'
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2017.4/data/ip'.
+open_project: Time (s): cpu = 00:00:16 ; elapsed = 00:00:08 . Memory (MB): peak = 733.543 ; gain = 75.363
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/Dingler/Documents/SourceTree/Hercu-NES/ProjectFiles/Simulation/CPU/SequencerDecoder/SequencerDecoder.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'DecodeRom_TestBench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/Dingler/Documents/SourceTree/Hercu-NES/ProjectFiles/Simulation/CPU/SequencerDecoder/SequencerDecoder.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -L xil_defaultlib -prj DecodeRom_TestBench_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/Dingler/Documents/SourceTree/Hercu-NES/Code/CPU/SequencerDecoder/DecodeRom_TestBench.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module DecodeRom_TestBench
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/Dingler/Documents/SourceTree/Hercu-NES/ProjectFiles/Simulation/CPU/SequencerDecoder/SequencerDecoder.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/Dingler/Documents/SourceTree/Hercu-NES/ProjectFiles/Simulation/CPU/SequencerDecoder/SequencerDecoder.sim/sim_1/behav/xsim'
+Vivado Simulator 2017.4
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2017.4/bin/unwrapped/win64.o/xelab.exe -wto c9f3dc359b6948e7a2bd338af8fbadf7 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot DecodeRom_TestBench_behav xil_defaultlib.DecodeRom_TestBench xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.DecodeRom_TestBench
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot DecodeRom_TestBench_behav
+
+****** Webtalk v2017.4 (64-bit)
+  **** SW Build 2086221 on Fri Dec 15 20:55:39 MST 2017
+  **** IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+source C:/Users/Dingler/Documents/SourceTree/Hercu-NES/ProjectFiles/Simulation/CPU/SequencerDecoder/SequencerDecoder.sim/sim_1/behav/xsim/xsim.dir/DecodeRom_TestBench_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-186] 'C:/Users/Dingler/Documents/SourceTree/Hercu-NES/ProjectFiles/Simulation/CPU/SequencerDecoder/SequencerDecoder.sim/sim_1/behav/xsim/xsim.dir/DecodeRom_TestBench_behav/webtalk/usage_statistics_ext_xsim.xml' has been successfully sent to Xilinx on Fri Mar  2 15:10:39 2018. For additional details about this file, please refer to the WebTalk help file at C:/Xilinx/Vivado/2017.4/doc/webtalk_introduction.html.
+INFO: [Common 17-206] Exiting Webtalk at Fri Mar  2 15:10:39 2018...
+run_program: Time (s): cpu = 00:00:01 ; elapsed = 00:00:08 . Memory (MB): peak = 762.586 ; gain = 0.000
+INFO: [USF-XSim-69] 'elaborate' step finished in '8' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/Dingler/Documents/SourceTree/Hercu-NES/ProjectFiles/Simulation/CPU/SequencerDecoder/SequencerDecoder.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "DecodeRom_TestBench_behav -key {Behavioral:sim_1:Functional:DecodeRom_TestBench} -tclbatch {DecodeRom_TestBench.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2017.4
+Time resolution is 1 ps
+source DecodeRom_TestBench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'DecodeRom_TestBench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:08 ; elapsed = 00:00:15 . Memory (MB): peak = 802.500 ; gain = 42.980
+restart
+INFO: [Simtcl 6-17] Simulation restarted
+run 10 us
+restart
+INFO: [Simtcl 6-17] Simulation restarted
+run 10 us
+restart
+INFO: [Simtcl 6-17] Simulation restarted
+run 10 us
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+close_sim: Time (s): cpu = 00:00:01 ; elapsed = 00:00:07 . Memory (MB): peak = 802.500 ; gain = 0.000
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'C:/Users/Dingler/Documents/SourceTree/Hercu-NES/ProjectFiles/Simulation/CPU/SequencerDecoder/SequencerDecoder.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'DecodeRom_TestBench' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'C:/Users/Dingler/Documents/SourceTree/Hercu-NES/ProjectFiles/Simulation/CPU/SequencerDecoder/SequencerDecoder.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -L xil_defaultlib -prj DecodeRom_TestBench_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/Dingler/Documents/SourceTree/Hercu-NES/Code/CPU/SequencerDecoder/DecodeRom_TestBench.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module DecodeRom_TestBench
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'C:/Users/Dingler/Documents/SourceTree/Hercu-NES/ProjectFiles/Simulation/CPU/SequencerDecoder/SequencerDecoder.sim/sim_1/behav/xsim'
+Vivado Simulator 2017.4
+Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2017.4/bin/unwrapped/win64.o/xelab.exe -wto c9f3dc359b6948e7a2bd338af8fbadf7 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot DecodeRom_TestBench_behav xil_defaultlib.DecodeRom_TestBench xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.DecodeRom_TestBench
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot DecodeRom_TestBench_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'C:/Users/Dingler/Documents/SourceTree/Hercu-NES/ProjectFiles/Simulation/CPU/SequencerDecoder/SequencerDecoder.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "DecodeRom_TestBench_behav -key {Behavioral:sim_1:Functional:DecodeRom_TestBench} -tclbatch {DecodeRom_TestBench.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2017.4
+Time resolution is 1 ps
+source DecodeRom_TestBench.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'DecodeRom_TestBench_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 802.500 ; gain = 0.000
+add_bp {C:/Users/Dingler/Documents/SourceTree/Hercu-NES/Code/CPU/SequencerDecoder/DecodeRom_TestBench.sv} 27
+update_compile_order -fileset sim_1
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+exit
+INFO: [Common 17-206] Exiting Vivado at Fri Mar  2 15:32:45 2018...

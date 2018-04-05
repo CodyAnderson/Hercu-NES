@@ -1,2 +1,0 @@
-Breakpoint File Version 1.0
-275 true C:/Users/RyanP/Documents/GitHub/Hercu-NES/Code/Vivado Simulation/Vivado_Simulation/Vivado_Simulation.srcs/sources_1/new/testbench.sv
