@@ -8,9 +8,9 @@ module ObjectAttributeMemory(
 );
 
 reg [7:0] memoryBlock[256];
-
-reg [35:0][7:0] insertionBlock = {  8'h18,8'hff,8'h23,8'h58,
-                                8'hb0,8'hfc,8'h00,8'h28,
+                                // ypos, tile index, tile attribs, xpos
+reg [35:0][7:0] insertionBlock = {  8'hff,8'hff,8'h23,8'h80,
+                                8'hee,8'hfc,8'h00,8'h80,
                                 8'hb0,8'hfc,8'h00,8'h30,
                                 8'hb8,8'hfc,8'h00,8'h28,
                                 8'hb8,8'hfc,8'h00,8'h30,
@@ -22,7 +22,7 @@ initial
 begin
     for(integer i = 0; i < 256; i=i+1)
     begin
-        if(i < 9*4)
+        if(i < 2*4)
             memoryBlock[i] = insertionBlock[35-i];
         else
         begin

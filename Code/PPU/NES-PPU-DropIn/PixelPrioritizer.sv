@@ -38,7 +38,7 @@ end
 
 always_comb
 begin
-    if(maskedBackGroundPixel[1:0] != 0 && maskedSpritePixel[1:0] != 0 && maskedSpritePixel[5] && !debugCollisionOff) //collision happened with sprite 0
+    if(maskedBackGroundPixel[1:0] != 0 && maskedSpritePixel[1:0] != 0 && maskedSpritePixel[5] && !debugCollisionOff && clock == 0) //collision happened with sprite 0
             setCollision = 1;
         else
             setCollision = 0;

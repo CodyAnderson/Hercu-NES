@@ -6,6 +6,7 @@ module RenderController(
     input logic backgroundLeftColumn_EN,
     input logic spriteLeftColumn_EN,
     input logic greyscale_EN,
+    output logic renderMode_EN,
     output logic backgroundFetch_EN,
     output logic spriteEval_EN,
     output logic spriteEvalReset,
@@ -45,7 +46,7 @@ module RenderController(
 
                 if (yPos == 261)
                 begin
-                    if(oddFrame)
+                    if(oddFrame && renderingOn)
                         xPos <= 1;
                     yPos <= 0;
                     oddFrame <= !oddFrame;
@@ -76,6 +77,7 @@ begin
         resetX <= renderingOn & (xPos == 257 && yFetchActiveRegion);
         resetY <= renderingOn & (yPos == 261 && (xPos > 279 && xPos < 305));
 
+        renderMode_EN <= renderingOn && yFetchActiveRegion;
         backgroundFetch_EN <= renderingOn && (xPos < 257 || xPos >= 320) && xPos != 0 && yFetchActiveRegion;
         spriteFetch_EN <= renderingOn && xPos > 256 && xPos < 321 && yFetchActiveRegion;
         spriteEvalReset <= renderingOn && xPos == 340 && yFetchActiveRegion;
