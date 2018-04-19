@@ -40,10 +40,10 @@ module TestBench();
     input ppuReg in2; //command
     input logic[7:0] in3; //data
     begin
-        AddLine({READ, CTRL, 8'b0, 1'b1}); // dummy line
+        AddLine({in1, CTRL, 8'b0, 1'b1}); // dummy line
         AddLine({in1, in2, 8'b0, 1'b0}); // switch address and rw first
         AddLine({in1, in2, in3, 1'b0}); // switch data second
-        AddLine({READ, MASK, in3, 1'b1}); //turn off rw, address, and cable select
+        AddLine({in1, MASK, in3, 1'b1}); //turn off rw, address, and cable select
     end
     endtask : CODE
 
@@ -96,7 +96,7 @@ module TestBench();
     logic INT;
     logic PLUS_5V = 1;
     logic ALE;
-    logic [7:0]ppuDataInjection = 8'h66;
+    logic [7:0]ppuDataInjection = 8'hff;
     logic [13:0]ppuDataInput;
     wire [13:0]PPU_AD;
     assign ppuDataInput = PPU_AD;
@@ -112,7 +112,7 @@ module TestBench();
      // Debug Stuff
     //////////////
 
-    logic [9:0]SW;
+    logic [9:0]SW = 'b00_1111_1111;
     logic [9:0]LEDR;
     logic [7:0]LEDG;
     RP2C02G ThePPU(

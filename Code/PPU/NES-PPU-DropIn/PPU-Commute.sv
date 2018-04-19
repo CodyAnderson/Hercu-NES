@@ -1,5 +1,6 @@
 
 module CpuCommunicator(
+  input logic clock,
   input logic[2:0] addr,
 
   inout logic[7:0] ppuData_IN_OUT, //Data external inoutput
@@ -26,25 +27,40 @@ logic [7:0]cableSelectBundle;
 
 logic[7:0] ppuDataIn; //Data external input
 logic[7:0] ppuDataOut; //Data external output
-
-always_latch if(cs == 0) rwBuffered <= rw;
+logic[2:0] addrBuffered = 0;
+logic selected = 0;
+logic prevCS = 1;
+always_ff @(posedge clock)
+begin
+  prevCS <= cs;
+  if(prevCS == 1 && cs == 0) //negedge of cs with at least a width of two clock cycles
+  begin                          //address and rw is valid at the negative edge
+    selected <= 1;
+    rwBuffered <= rw;
+    addrBuffered <= addr;
+  end
+  if(prevCS == 0 && cs == 1) //posedge
+  begin
+    selected <= 0;
+  end
+end
 
 assign ppuDataIn = ppuData_IN_OUT;
-assign ppuData_IN_OUT = (rw & !cs) ? ppuDataOut : 8'HZZ;
+assign ppuData_IN_OUT = (rwBuffered & selected & !cs) ? ppuDataOut : 8'HZZ;
 
 always_comb
 begin
-  if(cs == 0)
-    cableSelectBundle = 1 << addr;
+  if(selected)
+    cableSelectBundle = 1 << addrBuffered;
   else
     cableSelectBundle = 0;
 
-  if(cs == 0 && rw == 0)
+  if(selected && rwBuffered == 0)
     dataOut = ppuDataIn;
   else
     dataOut = 'bZ;
 
-  if(cs == 0 && rw == 1)
+  if(selected && rwBuffered == 1)
     ppuDataOut = dataIn;
   else
     ppuDataOut = 'bZ;

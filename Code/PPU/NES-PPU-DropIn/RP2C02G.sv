@@ -43,12 +43,13 @@ module RP2C02G (
     output [6:0]HEX3
     `endif
 );
+  logic [15:0]debugPositon;
   logic [14:0]videoRamAddress;
   `ifdef NOT_SIMULATING
-SevenSeg seg0(videoRamAddress[3:0], HEX0);
-SevenSeg seg1(videoRamAddress[7:4], HEX1);
-SevenSeg seg2(videoRamAddress[12:8], HEX2);
-SevenSeg seg3(videoRamAddress[14:13], HEX3);
+SevenSeg seg0(debugPositon[3:0], HEX0);
+SevenSeg seg1(debugPositon[7:4], HEX1);
+SevenSeg seg2(debugPositon[11:8], HEX2);
+SevenSeg seg3(debugPositon[15:12], HEX3);
 `endif
 
 
@@ -109,6 +110,7 @@ end
   logic rwBuffered;
 
 CpuCommunicator ExternalCommute(
+  bufferedClock,
   CPU_A,
 
   CPU_D, //Data external inoutput
@@ -166,6 +168,7 @@ CpuCommunicator ExternalCommute(
   logic sprite_EN;
   logic [2:0]colorEmphasis;
   logic spriteFetch_EN;
+  logic spriteCollision;
 
 assign interrupt = !(interrupt_EN & verticalBlank);
 assign dataFromComponents = ramData_EN & videoRamAddress < 'h3f00 ? dataFromMemory : dataFromRegisters;
@@ -218,9 +221,11 @@ RegisterHandler HandlesRegs(
     spriteLeftColumn_EN,
     background_EN,
     sprite_EN,
-    colorEmphasis
+    colorEmphasis,
+    spriteCollision
     );
 
+    logic renderMode_EN;
     logic backgroundFetch_EN;
     
     logic spriteEval_EN;
@@ -247,6 +252,7 @@ RenderController ControlDaRender(
     backgroundLeftColumn_EN,
     spriteLeftColumn_EN,
     greyscale_EN,
+    renderMode_EN,
     backgroundFetch_EN,
     spriteEval_EN,
     spriteEvalReset,
@@ -287,10 +293,12 @@ VramController DaVideoMemories(
     dataToComponents,
     dataFromMemory,
     vramIncrement,
+    renderMode_EN,
     backgroundFetch_EN,
     spriteFetch_EN,
     dummyFetch_EN,
     idle,
+    backgroundPatternTableAddress,
     spriteAddress,
     tileAttribute_REG,
     tileLowByte,
@@ -318,7 +326,6 @@ SpriteHandler ElSprites(
     clearVerticalBlank,
     spriteSize,
     spritePixelShifty_EN,
-    spriteDraw_EN,
     spritePatternTableAddress,
     oamAddress,
     lineCount,
@@ -327,14 +334,15 @@ SpriteHandler ElSprites(
     oamNextEntry,
     spriteOverflow,
     spriteAddress,
-    spritePixel
+    spritePixel,
+    SW[7:0],
+    debugPositon
     );
 logic [4:0]backgroundPixel;
 BackgroundPixelGen BackGen(
     bufferedClock, //nes/4
     clockCount == 3,
     backgroundPixelShifty_EN,
-    backgroundDraw_EN,
     incrementX,
     tileAttribute_REG,
     tileHighByte,
@@ -346,10 +354,13 @@ BackgroundPixelGen BackGen(
 PixelPrioritizer DaSelectionOfDaPixelyBits(
     bufferedClock,
     clockCount == 3,
+    backgroundDraw_EN,
+    spriteDraw_EN,
     backgroundPixel,
     spritePixel,
     setSpriteCollision,
-    palleteSelect
+    palleteSelect,
+    SW[8]
     );
 
 NtscVideoGenerator VideoGen(
@@ -362,10 +373,10 @@ NtscVideoGenerator VideoGen(
     selectedColour,
     videoOut
     );
-
+`ifdef NOT_SIMULATING
 VGA ViolentGatorArray(
     vgaClock, 
-    SW, 
+    0,//SW, 
     bufferedClock, //nes/4
     clockCount == 3,
     vgaPixelOut_EN,
@@ -377,5 +388,12 @@ VGA ViolentGatorArray(
     VGA_B, 
     VGA_HS, 
     VGA_VS);
+`endif
+
+assign LEDR[9] = spriteCollision;
+assign LEDR[8] = setSpriteCollision;
+assign LEDR[7] = clearVerticalBlank;
 
 endmodule
+
+

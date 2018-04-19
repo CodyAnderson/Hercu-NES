@@ -80,20 +80,30 @@ module RegisterHandler(
     output logic spriteLeftColumn_EN = 0,
     output logic background_EN = 0,
     output logic sprite_EN = 0,
-    output logic [2:0]colorEmphasis = 0
+    output logic [2:0]colorEmphasis = 0,
+    output logic spriteCollision = 0
     );
     
     logic [14:0]tempVideoRamAddress = 0;
     
 
-    logic spriteCollision = 0;
+    //logic spriteCollision = 0;
     logic writeToggle = 0;
     logic shouldToggleWrite;
     logic prevShouldToggleWrite = 0;
     logic [5:0]colourPalletes[32];
     initial for (integer i = 0; i < 32; i=i+1) colourPalletes[i] = 0;
 
+always_latch
+begin
+    if(clearVerticalBlank)
+    begin
+        spriteCollision = 0;
+    end
 
+    if(setSpriteCollision == 1)
+        spriteCollision = 1;
+end
 
     //assign cpuData_OUT = readWrite & status_EN ? `STATUS_REGISTER : 'bz;
     always_comb
@@ -172,7 +182,7 @@ module RegisterHandler(
                 writeToggle <= 0;
 
                 //Maps the first colour of every pallete to the background colour.
-            selectedColour <= palleteSelect[1:0] == 0 ? colourPalletes[0] : colourPalletes[palleteSelect];
+            selectedColour <= (palleteSelect[1:0] == 0) ? colourPalletes[0] : colourPalletes[palleteSelect];
 
             
 
@@ -188,13 +198,7 @@ module RegisterHandler(
                 verticalBlank <= 0;
             end
 
-            if(clearVerticalBlank)
-            begin
-                spriteCollision <= 0;
-            end
-
-            if(setSpriteCollision == 1)
-                spriteCollision <= 1;
+            
 
             if(setVerticalBlank)
             begin
@@ -220,12 +224,15 @@ module RegisterHandler(
 
             if(incrementY)
             begin
-                {`COARSE_Y, `FINE_Y} <= {`COARSE_Y, `FINE_Y} + 1;
-                if(`COARSE_Y == 29)
+                
+                if({`COARSE_Y, `FINE_Y} + 1 == 240) //goes to next page when the end of the current page is hit.
                 begin
                     `COARSE_Y <= 0;
+                    `FINE_Y <= 0;
                     `PAGE_Y <= !`PAGE_Y;
                 end
+                else
+                    {`COARSE_Y, `FINE_Y} <= {`COARSE_Y, `FINE_Y} + 1;
             end
 
             if(resetY)

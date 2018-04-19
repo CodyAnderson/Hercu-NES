@@ -7,10 +7,12 @@ module VramController(
     input logic [7:0]data_IN,
     output wire [7:0]data_OUT,
     output logic increment,
+    input logic renderMode_EN,
     input logic backgroundFetch_EN,
     input logic spriteFetch_EN,
     input logic dummyFetch_EN,
     input logic idle,
+    input logic backgroundPatternTableAddress,
     input logic [11:0]spriteAddress_IN,
     output logic[1:0] tileAttribute_REG,
     output logic [7:0] tileLowByte,
@@ -27,8 +29,8 @@ module VramController(
 
 logic memRW;
 assign memRW = cpuDataRW_SEL | backgroundFetch_EN | dummyFetch_EN; //Locks to reading memory if any tiles are being loaded.
-logic renderMode;
-assign renderMode = backgroundFetch_EN | spriteFetch_EN | dummyFetch_EN;
+//logic renderMode;
+//assign renderMode = backgroundFetch_EN | spriteFetch_EN | dummyFetch_EN;
 
 
 logic[7:0] tileAddress_REG;
@@ -57,22 +59,22 @@ end
 logic [14:0]memoryAddress;
 always_comb
 begin
-    if(renderMode)
+    if(renderMode_EN)
     begin
         case(readingStage)
-            0: memoryAddress = {3'h2, vRamAddress_REG[11:0]};
-            1: memoryAddress = {3'h2, vRamAddress_REG[11:10], 4'hF, vRamAddress_REG[9:7], vRamAddress_REG[4:2]};
+            0:memoryAddress = {3'h2, vRamAddress_REG[11:0]};
+            1:memoryAddress = {3'h2, vRamAddress_REG[11:10], 4'hF, vRamAddress_REG[9:7], vRamAddress_REG[4:2]};
             2: begin
                 if(spriteFetch_EN)
                     memoryAddress = {2'h0, spriteAddress_IN[11:3], 1'b0, spriteAddress_IN[2:0]};
                 else
-                    memoryAddress = {3'h1, tileAddress_REG, 1'b0, vRamAddress_REG[14:12]};
+                    memoryAddress = {2'h0, backgroundPatternTableAddress, tileAddress_REG, 1'b0, vRamAddress_REG[14:12]};
             end
             3: begin
                 if(spriteFetch_EN)
                     memoryAddress = {2'h0, spriteAddress_IN[11:3], 1'b1, spriteAddress_IN[2:0]};
                 else
-                    memoryAddress = {3'h1, tileAddress_REG, 1'b1, vRamAddress_REG[14:12]};
+                    memoryAddress = {2'h0, backgroundPatternTableAddress, tileAddress_REG, 1'b1, vRamAddress_REG[14:12]};
             end
         endcase // readingStage
     end
@@ -84,7 +86,7 @@ always_ff@(posedge clock)
 begin
     if(clock_EN)
     begin
-        if(renderMode && accessStage == 3) //If the memory values have been read
+        if(renderMode_EN && accessStage == 3) //If the memory values have been read
         begin
             case(readingStage)
                 0: tileAddress_REG <= dataRender_OUT;
@@ -105,7 +107,7 @@ VRAMSetterGetter MemTouchyTouchy(
     clock_EN,
     memRW,
     ramData_EN,
-    renderMode,
+    renderMode_EN && !idle,
     accessStage,
     increment,
     memoryAddress,

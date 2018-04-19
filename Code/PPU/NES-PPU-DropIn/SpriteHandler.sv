@@ -11,7 +11,6 @@ module SpriteHandler(
     input logic resetFlags,
     input logic tallSprites,
     input logic pixelShifty_EN,
-    input logic spriteDraw_EN,
     input logic spritePatternTableAddress,
     input logic [7:0]primaryAddress,
     input logic [8:0]yPosition,
@@ -20,9 +19,11 @@ module SpriteHandler(
     output logic oamNextEntry,
     output logic spriteOverflow = 0,
     output logic [11:0]spriteAddress_OUT,
-    output logic [5:0]spritePixel_OUT
+    output logic [5:0]spritePixel_OUT,
+    input logic [7:0]debugSwitches,
+    output logic [15:0]debugPositon
     );
-
+logic [15:0]sprite0debugPositon;
 logic [7:0] spriteYPos;
 logic [7:0] spriteTileIndex;
 logic [7:0] spriteAttribute;
@@ -103,7 +104,7 @@ logic evalDone = 0;
 logic possiblySpriteCollisionNextLine = 0;
 logic possiblySpriteCollisionThisLine = 0;
 logic drawSprite;
-assign drawSprite = dataReg <= yPosition && (dataReg+(8 << tallSprites) > yPosition);
+assign drawSprite = dataReg <= yPosition && (dataReg+(8 << tallSprites) > yPosition) && dataReg < 240;
 
 
 logic [2:0] spriteDrawCounter = 0;
@@ -128,19 +129,18 @@ begin
     oamNextEntry = 0;
     if(spriteEval_EN && stage == 1 && evenCycle)
     begin
-        if(secondaryOamFull == 1) //Adding in bugs!!
+        /*if(secondaryOamFull == 1 && primaryAddress < 'hfc) //Adding in bugs!!
         begin
             oamNextAttr = 1;
-        end
-        if(secondaryAddress[1:0] || drawSprite)  //If this sprite exists on this line, increment respective counters.
+        end*/
+        if((secondaryAddress[1:0] || drawSprite) && (primaryAddress != 'h00 || stageOneSecondaryAddress == 0))  //If this sprite exists on this line, increment respective counters.
         begin
             oamNextAttr = 1;
-            if(secondaryAddress[1:0] == 'b11)
-                oamNextEntry = 1;
         end
         else // If the sprite doesn't exist, move on to the next sprite.
         begin
-            oamNextEntry = 1;
+            if((primaryAddress != 'h00 || stageOneSecondaryAddress == 0))
+                oamNextEntry = 1;
         end
     end
 end
@@ -148,7 +148,10 @@ end
 always_latch
 begin
     if(resetFlags)
+    begin
+        
         spriteOverflow <= 0;
+    end
     else if(evenCycle == 1 && drawSprite && secondaryOamFull)
         spriteOverflow <= 1;
 end
@@ -158,6 +161,11 @@ always_ff@(posedge clock)
 begin
     if(clock_EN)
     begin
+        if(resetFlags)
+        begin
+            possiblySpriteCollisionThisLine <= 0;
+            possiblySpriteCollisionNextLine <= 0;
+        end
         if(spriteEvalReset)
         begin
             possiblySpriteCollisionThisLine <= possiblySpriteCollisionNextLine;
@@ -194,6 +202,10 @@ begin
                     end
                     else
                     begin
+                        /*if(primaryAddress == 0)
+                            sprite0debugPositon[15:8] <= dataReg;
+                        if(primaryAddress == 3)
+                            sprite0debugPositon[7:0] <= dataReg;*/
                         firstSprite <= 0;
                         if(writeSecondary == 0) //Read from secondary instead of writing
                         begin
@@ -204,7 +216,7 @@ begin
 
                         if(stageOneSecondaryAddress[1:0] || drawSprite) //If this sprite exists on this line, increment address
                         begin
-                            if(evalDone == 0)
+                            if(evalDone == 0 && (primaryAddress != 'h00 || stageOneSecondaryAddress == 0))
                                 stageOneSecondaryAddress <= stageOneSecondaryAddress + 1;
 
                             if(firstSprite)
@@ -273,9 +285,9 @@ begin
         begin
             automatic logic [1:0]spriteDats[8];
             automatic logic priorityBit = 0;
-            automatic logic spriteCollison = 0;
+            automatic logic spriteCollison;
             automatic logic [5:0]spritePixel = 0;
-
+            debugPositon <= sprite0debugPositon;
             for(logic[3:0] i = 0; i < 8; i=i+1)
             begin
                 if(spriteDrawingFlippyFloppies[{i[2:0], 2'b01}] > 0) //Count down the position of each sprite until zero (time to draw it)
@@ -285,7 +297,11 @@ begin
                 end
                 else //Drawing sprites works by bit shifting the high and low bits out
                 begin
-                    spriteDats[i] = {spriteDrawingFlippyFloppies[{i[2:0], 2'b11}][0], spriteDrawingFlippyFloppies[{i[2:0], 2'b10}][0]};
+                    if(debugSwitches[i])
+                        spriteDats[i] = {spriteDrawingFlippyFloppies[{i[2:0], 2'b11}][0], spriteDrawingFlippyFloppies[{i[2:0], 2'b10}][0]};
+                    else
+                        spriteDats[i] = 0;
+
                     spriteDrawingFlippyFloppies[{i[2:0], 2'b11}] <= spriteDrawingFlippyFloppies[{i[2:0], 2'b11}] >> 1;
                     spriteDrawingFlippyFloppies[{i[2:0], 2'b10}] <= spriteDrawingFlippyFloppies[{i[2:0], 2'b10}] >> 1;
                 end
@@ -296,7 +312,12 @@ begin
                 if(spriteDats[i] && priorityBit == 0) //got the highest priority sprite
                 begin
                     if(i == 0 && possiblySpriteCollisionThisLine)
+                    begin
                         spriteCollison = 1;
+                        sprite0debugPositon <= yPosition;
+                    end
+                    else
+                        spriteCollison = 0;
                     priorityBit = 1;
                     spritePixel[1:0] = spriteDats[i[2:0]];
                     spritePixel[3:2] = spriteDrawingFlippyFloppies[{i[2:0], 2'b00}][1:0];
@@ -304,7 +325,7 @@ begin
                     spritePixel[5] = spriteCollison;
                 end
             end
-            spritePixel_OUT <= spriteDraw_EN ? spritePixel : 0;
+            spritePixel_OUT <= spritePixel;
         end
         else
             spritePixel_OUT <= 0;

@@ -30,11 +30,11 @@ module VGA(
     input logic [4:0]memAddrInRow,
     input logic [5:0]dataIn,
 
-    output logic [3:0]vgaRed, 
-    output logic[3:0]vgaGreen, 
-    output logic[3:0]vgaBlue, 
-    output logic Hsync, 
-    output logic Vsync);
+    output logic [3:0]vgaRed_OUT, 
+    output logic[3:0]vgaGreen_OUT, 
+    output logic[3:0]vgaBlue_OUT, 
+    output logic Hsync_OUT, 
+    output logic Vsync_OUT);
 
 
     /* The original NES pallete is hardcoded into the PPU and this is our rendition of that pallete */
@@ -79,6 +79,19 @@ module VGA(
     nesClock,
     writeEnable,
     ramData);
+
+    logic Vsync, Hsync;
+    logic [3:0] vgaRed, vgaGreen, vgaBlue;
+    LogoAdd PlsAddLogo4Me(
+    clk,
+    hline >= 1000 && hline < 1000+400+sw && vline >= 500 && vline < 600,
+    Vsync,
+    Hsync,
+    {vgaRed, vgaGreen, vgaBlue},
+    Vsync_OUT,
+    Hsync_OUT,
+    {vgaRed_OUT, vgaGreen_OUT, vgaBlue_OUT}
+    );
 
     parameter ScreenW = 1920, FrontPorchW = 180, SyncWidthW = 44, TotalPixelsW = 2229;
     parameter ScreenH = 1080, FrontPorchH = 35,  SyncWidthH = 5,  TotalPixelsH = 1122;
