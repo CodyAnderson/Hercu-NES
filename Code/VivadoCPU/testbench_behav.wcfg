@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="testbench_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="testbench" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="381844110fs"></ZoomEndTime>
+      <Cursor1Time time="100000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="221"></NameColumnWidth>
+      <ValueColumnWidth column_width="127"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="4" />
+   <wvobject fp_name="group732" type="group">
+      <obj_property name="label">BUSSES</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="divider" fp_name="divider110">
+         <obj_property name="label">DATA BUS</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#00FFFF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/cpu6502/DATABUS/dataBus_OUT" type="array">
+         <obj_property name="ElementShortName">dataBus_OUT[7:0]</obj_property>
+         <obj_property name="ObjectShortName">dataBus_OUT[7:0]</obj_property>
+         <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+         <obj_property name="CustomSignalColor">#00FF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/cpu6502/DATABUS/data_IN" type="array">
+         <obj_property name="ElementShortName">data_IN[7:0]</obj_property>
+         <obj_property name="ObjectShortName">data_IN[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider123">
+         <obj_property name="label">SYSTEM BUS</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#0000A0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/cpu6502/SYSTEMBUS/systemBus_OUT" type="array">
+         <obj_property name="ElementShortName">systemBus_OUT[7:0]</obj_property>
+         <obj_property name="ObjectShortName">systemBus_OUT[7:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/cpu6502/SYSTEMBUS/data_IN" type="array">
+         <obj_property name="ElementShortName">data_IN[7:0]</obj_property>
+         <obj_property name="ObjectShortName">data_IN[7:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group182" type="group">
+      <obj_property name="label">ALU</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="group734" type="group">
+         <obj_property name="label">ALU REG INPUT</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="divider" fp_name="divider269">
+            <obj_property name="label">A INPUT</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#FF0080</obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/cpu6502/ALUI/a_REG_IN" type="array">
+            <obj_property name="ElementShortName">a_REG_IN[7:0]</obj_property>
+            <obj_property name="ObjectShortName">a_REG_IN[7:0]</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider204">
+            <obj_property name="label">B INPUT</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#00FF7F</obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/cpu6502/ALUI/b_REG_IN" type="array">
+            <obj_property name="ElementShortName">b_REG_IN[7:0]</obj_property>
+            <obj_property name="ObjectShortName">b_REG_IN[7:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group736" type="group">
+         <obj_property name="label">ALU OUTPUT</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="divider" fp_name="divider219">
+            <obj_property name="label">ALU OUTPUT</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#008080</obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/cpu6502/ALUI/hold_REG_OUT" type="array">
+            <obj_property name="ElementShortName">hold_REG_OUT[7:0]</obj_property>
+            <obj_property name="ObjectShortName">hold_REG_OUT[7:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group733" type="group">
+         <obj_property name="label">ALU ENABLE LINES</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="divider" fp_name="divider201">
+            <obj_property name="label">ALU ENABLE LINES</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#FFD700</obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/cpu6502/ALUI/shiftRight_EN" type="logic">
+            <obj_property name="ElementShortName">shiftRight_EN</obj_property>
+            <obj_property name="ObjectShortName">shiftRight_EN</obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/cpu6502/ALUI/eor_EN" type="logic">
+            <obj_property name="ElementShortName">eor_EN</obj_property>
+            <obj_property name="ObjectShortName">eor_EN</obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/cpu6502/ALUI/and_EN" type="logic">
+            <obj_property name="ElementShortName">and_EN</obj_property>
+            <obj_property name="ObjectShortName">and_EN</obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/cpu6502/ALUI/sum_EN" type="logic">
+            <obj_property name="ElementShortName">sum_EN</obj_property>
+            <obj_property name="ObjectShortName">sum_EN</obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/cpu6502/ALUI/or_EN" type="logic">
+            <obj_property name="ElementShortName">or_EN</obj_property>
+            <obj_property name="ObjectShortName">or_EN</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group735" type="group">
+         <obj_property name="label">ALU OPERATION RESULTS</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="divider" fp_name="divider218">
+            <obj_property name="label">ALU OPERATION RESULT</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#F0E68C</obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/cpu6502/ALUI/eorResult" type="array">
+            <obj_property name="ElementShortName">eorResult[7:0]</obj_property>
+            <obj_property name="ObjectShortName">eorResult[7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/cpu6502/ALUI/andResult" type="array">
+            <obj_property name="ElementShortName">andResult[7:0]</obj_property>
+            <obj_property name="ObjectShortName">andResult[7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/cpu6502/ALUI/sumResult" type="array">
+            <obj_property name="ElementShortName">sumResult[7:0]</obj_property>
+            <obj_property name="ObjectShortName">sumResult[7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/cpu6502/ALUI/shiftRightResult" type="array">
+            <obj_property name="ElementShortName">shiftRightResult[7:0]</obj_property>
+            <obj_property name="ObjectShortName">shiftRightResult[7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/cpu6502/ALUI/orResult" type="array">
+            <obj_property name="ElementShortName">orResult[7:0]</obj_property>
+            <obj_property name="ObjectShortName">orResult[7:0]</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group183" type="group">
+      <obj_property name="label">REGISTERS</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="group729" type="group">
+         <obj_property name="label">A_REG</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="divider" fp_name="divider72">
+            <obj_property name="label">A_REG</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#FF0080</obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/cpu6502/A_REG/systemBus_IN" type="array">
+            <obj_property name="ElementShortName">systemBus_IN[7:0]</obj_property>
+            <obj_property name="ObjectShortName">systemBus_IN[7:0]</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/cpu6502/A_REG/a_REG" type="array">
+            <obj_property name="ElementShortName">a_REG[7:0]</obj_property>
+            <obj_property name="ObjectShortName">a_REG[7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/cpu6502/A_REG/a_REG_OUT" type="array">
+            <obj_property name="ElementShortName">a_REG_OUT[7:0]</obj_property>
+            <obj_property name="ObjectShortName">a_REG_OUT[7:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group728" type="group">
+         <obj_property name="label">B_REG</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="divider" fp_name="divider75">
+            <obj_property name="label">B_REG</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#00FF7F</obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/cpu6502/B_REG/dataBus_IN" type="array">
+            <obj_property name="ElementShortName">dataBus_IN[7:0]</obj_property>
+            <obj_property name="ObjectShortName">dataBus_IN[7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/cpu6502/B_REG/addressLow_IN" type="array">
+            <obj_property name="ElementShortName">addressLow_IN[7:0]</obj_property>
+            <obj_property name="ObjectShortName">addressLow_IN[7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/cpu6502/B_REG/b_REG" type="array">
+            <obj_property name="ElementShortName">b_REG[7:0]</obj_property>
+            <obj_property name="ObjectShortName">b_REG[7:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/testbench/cpu6502/B_REG/b_REG_OUT" type="array">
+            <obj_property name="ElementShortName">b_REG_OUT[7:0]</obj_property>
+            <obj_property name="ObjectShortName">b_REG_OUT[7:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group731" type="group">
+         <obj_property name="label">REG ENABLE LINES</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="group184" type="group">
+            <obj_property name="label">A REG ENABLE</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+            <wvobject type="divider" fp_name="divider109">
+               <obj_property name="label">A REG ENABLE</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <obj_property name="BkColor">#FAAFBE</obj_property>
+            </wvobject>
+            <wvobject fp_name="/testbench/cpu6502/a_zero_EN" type="logic">
+               <obj_property name="ElementShortName">a_zero_EN</obj_property>
+               <obj_property name="ObjectShortName">a_zero_EN</obj_property>
+            </wvobject>
+            <wvobject fp_name="/testbench/cpu6502/a_systemBus_EN" type="logic">
+               <obj_property name="ElementShortName">a_systemBus_EN</obj_property>
+               <obj_property name="ObjectShortName">a_systemBus_EN</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject fp_name="group186" type="group">
+            <obj_property name="label">B REG ENABLE</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+            <wvobject type="divider" fp_name="divider187">
+               <obj_property name="label">B REG ENABLE</obj_property>
+               <obj_property name="DisplayName">label</obj_property>
+               <obj_property name="BkColor">#E0FFFF</obj_property>
+            </wvobject>
+            <wvobject fp_name="/testbench/cpu6502/b_dataBus_EN" type="logic">
+               <obj_property name="ElementShortName">b_dataBus_EN</obj_property>
+               <obj_property name="ObjectShortName">b_dataBus_EN</obj_property>
+            </wvobject>
+            <wvobject fp_name="/testbench/cpu6502/b_dataBusInvert_EN" type="logic">
+               <obj_property name="ElementShortName">b_dataBusInvert_EN</obj_property>
+               <obj_property name="ObjectShortName">b_dataBusInvert_EN</obj_property>
+            </wvobject>
+            <wvobject fp_name="/testbench/cpu6502/b_addressLow_EN" type="logic">
+               <obj_property name="ElementShortName">b_addressLow_EN</obj_property>
+               <obj_property name="ObjectShortName">b_addressLow_EN</obj_property>
+            </wvobject>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group737" type="group">
+      <obj_property name="label">STEP</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="divider" fp_name="divider80">
+         <obj_property name="label">STEP</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#808080</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/step" type="array">
+         <obj_property name="ElementShortName">step[32:0]</obj_property>
+         <obj_property name="ObjectShortName">step[32:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

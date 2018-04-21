@@ -1,0 +1,15 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  --include "C:/Xilinx/Vivado/2017.4/data/xilinx_vip/include" \
+"../../../../VivadoCPU.srcs/sources_1/new/6502.sv" \
+"../../../../VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/ALU.sv" \
+"../../../../VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/A_INPUT_REGISTER.sv" \
+"../../../../VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/B_INPUT_REGISTER.sv" \
+"../../../../VivadoCPU.srcs/sources_1/imports/new/DATA_BUS.sv" \
+"../../../../VivadoCPU.srcs/sources_1/imports/new/SYSTEM_BUS.sv" \
+"../../../../VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sim_1/imports/testbench.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
