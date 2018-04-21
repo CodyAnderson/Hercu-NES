@@ -1,7 +1,0 @@
-0.6
-2017.4
-Dec 15 2017
-21:07:18
-C:/Users/Dingler/Documents/SourceTree/Hercu-NES/Code/CPU/SequencerDecoder/DecodeRom.sv,1520048049,systemVerilog,,C:/Users/Dingler/Documents/SourceTree/Hercu-NES/Code/CPU/SequencerDecoder/DecodeRom_TestBench.sv,,DecodeRom,,xil_defaultlib,C:/Xilinx/Vivado/2017.4/data/xilinx_vip/include,,,,,
-C:/Users/Dingler/Documents/SourceTree/Hercu-NES/Code/CPU/SequencerDecoder/DecodeRom_TestBench.sv,1520047570,systemVerilog,,,,DecodeRom_TestBench,,xil_defaultlib,C:/Xilinx/Vivado/2017.4/data/xilinx_vip/include,,,,,
-C:/Users/Dingler/Documents/SourceTree/Hercu-NES/ProjectFiles/Simulation/CPU/SequencerDecoder/SequencerDecoder.sim/sim_1/behav/xsim/glbl.v,1513215259,verilog,,,,glbl,,xil_defaultlib,,,,,,
