@@ -1,0 +1,516 @@
+
+*** Running vivado
+    with args -log m6502.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source m6502.tcl
+
+
+****** Vivado v2017.4 (64-bit)
+  **** SW Build 2086221 on Fri Dec 15 20:55:39 MST 2017
+  **** IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+source m6502.tcl -notrace
+Command: synth_design -top m6502 -part xc7a100tcsg324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 5188 
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 387.762 ; gain = 96.578
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'm6502' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+INFO: [Synth 8-638] synthesizing module 'A_INPUT_REGISTER' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/A_INPUT_REGISTER.sv:23]
+INFO: [Synth 8-256] done synthesizing module 'A_INPUT_REGISTER' (1#1) [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/A_INPUT_REGISTER.sv:23]
+INFO: [Synth 8-638] synthesizing module 'B_INPUT_REGISTER' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/B_INPUT_REGISTER.sv:21]
+INFO: [Synth 8-256] done synthesizing module 'B_INPUT_REGISTER' (2#1) [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/B_INPUT_REGISTER.sv:21]
+INFO: [Synth 8-638] synthesizing module 'ALU' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/ALU.sv:23]
+WARNING: [Synth 8-87] always_comb on 'negative_FLAG_OUT_reg' did not result in combinational logic [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/ALU.sv:64]
+WARNING: [Synth 8-87] always_comb on 'zero_FLAG_OUT_reg' did not result in combinational logic [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/ALU.sv:66]
+WARNING: [Synth 8-87] always_comb on 'hold_REG_OUT_reg' did not result in combinational logic [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/ALU.sv:68]
+WARNING: [Synth 8-87] always_comb on 'overflow_FLAG_OUT_reg' did not result in combinational logic [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/ALU.sv:96]
+INFO: [Synth 8-256] done synthesizing module 'ALU' (3#1) [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/ALU.sv:23]
+INFO: [Synth 8-638] synthesizing module 'DATA_BUS' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/new/DATA_BUS.sv:23]
+INFO: [Synth 8-256] done synthesizing module 'DATA_BUS' (4#1) [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/new/DATA_BUS.sv:23]
+INFO: [Synth 8-638] synthesizing module 'SYSTEM_BUS' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/new/SYSTEM_BUS.sv:23]
+INFO: [Synth 8-256] done synthesizing module 'SYSTEM_BUS' (5#1) [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/new/SYSTEM_BUS.sv:23]
+INFO: [Synth 8-256] done synthesizing module 'm6502' (6#1) [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-3331] design m6502 has unconnected port phi1
+WARNING: [Synth 8-3331] design m6502 has unconnected port phi2
+WARNING: [Synth 8-3331] design m6502 has unconnected port addressHigh_OUT[7]
+WARNING: [Synth 8-3331] design m6502 has unconnected port addressHigh_OUT[6]
+WARNING: [Synth 8-3331] design m6502 has unconnected port addressHigh_OUT[5]
+WARNING: [Synth 8-3331] design m6502 has unconnected port addressHigh_OUT[4]
+WARNING: [Synth 8-3331] design m6502 has unconnected port addressHigh_OUT[3]
+WARNING: [Synth 8-3331] design m6502 has unconnected port addressHigh_OUT[2]
+WARNING: [Synth 8-3331] design m6502 has unconnected port addressHigh_OUT[1]
+WARNING: [Synth 8-3331] design m6502 has unconnected port addressHigh_OUT[0]
+WARNING: [Synth 8-3331] design m6502 has unconnected port add_adl_EN
+WARNING: [Synth 8-3331] design m6502 has unconnected port add_sb06_EN
+WARNING: [Synth 8-3331] design m6502 has unconnected port add_sb7_EN
+WARNING: [Synth 8-3331] design m6502 has unconnected port ADH0Drain
+WARNING: [Synth 8-3331] design m6502 has unconnected port ADH1to7Drain
+WARNING: [Synth 8-3331] design m6502 has unconnected port ADL0Drain
+WARNING: [Synth 8-3331] design m6502 has unconnected port ADL1Drain
+WARNING: [Synth 8-3331] design m6502 has unconnected port ADL2Drain
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[32]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[31]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[30]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[29]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[28]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[27]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[26]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[25]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[24]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[23]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[22]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[21]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[20]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[19]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[18]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[17]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[16]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[15]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[14]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[13]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[12]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[11]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[10]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[9]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[8]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[7]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[6]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[5]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[4]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[3]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[2]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[1]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[0]
+WARNING: [Synth 8-3331] design m6502 has unconnected port tb_systemBus[7]
+WARNING: [Synth 8-3331] design m6502 has unconnected port tb_systemBus[6]
+WARNING: [Synth 8-3331] design m6502 has unconnected port tb_systemBus[5]
+WARNING: [Synth 8-3331] design m6502 has unconnected port tb_systemBus[4]
+WARNING: [Synth 8-3331] design m6502 has unconnected port tb_systemBus[3]
+WARNING: [Synth 8-3331] design m6502 has unconnected port tb_systemBus[2]
+WARNING: [Synth 8-3331] design m6502 has unconnected port tb_systemBus[1]
+WARNING: [Synth 8-3331] design m6502 has unconnected port tb_systemBus[0]
+WARNING: [Synth 8-3331] design m6502 has unconnected port tb_dataBus[7]
+WARNING: [Synth 8-3331] design m6502 has unconnected port tb_dataBus[6]
+WARNING: [Synth 8-3331] design m6502 has unconnected port tb_dataBus[5]
+WARNING: [Synth 8-3331] design m6502 has unconnected port tb_dataBus[4]
+WARNING: [Synth 8-3331] design m6502 has unconnected port tb_dataBus[3]
+WARNING: [Synth 8-3331] design m6502 has unconnected port tb_dataBus[2]
+WARNING: [Synth 8-3331] design m6502 has unconnected port tb_dataBus[1]
+WARNING: [Synth 8-3331] design m6502 has unconnected port tb_dataBus[0]
+WARNING: [Synth 8-3331] design m6502 has unconnected port tb_addressLow[7]
+WARNING: [Synth 8-3331] design m6502 has unconnected port tb_addressLow[6]
+WARNING: [Synth 8-3331] design m6502 has unconnected port tb_addressLow[5]
+WARNING: [Synth 8-3331] design m6502 has unconnected port tb_addressLow[4]
+WARNING: [Synth 8-3331] design m6502 has unconnected port tb_addressLow[3]
+WARNING: [Synth 8-3331] design m6502 has unconnected port tb_addressLow[2]
+WARNING: [Synth 8-3331] design m6502 has unconnected port tb_addressLow[1]
+WARNING: [Synth 8-3331] design m6502 has unconnected port tb_addressLow[0]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 440.395 ; gain = 149.211
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 440.395 ; gain = 149.211
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a100tcsg324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 440.395 ; gain = 149.211
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+WARNING: [Synth 8-327] inferring latch for variable 'a_REG_reg' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/A_INPUT_REGISTER.sv:41]
+WARNING: [Synth 8-327] inferring latch for variable 'b_REG_reg' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/B_INPUT_REGISTER.sv:40]
+WARNING: [Synth 8-327] inferring latch for variable 'hold_REG_OUT_reg' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/ALU.sv:68]
+WARNING: [Synth 8-327] inferring latch for variable 'overflow_FLAG_OUT_reg' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/ALU.sv:96]
+WARNING: [Synth 8-327] inferring latch for variable 'negative_FLAG_OUT_reg' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/ALU.sv:64]
+WARNING: [Synth 8-327] inferring latch for variable 'zero_FLAG_OUT_reg' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/ALU.sv:66]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 440.395 ; gain = 149.211
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input      9 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 1     
+	   3 Input      8 Bit       Adders := 1     
++---XORs : 
+	   2 Input     32 Bit         XORs := 1     
+	   2 Input      8 Bit         XORs := 1     
+	   2 Input      1 Bit         XORs := 1     
++---Muxes : 
+	   2 Input      8 Bit        Muxes := 5     
+	   2 Input      1 Bit        Muxes := 3     
+	   5 Input      1 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module A_INPUT_REGISTER 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input      8 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+Module B_INPUT_REGISTER 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input      8 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 2     
+Module ALU 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input      9 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 1     
+	   3 Input      8 Bit       Adders := 1     
++---XORs : 
+	   2 Input     32 Bit         XORs := 1     
+	   2 Input      8 Bit         XORs := 1     
+	   2 Input      1 Bit         XORs := 1     
++---Muxes : 
+	   5 Input      1 Bit        Muxes := 2     
+Module SYSTEM_BUS 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input      8 Bit        Muxes := 2     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-3331] design m6502 has unconnected port phi1
+WARNING: [Synth 8-3331] design m6502 has unconnected port phi2
+WARNING: [Synth 8-3331] design m6502 has unconnected port addressHigh_OUT[7]
+WARNING: [Synth 8-3331] design m6502 has unconnected port addressHigh_OUT[6]
+WARNING: [Synth 8-3331] design m6502 has unconnected port addressHigh_OUT[5]
+WARNING: [Synth 8-3331] design m6502 has unconnected port addressHigh_OUT[4]
+WARNING: [Synth 8-3331] design m6502 has unconnected port addressHigh_OUT[3]
+WARNING: [Synth 8-3331] design m6502 has unconnected port addressHigh_OUT[2]
+WARNING: [Synth 8-3331] design m6502 has unconnected port addressHigh_OUT[1]
+WARNING: [Synth 8-3331] design m6502 has unconnected port addressHigh_OUT[0]
+WARNING: [Synth 8-3331] design m6502 has unconnected port add_adl_EN
+WARNING: [Synth 8-3331] design m6502 has unconnected port add_sb06_EN
+WARNING: [Synth 8-3331] design m6502 has unconnected port add_sb7_EN
+WARNING: [Synth 8-3331] design m6502 has unconnected port ADH0Drain
+WARNING: [Synth 8-3331] design m6502 has unconnected port ADH1to7Drain
+WARNING: [Synth 8-3331] design m6502 has unconnected port ADL0Drain
+WARNING: [Synth 8-3331] design m6502 has unconnected port ADL1Drain
+WARNING: [Synth 8-3331] design m6502 has unconnected port ADL2Drain
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[32]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[31]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[30]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[29]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[28]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[27]
+WARNING: [Synth 8-3331] design m6502 has unconnected port step[26]
+INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-3332] Sequential element (A_REG/a_REG_reg[7]) is unused and will be removed from module m6502.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_a_REG[7] with 1st driver pin 'A_REG/a_REG_reg[7]/Q' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/A_INPUT_REGISTER.sv:41]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_a_REG[7] with 2nd driver pin 'tb_a_REG[7]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-3332] Sequential element (A_REG/a_REG_reg[6]) is unused and will be removed from module m6502.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_a_REG[6] with 1st driver pin 'A_REG/a_REG_reg[6]/Q' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/A_INPUT_REGISTER.sv:41]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_a_REG[6] with 2nd driver pin 'tb_a_REG[6]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-3332] Sequential element (A_REG/a_REG_reg[5]) is unused and will be removed from module m6502.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_a_REG[5] with 1st driver pin 'A_REG/a_REG_reg[5]/Q' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/A_INPUT_REGISTER.sv:41]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_a_REG[5] with 2nd driver pin 'tb_a_REG[5]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-3332] Sequential element (A_REG/a_REG_reg[4]) is unused and will be removed from module m6502.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_a_REG[4] with 1st driver pin 'A_REG/a_REG_reg[4]/Q' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/A_INPUT_REGISTER.sv:41]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_a_REG[4] with 2nd driver pin 'tb_a_REG[4]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-3332] Sequential element (A_REG/a_REG_reg[3]) is unused and will be removed from module m6502.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_a_REG[3] with 1st driver pin 'A_REG/a_REG_reg[3]/Q' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/A_INPUT_REGISTER.sv:41]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_a_REG[3] with 2nd driver pin 'tb_a_REG[3]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-3332] Sequential element (A_REG/a_REG_reg[2]) is unused and will be removed from module m6502.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_a_REG[2] with 1st driver pin 'A_REG/a_REG_reg[2]/Q' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/A_INPUT_REGISTER.sv:41]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_a_REG[2] with 2nd driver pin 'tb_a_REG[2]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-3332] Sequential element (A_REG/a_REG_reg[1]) is unused and will be removed from module m6502.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_a_REG[1] with 1st driver pin 'A_REG/a_REG_reg[1]/Q' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/A_INPUT_REGISTER.sv:41]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_a_REG[1] with 2nd driver pin 'tb_a_REG[1]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-3332] Sequential element (A_REG/a_REG_reg[0]) is unused and will be removed from module m6502.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_a_REG[0] with 1st driver pin 'A_REG/a_REG_reg[0]/Q' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/A_INPUT_REGISTER.sv:41]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_a_REG[0] with 2nd driver pin 'tb_a_REG[0]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-3332] Sequential element (B_REG/b_REG_reg[7]) is unused and will be removed from module m6502.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_b_REG[7] with 1st driver pin 'B_REG/b_REG_reg[7]/Q' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/B_INPUT_REGISTER.sv:40]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_b_REG[7] with 2nd driver pin 'tb_b_REG[7]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-3332] Sequential element (B_REG/b_REG_reg[6]) is unused and will be removed from module m6502.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_b_REG[6] with 1st driver pin 'B_REG/b_REG_reg[6]/Q' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/B_INPUT_REGISTER.sv:40]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_b_REG[6] with 2nd driver pin 'tb_b_REG[6]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-3332] Sequential element (B_REG/b_REG_reg[5]) is unused and will be removed from module m6502.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_b_REG[5] with 1st driver pin 'B_REG/b_REG_reg[5]/Q' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/B_INPUT_REGISTER.sv:40]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_b_REG[5] with 2nd driver pin 'tb_b_REG[5]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-3332] Sequential element (B_REG/b_REG_reg[4]) is unused and will be removed from module m6502.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_b_REG[4] with 1st driver pin 'B_REG/b_REG_reg[4]/Q' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/B_INPUT_REGISTER.sv:40]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_b_REG[4] with 2nd driver pin 'tb_b_REG[4]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-3332] Sequential element (B_REG/b_REG_reg[3]) is unused and will be removed from module m6502.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_b_REG[3] with 1st driver pin 'B_REG/b_REG_reg[3]/Q' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/B_INPUT_REGISTER.sv:40]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_b_REG[3] with 2nd driver pin 'tb_b_REG[3]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-3332] Sequential element (B_REG/b_REG_reg[2]) is unused and will be removed from module m6502.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_b_REG[2] with 1st driver pin 'B_REG/b_REG_reg[2]/Q' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/B_INPUT_REGISTER.sv:40]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_b_REG[2] with 2nd driver pin 'tb_b_REG[2]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-3332] Sequential element (B_REG/b_REG_reg[1]) is unused and will be removed from module m6502.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_b_REG[1] with 1st driver pin 'B_REG/b_REG_reg[1]/Q' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/B_INPUT_REGISTER.sv:40]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_b_REG[1] with 2nd driver pin 'tb_b_REG[1]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-3332] Sequential element (B_REG/b_REG_reg[0]) is unused and will be removed from module m6502.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_b_REG[0] with 1st driver pin 'B_REG/b_REG_reg[0]/Q' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/B_INPUT_REGISTER.sv:40]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_b_REG[0] with 2nd driver pin 'tb_b_REG[0]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net carry_FLAG_OUT with 1st driver pin 'ALUI/hold_REG_OUT0_inferred/zero_FLAG_OUT1[8]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/ALU.sv:56]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net carry_FLAG_OUT with 2nd driver pin 'carry_FLAG_OUT' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-3332] Sequential element (ALUI/hold_REG_OUT_reg[7]) is unused and will be removed from module m6502.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_hold_REG[7] with 1st driver pin 'ALUI/hold_REG_OUT_reg[7]/Q' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/ALU.sv:68]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_hold_REG[7] with 2nd driver pin 'tb_hold_REG[7]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-3332] Sequential element (ALUI/hold_REG_OUT_reg[6]) is unused and will be removed from module m6502.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_hold_REG[6] with 1st driver pin 'ALUI/hold_REG_OUT_reg[6]/Q' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/ALU.sv:68]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_hold_REG[6] with 2nd driver pin 'tb_hold_REG[6]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-3332] Sequential element (ALUI/hold_REG_OUT_reg[5]) is unused and will be removed from module m6502.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_hold_REG[5] with 1st driver pin 'ALUI/hold_REG_OUT_reg[5]/Q' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/ALU.sv:68]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_hold_REG[5] with 2nd driver pin 'tb_hold_REG[5]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-3332] Sequential element (ALUI/hold_REG_OUT_reg[4]) is unused and will be removed from module m6502.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_hold_REG[4] with 1st driver pin 'ALUI/hold_REG_OUT_reg[4]/Q' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/ALU.sv:68]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_hold_REG[4] with 2nd driver pin 'tb_hold_REG[4]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-3332] Sequential element (ALUI/hold_REG_OUT_reg[3]) is unused and will be removed from module m6502.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_hold_REG[3] with 1st driver pin 'ALUI/hold_REG_OUT_reg[3]/Q' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/ALU.sv:68]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_hold_REG[3] with 2nd driver pin 'tb_hold_REG[3]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-3332] Sequential element (ALUI/hold_REG_OUT_reg[2]) is unused and will be removed from module m6502.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_hold_REG[2] with 1st driver pin 'ALUI/hold_REG_OUT_reg[2]/Q' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/ALU.sv:68]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_hold_REG[2] with 2nd driver pin 'tb_hold_REG[2]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-3332] Sequential element (ALUI/hold_REG_OUT_reg[1]) is unused and will be removed from module m6502.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_hold_REG[1] with 1st driver pin 'ALUI/hold_REG_OUT_reg[1]/Q' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/ALU.sv:68]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_hold_REG[1] with 2nd driver pin 'tb_hold_REG[1]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-3332] Sequential element (ALUI/hold_REG_OUT_reg[0]) is unused and will be removed from module m6502.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_hold_REG[0] with 1st driver pin 'ALUI/hold_REG_OUT_reg[0]/Q' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/ALU.sv:68]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net tb_hold_REG[0] with 2nd driver pin 'tb_hold_REG[0]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-3332] Sequential element (ALUI/overflow_FLAG_OUT_reg) is unused and will be removed from module m6502.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net overflow_FLAG_OUT with 1st driver pin 'ALUI/overflow_FLAG_OUT_reg/Q' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/ALU.sv:96]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net overflow_FLAG_OUT with 2nd driver pin 'overflow_FLAG_OUT' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-3332] Sequential element (ALUI/negative_FLAG_OUT_reg) is unused and will be removed from module m6502.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net negative_FLAG_OUT with 1st driver pin 'ALUI/negative_FLAG_OUT_reg/Q' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/ALU.sv:64]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net negative_FLAG_OUT with 2nd driver pin 'negative_FLAG_OUT' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-3332] Sequential element (ALUI/zero_FLAG_OUT_reg) is unused and will be removed from module m6502.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net zero_FLAG_OUT with 1st driver pin 'ALUI/zero_FLAG_OUT_reg/Q' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/ALU.sv:66]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net zero_FLAG_OUT with 2nd driver pin 'zero_FLAG_OUT' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressHigh_IN[7] with 1st driver pin 'SYSTEMBUS/intr_addressHigh_OUT_inferred/intr_addressHigh_OUT[7]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/new/SYSTEM_BUS.sv:35]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressHigh_IN[7] with 2nd driver pin 'addressHigh_IN[7]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressHigh_IN[6] with 1st driver pin 'SYSTEMBUS/intr_addressHigh_OUT_inferred/intr_addressHigh_OUT[6]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/new/SYSTEM_BUS.sv:35]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressHigh_IN[6] with 2nd driver pin 'addressHigh_IN[6]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressHigh_IN[5] with 1st driver pin 'SYSTEMBUS/intr_addressHigh_OUT_inferred/intr_addressHigh_OUT[5]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/new/SYSTEM_BUS.sv:35]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressHigh_IN[5] with 2nd driver pin 'addressHigh_IN[5]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressHigh_IN[4] with 1st driver pin 'SYSTEMBUS/intr_addressHigh_OUT_inferred/intr_addressHigh_OUT[4]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/new/SYSTEM_BUS.sv:35]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressHigh_IN[4] with 2nd driver pin 'addressHigh_IN[4]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressHigh_IN[3] with 1st driver pin 'SYSTEMBUS/intr_addressHigh_OUT_inferred/intr_addressHigh_OUT[3]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/new/SYSTEM_BUS.sv:35]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressHigh_IN[3] with 2nd driver pin 'addressHigh_IN[3]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressHigh_IN[2] with 1st driver pin 'SYSTEMBUS/intr_addressHigh_OUT_inferred/intr_addressHigh_OUT[2]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/new/SYSTEM_BUS.sv:35]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressHigh_IN[2] with 2nd driver pin 'addressHigh_IN[2]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressHigh_IN[1] with 1st driver pin 'SYSTEMBUS/intr_addressHigh_OUT_inferred/intr_addressHigh_OUT[1]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/new/SYSTEM_BUS.sv:35]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressHigh_IN[1] with 2nd driver pin 'addressHigh_IN[1]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressHigh_IN[0] with 1st driver pin 'SYSTEMBUS/intr_addressHigh_OUT_inferred/intr_addressHigh_OUT[0]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/new/SYSTEM_BUS.sv:35]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressHigh_IN[0] with 2nd driver pin 'addressHigh_IN[0]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressLow_IN[7] with 1st driver pin 'SYSTEMBUS/intr_addressLow_OUT_inferred/intr_addressLow_OUT[7]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/new/SYSTEM_BUS.sv:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressLow_IN[7] with 2nd driver pin 'addressLow_IN[7]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressLow_IN[6] with 1st driver pin 'SYSTEMBUS/intr_addressLow_OUT_inferred/intr_addressLow_OUT[6]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/new/SYSTEM_BUS.sv:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressLow_IN[6] with 2nd driver pin 'addressLow_IN[6]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressLow_IN[5] with 1st driver pin 'SYSTEMBUS/intr_addressLow_OUT_inferred/intr_addressLow_OUT[5]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/new/SYSTEM_BUS.sv:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressLow_IN[5] with 2nd driver pin 'addressLow_IN[5]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressLow_IN[4] with 1st driver pin 'SYSTEMBUS/intr_addressLow_OUT_inferred/intr_addressLow_OUT[4]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/new/SYSTEM_BUS.sv:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressLow_IN[4] with 2nd driver pin 'addressLow_IN[4]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressLow_IN[3] with 1st driver pin 'SYSTEMBUS/intr_addressLow_OUT_inferred/intr_addressLow_OUT[3]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/new/SYSTEM_BUS.sv:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressLow_IN[3] with 2nd driver pin 'addressLow_IN[3]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressLow_IN[2] with 1st driver pin 'SYSTEMBUS/intr_addressLow_OUT_inferred/intr_addressLow_OUT[2]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/new/SYSTEM_BUS.sv:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressLow_IN[2] with 2nd driver pin 'addressLow_IN[2]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressLow_IN[1] with 1st driver pin 'SYSTEMBUS/intr_addressLow_OUT_inferred/intr_addressLow_OUT[1]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/new/SYSTEM_BUS.sv:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressLow_IN[1] with 2nd driver pin 'addressLow_IN[1]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressLow_IN[0] with 1st driver pin 'SYSTEMBUS/intr_addressLow_OUT_inferred/intr_addressLow_OUT[0]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/new/SYSTEM_BUS.sv:36]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net addressLow_IN[0] with 2nd driver pin 'addressLow_IN[0]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 569.793 ; gain = 278.609
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 569.793 ; gain = 278.609
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 578.469 ; gain = 287.285
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-5753] loadless multi-driven net systemBus_OUT[7] with 1st driver pin 'systemBus_OUT[7]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net systemBus_IN[7] with 2nd driver pin 'systemBus_IN[7]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net systemBus_OUT[6] with 1st driver pin 'systemBus_OUT[6]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net systemBus_IN[6] with 2nd driver pin 'systemBus_IN[6]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net systemBus_OUT[5] with 1st driver pin 'systemBus_OUT[5]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net systemBus_IN[5] with 2nd driver pin 'systemBus_IN[5]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net systemBus_OUT[4] with 1st driver pin 'systemBus_OUT[4]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net systemBus_IN[4] with 2nd driver pin 'systemBus_IN[4]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net systemBus_OUT[3] with 1st driver pin 'systemBus_OUT[3]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net systemBus_IN[3] with 2nd driver pin 'systemBus_IN[3]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net systemBus_OUT[2] with 1st driver pin 'systemBus_OUT[2]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net systemBus_IN[2] with 2nd driver pin 'systemBus_IN[2]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net systemBus_OUT[1] with 1st driver pin 'systemBus_OUT[1]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net systemBus_IN[1] with 2nd driver pin 'systemBus_IN[1]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net systemBus_OUT[0] with 1st driver pin 'systemBus_OUT[0]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net systemBus_IN[0] with 2nd driver pin 'systemBus_IN[0]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net dataBus_IN[7] with 1st driver pin 'dataBus_IN[7]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net dataBus_OUT[7] with 2nd driver pin 'dataBus_OUT[7]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net dataBus_IN[6] with 1st driver pin 'dataBus_IN[6]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net dataBus_OUT[6] with 2nd driver pin 'dataBus_OUT[6]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net dataBus_IN[5] with 1st driver pin 'dataBus_IN[5]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net dataBus_OUT[5] with 2nd driver pin 'dataBus_OUT[5]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net dataBus_IN[4] with 1st driver pin 'dataBus_IN[4]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net dataBus_OUT[4] with 2nd driver pin 'dataBus_OUT[4]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net dataBus_IN[3] with 1st driver pin 'dataBus_IN[3]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net dataBus_OUT[3] with 2nd driver pin 'dataBus_OUT[3]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net dataBus_IN[2] with 1st driver pin 'dataBus_IN[2]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net dataBus_OUT[2] with 2nd driver pin 'dataBus_OUT[2]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net dataBus_IN[1] with 1st driver pin 'dataBus_IN[1]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net dataBus_OUT[1] with 2nd driver pin 'dataBus_OUT[1]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net dataBus_IN[0] with 1st driver pin 'dataBus_IN[0]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+WARNING: [Synth 8-5753] loadless multi-driven net dataBus_OUT[0] with 2nd driver pin 'dataBus_OUT[0]' [C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv:23]
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 578.469 ; gain = 287.285
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 578.469 ; gain = 287.285
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 578.469 ; gain = 287.285
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 578.469 ; gain = 287.285
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 578.469 ; gain = 287.285
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 578.469 ; gain = 287.285
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++-+-----+------+
+| |Cell |Count |
++-+-----+------+
++-+-----+------+
+
+Report Instance Areas: 
++------+---------+-------+------+
+|      |Instance |Module |Cells |
++------+---------+-------+------+
+|1     |top      |       |     0|
++------+---------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 578.469 ; gain = 287.285
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 88 critical warnings and 219 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 578.469 ; gain = 287.285
+Synthesis Optimization Complete : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 578.469 ; gain = 287.285
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+20 Infos, 169 Warnings, 88 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 685.316 ; gain = 406.816
+INFO: [Common 17-1381] The checkpoint 'C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.runs/synth_1/m6502.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file m6502_utilization_synth.rpt -pb m6502_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.048 . Memory (MB): peak = 685.316 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Thu Apr 19 15:31:18 2018...
