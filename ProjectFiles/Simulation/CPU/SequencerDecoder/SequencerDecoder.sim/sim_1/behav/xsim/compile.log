@@ -1,5 +1,0 @@
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/Dingler/Documents/SourceTree/Hercu-NES/Code/CPU/SequencerDecoder/DecodeRom.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module DecodeRom
-WARNING: [VRFC 10-998] macro ROL_ROLA_ASL_ASLA redefined [C:/Users/Dingler/Documents/SourceTree/Hercu-NES/Code/CPU/SequencerDecoder/DecodeRom.sv:143]
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/Dingler/Documents/SourceTree/Hercu-NES/Code/CPU/SequencerDecoder/DecodeRom_TestBench.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module DecodeRom_TestBench

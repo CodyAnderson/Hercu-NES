@@ -1,7 +1,0 @@
-Running: xsim.dir/DecodeRom_TestBench_behav/xsimk.exe -simmode gui -wdb DecodeRom_TestBench_behav.wdb -simrunnum 0 -socket 65202
-Design successfully loaded
-Design Loading Memory Usage: 6756 KB (Peak: 6756 KB)
-Design Loading CPU Usage: 15 ms
-Simulation completed
-Simulation Memory Usage: 15680 KB (Peak: 15680 KB)
-Simulation CPU Usage: 936 ms
