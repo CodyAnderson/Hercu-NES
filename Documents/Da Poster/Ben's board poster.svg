@@ -261,15 +261,15 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="3.467033"
-     inkscape:cx="2269.0077"
-     inkscape:cy="2347.5035"
+     inkscape:zoom="1.2257813"
+     inkscape:cx="2574.8167"
+     inkscape:cy="2341.5887"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer4"
+     inkscape:current-layer="layer1"
      showgrid="true"
      units="in"
-     inkscape:window-width="1920"
-     inkscape:window-height="1028"
+     inkscape:window-width="3840"
+     inkscape:window-height="2097"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1">
@@ -294,7 +294,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -355,45 +355,45 @@
            x="2496"
            y="672" /></flowRegion><flowPara
          id="flowPara1581" /></flowRoot>    <rect
-       style="fill:#ff5555;stroke-width:0.32314411"
+       style="fill:#ff5555;stroke-width:0.32169032"
        id="rect5727"
        width="1270"
-       height="217.8558"
+       height="215.89999"
        x="0"
        y="-511.40585" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke-width:2.67710948;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:#ffffff;fill-opacity:1;stroke-width:2.66666627;stroke-miterlimit:4;stroke-dasharray:none"
        id="rect5729"
        width="12.699998"
-       height="204.79465"
-       x="6.3500018"
-       y="-504.6947" />
+       height="203.2"
+       x="6.3499999"
+       y="-505.05585" />
     <rect
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke-width:6.80201578;stroke-miterlimit:4;stroke-dasharray:none"
+       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke-width:6.56590509;stroke-miterlimit:4;stroke-dasharray:none"
        id="rect5729-6"
-       width="1250.9501"
-       height="13.422247"
-       x="12.699991"
-       y="-313.32227" />
+       width="1231.9"
+       height="12.7"
+       x="19.049999"
+       y="-314.55585" />
     <rect
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke-width:2.59277606;stroke-miterlimit:4;stroke-dasharray:none"
+       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke-width:2.66666961;stroke-miterlimit:4;stroke-dasharray:none"
        id="rect5729-6-2"
        width="12.700029"
-       height="192.09467"
+       height="203.2"
        x="1250.95"
-       y="-504.6947" />
+       y="-505.05588" />
     <rect
-       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke-width:6.78472948;stroke-miterlimit:4;stroke-dasharray:none"
+       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke-width:6.59966326;stroke-miterlimit:4;stroke-dasharray:none"
        id="rect5729-6-0"
        width="1244.6001"
-       height="13.422247"
+       height="12.7"
        x="19.049953"
-       y="-504.69473" />
+       y="-505.05585" />
     <flowRoot
        xml:space="preserve"
        id="flowRoot4522"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:condensed;font-size:67.54236603px;line-height:1.25;font-family:Impact;-inkscape-font-specification:'Impact, Condensed';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#fcfcfc;fill-opacity:1;stroke:none"
-       transform="matrix(0.30594404,0,0,0.27963012,127.82127,-474.66096)"
+       transform="matrix(0.30594404,0,0,0.27963012,124.15184,-474.44511)"
        inkscape:export-filename="C:\Users\Ben\Desktop\posterTest.png"
        inkscape:export-xdpi="300.00003"
        inkscape:export-ydpi="300.00003"><flowRegion
@@ -411,9 +411,10 @@
      id="layer4"
      inkscape:label="Circuit Elements"
      style="display:inline"
-     transform="translate(0,46.405832)">
+     transform="translate(0,46.405832)"
+     sodipodi:insensitive="true">
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#ac0000;stroke-width:5.08;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:none;fill-rule:evenodd;stroke:#ac0000;stroke-width:5.07999992;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="M 79.375002,236.16916 H 53.974999 L -15.875,166.31915"
        id="path2279"
        inkscape:connector-curvature="0" />
@@ -463,7 +464,7 @@
        id="path2279-01"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#ac0000;stroke-width:5.08;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:none;fill-rule:evenodd;stroke:#ac0000;stroke-width:5.07999992;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="M 79.375002,490.16916 H 53.974999 l -63.4999989,44.45"
        id="path2389"
        inkscape:connector-curvature="0" />
@@ -488,28 +489,31 @@
        id="path2389-8"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#ac0000;stroke-width:5.08;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-       d="m 561.97499,210.76915 h 19.05 l 19.05,-19.05 2e-5,-19.04999"
+       style="fill:none;fill-rule:evenodd;stroke:#ac0000;stroke-width:5.07999992;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 561.97499,210.76915 h 19.05 l 19.05,-19.05 1e-5,-22.22498"
        id="path2271"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccc" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#ac0000;stroke-width:5.08;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-       d="m 561.97499,236.16916 h 19.05 l 44.45,-44.45001 v -19.05"
+       style="fill:none;fill-rule:evenodd;stroke:#ac0000;stroke-width:5.07999992;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 561.97499,236.16916 h 19.05 l 44.45,-44.45001 v -22.22498"
        id="path2273"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#ac0000;stroke-width:5.08;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-       d="m 561.97499,261.56916 h 19.05 l 69.85,-69.85001 v -19.05"
+       style="fill:none;fill-rule:evenodd;stroke:#ac0000;stroke-width:5.07999992;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 561.97499,261.56916 h 19.05 l 69.85,-69.85001 v -22.22498"
        id="path2275"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#ac0000;stroke-width:5.08;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-       d="m 561.97499,286.96916 h 19.05 l 95.25,-95.25001 v -19.05"
+       style="fill:none;fill-rule:evenodd;stroke:#ac0000;stroke-width:5.07999992;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 561.97499,286.96916 h 19.05 l 95.25,-95.25001 v -22.22498"
        id="path2277"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#ac0000;stroke-width:5.08;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:none;fill-rule:evenodd;stroke:#ac0000;stroke-width:5.07999992;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 708.02499,464.76916 h -146.05"
        id="path2221"
        inkscape:connector-curvature="0" />
@@ -534,12 +538,12 @@
        id="path2221-14"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#ac0000;stroke-width:5.08;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:none;fill-rule:evenodd;stroke:#ac0000;stroke-width:5.07999992;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 561.97499,744.16916 h 25.4 l 76.2,-76.2 h 44.45"
        id="path2191"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#ac0000;stroke-width:5.08;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:none;fill-rule:evenodd;stroke:#ac0000;stroke-width:5.07999992;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 561.97499,718.76916 h 25.4 l 76.2,-76.2 h 44.45"
        id="path2193"
        inkscape:connector-curvature="0" />
@@ -4110,15 +4114,15 @@
          id="flowPara2174"
          style="font-size:21.33333397px">-All sprites are checked to see if they will appear on the next line.</flowPara><flowPara
          id="flowPara2176"
-         style="font-size:21.33333397px"></flowPara><flowPara
+         style="font-size:21.33333397px" /><flowPara
          style="font-size:21.33333397px"
          id="flowPara1564">-The first eight are loaded in for drawing and tile data is fetched.</flowPara><flowPara
          id="flowPara2178"
-         style="font-size:21.33333397px"></flowPara><flowPara
+         style="font-size:21.33333397px" /><flowPara
          style="font-size:21.33333397px"
          id="flowPara1566">-These sprites' x positions are decremented until zero.</flowPara><flowPara
          id="flowPara2180"
-         style="font-size:21.33333397px"></flowPara><flowPara
+         style="font-size:21.33333397px" /><flowPara
          style="font-size:21.33333397px"
          id="flowPara1568">-The content of the tile data regs are bitshifted out to the screen.</flowPara><flowPara
          style="font-size:21.33333397px"
@@ -6252,6 +6256,7 @@
                  style="display: inline-block; font-size: 11px; font-family: Verdana; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 39px; white-space: nowrap; overflow-wrap: normal; text-align: center;">
                 <xhtml:div
                    style="display:inline-block;text-align:inherit;text-decoration:inherit;">Output<xhtml:br />
+
 
 
 
