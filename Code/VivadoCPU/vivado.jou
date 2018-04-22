@@ -124,3 +124,7 @@ close_sim
 launch_simulation
 open_wave_config C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/testbench_behav.wcfg
 source testbench.tcl
+close_sim
+launch_simulation
+open_wave_config C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/testbench_behav.wcfg
+source testbench.tcl

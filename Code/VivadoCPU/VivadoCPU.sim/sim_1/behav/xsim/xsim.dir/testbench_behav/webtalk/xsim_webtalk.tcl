@@ -1,6 +1,6 @@
 webtalk_init -webtalk_dir C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/VivadoCPU.sim/sim_1/behav/xsim/xsim.dir/testbench_behav/webtalk/
 webtalk_register_client -client project
-webtalk_add_data -client project -key date_generated -value "Sat Apr 21 20:54:00 2018" -context "software_version_and_target_device"
+webtalk_add_data -client project -key date_generated -value "Sat Apr 21 21:00:43 2018" -context "software_version_and_target_device"
 webtalk_add_data -client project -key product_version -value "XSIM v2017.4 (64-bit)" -context "software_version_and_target_device"
 webtalk_add_data -client project -key build_version -value "2086221" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_platform -value "WIN64" -context "software_version_and_target_device"
@@ -14,7 +14,7 @@ webtalk_add_data -client project -key target_package -value "not_applicable" -co
 webtalk_add_data -client project -key target_speed -value "not_applicable" -context "software_version_and_target_device"
 webtalk_add_data -client project -key random_id -value "6c0018b6-1bfd-4d67-96cf-83da90bd3653" -context "software_version_and_target_device"
 webtalk_add_data -client project -key project_id -value "e1a8a81969814b54a019896ec4a915f6" -context "software_version_and_target_device"
-webtalk_add_data -client project -key project_iteration -value "81" -context "software_version_and_target_device"
+webtalk_add_data -client project -key project_iteration -value "83" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_name -value "Microsoft Windows 8 or later , 64-bit" -context "user_environment"
 webtalk_add_data -client project -key os_release -value "major release  (build 9200)" -context "user_environment"
 webtalk_add_data -client project -key cpu_name -value "Intel(R) Core(TM) i7-5500U CPU @ 2.40GHz" -context "user_environment"
@@ -38,6 +38,6 @@ webtalk_add_data -client xsim -key Total_Processes -value "62" -context "xsim\\u
 webtalk_add_data -client xsim -key Total_Instances -value "9" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Xilinx_HDL_Libraries_Used -value "secureip unimacro_ver unisims_ver " -context "xsim\\usage"
 webtalk_add_data -client xsim -key Compiler_Time -value "0.58_sec" -context "xsim\\usage"
-webtalk_add_data -client xsim -key Compiler_Memory -value "47080_KB" -context "xsim\\usage"
-webtalk_transmit -clientid 1234813801 -regid "" -xml C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/VivadoCPU.sim/sim_1/behav/xsim/xsim.dir/testbench_behav/webtalk/usage_statistics_ext_xsim.xml -html C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/VivadoCPU.sim/sim_1/behav/xsim/xsim.dir/testbench_behav/webtalk/usage_statistics_ext_xsim.html -wdm C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/VivadoCPU.sim/sim_1/behav/xsim/xsim.dir/testbench_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
+webtalk_add_data -client xsim -key Compiler_Memory -value "47108_KB" -context "xsim\\usage"
+webtalk_transmit -clientid 1250505834 -regid "" -xml C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/VivadoCPU.sim/sim_1/behav/xsim/xsim.dir/testbench_behav/webtalk/usage_statistics_ext_xsim.xml -html C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/VivadoCPU.sim/sim_1/behav/xsim/xsim.dir/testbench_behav/webtalk/usage_statistics_ext_xsim.html -wdm C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/VivadoCPU.sim/sim_1/behav/xsim/xsim.dir/testbench_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
 webtalk_terminate
