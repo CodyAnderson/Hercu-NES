@@ -12,12 +12,12 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="381844110fs"></ZoomEndTime>
-      <Cursor1Time time="100000000fs"></Cursor1Time>
+      <ZoomEndTime time="179600001fs"></ZoomEndTime>
+      <Cursor1Time time="213000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="221"></NameColumnWidth>
-      <ValueColumnWidth column_width="127"></ValueColumnWidth>
+      <ValueColumnWidth column_width="103"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="4" />
    <wvobject fp_name="group732" type="group">
@@ -29,6 +29,10 @@
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="BkColor">#00FFFF</obj_property>
       </wvobject>
+      <wvobject fp_name="/testbench/cpu6502/DATABUS/data_IN" type="array">
+         <obj_property name="ElementShortName">data_IN[7:0]</obj_property>
+         <obj_property name="ObjectShortName">data_IN[7:0]</obj_property>
+      </wvobject>
       <wvobject fp_name="/testbench/cpu6502/DATABUS/dataBus_OUT" type="array">
          <obj_property name="ElementShortName">dataBus_OUT[7:0]</obj_property>
          <obj_property name="ObjectShortName">dataBus_OUT[7:0]</obj_property>
@@ -36,22 +40,31 @@
          <obj_property name="CustomSignalColor">#00FF00</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
-      <wvobject fp_name="/testbench/cpu6502/DATABUS/data_IN" type="array">
-         <obj_property name="ElementShortName">data_IN[7:0]</obj_property>
-         <obj_property name="ObjectShortName">data_IN[7:0]</obj_property>
-      </wvobject>
       <wvobject type="divider" fp_name="divider123">
          <obj_property name="label">SYSTEM BUS</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="BkColor">#0000A0</obj_property>
       </wvobject>
+      <wvobject fp_name="/testbench/cpu6502/systemBus_IN" type="array">
+         <obj_property name="ElementShortName">systemBus_IN[7:0]</obj_property>
+         <obj_property name="ObjectShortName">systemBus_IN[7:0]</obj_property>
+      </wvobject>
       <wvobject fp_name="/testbench/cpu6502/SYSTEMBUS/systemBus_OUT" type="array">
          <obj_property name="ElementShortName">systemBus_OUT[7:0]</obj_property>
          <obj_property name="ObjectShortName">systemBus_OUT[7:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/testbench/cpu6502/SYSTEMBUS/data_IN" type="array">
-         <obj_property name="ElementShortName">data_IN[7:0]</obj_property>
-         <obj_property name="ObjectShortName">data_IN[7:0]</obj_property>
+      <wvobject fp_name="/testbench/cpu6502/SYSTEMBUS/addressLow_OUT" type="array">
+         <obj_property name="ElementShortName">addressLow_OUT[7:0]</obj_property>
+         <obj_property name="ObjectShortName">addressLow_OUT[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider412">
+         <obj_property name="label">ADDRESS LOW BUS</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#800080</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/addressLow_IN" type="array">
+         <obj_property name="ElementShortName">addressLow_IN[7:0]</obj_property>
+         <obj_property name="ObjectShortName">addressLow_IN[7:0]</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group182" type="group">
@@ -70,7 +83,6 @@
          <wvobject fp_name="/testbench/cpu6502/ALUI/a_REG_IN" type="array">
             <obj_property name="ElementShortName">a_REG_IN[7:0]</obj_property>
             <obj_property name="ObjectShortName">a_REG_IN[7:0]</obj_property>
-            <obj_property name="isExpanded"></obj_property>
          </wvobject>
          <wvobject type="divider" fp_name="divider204">
             <obj_property name="label">B INPUT</obj_property>
@@ -85,6 +97,7 @@
       <wvobject fp_name="group736" type="group">
          <obj_property name="label">ALU OUTPUT</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject type="divider" fp_name="divider219">
             <obj_property name="label">ALU OUTPUT</obj_property>
             <obj_property name="DisplayName">label</obj_property>
@@ -93,11 +106,14 @@
          <wvobject fp_name="/testbench/cpu6502/ALUI/hold_REG_OUT" type="array">
             <obj_property name="ElementShortName">hold_REG_OUT[7:0]</obj_property>
             <obj_property name="ObjectShortName">hold_REG_OUT[7:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF00</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
          </wvobject>
       </wvobject>
       <wvobject fp_name="group733" type="group">
          <obj_property name="label">ALU ENABLE LINES</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject type="divider" fp_name="divider201">
             <obj_property name="label">ALU ENABLE LINES</obj_property>
             <obj_property name="DisplayName">label</obj_property>
@@ -127,6 +143,7 @@
       <wvobject fp_name="group735" type="group">
          <obj_property name="label">ALU OPERATION RESULTS</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject type="divider" fp_name="divider218">
             <obj_property name="label">ALU OPERATION RESULT</obj_property>
             <obj_property name="DisplayName">label</obj_property>
@@ -170,7 +187,6 @@
          <wvobject fp_name="/testbench/cpu6502/A_REG/systemBus_IN" type="array">
             <obj_property name="ElementShortName">systemBus_IN[7:0]</obj_property>
             <obj_property name="ObjectShortName">systemBus_IN[7:0]</obj_property>
-            <obj_property name="isExpanded"></obj_property>
          </wvobject>
          <wvobject fp_name="/testbench/cpu6502/A_REG/a_REG" type="array">
             <obj_property name="ElementShortName">a_REG[7:0]</obj_property>
@@ -193,10 +209,6 @@
          <wvobject fp_name="/testbench/cpu6502/B_REG/dataBus_IN" type="array">
             <obj_property name="ElementShortName">dataBus_IN[7:0]</obj_property>
             <obj_property name="ObjectShortName">dataBus_IN[7:0]</obj_property>
-         </wvobject>
-         <wvobject fp_name="/testbench/cpu6502/B_REG/addressLow_IN" type="array">
-            <obj_property name="ElementShortName">addressLow_IN[7:0]</obj_property>
-            <obj_property name="ObjectShortName">addressLow_IN[7:0]</obj_property>
          </wvobject>
          <wvobject fp_name="/testbench/cpu6502/B_REG/b_REG" type="array">
             <obj_property name="ElementShortName">b_REG[7:0]</obj_property>

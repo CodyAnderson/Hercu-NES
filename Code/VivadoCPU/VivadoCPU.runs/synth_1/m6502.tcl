@@ -21,19 +21,20 @@ create_project -in_memory -part xc7a100tcsg324-1
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.cache/wt [current_project]
-set_property parent.project_path C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.xpr [current_project]
+set_property webtalk.parent_dir C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/VivadoCPU.cache/wt [current_project]
+set_property parent.project_path C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/VivadoCPU.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property ip_output_repo c:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.cache/ip [current_project]
+set_property ip_output_repo c:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/VivadoCPU.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 read_verilog -library xil_defaultlib -sv {
-  C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/ALU.sv
-  C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/A_INPUT_REGISTER.sv
-  C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/B_INPUT_REGISTER.sv
-  C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/new/DATA_BUS.sv
-  C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/imports/new/SYSTEM_BUS.sv
-  C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv
+  C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/VivadoCPU.srcs/sources_1/new/ADDRESSLOW_BUS.sv
+  C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/ALU.sv
+  C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/A_INPUT_REGISTER.sv
+  C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/VivadoCPU.srcs/sources_1/imports/Vivado_Simulation_old_verr.srcs/sources_1/new/B_INPUT_REGISTER.sv
+  C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/VivadoCPU.srcs/sources_1/imports/new/DATA_BUS.sv
+  C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/VivadoCPU.srcs/sources_1/imports/new/SYSTEM_BUS.sv
+  C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/VivadoCPU.srcs/sources_1/new/6502.sv
 }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the

@@ -2,36 +2,43 @@
 # Vivado v2017.4 (64-bit)
 # SW Build 2086221 on Fri Dec 15 20:55:39 MST 2017
 # IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
-# Start of session at: Thu Apr 19 13:47:09 2018
-# Process ID: 7368
-# Current directory: C:/Users/RyanP/Documents/VivadoCPU
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent9044 C:\Users\RyanP\Documents\VivadoCPU\VivadoCPU.xpr
-# Log file: C:/Users/RyanP/Documents/VivadoCPU/vivado.log
-# Journal file: C:/Users/RyanP/Documents/VivadoCPU\vivado.jou
+# Start of session at: Sat Apr 21 19:33:31 2018
+# Process ID: 9448
+# Current directory: C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent11776 C:\Users\RyanP\Documents\PROJ\Hercu-NES\Code\VivadoCPU\VivadoCPU.xpr
+# Log file: C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/vivado.log
+# Journal file: C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU\vivado.jou
 #-----------------------------------------------------------
 start_gui
-open_project C:/Users/RyanP/Documents/VivadoCPU/VivadoCPU.xpr
+open_project C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/VivadoCPU.xpr
 update_compile_order -fileset sources_1
 launch_simulation
-open_wave_config C:/Users/RyanP/Documents/VivadoCPU/testbench_behav.wcfg
+open_wave_config C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/testbench_behav.wcfg
 source testbench.tcl
 close_sim
 launch_simulation
-open_wave_config C:/Users/RyanP/Documents/VivadoCPU/testbench_behav.wcfg
+open_wave_config C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/testbench_behav.wcfg
 source testbench.tcl
-close_sim
-launch_simulation
-open_wave_config C:/Users/RyanP/Documents/VivadoCPU/testbench_behav.wcfg
-source testbench.tcl
-close_sim
-launch_simulation
-launch_simulation
-open_wave_config C:/Users/RyanP/Documents/VivadoCPU/testbench_behav.wcfg
-source testbench.tcl
-close_sim
-launch_simulation
-open_wave_config C:/Users/RyanP/Documents/VivadoCPU/testbench_behav.wcfg
-source testbench.tcl
+save_wave_config {C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/testbench_behav.wcfg}
+restart
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+restart
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+save_wave_config {C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/testbench_behav.wcfg}
 close_sim
 reset_run synth_1
 launch_runs synth_1 -jobs 2
@@ -39,39 +46,81 @@ wait_on_run synth_1
 launch_runs impl_1 -jobs 2
 wait_on_run impl_1
 launch_simulation
-open_wave_config C:/Users/RyanP/Documents/VivadoCPU/testbench_behav.wcfg
+open_wave_config C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/testbench_behav.wcfg
 source testbench.tcl
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+close_sim
+launch_simulation
+close_project
+open_project C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/VivadoCPU.xpr
+launch_simulation
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+launch_simulation
+open_wave_config C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/testbench_behav.wcfg
+source testbench.tcl
+close_sim
+launch_simulation
+open_wave_config C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/testbench_behav.wcfg
+source testbench.tcl
+restart
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
 run all
-reset_run synth_1
-launch_runs synth_1 -jobs 2
-wait_on_run synth_1
-launch_runs impl_1 -jobs 2
-wait_on_run impl_1
-reset_run synth_1
-launch_runs synth_1 -jobs 2
-wait_on_run synth_1
-close_sim
-reset_run synth_1
-launch_runs synth_1 -jobs 2
-wait_on_run synth_1
-launch_simulation
-open_wave_config C:/Users/RyanP/Documents/VivadoCPU/testbench_behav.wcfg
-source testbench.tcl
-close_sim
-reset_run synth_1
-launch_runs synth_1 -jobs 2
-wait_on_run synth_1
-launch_simulation
-open_wave_config C:/Users/RyanP/Documents/VivadoCPU/testbench_behav.wcfg
-source testbench.tcl
-reset_run synth_1
-launch_runs synth_1 -jobs 2
-wait_on_run synth_1
-reset_run synth_1
-launch_runs synth_1 -jobs 2
-wait_on_run synth_1
+restart
+run 100 ns
+save_wave_config {C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/testbench_behav.wcfg}
+restart
+run 100 ns
+restart
+run 100 ns
+save_wave_config {C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/testbench_behav.wcfg}
 close_sim
 launch_simulation
-open_wave_config C:/Users/RyanP/Documents/VivadoCPU/testbench_behav.wcfg
+open_wave_config C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/testbench_behav.wcfg
+source testbench.tcl
+restart
+run 100 ns
+run 100 ns
+save_wave_config {C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/testbench_behav.wcfg}
+close_sim
+launch_simulation
+open_wave_config C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/testbench_behav.wcfg
+source testbench.tcl
+save_wave_config {C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/testbench_behav.wcfg}
+close_sim
+launch_simulation
+open_wave_config C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/testbench_behav.wcfg
+source testbench.tcl
+save_wave_config {C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/testbench_behav.wcfg}
+close_sim
+launch_simulation
+open_wave_config C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/testbench_behav.wcfg
+source testbench.tcl
+run 100 ns
+run 100 ns
+run 100 ns
+run 100 ns
+run 100 ns
+run 100 ns
+run 100 ns
+run 100 ns
+run 100 ns
+run 100 ns
+save_wave_config {C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/testbench_behav.wcfg}
+close_sim
+launch_simulation
+open_wave_config C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/testbench_behav.wcfg
 source testbench.tcl
 close_sim
+launch_simulation
+open_wave_config C:/Users/RyanP/Documents/PROJ/Hercu-NES/Code/VivadoCPU/testbench_behav.wcfg
+source testbench.tcl

@@ -31,17 +31,7 @@ module m6502(
     input logic [7:0] dataBus_IN,
     input logic [7:0] addressLow_IN,
     input logic [7:0] addressHigh_IN,
-    
-    input logic [7:0] systemBus_OUT,
-    input logic [7:0] dataBus_OUT,
-    input logic [7:0] addressLow_OUT,
-    input logic [7:0] addressHigh_OUT,
-    
-    //Register busses
-    input logic [7:0] tb_hold_REG,
-    input logic [7:0] tb_a_REG,
-    input logic [7:0] tb_b_REG,
-    
+
     //A register control lines
     input logic a_systemBus_EN,
     input logic a_zero_EN,
@@ -60,13 +50,7 @@ module m6502(
     
     //ALU flag inputs
     input logic carry_FLAG_IN,
-    
-    //ALU flag outputs
-    input logic zero_FLAG_OUT,
-    input logic negative_FLAG_OUT,
-    input logic overflow_FLAG_OUT,
-    input logic carry_FLAG_OUT,
-    
+   
     //ADD register control lines
     input logic add_adl_EN,
     input logic add_sb06_EN,
@@ -82,13 +66,24 @@ module m6502(
     input logic ADL2Drain,
     
     //Testbench values
-    input logic [32:0] step,
+    input logic [32:0] step);
     
-    //Testbench busses
-    input logic [7:0] tb_systemBus,
-    input logic [7:0] tb_dataBus,
-    input logic [7:0] tb_addressLow
-    );
+    //Bus output
+    logic [7:0] systemBus_OUT;
+    logic [7:0] dataBus_OUT;
+    logic [7:0] addressLow_OUT;
+    logic [7:0] addressHigh_OUT;
+    
+    //Register Busses
+    logic [7:0] tb_hold_REG = 0;
+    logic [7:0] tb_a_REG = 0;
+    logic [7:0] tb_b_REG = 0;
+    
+    //ALU flag outputs
+    logic zero_FLAG_OUT;
+    logic negative_FLAG_OUT;
+    logic overflow_FLAG_OUT;
+    logic carry_FLAG_OUT;
     
     //A Register
     A_INPUT_REGISTER A_REG(
@@ -152,7 +147,7 @@ module m6502(
     //Pre-Decode Register
     
     //Address Bus Low
-    //ADDRESSLOW_BUS(addressLow_IN, ADL0Drain, ADL1Drain, ADL2Drain, addressLow_OUT);
+    ADDRESSLOW_BUS ADDRESSLOWBUS(addressLow_IN, ADL0Drain, ADL1Drain, ADL2Drain, addressLow_OUT);
     
     //Address Bus High
     //ADDRESSHIGH_BUS(addressHigh_IN, ADH0Drain, ADH1to7Drain, addressHigh_OUT);

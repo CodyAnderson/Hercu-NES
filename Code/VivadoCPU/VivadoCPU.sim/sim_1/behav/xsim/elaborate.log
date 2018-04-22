@@ -10,6 +10,7 @@ Time Resolution for simulation is 1ps
 Compiling module xil_defaultlib.A_INPUT_REGISTER
 Compiling module xil_defaultlib.B_INPUT_REGISTER
 Compiling module xil_defaultlib.ALU
+Compiling module xil_defaultlib.ADDRESSLOW_BUS
 Compiling module xil_defaultlib.DATA_BUS
 Compiling module xil_defaultlib.SYSTEM_BUS
 Compiling module xil_defaultlib.m6502

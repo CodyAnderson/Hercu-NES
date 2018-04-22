@@ -30,7 +30,6 @@ module SYSTEM_BUS(
         
     logic [7:0] intr_addressHigh_OUT;
     logic [7:0] intr_addressLow_OUT;
-    
     assign systemBus_OUT = data_IN;
     assign intr_addressHigh_OUT = (addressHighPass_EN)? data_IN : 'hff;
     assign intr_addressLow_OUT = (addressLowPass_EN)? data_IN : 'hff;

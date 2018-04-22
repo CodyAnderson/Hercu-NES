@@ -29,18 +29,10 @@ module testbench;
     logic [7:0] systemBus_IN = 0;
     logic [7:0] dataBus_IN = 0;
     logic [7:0] addressLow_IN = 0;
+    logic [7:0] s0w1addressLow_IN;
     logic [7:0] addressHigh_IN = 0;
-    
-    logic [7:0] systemBus_OUT = 0;
-    logic [7:0] dataBus_OUT = 0;
-    logic [7:0] addressLow_OUT = 0;
-    logic [7:0] addressHigh_OUT = 0;
-    
-    //Register busses
-    logic [7:0] tb_hold_REG = 0;
-    logic [7:0] tb_a_REG = 0;
-    logic [7:0] tb_b_REG = 0;
-    
+    logic [7:0] s0w1addressHigh_IN;
+   
     //A register control lines
     logic a_systemBus_EN = 0;
     logic a_zero_EN = 0;
@@ -60,12 +52,6 @@ module testbench;
     //ALU flag inputs
     logic carry_FLAG_IN = 0;
     
-    //ALU flag outputs
-    logic zero_FLAG_OUT;
-    logic negative_FLAG_OUT;
-    logic overflow_FLAG_OUT;
-    logic carry_FLAG_OUT;
-    
     //ADD register control lines
     logic add_adl_EN = 0;
     logic add_sb06_EN = 0;
@@ -82,11 +68,6 @@ module testbench;
     
     //Testbench values
     logic [32:0] step = 0;
-    
-    //Testbench busses
-    logic [7:0] tb_systemBus = 0;
-    logic [7:0] tb_dataBus = 0;
-    logic [7:0] tb_addressLow = 0;
     
 //    //A Register
 //    A_INPUT_REGISTER A_REG(
@@ -168,6 +149,12 @@ module testbench;
 //        .systemBus_OUT(systemBus_OUT),
 //        .addressHigh_OUT(addressHigh_IN),
 //        .addressLow_OUT(addressLow_IN));
+
+assign (strong0, weak1) s0w1addressLow_IN = addressLow_IN; 
+assign (strong0, weak1) s0w1addressHigh_IN = addressHigh_IN; 
+
+
+
             
     //CPU
     m6502 cpu6502( 
@@ -178,18 +165,8 @@ module testbench;
     //Busses
     .systemBus_IN(systemBus_IN),
     .dataBus_IN(dataBus_IN),
-    .addressLow_IN(addressLow_IN),
-    .addressHigh_IN(addressHigh_IN),
-    
-    .systemBus_OUT(systemBus_OUT),
-    .dataBus_OUT(dataBus_OUT),
-    .addressLow_OUT(addressLow_OUT),
-    .addressHigh_OUT(addressHigh_OUT),
-    
-    //Register busses
-    .tb_hold_REG(tb_hold_REG),
-    .tb_a_REG(tb_a_REG),
-    .tb_b_REG(tb_b_REG),
+    .addressLow_IN(s0w1addressLow_IN),
+    .addressHigh_IN(s0w1addressHigh_IN),
     
     //A register control lines
     .a_systemBus_EN(a_systemBus_EN),
@@ -210,12 +187,6 @@ module testbench;
     //ALU flag inputs
     .carry_FLAG_IN(carry_FLAG_IN),
     
-    //ALU flag outputs
-    .zero_FLAG_OUT(zero_FLAG_OUT),
-    .negative_FLAG_OUT(negative_FLAG_OUT),
-    .overflow_FLAG_OUT(overflow_FLAG_OUT),
-    .carry_FLAG_OUT(carry_FLAG_OUT),
-    
     //ADD register control lines
     .add_adl_EN(add_adl_EN),
     .add_sb06_EN(add_sb06_EN),
@@ -231,13 +202,7 @@ module testbench;
     .ADL2Drain(ADL2Drain),
     
     //Testbench values
-    .step(step),
-    
-    //Testbench busses
-    .tb_systemBus(tb_systemBus),
-    .tb_dataBus(tb_dataBus),
-    .tb_addressLow(tb_addressLow)
-    );
+    .step(step));
             
      //A/B/ALU Testbench
     always
@@ -251,6 +216,10 @@ module testbench;
             systemBus_IN = 30;
             a_systemBus_EN = 1;
             a_zero_EN = 0;
+            addressLow_IN = 40;
+            //b_addressLow_EN = 1;
+            b_dataBusInvert_EN = 0;
+            //alu_sum_EN = 1;
         end
         else if(step == 2)
         begin
@@ -282,7 +251,7 @@ module testbench;
         begin
             b_dataBusInvert_EN = 0;
             addressLow_IN = 10;
-            b_addressLow_EN = 1;
+            //b_addressLow_EN = 1;
         end
         else if(step == 8)
         begin
